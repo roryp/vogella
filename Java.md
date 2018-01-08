@@ -33,9 +33,9 @@ Table of Contents
 
 Java is a programming language created by James Gosling from Sun Microsystems (Sun) in 1991. The target of Java is to write a program once and then run this program on multiple operating systems. The first publicly available version of Java (Java 1.0) was released in 1995. Sun Microsystems was acquired by the Oracle Corporation in 2010. Oracle has now the steermanship for Java. In 2006 Sun started to make Java available under the GNU General Public License (GPL). Oracle continues this project called *OpenJDK*.
 
-Over time new enhanced versions of Java have been released. The current version of Java is Java 1.8 which is also known as *Java 8*.
+Over time new enhanced versions of Java have been released. The current version of Java is Java 1.9 which is also known as *Java 9*.
 
-Java is defined by a specification and consists of a programming language, a compiler, core libraries and a runtime (Java virtual machine) The Java runtime allows software developers to write program code in other languages than the Java programming language which still runs on the Java virtual machine. The *Java platform* is usually associated with the*Java virtual machine* and the *Java core libraries*.
+Java is defined by a specification and consists of a programming language, a compiler, core libraries and a runtime (Java virtual machine) The Java runtime allows software developers to write program code in other languages than the Java programming language which still runs on the Java virtual machine. The *Java platform* is usually associated with the *Java virtual machine* and the *Java core libraries*.
 
 The Java language was designed with the following properties:
 
@@ -49,7 +49,7 @@ The Java syntax is similar to C++. Java is case-sensitive, e.g., variables calle
 
 ### 1.2. Hello world Java program
 
-```
+```java
 // a small Java program
 public class HelloWorld {
     public static void main(String[] args) {
@@ -84,7 +84,7 @@ At some point the programmer (or the IDE) calls the Java compiler ( `javac` ). T
 
 ### 1.6. Garbage collector
 
-The JVM automatically re-collects the memory which is not referred to by other objects. The Java *garbage collector*checks all object references and finds the objects which can be automatically released.
+The JVM automatically re-collects the memory which is not referred to by other objects. The Java *garbage collector* checks all object references and finds the objects which can be automatically released.
 
 While the garbage collector relieves the programmer from the need to explicitly manage memory, the programmer still need to ensure that he does not keep unneeded object references, otherwise the garbage collector cannot release the associated memory. Keeping unneeded object references are typically called *memory leaks*.
 
@@ -108,7 +108,7 @@ If the JRE is installed and within your path, this commands prints information a
 
 If the command line returns the information that the program could not be found, you have to install Java.
 
-| **   | How can you tell you are using a 32 bit or 64 bit version of Java?You can run a 32 bit or a 64 bit version of Java on a 64 bit system. If you use `java -version` and the output contains the "64-Bit" string you are using the 64 bit version of Java otherwise your are using the 32 bit version. The following is the output of a 64-bit version.`openjdk version "1.8.0_45-internal"OpenJDK Runtime Environment (build 1.8.0_45-internal-b14)OpenJDK 64-Bit Server VM (build 25.45-b02, mixed mode)` |
+| **   | How can you tell you are using a 32 bit or 64 bit version of Java? You can run a 32 bit or a 64 bit version of Java on a 64 bit system. If you use `java -version` and the output contains the "64-Bit" string you are using the 64 bit version of Java otherwise your are using the 32 bit version. The following is the output of a 64-bit version.`openjdk version "1.8.0_45-internal"OpenJDK Runtime Environment (build 1.8.0_45-internal-b14)OpenJDK 64-Bit Server VM (build 25.45-b02, mixed mode)` |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
@@ -161,7 +161,7 @@ Select or create a new directory which will be used for your Java development. I
 
 Open a text editor which supports plain text, e.g., *gedit* under Linux or *Notepad* under Windows and write the following source code.
 
-```
+```java
 // a small Java program
 public class HelloWorld {
     public static void main(String[] args) {
@@ -236,7 +236,7 @@ A class is a template that describes the data and behavior associated with an in
 
 A class is defined by the *class* keyword and must start with a capital letter. The body of a class is surrounded by {}.
 
-```
+```java
 package test;
 
 class MyClass {
@@ -250,9 +250,9 @@ A class is contained in a text file with the same name as the class plus the `.j
 
 ### 4.2. Object
 
-An object is an instance of a class.
+An object is an **instance** of a class.
 
-The object is the real element which has data and can perform actions. Each object is created based on the class definition. The class can be seen as the blueprint of an object, i.e., it describes how an object is created.
+The object is the real element which has data and can perform actions. Each object is created based on the class definition. The class can be seen as the blueprint of an object, i.e. , it describes how an object is created.
 
 ### 4.3. Package
 
@@ -276,7 +276,7 @@ Inheritance allows a class to inherit the behavior and data definitions of anoth
 
 The following codes demonstrates how a class can extend another class. In Java a class can only extend a maximum of one class.
 
-```
+```java
 package com.vogella.javaintro.base;
 
 class MyBaseClass {
@@ -287,7 +287,7 @@ class MyBaseClass {
 }
 ```
 
-```
+```java
 package com.vogella.javaintro.base;
 
 class MyExtensionClass extends MyBaseClass {
@@ -316,7 +316,7 @@ Checked Exceptions are explicitly thrown by methods, which might cause the excep
 
 So when calling methods, which throw checked Exceptions the Exceptions have either to be caught or to be re-thrown.
 
-```
+```java
 public void fileNotFoundExceptionIsCaughtInside() {
     try {
         createFileReader();
@@ -345,7 +345,7 @@ Runtime Exceptions are Exceptions, which are not explicitly mentioned in the met
 
 The most famous runtime exception is the NullPointerException, which occurs during runtime, when a method is invoked on an object, which actually is `null`.
 
-```
+```java
 public void causeANullPointerException() {
     String thisStringIsNull = getMessage(false);
 
@@ -373,13 +373,13 @@ Like a class an interface defines methods. Classes can implement one or several 
 
 ### 5.2. Abstract, default and static methods in Interfaces
 
-An interface can have abstract methods and _default_methods. A default method is defined via the `default` keyword at the beginning of the method signature. All other methods defined in an interfaces are public and abstract; explicit declaration of these modifiers is optional.
+An interface can have abstract methods and default methods. A default method is defined via the `default` keyword at the beginning of the method signature. All other methods defined in an interfaces are public and abstract; explicit declaration of these modifiers is optional.
 
 Interfaces can have constants which are always implicitly public, static and final.
 
 The following code shows an example implementation of an interface.
 
-```
+```java
 package testing;
 
 public interface MyInterface {
@@ -402,7 +402,7 @@ public interface MyInterface {
 
 A class can implement an interface. In this case it must provide concrete implementations of the abstract interface methods. If you implement a method defined by an interface, you can use `@Override` annotation. This indicates to the Java compiler that you actually want to implement a method defined by this interface. This way the compiler can give you an error in you mis-typed the name of the method or in the number of arguments. The following class implements the `MyInterface` interface, its must therefore implement the abstract method and can use the default methods.
 
-```
+```java
 package com.vogella.javaintro.base;
 
 public class MyClassImpl implements MyInterface {
@@ -439,7 +439,7 @@ If a class implements two interfaces and if these interfaces provide the same de
 
 The following listing demonstrates listing number 3.
 
-```
+```java
 public interface A {
     default void m() {}
 }
@@ -456,7 +456,7 @@ public class C implements A, B {
 
 In your implementation you can also call the super method you prefer.
 
-```
+```java
 public class C implements A, B {
     @Override
     public void m() {A.super.m();}
@@ -465,7 +465,7 @@ public class C implements A, B {
 
 ### 5.6. Functional interfaces
 
-All interfaces that have only one method are called *functional interfaces*. Functional interfaces have the advantage that they can be used together with *lambda expressions*. See [What are lambdas?] to learn more about lambdas, e.g., the type of lambdas is a functional interface.
+All interfaces that have only one method are called *functional interfaces*. Functional interfaces have the advantage that they can be used together with *lambda expressions*. See [Lambdas](#20. Lambdas) to learn more about lambdas, e.g., the type of lambdas is a functional interface.
 
 The Java compiler automatically identifies functional interfaces. The only requirement is that they have only one abstract method. However, is possible to capture the design intent with a `@FunctionalInterface` annotation.
 
@@ -506,7 +506,7 @@ To indicate to the reader of the source code and the Java compiler that you have
 
 The following code demonstrates how you can override a method from a superclass.
 
-```
+```java
 package com.vogella.javaintro.base;
 
 class MyBaseClass {
@@ -517,7 +517,7 @@ class MyBaseClass {
 }
 ```
 
-```
+```java
 package com.vogella.javaintro.base;
 
 class MyExtensionClass2 extends MyBaseClass {
@@ -539,7 +539,7 @@ The `@Deprecated` annotation can be used on a field, method, constructor or clas
 
 Java supports that annotations can be placed on any type. The following gives several examples assuming the annotations exists.
 
-```
+```java
 @NonNull String name;
 List<@NonNull String> names;
 class UnmodifiableList<T> implements @Readonly List<@Readonly T> {...}
@@ -554,7 +554,7 @@ void doSomething() throws @ImportantForMe MyException { ... }
 
 *Variables* allow the Java program to store values during the runtime of the program.
 
-A variable can either be a: * *primitive variable* * *reference variable*
+A variable can either be a *primitive variable* or a *reference variable*
 
 A primitive variable contains the value. A reference variable contains a reference (pointer) to the object. Hence, if you compare two reference variables, you compare if both point to the same object. To identify if objects contain the same data, use the `object1.equals(object2)` method call.
 
@@ -574,7 +574,7 @@ Local (stack) variable declarations cannot have access modifiers. Local variable
 
 A method is a block of code with parameters and a return value. It can be called on the object.
 
-```
+```java
 package com.vogella.javaintro.base;
 
 public class MyMethodExample {
@@ -592,7 +592,7 @@ Overwrite of a superclass method: A method must be of the exact same return para
 
 A public static method with the following signature can be used to start a Java application. Such a method is typically called `main` method.
 
-```
+```java
 public static void main(String[] args) {
 
 }
@@ -608,7 +608,7 @@ A class can have several constructors with different parameters.
 
 In the following example the constructor of the class expects a parameter.
 
-```
+```java
 package com.vogella.javaintro.base;
 
 public class MyConstructorExample2 {
@@ -625,7 +625,7 @@ Each class must define at least one constructor. If no explicit constructor is d
 
 In the following example the definition of the constructor without parameters (also known as the *empty constructor*) is unnecessary. If not specified, the compiler would create one.
 
-```
+```java
 package com.vogella.javaintro.base;
 
 public class MyConstructorExample {
@@ -644,7 +644,7 @@ Every object is created based on a constructor. This constructor method is the f
 
 ### 8.1. Access modifiers
 
-There are three access modifiers keywords available in Java: * *public* * *protected* * *private*
+There are three access modifiers keywords available in Java:  *public* , *protected* and *private*
 
 There are four access levels: *public*, *protected*, *default* and *private*.
 
@@ -701,7 +701,7 @@ If you define a static variable, the Java runtime environment associates one cla
 
 The following code demonstrates the usage of `static` fields.
 
-```
+```java
 package com.vogella.javaintro.base;
 
 public class MyStaticExample {
@@ -714,7 +714,7 @@ public class MyStaticExample {
 }
 ```
 
-```
+```java
 package com.vogella.javaintro.base;
 
 public class Tester {
@@ -741,7 +741,7 @@ If a class contains an abstract method, it also needs to get defined with the `a
 
 The following example shows an abstract class.
 
-```
+```java
 package com.vogella.javaintro.base;
 
 public abstract class MyAbstractClass {
