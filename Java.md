@@ -807,7 +807,7 @@ Use the constructor of the `Person` object to set the values to some default val
 
 Add a `toString` method as described by the following coding and solve the TODO. This method is used to convert the object to a String representation.
 
-```
+```java
 @Override
 public String toString() {
     // TODO replace "" with the following:
@@ -846,9 +846,7 @@ Add a new instance variable of this type in the `Person` object. Also, create a 
 
 ### 14.1. Create a Person class and instantiate it
 
-The following is the expected result after [Create a Person class and instantiate it].
-
-```
+```java
 package exercises.exercise04;
 
 class Person {
@@ -864,7 +862,7 @@ class Person {
 }
 ```
 
-```
+```java
 package exercises.exercise04;
 
 public class Main {
@@ -879,9 +877,7 @@ public class Main {
 
 ### 14.2. Use constructor
 
-The following is the expected result after [Use constructor].
-
-```
+```java
 package com.vogella.javastarter.exercises1;
 
 
@@ -904,7 +900,7 @@ class Person {
 }
 ```
 
-```
+```java
 package com.vogella.javastarter.exercises1;
 
 public class Main {
@@ -921,9 +917,7 @@ public class Main {
 
 ### 14.3. Define getter and setter methods
 
-The following is the expected result after [Define getter and setter methods].
-
-```
+```java
 package com.vogella.javastarter.exercises1;
 
 class Person {
@@ -970,7 +964,7 @@ class Person {
 }
 ```
 
-```
+```java
 package com.vogella.javastarter.exercises1;
 
 public class Main {
@@ -987,9 +981,7 @@ public class Main {
 
 ### 14.4. Solution - Create an Address object
 
-The following is the expected result after [Create an Address object]
-
-```
+```java
 package com.vogella.javastarter.exercises1;
 
 public class Address {
@@ -1048,7 +1040,7 @@ public class Address {
 }
 ```
 
-```
+```java
 package com.vogella.javastarter.exercises1;
 
 
@@ -1105,7 +1097,7 @@ class Person {
 }
 ```
 
-```
+```java
 package com.vogella.javastarter.exercises1;
 
 public class Main {
@@ -1152,7 +1144,7 @@ If you use variables of different types Java requires for certain types an expli
 
 Use the following to convert from other types to Strings
 
-```
+```java
 // Convert from int to String
 String s1 = String.valueOf ( 10 ); // "10"
 // Convert from double to String
@@ -1165,7 +1157,7 @@ String s4 = String.valueOf ( new Date() ); // "Tue Jun 03 14:40:38 CEST 2003"
 
 ### 15.2. Conversion from String to Number
 
-```
+```java
 // Conversion from String to int
 int i = Integer.parseInt(String);
 // Conversion from float to int
@@ -1178,7 +1170,7 @@ The conversion from string to number is independent from the local settings, e.g
 
 To convert from a German number, you have to use the `NumberFormat` class. The challenge is that when the value is, for example, 98.00 then the `NumberFormat` class would create a `Long` which cannot be casted to Double. Hence the following complex conversion class.
 
-```
+```java
 private Double convertStringToDouble(String s) {
 
         Locale l = new Locale("de", "DE");
@@ -1208,7 +1200,7 @@ int i = (int) double;
 
 Use the following to convert a Date to a SQL date
 
-```
+```java
 package test;
 
 import java.text.DateFormat;
@@ -1249,7 +1241,7 @@ The following example code shows a class with two methods. The first method demo
 
 The switch statement can be used to handle several alternatives if they are based on the same constant value.
 
-```
+```java
 switch (expression) {
     case constant1:
         command;
@@ -1320,7 +1312,7 @@ Use `==` to compare two primitives or to see if two references refer to the same
 
 A for loop is a repetition control structure that allows you to write a block of code which is executed a specific number of times. The syntax is the following.
 
-```
+```java
 for(initialization; expression; update_statement)
 {
    //block of code to run
@@ -1329,7 +1321,7 @@ for(initialization; expression; update_statement)
 
 The following shows an example for a for loop.
 
-```
+```java
 public class ForTest {
 
     public static void main(String args[]) {
@@ -1347,7 +1339,7 @@ TIP:For arrays and collections there is also an enhanced for loop available. Thi
 
 A while loop is a repetition control structure that allows you to write a block of code which is executed until a specific condition evaluates to false. The syntax is the following.
 
-```
+```java
 while(expression)
 {
     // block of code to run
@@ -1356,7 +1348,7 @@ while(expression)
 
 The following shows an example for a while loop.
 
-```
+```java
 public class WhileTest {
 
     public static void main(String args[]) {
@@ -1374,7 +1366,7 @@ public class WhileTest {
 
 The do-while loop is similar to the while loop, with the exception that the condition is checked after the execution. The syntax is the following.
 
-```
+```java
 do
 {
     // block of code to run
@@ -1383,7 +1375,7 @@ do
 
 The following shows an example for a do-while loop.
 
-```
+```java
 public class DoTest {
 
     public static void main(String args[]) {
@@ -1403,7 +1395,7 @@ public class DoTest {
 
 An array is a container object that holds a fixed number of values of a single type. An item in an array is called an element. Every element can be accessed via an index. The first element in an array is addressed via the 0 index, the second via 1, etc.
 
-```
+```java
 package com.vogella.javaintro.array;
 
 public class TestMain {
@@ -1435,7 +1427,7 @@ public class TestMain {
 
 Arrays and collections can be processed with a simpler for loop.
 
-```
+```java
 for(declaration : expression)
 {
     // body of code to be executed
@@ -1444,7 +1436,7 @@ for(declaration : expression)
 
 The following code demonstrates its usage.
 
-```
+```java
 package com.vogella.javaintro.array;
 
 public class TestMain {
@@ -1505,9 +1497,33 @@ Whenever a `String` object is created and gets a string literal assigned the str
 
 To compare the `String` objects `s1` and `s2`, use the `s1.equals(s2)` method.
 
-| **   | A `String` comparison with `==` is incorrect, as `==` checks for object reference equality. `==` sometimes gives the correct result, as Java uses a `String` pool. The following example would work with `==`.This would work as expected.`String a = "Hello";String b = "Hello";if (a==b) {    // if statement is true    // because String pool is used and    // a and b point to the same constant}`This comparison would fail.`String a = "Hello";String b = new String("Hello");if (a==b) {} else {    // if statement is false    // because String pool is used and    // a and b point to the same constant}` |
-| ---- | ---------------------------------------- |
-|      |                                          |
+A `String` comparison with `==` is incorrect, as `==` checks for object reference equality. `==` sometimes gives the correct result, as Java uses a `String` pool. The following example would work with `==`.
+
+This would work as expected.
+
+```java
+String a = "Hello";
+String b = "Hello";
+if (a==b) {
+    // if statement is true
+    // because String pool is used and
+    // a and b point to the same constant
+}
+```
+
+This comparison would fail.
+
+```java
+String a = "Hello";
+String b = new String("Hello");
+if (a==b) {
+
+} else {
+    // if statement is false
+    // because String pool is used and
+    // a and b point to the same constant
+}
+```
 
 ### 19.4. Working with Strings
 
@@ -1544,7 +1560,7 @@ The type of a lambda expression in Java is a functional interface.
 
 Using lambdas allows to use a condensed syntax compared to other Java programming constructs. For example the`Collection` interfaces has `forEach` method which accepts a lambda expression.
 
-```
+```java
 List<String> list = Arrays.asList("vogella.com","google.com","heise.de" )
 list.forEach(s-> System.out.println(s));
 ```
@@ -1553,7 +1569,7 @@ list.forEach(s-> System.out.println(s));
 
 You can use method references in a lambda expression. Method reference define the method to be called via`CalledFrom::method`. CalledFrom can be * instance::instanceMethod * SomeClass::staticMethod * SomeClass::instanceMethod
 
-```
+```java
 List<String> list = new ArrayList<>();
 list.add("vogella.com");
 list.add("google.com");
@@ -1575,7 +1591,7 @@ A stream from the `java.util.stream` package is a sequence of elements from a so
 
 Allow to create a stream of sequence of primitive int-valued elements supporting sequential and parallel aggregate operations.
 
-```
+```java
 package com.vogella.java.streams;
 
 import java.util.ArrayList;
@@ -1601,7 +1617,7 @@ public class IntStreamExample {
 
 Allow to create a stream of sequence of primitive int-valued elements supporting sequential and parallel aggregate operations.
 
-```
+```java
 package com.vogella.java.streams;
 
 public class Task {
@@ -1628,7 +1644,7 @@ public class Task {
 }
 ```
 
-```
+```java
 package com.vogella.java.streams;
 
 import java.util.ArrayList;
@@ -1669,7 +1685,7 @@ public class StreamTester {
 
 The following example demonstrates how to use streams to filter a list, perform a mapping operation and to create one final result string from it with the `reduce` method.
 
-```
+```java
 import java.util.Arrays;
 import java.util.List;
 
@@ -1690,11 +1706,11 @@ public class JavaStreamExample {
 
 ### 21.5. Streams and lambda examples
 
-The following is a larger example for the usage of streams. The code is based on the slides from the [Goldmann Sachs Collection presentation at EclipseCOn 2015](https://www.eclipsecon.org/europe2015/session/eclipse-collections-example)
+The following is a larger example for the usage of streams. 
 
 Lets assume the following data model.
 
-```
+```java
 package com.vogella.java.streams;
 
 public enum PetType {
@@ -1705,7 +1721,7 @@ public enum PetType {
 }
 ```
 
-```
+```java
 package com.vogella.java.streams;
 
 public class Pet {
@@ -1735,7 +1751,7 @@ public class Pet {
 }
 ```
 
-```
+```java
 package com.vogella.java.streams;
 
 import java.util.ArrayList;
@@ -1789,7 +1805,7 @@ public class Person {
 
 With this data model you can use streams and lambdas to filter and search the data as demonstrated in the following example.
 
-```
+```java
 package com.vogella.java.streams;
 
 import java.util.Arrays;
@@ -1878,7 +1894,7 @@ If you want to call a method on an Optional object and check some property you c
 
 You can create an `Optional` in different ways:
 
-```
+```java
 // use this if the object is not null
 opt = Optional.of(o);
 // creates an empty Optional, if o is null
@@ -1889,7 +1905,7 @@ opt = Optional.empty();
 
 The `ifPresent` method can be used to execute some code on an object if it is present. Assume you have a `Todo` object and want to call the `getId()` method on it. You can do this via the following code.
 
-```
+```java
 Todo todo = new Todo(-1);
 Optional<Todo> optTodo = Optional.of(todo);
 // get the id of the todo or a default value
@@ -1898,7 +1914,7 @@ optTodo.ifPresent(t-> System.out.println(t.getId()));
 
 Via the `map` method you can transform the object if it is present and via the `filter` method you can filter for certain values.
 
-```
+```java
 Todo todo = new Todo(-1);
 Optional<Todo> optTodo = Optional.of(todo);
 
@@ -1911,7 +1927,7 @@ optTodo.filter(o -> o.getId() > 0).map(o -> o.getSummary().trim()).ifPresent(Sys
 
 To get the real value of an Optional the get() method can be used. But in case the Optional is empty this will throw a NoSuchElementException. To avoid this NoSuchElementException the `orElse` or the `orElseGet` can be used to provide a default in case of absence.
 
-```
+```java
 // using a String
 String s = "Hello";
 Optional<String> maybeS = Optional.of(s);
@@ -1934,7 +1950,7 @@ Java allows you to schedule tasks. A scheduled tasks can perform once or several
 
 `java.util.Timer` and `java.util.TimerTask` can be used to schedule tasks. The object which implements `TimeTask`will then be performed by the `Timer` based on the given interval.
 
-```
+```java
 package schedule;
 
 import java.util.TimerTask;
