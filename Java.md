@@ -24,7 +24,7 @@ Table of Contents
 - [20. Lambdas](#20. Lambdas)
 - [21. Streams](#21. Streams)
 - [22. Optional](#22. Optional)
-- [23. System properties](#23. System propertie)
+- [23. System properties](#23. System properties)
 
   ​
 ## 1. Introduction to Java
