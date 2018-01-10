@@ -1,29 +1,24 @@
 Table of Contents
 
-- [1. What is Apache Maven?](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_overview)
-- [2. Installation of the Maven command line tools](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_installation)
-- [3. Running a Maven build](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_usage)
-- [4. Maven Wrapper](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven-wrapper)
-- [5. Exercise: Create and build a Java project with Maven](http://www.vogella.com/tutorials/ApacheMaven/article.html#exercise_maven)
-- [6. Exercise: execute a Java program with Maven](http://www.vogella.com/tutorials/ApacheMaven/article.html#example_executejavaprojgram)
-- [7. Configuration and coordinates of a Maven project](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_configuration)
-- [8. Maven plug-ins, goals and the life cycle](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_coreconcepts)
-- [9. Maven repositories and dependency resolution](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_repositories_dependencyresolution)
-- [10. Multi module projects (Aggregator)](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_multipleprojects)
-- [11. Using profiles and properties in Maven](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_profilesproperties)
-- [12. Maven and version control systems](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_vcs)
-- [13. Maven settings](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_settings)
-- [14. Useful Maven parameters](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_parameters)
-- [15. Useful maven plugins to analyse a project](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_useful_plugins)
-- [16. About this website](http://www.vogella.com/tutorials/ApacheMaven/article.html#about-this-website)
-- [17. Apache Maven resources](http://www.vogella.com/tutorials/ApacheMaven/article.html#apache-maven-resources)
-- [Appendix A: Copyright and License](http://www.vogella.com/tutorials/ApacheMaven/article.html#copyright-and-license)
+- [1. What is Apache Maven?](#1. What is Apache Maven?)
+- [2. Installation of the Maven command line tools](#2. Installation of the Maven command line tools)
+- [3. Running a Maven build](#3. Running a Maven build)
+- [4. Maven Wrapper](#4. Maven Wrapper)
+- [5. Exercise: Create and build a Java project with Maven](#5. Exercise: Create and build a Java project with Maven)
+- [6. Exercise: execute a Java program with Maven](#6. Exercise: execute a Java program with Maven)
+- [7. Configuration and coordinates of a Maven project](#7. Configuration and coordinates of a Maven project)
+- [8. Maven plug-ins, goals and the life cycle](#8. Maven plug-ins, goals and the life cycle)
+- [9. Maven repositories and dependency resolution](#9. Maven repositories and dependency resolution)
+- [10. Multi module projects (Aggregator)](#10. Multi module projects (Aggregator))
+- [11. Using profiles and properties in Maven](#11. Using profiles and properties in Maven)
+- [12. Maven and version control systems](#12. Maven and version control systems)
+- [13. Maven settings](#13. Maven settings)
+- [14. Useful Maven parameters](14. Useful Maven parameters)
+- [15. Useful maven plugins to analyse a project](#15. Useful maven plugins to analyse a project)
 
-> This tutorial describes the usage of Maven for building Java applications.
+## 1. What is Apache Maven?
 
-## [1. What is Apache Maven?](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_overview)
-
-### [1.1. The Apache Maven build system](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_whatisit)
+### 1.1. The Apache Maven build system
 
 ![Maven logo](http://www.vogella.com/tutorials/ApacheMaven/img/xmaven-logo.png.pagespeed.ic.N-QtNbVcVH.webp)
 
@@ -31,22 +26,22 @@ Table of Contents
 
 Maven allows the developer to automate the process of the creation of the initial folder structure for the Java application, performing the compilation, testing, packaging and deployment of the final product. It is implemented in Java which makes it platform-independent. Java is also the best work environment for Maven.
 
-### [1.2. Key features of Maven](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_keyfeatures)
+### 1.2. Key features of Maven
 
 Apache Maven can be used in environments where common build tools like GNU Make or Apache Ant were used. The key features of Maven are:
 
 - Convention over configuration: Maven tries to avoid as much configuration as possible, by choosing real world default values and supplying project templates (archtypes).
 - Dependency management: It is possible to define dependencies to other projects. During the build, the Maven build system resolves the dependencies and it also builds the dependent projects if needed.
 - Repository: Project dependencies can be loaded from the local file system, from the Internet or public repositories. The company behind the Maven project also provides a central repository called *Maven Central*.
-- Extensible via plug-ins: The Maven build system is extensible via plug-ins, which allows to keep the Maven core small. The Maven core does	for example not know how to compile Java source code, this is handled by the compiler plug-in.
+  - Extensible via plug-ins: The Maven build system is extensible via plug-ins, which allows to keep the Maven core small. The Maven core doesfor example not know how to compile Java source code, this is handled by the compiler plug-in.
 
-### [1.3. Maven Central](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_central)
+### 1.3. Maven Central
 
 Maven Central is an open repository provided by the company Sonatype. This repository hosts libraries which can be used in your build. By default, a Maven build uses Maven Central to search for required libraries.
 
-## [2. Installation of the Maven command line tools](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_installation)
+## 2. Installation of the Maven command line tools
 
-### [2.1. Downloading and installing Maven](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_requirements)
+### 2.1. Downloading and installing Maven
 
 If you plan to use Maven only from within the Eclipse IDE, this installation is not required.
 
@@ -56,7 +51,7 @@ For a manual installation you can download Maven from the [Maven Download](http:
 
 See [Maven installation description](http://maven.apache.org/download.html#Installation) for a detailed installation guide.
 
-### [2.2. Ubuntu](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_installationubuntu)
+### 2.2. Ubuntu
 
 For Linux most distributions include Maven into their main repositories. On Ubuntu you can use the following command on the command line to install it.
 
@@ -66,7 +61,7 @@ sudo apt-get install mvn
 sudo apt-get install maven
 ```
 
-### [2.3. Validate installation](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_installation_validate)
+### 2.3. Validate installation
 
 To validate that Maven was correctly installed, open a console and use the following command:
 
@@ -86,9 +81,9 @@ OS name: "linux", version: "3.13.0-33-generic", arch: "amd64", family: "unix"
 
 You should receive as output feedback which version of Maven you have installed.
 
-## [3. Running a Maven build](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_usage)
+## 3. Running a Maven build
 
-### [3.1. Running a command line build](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_handling_commandlinebuild)
+### 3.1. Running a command line build
 
 Maven provides a command line tool.
 
@@ -124,7 +119,7 @@ By default, Maven checks online if the dependencies have been changed. If you wa
 mvn -o clean install
 ```
 
-### [3.2. Dealing with build failure](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_handling_errors)
+### 3.2. Dealing with build failure
 
 If you are running a complex multi-module project build, you can define how the Maven build system should react to errors in one module.
 
@@ -134,7 +129,7 @@ If you are running a complex multi-module project build, you can define how the 
 
 The -fn and -fae options are useful to verify builds that are running within a continuous integration tool like Jenkins and to see all errors in the build.
 
-### [3.3. Scaffolding a project with Maven](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_scaffolding)
+### 3.3. Scaffolding a project with Maven
 
 Maven supports project scaffolding, based on project templates (called *archtype*). This is provided by the *archetype*	plug-in. Maven provides archetypes for almost anything, from a simple Java application to a complex web application.
 
@@ -144,7 +139,7 @@ You can create a project by executing the generation *goal* on the archetype plu
 
 This starts the generation process in the interactive mode and asks you for several settings.
 
-## [4. Maven Wrapper](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven-wrapper)
+## 4. Maven Wrapper
 
 Having reproducible builds on every machine is highly demanded, so that local builds as well as builds on a CI server are really the same. When building with Maven the same input should always result in the same output. To ensure this on different machines, every machine has to have the same version of Maven.
 
@@ -154,7 +149,7 @@ To resolve this a Maven Wrapper can be specified for Maven projects. The Maven W
 
 This concept has been adopted from the Gradle build tool, which also provides a Gradle Wrapper.
 
-### [4.1. Creating a Maven Wrapper](http://www.vogella.com/tutorials/ApacheMaven/article.html#creating-a-maven-wrapper)
+### 4.1. Creating a Maven Wrapper
 
 Create a Maven Wrapper for a project with the latest available Maven version.
 
@@ -185,7 +180,7 @@ When wrapper goal has been executed the following files will be created in the m
 | ---- | ---------------------------------------- |
 |      |                                          |
 
-### [4.2. Executing a Maven Wrapper](http://www.vogella.com/tutorials/ApacheMaven/article.html#executing-a-maven-wrapper)
+### 4.2. Executing a Maven Wrapper
 
 To run the Maven Wrapper the mvnw for unix systems or mvnw.bat for windows systems can be used.
 
@@ -201,11 +196,11 @@ WINDOWS:
 mvnw.cmd clean package
 ```
 
-## [5. Exercise: Create and build a Java project with Maven](http://www.vogella.com/tutorials/ApacheMaven/article.html#exercise_maven)
+## 5. Exercise: Create and build a Java project with Maven
 
 In this exercise you create a Java project with the Maven command line and build this project.
 
-### [5.1. Project generation](http://www.vogella.com/tutorials/ApacheMaven/article.html#exercise_maven_generation)
+### 5.1. Project generation
 
 In this project we use the scaffolding functionality of Maven to create a Java project. To avoid the interactive mode, all required properties are passed directly to the command. Otherwise Maven asks for all the required parameters. Enter the following into one line in the command shell(the backslash masks the line breaks).
 
@@ -222,7 +217,7 @@ With this command Maven generates a Java project.
 | ---- | ---------------------------------------- |
 |      |                                          |
 
-### [5.2. Review generated project](http://www.vogella.com/tutorials/ApacheMaven/article.html#exercise_maven_review)
+### 5.2. Review generated project
 
 Validate that Maven generated a project on your file system similar to the following structure.
 
@@ -270,7 +265,7 @@ You have generated a whole Maven project structure with Java source code. Maven 
 </project>
 ```
 
-### [5.3. Compile your sources](http://www.vogella.com/tutorials/ApacheMaven/article.html#exercise_maven_compile)
+### 5.3. Compile your sources
 
 Now you want to compile your Java sources. For this switch on the command line into our projects root directory and trigger the following Maven command.
 
@@ -300,7 +295,7 @@ $ mvn compile
 
 Maven now runs through all life cycle phases, which were needed by the `compile` phase. It resolves the dependencies, loads the JUnit artifact and built the sources. It even executed the JUnit test.
 
-### [5.4. Create a JAR file](http://www.vogella.com/tutorials/ApacheMaven/article.html#exercise_maven_package)
+### 5.4. Create a JAR file
 
 Now you want to create an executable JAR file out of our project. The `package` goal creates a deployable JAR file.
 
@@ -344,7 +339,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 ```
 
-### [5.5. Running the test](http://www.vogella.com/tutorials/ApacheMaven/article.html#running-the-test)
+### 5.5. Running the test
 
 Instead of running a full build with packaging, it is also possible to just run the test phases of the Maven life cycle.
 
@@ -369,7 +364,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 .....
 ```
 
-### [5.6. Remove all build results / Clean the project](http://www.vogella.com/tutorials/ApacheMaven/article.html#remove-all-build-results-clean-the-project)
+### 5.6. Remove all build results / Clean the project
 
 To clean the project and so remove the generated files in the *./target/* folder, run the following command.
 
@@ -377,11 +372,11 @@ To clean the project and so remove the generated files in the *./target/* folder
 $ mvn clean
 ```
 
-## [6. Exercise: execute a Java program with Maven](http://www.vogella.com/tutorials/ApacheMaven/article.html#example_executejavaprojgram)
+## 6. Exercise: execute a Java program with Maven
 
 If you want to execute a program you can use the `exec-maven-plugin`. This is demonstrated in the following *pom.xml*file. To trigger this use the `exec:java` target in maven.
 
-```
+```xml
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.vogella.build.maven.intro</groupId>
@@ -413,7 +408,7 @@ If you want to execute a program you can use the `exec-maven-plugin`. This is de
 </project>
 ```
 
-```
+```xml
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.vogella.build.maven.intro</groupId>
@@ -447,9 +442,9 @@ If you want to execute a program you can use the `exec-maven-plugin`. This is de
 
 ![Output of Maven](http://www.vogella.com/tutorials/ApacheMaven/img/xmavenexecute10.png.pagespeed.ic.Sg24H-3IES.webp)
 
-## [7. Configuration and coordinates of a Maven project](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_configuration)
+## 7. Configuration and coordinates of a Maven project
 
-### [7.1. Project Object Model (POM)](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_configurationpom)
+### 7.1. Project Object Model (POM)
 
 The configuration of a Maven project is done via a *Project Object Model* (POM). This model is typically represented by a *pom.xml* file. This Maven configuration file is called the pom file.
 
@@ -459,7 +454,7 @@ A multi project pom file includes a *modules* section. This section tells Maven 
 
 In the *build* section of the pom you can define plugins for which are needed for the build.
 
-### [7.2. The GAV as project unique identifier - project coordinates](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_configuration_coordinates)
+### 7.2. The GAV as project unique identifier - project coordinates
 
 Maven coordinates and defines a set of identifiers which can be used to uniquely identify a Maven component. This can for example be used to define the exact version of the JUnit test library which should be used for the project. These are defined via the groupId, artifactId, version and packaging property.
 
@@ -480,15 +475,15 @@ Maven always executes against an *effective pom*. This is a combination of setti
 
 The result of a build is called *artifact*. An artifact can be for example an executable or an archive of documents.
 
-## [8. Maven plug-ins, goals and the life cycle](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_coreconcepts)
+## 8. Maven plug-ins, goals and the life cycle
 
-### [8.1. Maven Plug-ins and goals](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_pluginsgoals)
+### 8.1. Maven Plug-ins and goals
 
 A Maven plugin is a collection of one or more *goals*. A goal is a “unit of work” in Maven. It is possible to execute goals independently or a part of a larger chain of goals.
 
 Goals can define parameters, which may have default values. Plugin goals can be attached to a life cycle phase. The goals are executed based on the information found in the pom of the project, e.g., the compiler:compile goal checks the POM for relevant parameters.
 
-### [8.2. Maven life cycle](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_lifecycle)
+### 8.2. Maven life cycle
 
 Every build follows a specified	*life cycle*. Maven comes with a default life cycle that includes the most common build *phases* like compiling, testing and packaging.
 
@@ -507,7 +502,7 @@ For a complete list of the Maven phases see <http://maven.apache.org/guides/intr
 
 If you instruct Maven to execute a phase, it executes all existing phases in the pre-defined sequence until it has executed the defined phase. All relevant goals are executed during this process. A goal is relevant for a phase if the Maven plug-in or the pom binds this goal to the corresponding life cycle phase.
 
-### [8.3. Packages and goal bindings](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_packagesgoalbindings)
+### 8.3. Packages and goal bindings
 
 Each packaging contains a list of bindings for goals to a particular life cycle phase. For example, the jar packaging binds the following goals to the life cycle phases.
 
@@ -522,11 +517,11 @@ Each packaging contains a list of bindings for goals to a particular life cycle 
 | install                | install:install         |
 | deploy                 | deploy:deploy           |
 
-### [8.4. Adding goals to life cycle phases](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_packagesgoalbindings2)
+### 8.4. Adding goals to life cycle phases
 
 You can add goals to life cycle phases by configuring more Maven plug-ins and adding them to a life cycle in your pom file. You need to specify which goal should be executed. If the plug-in does not specify the default life cycle it should run, you must also specify the life cycle phase it should run.
 
-```
+```xml
 <plugin>
    <groupId>com.vogella.example</groupId>
    <artifactId>vogella-some-maven-plugin</artifactId>
@@ -542,9 +537,9 @@ You can add goals to life cycle phases by configuring more Maven plug-ins and ad
  </plugin>
 ```
 
-## [9. Maven repositories and dependency resolution](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_repositories_dependencyresolution)
+## 9. Maven repositories and dependency resolution
 
-### [9.1. Maven repositories](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_repositories)
+### 9.1. Maven repositories
 
 During the initial phase of a build Maven validates if you have the specified version of all required artifact dependencies and Maven plug-ins. If required, it retrieves them from a Maven repository. A repository is a collection of project artifacts stored in a directory structure similar to the Maven coordinates of the project.
 
@@ -554,11 +549,11 @@ Maven uses a default remote repository location (<http://repo1.maven.org/maven2>
 
 If you run the `mvn install` command, the generated artifacts are installed into the local Maven repository.
 
-### [9.2. Maven dependency resolution and Maven reactor](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_dependencyresolution)
+### 9.2. Maven dependency resolution and Maven reactor
 
 Every project can define dependencies using the uniqueidentifier (GAV) of the component it required to compile.
 
-```
+```xml
 <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -575,11 +570,11 @@ During a build, the Maven system tries to resolve the dependencies of the module
 - Local repository
 - Maven central repository
 
-## [10. Multi module projects (Aggregator)](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_multipleprojects)
+## 10. Multi module projects (Aggregator)
 
 Maven supports building multiple projects. A multi module project (aggregator) is defined by a parent POM referencing one or more projects. This aggregator can contain also the build configuration or include another parent POM to get this configuration.
 
-```
+```xml
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.vogella.tychoexample</groupId>
@@ -609,13 +604,13 @@ Maven supports building multiple projects. A multi module project (aggregator) i
 
 The packaging type of such a POM is pom, as such a project will not result in any build output.
 
-## [11. Using profiles and properties in Maven](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_profilesproperties)
+## 11. Using profiles and properties in Maven
 
-### [11.1. Using profiles](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_profiles)
+### 11.1. Using profiles
 
 Maven supports the usage of profiles to define different configurations. If you start Maven, you can instruct it to use a certain profile. For this you specify the `-P` parameter followed directly (without whitespace) by the profile, e.g. `-PyourProfile`.
 
-```
+```xml
 <profiles>
  <profile>
   <id>dev</id>
@@ -637,15 +632,15 @@ Maven supports the usage of profiles to define different configurations. If you 
  </profiles>
 ```
 
-### [11.2. Using properties](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_properties)
+### 11.2. Using properties
 
 You can specify properties in your build files. You can override them via the command line with the `-D` parameter followed directly (without whitespace) by its value. See the next chapter for an example.
 
-### [11.3. Example for properties: Skipping the tests in a Maven build](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_properties_skiptests)
+### 11.3. Example for properties: Skipping the tests in a Maven build
 
 You can specify via a property that your tests should be skipped during the build. This property (among with several others for demo purposes) is defined in the following snippet.
 
-```
+```xml
 <properties>
 <skipTests>true</skipTests>
 <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
@@ -660,20 +655,20 @@ How to override these parameters via the command line is demonstrated by the fol
 mvn clean install -DskipTests=false
 ```
 
-### [11.4. Useful properties](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_properties_usefulproperties)
+### 11.4. Useful properties
 
 | Property     | Description                              |
 | ------------ | ---------------------------------------- |
 | skipTests    | true or false, specifies if tests should be executed or not |
 | showWarnings | true or false, defines if the Maven build shows the compiler warnings |
 
-## [12. Maven and version control systems](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_vcs)
+## 12. Maven and version control systems
 
 Maven generates its output into the *target* folder of each project. This build output should not get included into your version control system.
 
 Add this directory to your ignore resources. For example, if you use Git as version control system, add the "target/" entry to your *.gitignore* file in the root of each project.
 
-## [13. Maven settings](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_settings)
+## 13. Maven settings
 
 Maven allows to define settings on a global, user and project level. The common case is to define on a user level, settings like a proxy server or passwords to upload build artifacts to a server.
 
@@ -683,7 +678,7 @@ You can view the file locations in the Eclipse IDE via Windows ▸ Preferences �
 
 The following *settings.xml* file defines a proxy server. If this snippet is located in the *.m2* folder of the users home, Maven uses this proxy.
 
-```
+```xml
 <settings>
  <proxies>
   <proxy>
@@ -699,7 +694,7 @@ The following *settings.xml* file defines a proxy server. If this snippet is loc
 </settings>
 ```
 
-## [14. Useful Maven parameters](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_parameters)
+## 14. Useful Maven parameters
 
 The following table lists useful Maven parameters.
 
@@ -708,9 +703,9 @@ The following table lists useful Maven parameters.
 | --log-file log.txt | Maven build output is written to the specified file |
 | --debug            | Outputs more information during the build process |
 
-## [15. Useful maven plugins to analyse a project](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_useful_plugins)
+## 15. Useful maven plugins to analyse a project
 
-### [15.1. Show the dependency tree](http://www.vogella.com/tutorials/ApacheMaven/article.html#show-the-dependency-tree)
+### 15.1. Show the dependency tree
 
 Maven provides a plugin, which can be used to visualize a dependency tree to either the console or an output file.
 
@@ -721,7 +716,7 @@ mvn dependency:tree -Dverbose
 mvn dependency:tree -Dverbose -DoutputFile=/home/simon/maven-dependencies
 ```
 
-```
+```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -745,7 +740,7 @@ The output of the `mvn dependency:tree -Dverbose` command can for example look l
 
 ![Dependency tree of slf4j-log4j12](http://www.vogella.com/tutorials/ApacheMaven/img/xmaven-dependency-tree-plugin.png.pagespeed.ic.ZRmn9IU-bL.webp)
 
-### [15.2. Versions plugin](http://www.vogella.com/tutorials/ApacheMaven/article.html#maven_versionsplugin)
+### 15.2. Versions plugin
 
 The `display-dependency-updates` goal of the *Versions Maven Plugin* can be used to determine, if there are newer versions of a dependency available.
 
@@ -753,34 +748,3 @@ For example, running `mvn versions:display-dependency-updates` for a project mig
 
 ![﻿The display-dependency-updates goal of the versions maven plugin](http://www.vogella.com/tutorials/ApacheMaven/img/xdisplay-dependency-updates.png.pagespeed.ic.9BNKjHHRLN.webp)
 
-## [16. About this website](http://www.vogella.com/tutorials/ApacheMaven/article.html#about-this-website)
-
-[Support free content![Support free tutorials](http://www.vogella.com/img/common/donate.svg)](http://www.vogella.com/support.html)
-
-[Questions and discussion![Questions and discussion](http://www.vogella.com/img/common/discussions.svg)](http://www.vogella.com/contact.html)
-
-[Tutorial & code license![License](http://www.vogella.com/img/common/license_new.svg)](http://www.vogella.com/license.html)
-
-[Get the source code![Source Code](http://www.vogella.com/img/common/sourcecode.svg)](http://www.vogella.com/code/index.html)
-
-## [17. Apache Maven resources](http://www.vogella.com/tutorials/ApacheMaven/article.html#apache-maven-resources)
-
-[Five things you did not know about Maven](http://www.ibm.com/developerworks/library/j-5things13)
-
-[Maven deployment artifact](http://maven.apache.org/plugins/maven-deploy-plugin/examples/deploy-ftp.html)
-
-[Maven tools examples on GitHub](https://github.com/pkainulainen/maven-examples)
-
-[Maven Wrapper GitHub repo](https://github.com/takari/maven-wrapper)
-
-### [17.1. vogella GmbH training and consulting support](http://www.vogella.com/tutorials/ApacheMaven/article.html#vogella-gmbh-training-and-consulting-support)
-
-| [TRAINING](http://www.vogella.com/training/) | [SERVICE & SUPPORT](http://www.vogella.com/consulting/) |
-| ---------------------------------------- | ---------------------------------------- |
-| The vogella company provides comprehensive [training and education services](http://www.vogella.com/training/) from experts in the areas of Eclipse RCP, Android, Git, Java, Gradle and Spring. We offer both public and inhouse training. Whichever course you decide to take, you are guaranteed to experience what many before you refer to as [“The best IT class I have ever attended”](http://www.vogella.com/training/). | The vogella company offers [expert consulting](http://www.vogella.com/consulting/) services, development support and coaching. Our customers range from Fortune 100 corporations to individual developers. |
-
-## [Appendix A: Copyright and License](http://www.vogella.com/tutorials/ApacheMaven/article.html#copyright-and-license)
-
-Copyright © 2012-2017 vogella GmbH. Free use of the software examples is granted under the terms of the EPL License. This tutorial is published under the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Germany](http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en) license.
-
-See [Licence](http://www.vogella.com/license.html).
