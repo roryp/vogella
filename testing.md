@@ -1,47 +1,44 @@
 Table of Contents
 
-- [1. The purpose of software tests](http://www.vogella.com/tutorials/JUnit/article.html#testintroduction)
-- [2. Testing terminology](http://www.vogella.com/tutorials/JUnit/article.html#testingterminology)
-- [3. Using JUnit](http://www.vogella.com/tutorials/JUnit/article.html#junittesting)
-- [4. Using JUnit 4](http://www.vogella.com/tutorials/JUnit/article.html#usingjuni4)
-- [5. Eclipse support for JUnit 4](http://www.vogella.com/tutorials/JUnit/article.html#eclipse-support-for-junit-4)
-- [6. Installation of JUnit](http://www.vogella.com/tutorials/JUnit/article.html#installation-of-junit)
-- [7. Setting Eclipse up for using JUnits static imports](http://www.vogella.com/tutorials/JUnit/article.html#setting-eclipse-up-for-using-junits-static-imports)
-- [8. Exercise: Using JUnit](http://www.vogella.com/tutorials/JUnit/article.html#exercise-using-junit)
-- [9. Mocking](http://www.vogella.com/tutorials/JUnit/article.html#mockingframeworks)
-- [10. Overview of JUnit 5](http://www.vogella.com/tutorials/JUnit/article.html#junit5)
-- [11. Comparison of annotations between JUnit 4 and 5](http://www.vogella.com/tutorials/JUnit/article.html#usingjunit_annotations)
-- [12. About this website](http://www.vogella.com/tutorials/JUnit/article.html#about-this-website)
-- [13. JUnit Resources](http://www.vogella.com/tutorials/JUnit/article.html#junit_links)
-- [Appendix A: Copyright and License](http://www.vogella.com/tutorials/JUnit/article.html#copyright-and-license)
+- [1. The purpose of software tests](#1. The purpose of software tests)
+- [2. Testing terminology](#2. Testing terminology)
+- [3. Using JUnit](#3. Using JUnit)
+- [4. Using JUnit 4](#4. Using JUnit 4)
+- [5. Eclipse support for JUnit 4](#5. Eclipse support for JUnit 4)
+- [6. Installation of JUnit](#6. Installation of JUnit)
+- [7. Setting Eclipse up for using JUnits static imports](#7. Setting Eclipse up for using JUnits static imports)
+- [8. Exercise: Using JUnit](#8. Exercise: Using JUnit)
+- [9. Mocking](#9. Mocking)
+- [10. Overview of JUnit 5](#9. Mocking)
+- [11. Comparison of annotations between JUnit 4 and 5](11. Comparison of annotations between JUnit 4 and 5)
+- [12. About this website](#11. Comparison of annotations between JUnit 4 and 5)
+- [13. JUnit Resources](#13. JUnit Resources)
 
-> This tutorial explains unit testing with JUnit 4.x and JUnit5. It explains the creation of JUnit tests. It also covers the usage of the Eclipse IDE for developing software tests.
+## 1. The purpose of software tests
 
-## [1. The purpose of software tests](http://www.vogella.com/tutorials/JUnit/article.html#testintroduction)
-
-### [1.1. What are software tests?](http://www.vogella.com/tutorials/JUnit/article.html#whataresoftwaretests)
+### 1.1. What are software tests?
 
 A software test is a piece of software, which executes another piece of software. It validates if that code results in the expected state (state testing) or executes the expected sequence of events (behavior testing).
 
-### [1.2. Why are software tests helpful?](http://www.vogella.com/tutorials/JUnit/article.html#whytesting)
+### 1.2. Why are software tests helpful?
 
 Software unit tests help the developer to verify that the logic of a piece of the program is correct.
 
 Running tests automatically helps to identify software regressions introduced by changes in the source code. Having a high test coverage of your code allows you to continue developing features without having to perform lots of manual tests.
 
-## [2. Testing terminology](http://www.vogella.com/tutorials/JUnit/article.html#testingterminology)
+## 2. Testing terminology
 
-### [2.1. Code (or application) under test](http://www.vogella.com/tutorials/JUnit/article.html#code-or-application-under-test)
+### 2.1. Code (or application) under test
 
 The code which is tested is typically called the *code under test*. If you are testing an application, this is called the *application under test*.
 
-### [2.2. Test fixture](http://www.vogella.com/tutorials/JUnit/article.html#junit_testfixture)
+### 2.2. Test fixture
 
 A *test fixture* is a fixed state in code which is tested used as input for a test. Another way to describe this is a test precondition.
 
 For example, a test fixture might be a a fixed string, which is used as input for a method. The test would validate if the method behaves correctly with this input.
 
-### [2.3. Unit tests and unit testing](http://www.vogella.com/tutorials/JUnit/article.html#junit_intro)
+### 2.3. Unit tests and unit testing
 
 A *unit test* is a piece of code written by a developer that executes a specific functionality in the code to be tested and asserts a certain behavior or state.
 
@@ -51,17 +48,17 @@ A unit test targets a small unit of code, e.g., a method or a class. External de
 
 Unit tests are not suitable for testing complex user interface or component interaction. For this, you should develop integration tests.
 
-### [2.4. Integration tests](http://www.vogella.com/tutorials/JUnit/article.html#junit_organization)
+### 2.4. Integration tests
 
 An *integration test* aims to test the behavior of a component or the integration between a set of components. The term *functional test* is sometimes used as synonym for integration test. Integration tests check that the whole system works as intended, therefore they are reducing the need for intensive manual tests.
 
 These kinds of tests allow you to translate your user stories into a test suite. The test would resemble an expected user interaction with the application.
 
-### [2.5. Performance tests](http://www.vogella.com/tutorials/JUnit/article.html#junit_performancetests)
+### 2.5. Performance tests
 
 Performance tests are used to benchmark software components repeatedly. Their purpose is to ensure that the code under test runs fast enough even if it’s under high load.
 
-### [2.6. Behavior vs. state testing](http://www.vogella.com/tutorials/JUnit/article.html#behaviorvsstatetesting)
+### 2.6. Behavior vs. state testing
 
 A test is a behavior test (also called interaction test) if it checks if certain methods were called with the correct input parameters. A behavior test does not validate the result of a method call.
 
@@ -69,20 +66,20 @@ State testing is about validating the result. Behavior testing is about testing 
 
 If you are testing algorithms or system functionality, in most cases you may want to test state and not interactions. A typical test setup uses mocks or stubs of related classes to abstract the interactions with these other classes away Afterwards you test the state or the behavior depending on your need.
 
-### [2.7. Testing frameworks for Java](http://www.vogella.com/tutorials/JUnit/article.html#testing-frameworks-for-java)
+### 2.7. Testing frameworks for Java
 
 There are several testing frameworks available for Java. The most popular ones are JUnit and TestNG
 
 This description focuses on JUnit. It covers both JUnit 4.x and JUnit 5.
 
-### [2.8. Where should the test be located?](http://www.vogella.com/tutorials/JUnit/article.html#junit_testorganization)
+### 2.8. Where should the test be located?
 
 Typical, unit tests are created in a separate project or separate source folder to keep the test code separate from the real code. The standard convention from the Maven and Gradle build tools is to use:
 
 - src/main/java - for Java classes
 - src/test/java - for test classes
 
-### [2.9. Which part of the software should be tested?](http://www.vogella.com/tutorials/JUnit/article.html#junit_whattotest)
+### 2.9. Which part of the software should be tested?
 
 What should be tested is a highly controversial topic. Some developers believe every statement in your code should be tested.
 
@@ -92,13 +89,13 @@ In general it it safe to ignore trivial code. For example, it is typical useless
 
 If you start developing tests for an existing code base without any tests, it is good practice to start writing tests for code in which most of the errors happened in the past. This way you can focus on the critical parts of your application.
 
-## [3. Using JUnit](http://www.vogella.com/tutorials/JUnit/article.html#junittesting)
+## 3. Using JUnit
 
-### [3.1. The JUnit framework](http://www.vogella.com/tutorials/JUnit/article.html#unittesting_junit)
+### 3.1. The JUnit framework
 
 [JUnit](http://junit.org/) is a test framework which uses annotations to identify methods that specify a test. JUnit is an open source project hosted at [Github](https://github.com/junit-team/junit).
 
-### [3.2. How to define a test in JUnit?](http://www.vogella.com/tutorials/JUnit/article.html#unittesting_junit_test)
+### 3.2. How to define a test in JUnit?
 
 A JUnit *test* is a method contained in a class which is only used for testing. This is called a *Test class*. To define that a certain method is a test method, annotate it with the `@Test` annotation.
 
@@ -106,11 +103,11 @@ This method executes the code under test. You use an *assert* method, provided b
 
 You should provide meaningful messages in assert statements. That makes it easier for the user to identify and fix the problem. This is especially true if someone looks at the problem, who did not write the code under test or the test code.
 
-### [3.3. Example JUnit test](http://www.vogella.com/tutorials/JUnit/article.html#unittesting_junitexample)
+### 3.3. Example JUnit test
 
 The following code shows a JUnit test using the JUnit 5 version. This test assumes that the `MyClass` class exists and has a `multiply(int, int)` method.
 
-```
+```java
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
@@ -129,7 +126,7 @@ public class MyTests {
 }
 ```
 
-### [3.4. JUnit naming conventions](http://www.vogella.com/tutorials/JUnit/article.html#junit_namingconventions)
+### 3.4. JUnit naming conventions
 
 There are several potential naming conventions for JUnit tests. A widely-used solution for classes is to use the "Test" suffix at the end of test classes names.
 
@@ -139,11 +136,11 @@ One possible convention is to use the "should" in the test method name. For exam
 
 Another approach is to use "Given[ExplainYourInput]When[WhatIsDone]Then[ExpectedResult]" for the display name of the test method.
 
-### [3.5. JUnit naming conventions for Maven](http://www.vogella.com/tutorials/JUnit/article.html#junit_namingconventions_maven)
+### 3.5. JUnit naming conventions for Maven
 
 If you are using the Maven build system, you should use the "Test" suffix for test classes. The Maven build system (via its surfire plug-in) automatically includes such classes in its test scope.
 
-### [3.6. Run your test from the command line](http://www.vogella.com/tutorials/JUnit/article.html#juniteclipse_code)
+### 3.6. Run your test from the command line
 
 You can also run your JUnit tests outside our IDE via standard Java code. Build systems like Apache Maven or Gradle in combination with a Continuous Integration Server (like Jenkins) can be used to execute tests automatically on a regular basis.
 
@@ -151,7 +148,7 @@ The `org.junit.runner.JUnitCore` class provides the `runClasses()` method. This 
 
 The following class demonstrates how to run the `MyClassTest`. This class executes your test class and write potential failures to the console.
 
-```
+```java
 package de.vogella.junit.first;
 
 import org.junit.runner.JUnitCore;
@@ -170,7 +167,7 @@ public class MyTestRunner {
 
 This class can be executed like any other Java program on the command line. You only need to add the JUnit library JAR file to the classpath.
 
-### [3.7. Test execution order](http://www.vogella.com/tutorials/JUnit/article.html#usingjunit_executionorder)
+### 3.7. Test execution order
 
 JUnit assumes that all test methods can be executed in an arbitrary order. Well-written test code should not assume any order, i.e., tests should not depend on other tests.
 
@@ -178,9 +175,9 @@ As of JUnit 4.11 the default is to use a deterministic, but not predictable, ord
 
 You can use an annotation to define that the test methods are sorted by method name, in lexicographic order. To activate this feature, annotate your test class with the `@FixMethodOrder(MethodSorters.NAME_ASCENDING)` annotation. You can also explicitely set the default by using the `MethodSorters.DEFAULT` parameter in this annotation. You can also use `MethodSorters.JVM` which uses the JVM defaults, which may vary from run to run.
 
-## [4. Using JUnit 4](http://www.vogella.com/tutorials/JUnit/article.html#usingjuni4)
+## 4. Using JUnit 4
 
-### [4.1. Defining test methods](http://www.vogella.com/tutorials/JUnit/article.html#usingjunit_annotations)
+### 4.1. Defining test methods
 
 JUnit uses annotations to mark methods as test methods and to configure them. The following table gives an overview of the most important annotations in JUnit for the 4.x and 5.x versions. All these annotations can be used on methods.
 
@@ -196,7 +193,7 @@ JUnit uses annotations to mark methods as test methods and to configure them. Th
 | `@Test (expected = Exception.class)`   | Fails if the method does not throw the named exception. |
 | `@Test(timeout=100)`                   | Fails if the method takes longer than 100 milliseconds. |
 
-### [4.2. Assert statements](http://www.vogella.com/tutorials/JUnit/article.html#usingjunit_asserts)
+### 4.2. Assert statements
 
 JUnit provides static methods to test for certain conditions via the `Assert` class. These *assert statements* typically start with `assert`. They allow you to specify the error message, the expected and the actual result. An *assertion method*compares the actual value returned by a test to the expected value. It throws an `AssertionException` if the comparison fails.
 
@@ -214,13 +211,13 @@ The following table gives an overview of these methods. Parameters in [] bracket
 | assertSame([message,] expected, actual)  | Checks that both variables refer to the same object. |
 | assertNotSame([message,] expected, actual) | Checks that both variables refer to different objects. |
 
-### [4.3. JUnit test suites](http://www.vogella.com/tutorials/JUnit/article.html#juniteclipse_testsuite)
+### 4.3. JUnit test suites
 
 If you have several test classes, you can combine them into a test suite. Running a test suite executes all test classes in that suite in the specified order. A test suite can also contain other test suites.
 
 The following example code demonstrates the usage of a test suite. It contains two test classes (MyClassTest and MySecondClassTest). If you want to add another test class, you can add it to the `@Suite.SuiteClasses` statement.
 
-```
+```java
 package com.vogella.junit.first;
 
 import org.junit.runner.RunWith;
@@ -237,7 +234,7 @@ public class AllTests {
 }
 ```
 
-### [4.4. Disabling tests](http://www.vogella.com/tutorials/JUnit/article.html#disabling-tests)
+### 4.4. Disabling tests
 
 The @Ignore annotation allow to statically ignore a test. Alternatively you can use `Assume.assumeFalse` or `Assume.assumeTrue` to define a condition for the test. `Assume.assumeFalse` marks the test as invalid, if its condition evaluates to true. `Assume.assumeTrue` evaluates the test as invalid if its condition evaluates to false. For example, the following disables a test on Linux:
 
@@ -245,7 +242,7 @@ The @Ignore annotation allow to statically ignore a test. Alternatively you can 
 Assume.assumeFalse(System.getProperty("os.name").contains("Linux"));
 ```
 
-### [4.5. Parameterized test](http://www.vogella.com/tutorials/JUnit/article.html#junitadvanced)
+### 4.5. Parameterized test
 
 JUnit allows you to use parameters in a tests class. This class can contain **one** test method and this method is executed with the different parameters provided.
 
@@ -257,7 +254,7 @@ You can use the `@Parameter` annotation on public fields to get the test values 
 
 The following code shows an example for a parameterized test. It tests the `multiply()` method of the `MyClass` class which is included as inner class for the purpose of this example.
 
-```
+```java
 package testing;
 
 import org.junit.Test;
@@ -310,7 +307,7 @@ public class ParameterizedTestFields {
 
 Alternatively to using the `@Parameter` annotation you can use a constructor in which you store the values for each test. The number of elements in each array provided by the method annotated with `@Parameters` must correspond to the number of parameters in the constructor of the class. The class is created for each parameter and the test values are passed via the constructor to the class.
 
-```
+```java
 package de.vogella.junit.first;
 
 import static org.junit.Assert.assertEquals;
@@ -363,7 +360,7 @@ If you run this test class, the test method is executed with each defined parame
 
 A more flexible and easier to write approach is provided by the JUnitParams from <https://github.com/Pragmatists/JUnitParams>.
 
-### [4.6. JUnit Rules](http://www.vogella.com/tutorials/JUnit/article.html#junitadvanced_rules)
+### 4.6. JUnit Rules
 
 Via JUnit rules you can add behavior to each tests in a test class. You can annotate fields of type `TestRule` with the `@Rule` annotation. You can create objects which can be used and configured in your test methods. This adds more flexibility to your tests. You could, for example, specify which exception message you expect during the execution of your test code.
 
@@ -393,7 +390,7 @@ JUnit already provides several useful rule implementations. For example, the `Te
 
 The following code shows an example for the usage of the `TemporaryFolder` implementation.
 
-```
+```java
 package de.vogella.junit.first;
 
 import static org.junit.Assert.assertTrue;
@@ -421,13 +418,13 @@ public class RuleTester {
 
 For more examples of existing rules see <https://github.com/junit-team/junit4/wiki/Rules>.
 
-### [4.7. Writing custom JUnit rules](http://www.vogella.com/tutorials/JUnit/article.html#writing-custom-junit-rules)
+### 4.7. Writing custom JUnit rules
 
 To write your custom rule, you need to implement the `TestRule` interface. This interface defines the `apply(Statement, Description)` method which must return an instance of `Statement`. Statement represent the tests within the JUnit runtime and Statement#evaluate() run these. Description describes the individual test. It allows to read information about the test via reflection.
 
 The following is a simple example for adding a log statement to an Android application before and after test execution.
 
-```
+```java
 package testing.android.vogella.com.asynctask;
 
 
@@ -471,16 +468,16 @@ public class MyCustomRule implements TestRule {
 
 To use this rule, simple add a field annotated with `@Rule` to your test class.
 
-```
+```java
 @Rule
 public MyCustomRule myRule = new MyCustomRule();
 ```
 
-### [4.8. Categories](http://www.vogella.com/tutorials/JUnit/article.html#junitadvanced_categories)
+### 4.8. Categories
 
 It is possible to define categories of tests and include or exclude them based on annotations. The following example is based on the [JUnit 4.8 release notes](https://github.com/junit-team/junit/blob/master/doc/ReleaseNotes4.8.md).
 
-```
+```java
 public interface FastTests { /* category marker */
 }
 
@@ -524,9 +521,9 @@ public class SlowTestSuite {
 }
 ```
 
-## [5. Eclipse support for JUnit 4](http://www.vogella.com/tutorials/JUnit/article.html#eclipse-support-for-junit-4)
+## 5. Eclipse support for JUnit 4
 
-### [5.1. Creating JUnit tests](http://www.vogella.com/tutorials/JUnit/article.html#eclipse_creatingjunittest)
+### 5.1. Creating JUnit tests
 
 You can write the JUnit tests manually, but Eclipse supports the creation of JUnit tests via wizards.
 
@@ -534,7 +531,7 @@ For example, to create a JUnit test or a test class for an existing class. Right
 
 Alternatively you can also use the JUnit wizards available under File ▸ New ▸ Other… ▸ Java ▸ JUnit.
 
-### [5.2. Running JUnit tests](http://www.vogella.com/tutorials/JUnit/article.html#running-junit-tests)
+### 5.2. Running JUnit tests
 
 The Eclipse IDE also provides support for executing your tests interactively.
 
@@ -560,19 +557,19 @@ You can also define that the view is only activated if you have a failing test.
 
 NOTE:Eclipse creates run configurations for tests. You can see and modify these via the Run ▸ Run Configurations…menu.
 
-### [5.3. Extracting the failed test and stacktraces](http://www.vogella.com/tutorials/JUnit/article.html#usingjunit_failedtests)
+### 5.3. Extracting the failed test and stacktraces
 
 To get the list of failed test,	right click on the test result and select *Copy Failure List*. This copies the failed tests and there stack traces into the clipboard.
 
 ![Copy failed tests into clipboard](http://www.vogella.com/tutorials/JUnit/img/xjunitcopyfailurelist10.png.pagespeed.ic.-Cw8Y_uqHL.webp)
 
-### [5.4. JUnit static imports](http://www.vogella.com/tutorials/JUnit/article.html#usingjunit_staticimports)
+### 5.4. JUnit static imports
 
 Static import is a feature that allows fields and methods defined in a class as `public static` to be used without specifying the class in which the field is defined.
 
 JUnit assert statements are typically defined as `public static` to allow the developer to write short test statements. The following snippet demonstrates an assert statement with and without static imports.
 
-```
+```java
 // without static imports you have to write the following statement
 Assert.assertEquals("10 x 5 must be 50", 50, tester.multiply(10, 5));
 
@@ -586,17 +583,17 @@ import static org.junit.Assert.assertEquals;
 assertEquals("10 x 5 must be 50", 50, tester.multiply(10, 5));
 ```
 
-### [5.5. Wizard for creating test suites](http://www.vogella.com/tutorials/JUnit/article.html#usingjunit_testsuites)
+### 5.5. Wizard for creating test suites
 
 You can create a test suite via Eclipse. For this, select the test classes which should be included in suite in the *Package Explorer* view, right-click on them and select New ▸ Other… ▸ JUnit ▸ JUnit Test Suite.
 
 ![Create a test suite](http://www.vogella.com/tutorials/JUnit/img/xjunittestsuite10.png.pagespeed.ic.hSuAliHYw2.webp)
 
-### [5.6. Testing exception](http://www.vogella.com/tutorials/JUnit/article.html#usingjunit_execption)
+### 5.6. Testing exception
 
 The `@Test (expected = Exception.class)` annotation is limited as it can only test for one exception. To testexceptions, you can use the following testpattern.
 
-```
+```java
 try {
    mustThrowException();
    fail();
@@ -606,17 +603,17 @@ try {
 }
 ```
 
-### [5.7. JUnit Plug-in Test](http://www.vogella.com/tutorials/JUnit/article.html#usingjunit_plugintest)
+### 5.7. JUnit Plug-in Test
 
 JUnit Plug-in tests are used to write unit tests for your plug-ins. These tests are executed by a special test runner that launches another Eclipse instance in a separate VM. The test methods are executed within that instance.
 
-## [6. Installation of JUnit](http://www.vogella.com/tutorials/JUnit/article.html#installation-of-junit)
+## 6. Installation of JUnit
 
-### [6.1. Using JUnit with Gradle](http://www.vogella.com/tutorials/JUnit/article.html#using-junit-with-gradle)
+### 6.1. Using JUnit with Gradle
 
 To use JUnit in your Gradle build, add a testCompile dependency to your build file.
 
-```
+```java
 apply plugin: 'java'
 
 dependencies {
@@ -624,11 +621,11 @@ dependencies {
 }
 ```
 
-### [6.2. Using JUnit with Maven](http://www.vogella.com/tutorials/JUnit/article.html#using-junit-with-maven)
+### 6.2. Using JUnit with Maven
 
 To use JUnit in your Maven build, add the following dependency to your pom file.
 
-```
+```xml
 <dependency>
     <groupId>junit</groupId>
     <artifactId>junit</artifactId>
@@ -636,13 +633,13 @@ To use JUnit in your Maven build, add the following dependency to your pom file.
 </dependency>
 ```
 
-### [6.3. Using JUnit without Maven or Gradle](http://www.vogella.com/tutorials/JUnit/article.html#using-junit-without-maven-or-gradle)
+### 6.3. Using JUnit without Maven or Gradle
 
 The Eclipse IDE ships with a version of JUnit.
 
 It is also possible to download the JUnit library explicitly from the [JUnit](http://junit.org/) website. Add this library to your classpath, to use it.
 
-## [7. Setting Eclipse up for using JUnits static imports](http://www.vogella.com/tutorials/JUnit/article.html#setting-eclipse-up-for-using-junits-static-imports)
+## 7. Setting Eclipse up for using JUnits static imports
 
 The Eclipse IDE cannot always create the corresponding `static import` statements automatically.
 
@@ -660,9 +657,9 @@ This makes, for example, the `assertTrue`, `assertFalse` and `assertEquals` meth
 
 You can now use *Content Assists* (shortcut: Ctrl+Space) to add the method and the import.
 
-## [8. Exercise: Using JUnit](http://www.vogella.com/tutorials/JUnit/article.html#exercise-using-junit)
+## 8. Exercise: Using JUnit
 
-### [8.1. Project preparation](http://www.vogella.com/tutorials/JUnit/article.html#project-preparation)
+### 8.1. Project preparation
 
 Create a new project called *com.vogella.junit.first*. Create a new source folder *test*. For this right-click on your project, select *Properties* and choose Java ▸ Build Path. Select the *Source* tab.
 
@@ -676,11 +673,11 @@ The result is depicted in the following screenshot.
 
 NOTE:You can also add a new source folder by right-clicking on a project and selecting New ▸ Source Folder.
 
-### [8.2. Create a Java class](http://www.vogella.com/tutorials/JUnit/article.html#create-a-java-class)
+### 8.2. Create a Java class
 
 In the *src* folder, create the `com.vogella.junit.first` package and the following class.
 
-```
+```java
 package com.vogella.junit.first;
 
 public class MyClass {
@@ -694,7 +691,7 @@ public class MyClass {
 }
 ```
 
-### [8.3. Create a JUnit test](http://www.vogella.com/tutorials/JUnit/article.html#create-a-junit-test)
+### 8.3. Create a JUnit test
 
 Right-click on your new class in the *Package Explorer* view and select New ▸ JUnit Test Case.
 
@@ -712,7 +709,7 @@ If the JUnit library is not part of the classpath of your project, Eclipse will 
 
 Create a test with the following code.
 
-```
+```java
 package com.vogella.junit.first;
 
 import static org.junit.Assert.assertEquals;
@@ -737,7 +734,7 @@ public class MyClassTest {
 }
 ```
 
-### [8.4. Run your test in Eclipse](http://www.vogella.com/tutorials/JUnit/article.html#run-your-test-in-eclipse)
+### 8.4. Run your test in Eclipse
 
 Right-click on your new test class and select Run-As ▸ JUnit Test.
 
@@ -749,13 +746,13 @@ The result of the tests are displayed in the JUnit view. In our example one test
 
 The test is failing, because our multiplier class is currently not working correctly. It does a division instead of multiplication. Fix the bug and re-run the test to get a green bar.
 
-## [9. Mocking](http://www.vogella.com/tutorials/JUnit/article.html#mockingframeworks)
+## 9. Mocking
 
 Unit testing also makes use of object mocking. In this case the real object is exchanged by a replacement which has a predefined behavior for the test.
 
 There are several frameworks available for mocking. To learn more about mock frameworks please see the [Mockito tutorial](http://www.vogella.com/tutorials/Mockito/article.html).
 
-## [10. Overview of JUnit 5](http://www.vogella.com/tutorials/JUnit/article.html#junit5)
+## 10. Overview of JUnit 5
 
 JUnit 5 is the latest major release of JUnit.
 
@@ -765,9 +762,9 @@ JUnit 5 consists of a number of discrete components:
 - Junit Jupiter - is the JUnit 5 test framework which is launched by JUnit Platform
 - JUnit Vintage - legacy TestEngine which runs older tests
 
-### [10.1. Usage of JUnit 5 with Gradle](http://www.vogella.com/tutorials/JUnit/article.html#usage-of-junit-5-with-gradle)
+### 10.1. Usage of JUnit 5 with Gradle
 
-```
+```groovy
 buildscript {
     repositories {
         mavenCentral()
@@ -808,13 +805,13 @@ If you are using Eclipse it is best to install the [Buildship tooling](http://ww
 
 ![Menu entry ](http://www.vogella.com/tutorials/JUnit/img/xrun_as_gradle_test.png.pagespeed.ic.1tg-tsrAuS.webp)
 
-### [10.2. Usage of JUnit 5 with Maven](http://www.vogella.com/tutorials/JUnit/article.html#usage-of-junit-5-with-maven)
+### 10.2. Usage of JUnit 5 with Maven
 
 This example shows how to import all components of JUnit 5 into your project.
 
 We need to register the individual components with Maven surefire:
 
-```
+```xml
 <build>
     <plugins>
         <plugin>
@@ -864,7 +861,7 @@ We need to register the individual components with Maven surefire:
 
 And add the dependencies:
 
-```
+```xml
 <dependencies>
     <dependency>
         <groupId>org.junit.jupiter</groupId>
@@ -887,7 +884,7 @@ You can find a complete example of a working maven configuration here: <https://
 | ---- | ---------------------------------------- |
 |      |                                          |
 
-### [10.3. Defining test methods](http://www.vogella.com/tutorials/JUnit/article.html#usingjunit_annotations)
+### 10.3. Defining test methods
 
 JUnit uses annotations to mark methods as test methods and to configure them. The following table gives an overview of the most important annotations in JUnit for the 4.x and 5.x versions. All these annotations can be used on methods.
 
@@ -906,40 +903,40 @@ JUnit uses annotations to mark methods as test methods and to configure them. Th
 | `@Disabled` or `@Disabled("Why disabled")` | Marks that the test should be disabled. This is useful when the underlying code has been changed and the test case has not yet been adapted. Or if the execution time of this test is too long to be included. It is best practice to provide the optional description, why the test is disabled. |
 | `@DisplayName("<Name>")`                 | <Name> that will be displayed by the test runner. In contrast to method names the DisplayName can contain spaces. |
 
-### [10.4. Disabling tests](http://www.vogella.com/tutorials/JUnit/article.html#usingjunit_executionorder)
+### 10.4. Disabling tests
 
 The `@Disabled` annotation allows to statically ignore a test.
 
 Alternatively you can use `Assumptions.assumeFalse` or `Assumptions.assumeTrue` to define a condition for test deactivation. `Assumptions.assumeFalse` marks the test as invalid, if its condition evaluates to true.`Assumptions.assumeTrue` evaluates the test as invalid if its condition evaluates to false. For example, the following disables a test on Linux:
 
-```
+```java
 Assumptions.assumeFalse(System.getProperty("os.name").contains("Linux"));
 ```
 
-### [10.5. Test Suites](http://www.vogella.com/tutorials/JUnit/article.html#test-suites)
+### 10.5. Test Suites
 
 To run multiple tests together, you can use test suites. They allow to aggregate multiple test classes. JUnit 5 provides two annotations:
 
 - `@SelectPackages` - used to specify the names of packages for the test suite
 - `@SelectClasses` - used to specify the classes for the test suite. They can be located in different packages.
 
-```
+```java
 @RunWith(JUnitPlatform.class)
 @SelectPackages("com.vogella.junit5.examples")
 public class AllTests {}
 ```
 
-```
+```java
 @RunWith(JUnitPlatform.class)
 @SelectClasses({AssertionTest.class, AssumptionTest.class, ExceptionTest.class})
 public class AllTests {}
 ```
 
-### [10.6. Expecting Exceptions](http://www.vogella.com/tutorials/JUnit/article.html#expecting-exceptions)
+### 10.6. Expecting Exceptions
 
 Exception is handling with `org.junit.jupiter.api.Assertions.expectThrows()`. You define the expected Exception class and provide code that should throw the exception.
 
-```
+```java
 import static org.junit.jupiter.api.Assertions.expectThrows;
 
 @Test
@@ -952,9 +949,9 @@ void exceptionTesting() {
 
 This lets you define which part of the test should throw the exception. The test will still fail if an exception is thrown outside of this scope.
 
-### [10.7. Grouped assertions](http://www.vogella.com/tutorials/JUnit/article.html#grouped-assertions)
+### 10.7. Grouped assertions
 
-```
+```java
 @Test
 void groupedAssertions() {
     Address address = new Address();
@@ -970,11 +967,11 @@ void groupedAssertions() {
     expected: <User> but was: <null>
 ```
 
-### [10.8. Timeout tests](http://www.vogella.com/tutorials/JUnit/article.html#timeout-tests)
+### 10.8. Timeout tests
 
 If you want to ensure that a test fails if it isn’t done in a certain amount of time you can use the `assertTimeout()`method. This method will wait until
 
-```
+```java
 import static org.junit.jupiter.api.Assertions.assertTimeout;
 import static java.time.Duration.ofSeconds;
 import static java.time.Duration.ofMinutes;
@@ -997,7 +994,7 @@ void timeoutNotExceededWithResult() {
 
 If you want your tests to cancel after the timeout period is passed you can use the `assertTimeoutPreemptively()`method.
 
-```
+```java
 @Test
 void timeoutNotExceededWithResult() {
     String actualResult = assertTimeoutPreemptively(ofSeconds(1), () -> {
@@ -1008,17 +1005,17 @@ void timeoutNotExceededWithResult() {
 => org.opentest4j.AssertionFailedError: execution timed out after 1000 ms
 ```
 
-### [10.9. Running the same test repeatedly on a data set](http://www.vogella.com/tutorials/JUnit/article.html#running-the-same-test-repeatedly-on-a-data-set)
+### 10.9. Running the same test repeatedly on a data set
 
 Sometimes we want to be able to run the same test on a data set. Holding the data set in a Collection and iterating over it with the assertion in the loop body has the problem that the first assertion failure will stop the test execution. JUnit 5 offers multiple ways to overcome this limitation.
 
-#### [10.9.1. Using Dynamic Tests](http://www.vogella.com/tutorials/JUnit/article.html#dynamic_tests)
+#### 10.9.1. Using Dynamic Tests
 
 JUnit 5 offers the possibility to define dynamic tests. We can use this to rewrite our example. Dynamic test methods are annotated with `@TestFactory` and can return an Iterable, a Collection or a Stream of `DynamicTest`s. JUnit then runs every DynamicTest when the test is executed. `@BeforeEach` and `@AfterEach` methods will not be called for dynamic tests. This means that you can’t use them to reset the test object if you change it’s state in the lambda expression for a dynamic test.
 
 In this example we return a Stream:
 
-```
+```java
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
@@ -1053,11 +1050,11 @@ public class DynamicTestCreationTest {
 }
 ```
 
-#### [10.9.2. Using Parameterized Tests](http://www.vogella.com/tutorials/JUnit/article.html#using-parameterized-tests)
+#### 10.9.2. Using Parameterized Tests
 
 Junit5 also supports parameterized tests. To use them you have to add the `junit-jupiter-params` package as a test dependencies. If you are using gradle:
 
-```
+```xml
 dependencies {
   // ..
   testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.0.0'
@@ -1066,7 +1063,7 @@ dependencies {
 
 For this example we use the `@MethodSource` annotation. We give it the name of the function(s) we want it to call to get it’s test data. The function has to be static and must return either a Collection, an Iterator, a Stream or an Array. On execution the test method gets called once for every entry in the data source. In contrast to [Dynamic Tests](http://www.vogella.com/tutorials/JUnit/article.html#dynamic_tests) `@BeforeEach`and `@AfterEach` methods will be called for parameterized tests.
 
-```
+```java
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -1096,7 +1093,7 @@ public class DynamicTestCreationTest {
 }
 ```
 
-##### [Data sources](http://www.vogella.com/tutorials/JUnit/article.html#data-sources)
+##### Data sources
 
 The following table gives an overview of all possible test data sources for parameterized tests.
 
@@ -1108,13 +1105,13 @@ The following table gives an overview of all possible test data sources for para
 | `@CsvSource({ "foo, 1", "'baz, qux', 3" })void testMethod(String first, int second) {` | Expects strings to be parsed as Csv. The delimiter is `','`. |
 | `@ArgumentsSource(MyArgumentsProvider.class)` | Specifies a class that provides the test data. The referenced class has to implement the `ArgumentsProvider`interface. |
 
-##### [Argument conversion](http://www.vogella.com/tutorials/JUnit/article.html#argument-conversion)
+##### Argument conversion
 
 JUnit tries to automatically convert the source strings to match the expected arguments of the test method.
 
 If you need explicit conversion you can specify a converter with the `@ConvertWith` annotation. To define your own converter you have to implement the `ArgumentConverter` interface. In the following example we use the abstract `SimpleArgumentConverter` base class.
 
-```
+```java
 @ParameterizedTest
 @ValueSource(ints = {1, 12, 42})
 void testWithExplicitArgumentConversion(@ConvertWith(ToOctalStringArgumentConverter.class) String argument) {
@@ -1132,7 +1129,7 @@ static class ToOctalStringArgumentConverter extends SimpleArgumentConverter {
 }
 ```
 
-## [11. Comparison of annotations between JUnit 4 and 5](http://www.vogella.com/tutorials/JUnit/article.html#usingjunit_annotations)
+## 11. Comparison of annotations between JUnit 4 and 5
 
 | JUnit 5                                  | JUnit 4                                | Description                              |
 | ---------------------------------------- | -------------------------------------- | ---------------------------------------- |
@@ -1145,37 +1142,3 @@ static class ToOctalStringArgumentConverter extends SimpleArgumentConverter {
 | `@Disabled` or `@Disabled("Why disabled")` | `@Ignore` or `@Ignore("Why disabled")` | Marks that the test should be disabled. This is useful when the underlying code has been changed and the test case has not yet been adapted. Or if the execution time of this test is too long to be included. It is best practice to provide the optional description, why the test is disabled. |
 | Not available, is replaced by `org.junit.jupiter.api.Assertions.expectThrows()` | `@Test (expected = Exception.class)`   | Fails if the method does not throw the named exception. |
 | Not available, is replaced by `AssertTimeout.assertTimeout()`and `AssertTimeout.assertTimeoutPreemptively()` | `@Test(timeout=100)`                   | Fails if the method takes longer than 100 milliseconds. |
-
-## [12. About this website](http://www.vogella.com/tutorials/JUnit/article.html#about-this-website)
-
-[Support free content![Support free tutorials](http://www.vogella.com/img/common/donate.svg)](http://www.vogella.com/support.html)
-
-[Questions and discussion![Questions and discussion](http://www.vogella.com/img/common/discussions.svg)](http://www.vogella.com/contact.html)
-
-[Tutorial & code license![License](http://www.vogella.com/img/common/license_new.svg)](http://www.vogella.com/license.html)
-
-[Get the source code![Source Code](http://www.vogella.com/img/common/sourcecode.svg)](http://www.vogella.com/code/index.html)
-
-## [13. JUnit Resources](http://www.vogella.com/tutorials/JUnit/article.html#junit_links)
-
-[JUnit Homepage](http://www.junit.org/)
-
-[JUnit 5 user guide](http://junit.org/junit5/docs/current/user-guide/)
-
-[TestNG, alternative testing framework to JUnit](http://testng.org/)
-
-[TestNG, alternative testing framework to JUnit](http://testng.org/)
-
-[Eclipse IDE book from Lars Vogel](http://www.vogella.com/books/eclipseide.html)
-
-### [13.1. vogella GmbH training and consulting support](http://www.vogella.com/tutorials/JUnit/article.html#vogella-gmbh-training-and-consulting-support)
-
-| [TRAINING](http://www.vogella.com/training/) | [SERVICE & SUPPORT](http://www.vogella.com/consulting/) |
-| ---------------------------------------- | ---------------------------------------- |
-| The vogella company provides comprehensive [training and education services](http://www.vogella.com/training/) from experts in the areas of Eclipse RCP, Android, Git, Java, Gradle and Spring. We offer both public and inhouse training. Whichever course you decide to take, you are guaranteed to experience what many before you refer to as [“The best IT class I have ever attended”](http://www.vogella.com/training/). | The vogella company offers [expert consulting](http://www.vogella.com/consulting/) services, development support and coaching. Our customers range from Fortune 100 corporations to individual developers. |
-
-## [Appendix A: Copyright and License](http://www.vogella.com/tutorials/JUnit/article.html#copyright-and-license)
-
-Copyright © 2012-2017 vogella GmbH. Free use of the software examples is granted under the terms of the EPL License. This tutorial is published under the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Germany](http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en) license.
-
-See [Licence](http://www.vogella.com/license.html).
