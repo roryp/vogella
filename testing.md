@@ -364,7 +364,7 @@ A more flexible and easier to write approach is provided by the JUnitParams from
 
 Via JUnit rules you can add behavior to each tests in a test class. You can annotate fields of type `TestRule` with the `@Rule` annotation. You can create objects which can be used and configured in your test methods. This adds more flexibility to your tests. You could, for example, specify which exception message you expect during the execution of your test code.
 
-```
+```java
 package de.vogella.junit.first;
 
 import org.junit.Rule;

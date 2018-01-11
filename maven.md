@@ -245,7 +245,7 @@ com.vogella.build.maven.java/
 
 You have generated a whole Maven project structure with Java source code. Maven created a App.java class in the *./src/main/* folder, which is just a simple "Hello World" program. It also created an example test class in *./src/test/*. In the root folder there is a *pom.xml*	file.
 
-```
+```xml
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.vogella.build.maven.java</groupId>

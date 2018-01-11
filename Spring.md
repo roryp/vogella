@@ -87,7 +87,7 @@ Besides the given default repositories` methods, also custom methods can be spec
 
 Spring Data JPA is able to parse method names, tries to guess its purpose and tries to generate a proper implementation.
 
-```
+```java
 public interface TodoRepository extends JpaRepository<Todo, Long> {
 
     List<Todo> getBySummary(String summary);
