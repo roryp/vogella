@@ -1,5 +1,3 @@
-# Introduction to Java programming - Tutorial
-
 Table of Contents
 
 - [1. Introduction to Java](#1. Introduction to Java)
@@ -108,7 +106,7 @@ If the JRE is installed and within your path, this commands prints information a
 
 If the command line returns the information that the program could not be found, you have to install Java.
 
-| **   | How can you tell you are using a 32 bit or 64 bit version of Java? You can run a 32 bit or a 64 bit version of Java on a 64 bit system. If you use `java -version` and the output contains the "64-Bit" string you are using the 64 bit version of Java otherwise your are using the 32 bit version. The following is the output of a 64-bit version.`openjdk version "1.8.0_45-internal"OpenJDK Runtime Environment (build 1.8.0_45-internal-b14)OpenJDK 64-Bit Server VM (build 25.45-b02, mixed mode)` |
+| !    | How can you tell you are using a 32 bit or 64 bit version of Java? You can run a 32 bit or a 64 bit version of Java on a 64 bit system. If you use `java -version` and the output contains the "64-Bit" string you are using the 64 bit version of Java otherwise your are using the 32 bit version. The following is the output of a 64-bit version.`openjdk version "1.8.0_45-internal"OpenJDK Runtime Environment (build 1.8.0_45-internal-b14)OpenJDK 64-Bit Server VM (build 25.45-b02, mixed mode)` |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
@@ -170,7 +168,7 @@ public class HelloWorld {
 }
 ```
 
-| **   | Do not use a rich editor like Microsoft Word or LibreOffice for writing Java code. If in doubt, google for "Plain text editor for [your_OS]". |
+| !    | Do not use a rich editor like Microsoft Word or LibreOffice for writing Java code. If in doubt, google for "Plain text editor for [your_OS]". |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
@@ -182,7 +180,7 @@ Save the source code in your *javadir* directory with the `HelloWorld.java` file
 
 Open a shell for command line access.
 
-| **   | If you don’t know how to do this, google for "How to open a shell under [your_OS]". |
+| !    | If you don’t know how to do this, google for "How to open a shell under [your_OS]". |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
@@ -196,7 +194,7 @@ javac HelloWorld.java
 
 Afterwards list again the content of the directory with the `ls` or `dir` command. The directory contains now a file`HelloWorld.class`. If you see this file, you have successfully compiled your first Java source code into bytecode.
 
-| **   | By default, the compiler puts each class file in the same directory as its source file. You can specify a separate destination directory with the `-d` compiler flag. |
+| !    | By default, the compiler puts each class file in the same directory as its source file. You can specify a separate destination directory with the `-d` compiler flag. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 

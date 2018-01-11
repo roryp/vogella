@@ -103,7 +103,7 @@ Maven creates the build result in the *target* folder.
 mvn install 
 ```
 
-| **   | compile, build and install the build result |
+| !   | compile, build and install the build result |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
@@ -172,11 +172,11 @@ When wrapper goal has been executed the following files will be created in the m
 - .mvn/wrapper/maven-wrapper.jar (Maven Wrapper JAR)
 - .mvn/wrapper/maven-wrapper.properties (Maven Wrapper properties)
 
-| **   | These Maven Wrapper files should be checked in into version control (e.g. GIT or SVN), so that others who checkout the sources are able to build the projects without the need to install Maven manually in the first place. And when using the Maven Wrapper there is no need to worry about the right version of Maven, since the project’s Wrapper already specifies and downloads it automatically. |
+| !   | These Maven Wrapper files should be checked in into version control (e.g. GIT or SVN), so that others who checkout the sources are able to build the projects without the need to install Maven manually in the first place. And when using the Maven Wrapper there is no need to worry about the right version of Maven, since the project’s Wrapper already specifies and downloads it automatically. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
-| **   | The `-N`, `--non-recursive` command line option specifies that only the project in the current directory is built without building it’s submodules. So the Maven Wrapper will only be applied for the main project and not in every submodule. |
+| !   | The `-N`, `--non-recursive` command line option specifies that only the project in the current directory is built without building it’s submodules. So the Maven Wrapper will only be applied for the main project and not in every submodule. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
@@ -213,7 +213,7 @@ mvn archetype:generate -DgroupId=com.vogella.build.maven.java \
 
 With this command Maven generates a Java project.
 
-| **   | If this is the first time you execute this goal, this may takes some time. It also produces additional output compared to a second run. This is because Maven first loads all required plug-ins and artifacts for the project generation from the Maven central repository. |
+| !   | If this is the first time you execute this goal, this may takes some time. It also produces additional output compared to a second run. This is because Maven first loads all required plug-ins and artifacts for the project generation from the Maven central repository. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 

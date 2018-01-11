@@ -880,7 +880,7 @@ And add the dependencies:
 
 You can find a complete example of a working maven configuration here: <https://github.com/junit-team/junit5-samples/blob/r5.0.0-M4/junit5-maven-consumer/pom.xml>
 
-| **   | The above works for Java projects but not yet for Android projects. |
+| !   | The above works for Java projects but not yet for Android projects. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 

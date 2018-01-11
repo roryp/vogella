@@ -102,11 +102,11 @@ Interchangeable query verbs are:
 - get
 - read
 
-| **   | So `getBySummary` or `readBySummary` would deliver the same query results as `findBySummary`. |
+| !    | So `getBySummary` or `readBySummary` would deliver the same query results as `findBySummary`. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
-| **   | Besides that another query verb is `count`, which returns the count of a query rather than the resulting objects. |
+| !    | Besides that another query verb is `count`, which returns the count of a query rather than the resulting objects. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
@@ -128,7 +128,7 @@ public interface TodoRepository extends JpaRepository<Todo, Long> {
 }
 ```
 
-| **   | The name of the parameters are irrelevant, but the order of the parameters must fit to the parameters mentioned in the method’s name. |
+| !    | The name of the parameters are irrelevant, but the order of the parameters must fit to the parameters mentioned in the method’s name. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
@@ -167,7 +167,7 @@ Therefore it is possible to provide a real implementation for a repository inter
 
 Because the naming convention is the only thing that really counts, e.g., the `TodoRepository` class implementation would be called `TodoRepositoryImpl`.
 
-| **   | `Impl` is the default postfix, which can also be changed by using`@EnableJpaRepositories(repositoryImplementationPostfix="Helper")` in the `Config` class |
+| !    | `Impl` is the default postfix, which can also be changed by using`@EnableJpaRepositories(repositoryImplementationPostfix="Helper")` in the `Config` class |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
@@ -635,7 +635,7 @@ With this approach the `Todo` instance will be created by Spring again, but rath
 
 The `@Autowired` annotation is also used for some of the setter methods.
 
-| **   | Setter injection should always be preferred, since classes that use field injection usually cannot be tested properly. |
+| !    | Setter injection should always be preferred, since classes that use field injection usually cannot be tested properly. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
@@ -1486,9 +1486,10 @@ The output of this snippet should look like this:
 
 ```
 <201 Created,Todo [id=0, summary=New Todo, description=Todo added by rest API],{Server=[Apache-Coyote/1.1], Location=[http://localhost:8080/tasks/3], Content-Type=[application/json;charset=UTF-8], Transfer-Encoding=[chunked], Date=[Tue, 31 May 2016 16:48:47 GMT]}>
+
 ```
 
-| **   | The *Location* in the output tells where to find the newly added `Todo`. This can be found by either using the `RestTemplate` again or by using curl:`curl http://localhost:8080/tasks/3` |
+| !    | The *Location* in the output tells where to find the newly added `Todo`. This can be found by either using the `RestTemplate` again or by using curl:`curl http://localhost:8080/tasks/3` |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
@@ -1516,7 +1517,7 @@ spring.data.rest.base-path=/api
 
 The *application.properties* file is usually located in *src/main/resources/application.properties*.
 
-| **   | Now the URLs, which were used in the `CommandLineRunner` from previous exercises have to be adjusted. |
+| !    | Now the URLs, which were used in the `CommandLineRunner` from previous exercises have to be adjusted. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
@@ -1609,25 +1610,25 @@ Dependencies can be added by using the `npm install {your-desired-js-package}` c
 
 ![npm install react](http://www.vogella.com/tutorials/Spring/img/xnpm-install-react.png.pagespeed.ic.YXo5jZFaMZ.webp)
 
-| **   | `--save` adds the dependency to the `dependency` closure in the *package.json* file. |
+| !    | `--save` adds the dependency to the `dependency` closure in the *package.json* file. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
-| **   | `--save-dev` adds the dependency to the `devDependencies` closure in the *package.json* file, which is used for dependencies during development. |
+| !    | `--save-dev` adds the dependency to the `devDependencies` closure in the *package.json* file, which is used for dependencies during development. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
 The following packages should be added:
 
-| **   | react (use --save)                   |
+|      | react (use --save)                   |
 | ---- | ------------------------------------ |
-| **   | react-dom (use --save)               |
-| **   | rest (use --save)                    |
-| **   | babel-core (use --save-dev)          |
-| **   | babel-loader (use --save-dev)        |
-| **   | babel-preset-es2015 (use --save-dev) |
-| **   | babel-preset-react (use --save-dev)  |
-| **   | webpack (use --save-dev)             |
+|      | react-dom (use --save)               |
+|      | rest (use --save)                    |
+|      | babel-core (use --save-dev)          |
+|      | babel-loader (use --save-dev)        |
+|      | babel-preset-es2015 (use --save-dev) |
+|      | babel-preset-react (use --save-dev)  |
+|      | webpack (use --save-dev)             |
 
 After adding all these packages the contents of the *package.json* file should look similar to this:
 
@@ -1660,7 +1661,7 @@ After adding all these packages the contents of the *package.json* file should l
 }
 ```
 
-| **   | The *node_modules* folder, which is created besides the *package.json* file should not be checked into version control. So it’s likely added to a *.gitignore* file. |
+| !    | The *node_modules* folder, which is created besides the *package.json* file should not be checked into version control. So it’s likely added to a *.gitignore* file. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
@@ -1771,7 +1772,7 @@ http://localhost:8080
 
 and see wheter the input equals *Hello first JavaScript sample!*
 
-| **   | The big benefit here is that the *bundle.js* script can be referenced by the HTML page and under the hood the *bundle.js* script can always be regenerated by using Webpack. |
+| !    | The big benefit here is that the *bundle.js* script can be referenced by the HTML page and under the hood the *bundle.js* script can always be regenerated by using Webpack. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
@@ -1818,11 +1819,6 @@ client({path: '/api/tasks/1'}).then(response => {
     document.write("error: " + error);
 });
 ```
-
-| **   | Require the previously specified rest client |
-| ---- | ---------------------------------------- |
-| **   | Query a certain path and handle the returning response |
-| **   | Handle the error case                    |
 
 ## 15. Exercise - Creating a UI frontend with react
 
