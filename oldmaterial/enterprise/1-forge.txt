@@ -1,0 +1,233 @@
+<div>
+<div class="paragraph" style="color: #131726;">
+
+If you’ve spent any time developing Java EE-based projects (or any nontrivial application, for that matter!), you’ve likely invested a good amount of energy in creating the project layout, defining dependencies, and informing the build system of the relevant class paths to be used in compilation and execution. Although Maven enables us to reduce that load as compared with undertaking project setup manually, there’s typically quite a bit of boilerplate involved in the <em>pom.xml</em> defining your requirements.
+
+</div>
+<div class="paragraph" style="color: #131726;">
+
+JBoss Forge offers an incremental project enhancement for Java EE. Implemented as a command shell and integration with some IDE, Forge gives us the ability to alter project files and folders. Some concrete tasks we might use Forge to handle are:
+
+</div>
+<div class="ulist" style="color: #131726;">
+<ul>
+ 	<li>Adding Java Persistence API (JPA) entities and describing their model</li>
+ 	<li>Configuring Maven dependencies</li>
+ 	<li>Setting up project scaffolding</li>
+ 	<li>Generating a view layer, reverse-engineered from a domain model</li>
+ 	<li>Deploying to an application server</li>
+</ul>
+</div>
+<h1 id="user-content-install-a-forge-distribution">Installing Forge</h1>
+&nbsp;
+<div>
+
+1. Ensure that you have already JDK8 installed  and all setup as default . JDK 9 does not work with Forge
+
+</div>
+<div>
+
+2. <a style="color: #4078c0;" href="https://forge.jboss.org/download">Download</a> and Un-zip Forge into a folder on your hard-disk, this folder will be your <code>FORGE_HOME</code>
+
+</div>
+<div>
+
+3. Add <code>$FORGE_HOME/bin</code> to your path
+
+</div>
+<div>
+
+On Unix based operating systems, this typically means editing your <code>~/.bashrc</code> or <code>~/.profile</code>; you will need to the following entries:
+
+</div>
+<div>
+<pre><code>export FORGE_HOME=~/forge/
+export PATH=$PATH:$FORGE_HOME/bin
+</code></pre>
+<h1>Running Forge</h1>
+<div>
+
+While on Windows, you will need to right-click on open the "Control Panel", then click "System Properties", open the "Advanced" tab, then click "Environment Variables" and add these two entries visually. It is recommended to set User variables for Forge, unless you have placed the unzipped distribution in a folder where all users can access it.
+
+</div>
+<div>
+<div>
+<div>
+
+You may also simply create a shortcut to <code>bin/forge</code> (Unix,) or <code>bin\forge.bat</code> (Windows,) and place it on your Desktop.
+
+</div>
+</div>
+</div>
+<div>
+
+<span style="font-weight: 600;">4. Open a command prompt and run <code>forge</code> - located in $FORGE_HOME/bin/ (if you are on Windows, you will need to run <code>forge.bat</code> unless using a Unix-style terminal)</span>
+
+</div>
+<div>
+<div>
+<pre><code>localhost:~ $ forge
+[~] $</code></pre>
+</div>
+</div>
+</div>
+&nbsp;
+
+</div>
+<div>
+<h1 id="user-content-create-a-project-with-custom-package">Sample scripts</h1>
+<h3>Create a project with custom package</h3>
+<div>
+<div>
+<pre>$ project-new --named example --top-level-package org.mycomp.myapp --type war --final-name myExample --stack JAVA_EE_7
+$ ls</pre>
+</div>
+</div>
+</div>
+<div>
+<h3 id="user-content-create-a-new-jpa-entity-class"><a id="user-content-create-a-new-jpa-entity-class" class="anchor" style="color: #4078c0;" href="https://github.com/forge/docs/blob/master/get_started/Samples.asciidoc#create-a-new-jpa-entity-class"></a>Create a new JPA @Entity class</h3>
+<div>
+<div>
+<pre>$ project-new --named example --stack JAVA_EE_7
+$ jpa-new-entity --named SampleEntity
+$ jpa-new-field --named sampleField
+$ jpa-new-field --named createdOn --type java.util.Date --temporal-type TIMESTAMP
+$ ls</pre>
+</div>
+</div>
+</div>
+<div>
+<h3 id="user-content-add-an-n-to-n-relationship-between-two-entity-classes"><a id="user-content-add-an-n-to-n-relationship-between-two-entity-classes" class="anchor" style="color: #4078c0;" href="https://github.com/forge/docs/blob/master/get_started/Samples.asciidoc#add-an-n-to-n-relationship-between-two-entity-classes"></a>Add an @N-To-N relationship between two @Entity classes</h3>
+<div>
+<div>
+<pre>$ project-new --named example --stack JAVA_EE_7
+$ jpa-new-entity --named Hurricane
+$ jpa-new-entity --named Continent
+$ jpa-new-field --named hurricanes --type org.example.model.Hurricane --relationship-type Many-to-Many --inverse-field-name continents</pre>
+</div>
+</div>
+</div>
+<div>
+<h3 id="user-content-add-bean-validation-constraints-on-your-entity"><a id="user-content-add-bean-validation-constraints-on-your-entity" class="anchor" style="color: #4078c0;" href="https://github.com/forge/docs/blob/master/get_started/Samples.asciidoc#add-bean-validation-constraints-on-your-entity"></a>Add Bean Validation constraints on your @Entity</h3>
+<div>
+<div>
+<pre>$ jpa-new-entity --named Speaker
+$ jpa-new-field --named firstname
+$ jpa-new-field --named surname
+$ jpa-new-field --named bio --length 2000
+$ jpa-new-field --named twitter
+$ constraint-add --on-property firstname --constraint NotNull
+$ constraint-add --on-property surname --constraint NotNull
+$ constraint-add --on-property bio --constraint Size --max 2000</pre>
+</div>
+</div>
+</div>
+<div>
+<h3 id="user-content-create-a-rest-endpoint-from-entity"><a id="user-content-create-a-rest-endpoint-from-entity" class="anchor" style="color: #4078c0;" href="https://github.com/forge/docs/blob/master/get_started/Samples.asciidoc#create-a-rest-endpoint-from-entity"></a>Create a REST endpoint from @Entity</h3>
+<div>
+<div>
+<pre>$ project-new --named example --stack JAVA_EE_7
+$ jpa-new-entity --named SampleEntity
+$ jpa-new-field --named sampleField
+$ rest-generate-endpoints-from-entities --targets org.example.model.SampleEntity</pre>
+</div>
+</div>
+</div>
+<div>
+<h3 id="user-content-generate-entites-from-an-existing-database"><a id="user-content-generate-entites-from-an-existing-database" class="anchor" style="color: #4078c0;" href="https://github.com/forge/docs/blob/master/get_started/Samples.asciidoc#generate-entites-from-an-existing-database"></a>Generate entites from an existing database</h3>
+<div>
+<div>
+<pre>$ project-new --named example --stack JAVA_EE_7
+$ jpa-setup
+$ jpa-generate-entities-from-tables --jdbc-url jdbc:postgresql://localhost:5432/mydb --user-name user --user-password pwd --driver-location /Users/bob/.m2/repository/org/postgresql/postgresql/9.3-1100-jdbc3/postgresql-9.3-1100-jdbc3.jar --hibernate-dialect org.hibernate.dialect.PostgreSQLDialect</pre>
+</div>
+</div>
+</div>
+<div>
+<h3 id="user-content-create-a-java-enum"><a id="user-content-create-a-java-enum" class="anchor" style="color: #4078c0;" href="https://github.com/forge/docs/blob/master/get_started/Samples.asciidoc#create-a-java-enum"></a>Create a Java enum</h3>
+<div>
+<div>
+<pre>java-new-enum --named Language
+java-new-enum-const --named ENGLISH
+java-new-enum-const --named FRENCH
+java-new-enum-const --named PORTUGUESE</pre>
+</div>
+</div>
+</div>
+&nbsp;
+<h1 id="user-content-create-a-project-with-custom-package">Running in an IDE</h1>
+<ul>
+ 	<li>Install jboss developer studio</li>
+ 	<li>Configure Maven</li>
+ 	<li>Configure JDK 1.8</li>
+ 	<li>Install and configure wildfly 10</li>
+</ul>
+<p style="color: #000000;">Choose from the upper Menu: <span style="font-weight: bold;">File | New | Server</span> and expand the JBoss Community option. A "<span style="font-weight: bold;">WildFly 10</span>" Server is included:</p>
+<p style="color: #000000;"><a href="https://community.bbd.co.za/wp-content/uploads/2016/11/wildfly_deploy1-.png"><img class="alignnone size-full wp-image-5729" src="https://community.bbd.co.za/wp-content/uploads/2016/11/wildfly_deploy1-.png" alt="" width="525" height="493" /></a></p>
+<p style="color: #000000;">In the next screen you have to choose if the Server is locally installed (<span style="font-weight: bold;">Local</span>) or it's a remote server (<span style="font-weight: bold;">Remote</span>) and how the Server Lifecycle is managed:</p>
+<p style="color: #000000;"><a href="https://community.bbd.co.za/wp-content/uploads/2016/11/wildfly10_eclipse_2-.png"><img class="alignnone size-full wp-image-5730" src="https://community.bbd.co.za/wp-content/uploads/2016/11/wildfly10_eclipse_2-.png" alt="" width="578" height="528" /></a></p>
+<p style="color: #000000;">Finally, point to the location where the application server is installed, the JRE execution environment and the configuration file to be used (default is standalone.xml) :</p>
+<p style="color: #000000;"><a href="https://community.bbd.co.za/wp-content/uploads/2016/11/wildfly10_eclipse_3-.png"><img class="alignnone size-full wp-image-5731" src="https://community.bbd.co.za/wp-content/uploads/2016/11/wildfly10_eclipse_3-.png" alt="" width="524" height="631" /></a></p>
+<p style="color: #000000;">Remember that WildFly 10 application server requires a JDK 1.8, therefore you will not be able to start it with an older JDK version. Click <span style="font-weight: bold;">Finish</span>. WildFly is now configured on your Eclipse environment!</p>
+<p style="color: #000000;"><a href="https://community.bbd.co.za/wp-content/uploads/2016/11/wildfly10_eclipse_4-.png"><img class="alignnone size-full wp-image-5732" src="https://community.bbd.co.za/wp-content/uploads/2016/11/wildfly10_eclipse_4-.png" alt="" width="642" height="153" /></a></p>
+<p style="color: #000000;">Click on the Icons in the toolbar to <span style="font-weight: bold;">Debug / Start / Profile / Stop</span> your Server. Right click on it and choose "<span style="font-weight: bold;">Add or Remove</span> " to Deploy applications on it.</p>
+
+<h1></h1>
+<h1>Create a Java Enterprise Application</h1>
+Start the Forge Console in JEE perspective
+
+copy the below script into your console
+<pre>project-new--named shoppinglist --top-level-package com.bbd;
+jpa-new-entity--namedshopping;
+jpa-new-field --nameditem;
+scaffold-setup--providerFaces;
+scaffold-generate--providerFaces--targets com.bbd.model.*;
+build;</pre>
+Copy to server or Right click “run as server”
+
+go to the URL <a href="http://localhost:8080/shoppinglist">http://localhost:8080/shoppinglist</a>  and confirm your application is running
+<h1></h1>
+<h1>Exercise</h1>
+create a hot-or-not application
+must store cars and celebrities
+must have a rating to indicate hot/not
+should be Angular front end
+must store url of the pictures for cars/celebrities and display on front-end
+&lt;img src="{{votableEnt.imageURL}}" style="width:300px;" /&gt;
+<h2>Part 2</h2>
+locate h2 jar
+java -cp h2-1.3.173.jar org.h2.tools.Server (starts browser)
+Change default datasource in standalone to be h2 server based
+(Use url from browser)
+<h2>Part 3</h2>
+Use JDBC to pull report and create CSV file
+Create a sql statement on the average vote per category
+
+&nbsp;
+<h2>Solution - Part 1 forge script</h2>
+<pre>project-new --named h2n --top-level-package org.example --type war --final-name h2n;
+jpa-setup --provider Hibernate --container WILDFLY;
+jpa-new-entity --named Car --target-package org.example.model;
+jpa-new-field --named make; jpa-new-field --named model;
+jpa-new-field --named vote --type java.lang.Integer;
+constraint-add --on-property make --constraint NotNull;
+constraint-add --on-property vote --constraint Min --value 1;
+constraint-add --on-property vote --constraint Max --value 10;
+jpa-new-entity --named Celebrity --target-package org.example.model;
+jpa-new-field --named name; jpa-new-field --named surname;
+jpa-new-field --named vote --type java.lang.Integer;
+constraint-add --on-property name --constraint NotNull;
+constraint-add --on-property surname --constraint NotNull;
+constraint-add --on-property vote --constraint Min --value 1;
+constraint-add --on-property vote --constraint Max --value 10;
+cd ..;
+rest-setup;
+rest-generate-endpoints-from-entities --targets org.example.model.*;
+scaffold-setup --provider AngularJS;
+scaffold-generate --provider AngularJS --targets org.example.model.*;
+cd ~~;
+build;
+
+</pre>
+<h2>Solution - Complete application</h2>
+<a href="https://github.com/roryp/HotOrNot">https://github.com/roryp/HotOrNot</a>

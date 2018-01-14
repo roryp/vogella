@@ -1,0 +1,403 @@
+<h1>Inheritance</h1>
+In Java, the classes can inherit attributes and behavior from pre-existing classes.
+
+The pre-existing classes are called <strong>base</strong> classes, <strong>superclasses</strong>, or <strong>parent</strong> classes.
+
+The new classes are known as <strong>derived</strong> classes, <strong>subclasses</strong>, or child classes.
+
+The relationships of classes through inheritance form a <strong>hierarchy</strong>.
+
+Let's look at an example:
+
+Suppose we have a class called <strong>Employee</strong>.
+
+It defines first name, last name. Then we want to create a class called <strong>Programmer</strong>.
+
+Programmer would have <strong>first</strong> name and <strong>last</strong> name as well. Rather than defining the first name and last name again for Programmer we can let Programmer <strong>inherit</strong> from Employee. In this way the Programmer would have attributes and behavior from Employee.
+
+To inherit a class, you can use the <code style="color: #c7254e;">extends</code> keyword.
+
+The following program creates a superclass called <code style="color: #c7254e;">Base</code> and a subclass called <code style="color: #c7254e;">Child</code>.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Base {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> i, j;
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> showBase() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"i and j: "</span> + i + <span class="q" style="font-weight: bold; color: #2a00ff;">" "</span> + j);
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> Child <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> Base {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> k;
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> showChild() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"k: "</span> + k);
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> sum() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"i+j+k: "</span> + (i + j + k));
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Base superOb = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Base();
+    Child subOb = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Child();
+
+    superOb.i = 10;
+    superOb.showBase();
+    System.out.println();
+
+    subOb.i = 7;
+    subOb.showBase();
+    subOb.showChild();
+    System.out.println();
+
+    subOb.sum();
+  }
+}
+</pre>
+The output from this program is shown here:
+<pre>i and j: 10 0
+
+i and j: 7 0
+k: 0
+
+i+j+k: 7</pre>
+The subclass <code style="color: #c7254e;">Child</code> includes all of the members of its superclass. The general form of a class declaration that inherits a superclass is shown here:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> subclass-name <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> superclass-name { 
+   // body of <span class="r" style="font-weight: bold; color: #7f0055;">class</span> 
+}
+</pre>
+You can only have one superclass for any subclass. Java does not support the multiple inheritance. A class can be a superclass of itself.
+<h2 id="Java_super_keyword">super keyword</h2>
+You can use <code style="color: #c7254e;">super</code> in a subclass to refer to its immediate superclass. <code style="color: #c7254e;">super</code> has two general forms.
+<ol>
+	<li>The first calls the superclass' constructor.</li>
+	<li>The second is used to access a member of the superclass.</li>
+</ol>
+<h2 id="Call_superclass_constructors">Call superclass constructors</h2>
+To call a constructor from its superclass:
+<pre>super(parameter-list);
+</pre>
+<ul>
+	<li><code style="color: #c7254e;">parameter-list</code> is defined by the constructor in the superclass.</li>
+	<li><code style="color: #c7254e;">super(parameter-list)</code> must be the first statement executed inside a subclass' constructor.</li>
+</ul>
+Here is a demo for how to use super to call constructor from parent class.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Box {
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> <span class="r" style="font-weight: bold; color: #7f0055;">double</span> width;
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> <span class="r" style="font-weight: bold; color: #7f0055;">double</span> height;
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> <span class="r" style="font-weight: bold; color: #7f0055;">double</span> depth;
+
+  Box(Box ob) { <span class="c" style="font-weight: bold; color: #3f7f5f;">// pass object to constructor
+</span>    width = ob.width;
+    height = ob.height;
+    depth = ob.depth;
+  }
+  Box(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> w, <span class="r" style="font-weight: bold; color: #7f0055;">double</span> h, <span class="r" style="font-weight: bold; color: #7f0055;">double</span> d) {
+    width = w;
+    height = h;
+    depth = d;
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> volume() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> width * height * depth;
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> BoxWeight <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> Box {
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> weight; <span class="c" style="font-weight: bold; color: #3f7f5f;">// weight of box
+</span>  BoxWeight(Box ob) { <span class="c" style="font-weight: bold; color: #3f7f5f;">// pass object to constructor
+</span>    <span class="r" style="font-weight: bold; color: #7f0055;">super</span>(ob);
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Box mybox1 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Box(10, 20, 15);
+    BoxWeight myclone = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> BoxWeight(mybox1);
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> vol;
+
+    vol = mybox1.volume();
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Volume of mybox1 is "</span> + vol);
+  }
+}
+</pre>
+This program generates the following output:
+<pre>Volume of mybox1 is 3000.0
+
+</pre>
+<h2 id="Reference_members_from_parent_class">Reference members from parent class</h2>
+We can reference member variable from parent class with super keyword. Its general form is:
+<pre>super.member
+</pre>
+<code style="color: #c7254e;">member</code> can be either a method or an instance variable.
+
+Let's look at the following code.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Base {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> i;
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> SubClass <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> Base {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> i; <span class="c" style="font-weight: bold; color: #3f7f5f;">// this i hides the i in A
+</span>  SubClass(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> a, <span class="r" style="font-weight: bold; color: #7f0055;">int</span> b) {
+    super.i = a; <span class="c" style="font-weight: bold; color: #3f7f5f;">// i in A
+</span>    i = b; <span class="c" style="font-weight: bold; color: #3f7f5f;">// i in B
+</span>  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> show() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"i in superclass: "</span> + super.i);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"i in subclass: "</span> + i);
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    SubClass subOb = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> SubClass(1, 2);
+    subOb.show();
+  }
+}
+</pre>
+This program displays the following:
+<pre>i in superclass: 1
+i in subclass: 2</pre>
+<h2 id="Java_Method_Overriding">Method Overriding</h2>
+Method Overriding happens when a method in a subclass has the same name and type signature as a method in its superclass.
+
+When an overridden method is called within a subclass, it will refer to the method defined in the subclass.
+
+The method defined by the superclass will be hidden. Consider the following:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Base {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> i;
+  Base(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> a) {
+    i = a;
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> show() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"i:"</span> + i);
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> SubClass <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> Base {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> k;
+  SubClass(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> a, <span class="r" style="font-weight: bold; color: #7f0055;">int</span> c) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">super</span>(a);
+    k = c;
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> show() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"k: "</span> + k);
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    SubClass subOb = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> SubClass(1, 3);
+    subOb.show();
+  }
+}
+</pre>
+The output produced by this program is shown here:
+<pre>k: 3</pre>
+<h2 id="super_and_overridden_method">super and overridden method</h2>
+To access the superclass version of an overridden function, you can do so by using <code style="color: #c7254e;">super</code>.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Base {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> i;
+
+  Base(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> a) {
+    i = a;
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> show() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"i: "</span> + i);
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> SubClass <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> Base {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> k;
+
+  SubClass(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> a, <span class="r" style="font-weight: bold; color: #7f0055;">int</span> c) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">super</span>(a);
+    k = c;
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> show() {
+    super.show(); <span class="c" style="font-weight: bold; color: #3f7f5f;">// this calls A's show()
+</span>    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"k: "</span> + k);
+
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+    SubClass sub = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> SubClass(1, 2);
+    sub.show();
+  }
+}
+</pre>
+The following output will be generated if you run the code above:
+<pre>i: 1
+k: 2</pre>
+<h2 id="Method_overriding_vs_method_overload">Method overriding vs method overload</h2>
+Method overriding occurs when the names and the type signatures of the two methods are identical. If not, the two methods are overloaded. For example, consider this modified version of the preceding example:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Base {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> i;
+  Base(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> a) {
+    i = a;
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> show() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"i: "</span> + i);
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> SubClass <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> Base {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> k;
+  SubClass(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> a, <span class="r" style="font-weight: bold; color: #7f0055;">int</span> c) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">super</span>(a);
+    k = c;
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> show(String msg) {
+    System.out.println(msg + k);
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    SubClass subOb = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> SubClass(1, 2);
+    subOb.show(<span class="q" style="font-weight: bold; color: #2a00ff;">"This is k: "</span>); 
+    subOb.show(); 
+  }
+}
+</pre>
+The output produced by this program is shown here:
+<pre>This is k: 2
+i: 1</pre>
+<h2 id="Java_Constructor_in_hierarchy">Constructor in hierarchy</h2>
+In a class hierarchy, constructors are called in order of derivation, from superclass to subclass.
+
+The following program illustrates when constructors are executed:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> A {
+  A() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Inside A's constructor."</span>);
+  }
+}
+
+<span class="c" style="font-weight: bold; color: #3f7f5f;">// Create a subclass by extending class A.
+</span><span class="r" style="font-weight: bold; color: #7f0055;">class</span> B <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> A {
+  B() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Inside B's constructor."</span>);
+  }
+}
+
+<span class="c" style="font-weight: bold; color: #3f7f5f;">// Create another subclass by extending B.
+</span><span class="r" style="font-weight: bold; color: #7f0055;">class</span> C <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> B {
+  C() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Inside C's constructor."</span>);
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main{
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    C c = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> C();
+  }
+}
+</pre>
+The output from this program is shown here:
+<pre>Inside A's constructor.
+Inside B's constructor.
+Inside C's constructor.</pre>
+<h2 id="Polymorphism">Polymorphism</h2>
+With polymorphism we can call methods from class hierarchy using a uniform interface. The compiler will determine dynamically which implementation to use.
+
+When an overridden method is called through a superclass reference, Java determines which version of that method to execute.
+
+Here is an example that illustrates dynamic method dispatch:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Base {
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> callme() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Inside A's callme method"</span>);
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> SubClass <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> Base {
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> callme() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Inside B's callme method"</span>);
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> SubClass2 <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> Base {
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> callme() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Inside C's callme method"</span>);
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Base a = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Base(); 
+    SubClass b = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> SubClass(); 
+    SubClass2 c = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> SubClass2();
+    Base r; 
+    r = a; 
+    r.callme(); 
+    r = b;
+    r.callme(); 
+    r = c; 
+    r.callme();
+  }
+}
+</pre>
+The output from the program is shown here:
+<pre>Inside A's callme method
+Inside B's callme method
+Inside C's callme method</pre>
+<h2></h2>
+<h2 id="Polymorphism_Example">Run-time Polymorphism Example</h2>
+The following example uses the run-time polymorphism.
+
+It has three classes.
+
+The parent class is <code style="color: #c7254e;">Shape</code>. <code style="color: #c7254e;">Rectangle</code> and <code style="color: #c7254e;">Triangle</code> are both extending the <code style="color: #c7254e;">Shape</code> class.
+
+<code style="color: #c7254e;">Shape</code> defines a method called <code style="color: #c7254e;">area()</code> which returns the area of a shape.
+
+Both Rectangle and Triangle override <code style="color: #c7254e;">area()</code>method and provide their own version of implementation.
+
+When calling the <code style="color: #c7254e;">area()</code> method we can call it from the same object reference and the compiler can figure out which <code style="color: #c7254e;">area()</code>method to use.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Shape {
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> height;
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> width;
+  Shape(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> a, <span class="r" style="font-weight: bold; color: #7f0055;">double</span> b) {
+    height = a;
+    width = b;
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Area for Figure is undefined."</span>);
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> 0;
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> Rectangle <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> Shape {
+  Rectangle(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> a, <span class="r" style="font-weight: bold; color: #7f0055;">double</span> b) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">super</span>(a, b);
+  }
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">// override area for rectangle
+</span>  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Inside Area for Rectangle."</span>);
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> height * width;
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> Triangle <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> Shape {
+  Triangle(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> a, <span class="r" style="font-weight: bold; color: #7f0055;">double</span> b) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">super</span>(a, b);
+  }
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">// override area for right triangle
+</span>  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Inside Area for Triangle."</span>);
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> height * width / 2;
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Shape f = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Shape(10, 10);
+    Rectangle r = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Rectangle(9, 5);
+    Triangle t = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Triangle(10, 8);
+
+    Shape figref;
+
+    figref = r;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Area is "</span> + figref.area());
+
+    figref = t;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Area is "</span> + figref.area());
+
+    figref = f;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Area is "</span> + figref.area());
+  }
+}
+</pre>
+The output from the program is shown here:
+<pre>Inside Area for Rectangle.
+Area is 45.0
+Inside Area for Triangle.
+Area is 40.0
+Area for Figure is undefined.
+Area is 0.0</pre>

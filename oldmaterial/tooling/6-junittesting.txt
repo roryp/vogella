@@ -1,0 +1,395 @@
+<h2 id="What_is_JUnit">What is Testing?</h2>
+Testing is the process of checking the functionality of an application.
+
+Unit testing is the testing of single entity, a class or a method.
+
+Unit testing can be done in two ways
+<ul>
+ 	<li>Manual</li>
+ 	<li>Automated</li>
+</ul>
+A Unit Test Case is a part of code which ensures that the another part of code works as expected.
+
+For example, we have the following method which calculate the sum of two integers.
+<pre><span class="r" style="color: #7f0055;">public</span> <span class="r" style="color: #7f0055;">static</span> int sum(int i, int j){
+   return i+j;
+}
+</pre>
+We can have the following test cases to check the implementation is correct.
+<pre>int i = 2;
+int j = 3;
+
+int expectedResult = 5;
+
+TestUtil.ensure(expectedResult, sum(i,j));</pre>
+<div></div>
+<h2 id="What_is_JUnit">What is JUnit</h2>
+JUnit is a unit testing framework for the Java programming language.
+
+JUnit is an open source framework which is used for writing &amp; running tests. JUnit promotes the idea of "testing first" rather than implementing first.
+
+JUnit provides Annotation to identify the test methods and utility methods to assert expected results.
+
+JUnit has Test runners for running tests.
+
+JUnit tests can be organized into test suites which contains test cases and other test suites.
+
+JUnit Framework can be easily integrated with either of the followings:
+<ul>
+ 	<li>Eclipse</li>
+ 	<li>IntelliJ</li>
+ 	<li>Maven</li>
+</ul>
+<div class="xg_headline" style="color: #000000;"></div>
+<div class="xg_module" style="color: #000000;">
+<div class="xg_module_body wpage">
+<div id="page-content" class="description">
+<div class="xg_user_generated">
+<h1>JUnit Features</h1>
+JUnit test framework provides following important features
+<ul>
+ 	<li>Fixtures</li>
+ 	<li>Test suites</li>
+ 	<li>Test runners</li>
+ 	<li>JUnit classes</li>
+</ul>
+<div></div>
+<h2 id="Fixtures">Fixtures</h2>
+Fixtures is a fixed state of a set of objects which can be used as a baseline for running tests.
+
+A test fixture ensures that there is a fixed environment in which tests are run so that results are repeatable.
+
+We can use the following two methods to setup a fixture.
+<ul>
+ 	<li>setUp() method (JUnit <strong>3</strong>) or @Before annotation (JUnit <strong>4</strong>) which runs before every test invocation.</li>
+ 	<li>tearDown() method  (JUnit <strong>3</strong>)  or @After annotation (JUnit <strong>4</strong>)  which runs after every test method.</li>
+</ul>
+Let's check one <strong>JUnit 3</strong> example:
+<pre>import junit.framework.*;
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> JavaTest <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> TestCase {
+   <span class="r" style="font-weight: bold; color: #7f0055;">protected</span> int value1, value2;
+   
+   // assigning the values
+   <span class="r" style="font-weight: bold; color: #7f0055;">protected</span> void setUp(){
+      value1=1;
+      value2=1;
+   }
+
+   // test method to add two values
+   <span class="r" style="font-weight: bold; color: #7f0055;">public</span> void testAdd(){
+      double result= value1 + value2;
+      assertTrue(result == 2);
+   }
+}</pre>
+<div></div>
+<h2 id="Test_suite">Test suite</h2>
+A Test suite bundles unit tests cases and run it together.
+
+In JUnit, both @RunWith and @Suite annotation are used to run the suite test.
+
+Here is an example which uses TestJunit1 &amp; TestJunit2 test classes.
+<pre>import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+
+//JUnit Suite Test
+@RunWith(Suite.class)
+@Suite.SuiteClasses({ 
+   TestJunit1.class ,TestJunit2.class
+})
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> JunitTestSuite {
+}
+</pre>
+Here is the <strong>JUnit 4</strong> code for TestJunit1.
+<pre>import org.junit.Test;
+import org.junit.Ignore;
+import <span class="r" style="font-weight: bold; color: #7f0055;">static</span> org.junit.Assert.assertEquals;
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> TestJunit1 {
+
+   @Test
+   <span class="r" style="font-weight: bold; color: #7f0055;">public</span> void testPrintMessage() {  
+      assertEquals(1, 1+1);     
+   }
+}
+</pre>
+Here is the code for TestJunit2.
+<pre>import org.junit.Test;
+import org.junit.Ignore;
+import <span class="r" style="font-weight: bold; color: #7f0055;">static</span> org.junit.Assert.assertEquals;
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> TestJunit2 {
+
+   @Test
+   <span class="r" style="font-weight: bold; color: #7f0055;">public</span> void testSalutationMessage() {
+     assertEquals(1, 1+0);     
+   }
+}</pre>
+<h1>Try it yourself</h1>
+Create a new folder <code>junit-example</code> and download the current <code>junit-4.XX.jar</code> from JUnit's <a style="color: #4078c0;" href="https://github.com/junit-team/junit/releases">release page</a> and <a style="color: #4078c0;" href="http://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar">Hamcrest</a> to this folder.
+
+Change to the folder <code>junit-example</code>. All files are created within this folder and all commands are executed there, too.
+<h2><a id="user-content-create-the-class-under-test" class="anchor" style="color: #4078c0;" href="https://github.com/junit-team/junit4/wiki/Getting-started#create-the-class-under-test"></a>Create the class under test</h2>
+Create a new file <code>Calculator.java</code> and copy the following code to this file.
+<div class="highlight highlight-source-java">
+<pre><span class="pl-k" style="color: #a71d5d;">public</span> <span class="pl-k" style="color: #a71d5d;">class</span> <span class="pl-en" style="color: #795da3;">Calculator</span> {
+  <span class="pl-k" style="color: #a71d5d;">public</span> <span class="pl-k" style="color: #a71d5d;">int</span> <span class="pl-en" style="color: #795da3;">evaluate</span>(<span class="pl-smi">String</span> <span class="pl-v" style="color: #ed6a43;">expression</span>) {
+    <span class="pl-k" style="color: #a71d5d;">int</span> sum <span class="pl-k" style="color: #a71d5d;">=</span> <span class="pl-c1" style="color: #0086b3;">0</span>;
+    <span class="pl-k" style="color: #a71d5d;">for</span> (<span class="pl-smi">String</span> summand<span class="pl-k" style="color: #a71d5d;">:</span> expression<span class="pl-k" style="color: #a71d5d;">.</span>split(<span class="pl-s" style="color: #183691;"><span class="pl-pds">"</span><span class="pl-cce">\\</span>+<span class="pl-pds">"</span></span>))
+      sum <span class="pl-k" style="color: #a71d5d;">+=</span> <span class="pl-smi">Integer</span><span class="pl-k" style="color: #a71d5d;">.</span>valueOf(summand);
+    <span class="pl-k" style="color: #a71d5d;">return</span> sum;
+  }
+}</pre>
+</div>
+Now compile this class:
+<pre><code>javac Calculator.java
+</code></pre>
+The Java compiler creates a file <code>Calculator.class</code>.
+<h2><a id="user-content-create-a-test" class="anchor" style="color: #4078c0;" href="https://github.com/junit-team/junit4/wiki/Getting-started#create-a-test"></a>Create a test</h2>
+Create the file <code>CalculatorTest.java</code> and copy the following code to this file.
+<div class="highlight highlight-source-java">
+<pre><span class="pl-k" style="color: #a71d5d;">import static</span> <span class="pl-smi">org.junit.Assert.assertEquals</span>;
+<span class="pl-k" style="color: #a71d5d;">import</span> <span class="pl-smi">org.junit.Test</span>;
+
+<span class="pl-k" style="color: #a71d5d;">public</span> <span class="pl-k" style="color: #a71d5d;">class</span> <span class="pl-en" style="color: #795da3;">CalculatorTest</span> {
+  <span class="pl-k" style="color: #a71d5d;">@Test</span>
+  <span class="pl-k" style="color: #a71d5d;">public</span> <span class="pl-k" style="color: #a71d5d;">void</span> <span class="pl-en" style="color: #795da3;">evaluatesExpression</span>() {
+    <span class="pl-smi">Calculator</span> calculator <span class="pl-k" style="color: #a71d5d;">=</span> <span class="pl-k" style="color: #a71d5d;">new</span> <span class="pl-smi">Calculator</span>();
+    <span class="pl-k" style="color: #a71d5d;">int</span> sum <span class="pl-k" style="color: #a71d5d;">=</span> calculator<span class="pl-k" style="color: #a71d5d;">.</span>evaluate(<span class="pl-s" style="color: #183691;"><span class="pl-pds">"</span>1+2+3<span class="pl-pds">"</span></span>);
+    assertEquals(<span class="pl-c1" style="color: #0086b3;">6</span>, sum);
+  }
+}</pre>
+</div>
+Compile the test. On Linux or MacOS
+<pre><code>javac -cp .:junit-4.XX.jar CalculatorTest.java
+</code></pre>
+and on Windows
+<pre><code>javac -cp .;junit-4.XX.jar CalculatorTest.java
+</code></pre>
+The Java compiler creates a file <code>CalculatorTest.class</code>.
+<h2><a id="user-content-run-the-test" class="anchor" style="color: #4078c0;" href="https://github.com/junit-team/junit4/wiki/Getting-started#run-the-test"></a>Run the test</h2>
+Run the test from the command line. On Linux or MacOS
+<pre><code>java -cp .:junit-4.XX.jar:hamcrest-core-1.3.jar org.junit.runner.JUnitCore CalculatorTest
+</code></pre>
+and on Windows
+<pre><code>java -cp .;junit-4.XX.jar;hamcrest-core-1.3.jar org.junit.runner.JUnitCore CalculatorTest
+</code></pre>
+The output is
+<pre><code>JUnit version 4.12
+.
+Time: 0,006
+
+OK (1 test)
+</code></pre>
+The single <code>.</code> means that one test has been run and the <code>OK</code> in the last line tells you that your test is successful.
+<h2><a id="user-content-let-the-test-fail" class="anchor" style="color: #4078c0;" href="https://github.com/junit-team/junit4/wiki/Getting-started#let-the-test-fail"></a>Let the test fail</h2>
+Modify <code>Calculator.java</code> in order to get a failing test. Replace the line
+<pre><code>sum += Integer.valueOf(summand);
+</code></pre>
+with
+<pre><code>sum -= Integer.valueOf(summand);
+</code></pre>
+and recompile the class.
+<pre><code>javac Calculator.java
+</code></pre>
+Run the test again. On Linux or MacOS
+<pre><code>java -cp .:junit-4.XX.jar:hamcrest-core-1.3.jar org.junit.runner.JUnitCore CalculatorTest
+</code></pre>
+and on Windows
+<pre><code>java -cp .;junit-4.XX.jar;hamcrest-core-1.3.jar org.junit.runner.JUnitCore CalculatorTest
+</code></pre>
+Now the test fails and the output is
+<pre><code>JUnit version 4.12
+.E
+Time: 0,007
+There was 1 failure:
+1) evaluatesExpression(CalculatorTest)
+java.lang.AssertionError: expected:&lt;6&gt; but was:&lt;-6&gt;
+  at org.junit.Assert.fail(Assert.java:88)
+  ...
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+</code></pre>
+JUnit tells you which test failed (<code>evaluatesExpression(CalculatorTest)</code>) and what went wrong:
+<pre><code>java.lang.AssertionError: expected:&lt;6&gt; but was:&lt;-6&gt;</code></pre>
+<div></div>
+<div>
+<h2>Test execution order</h2>
+By design, JUnit does not specify the execution order of test method invocations. Before Junit 4.11, the methods were simply invoked in the order returned by the reflection API.
+
+However, using the JVM order is unwise since the Java platform does not specify any particular order, and in fact JDK 7 returns a more or less random order.
+
+Of course, well-written test code would not assume any order, but some does, and a predictable failure is better than a random failure on certain platforms.
+
+From version 4.11, JUnit uses by default use a deterministic, but not predictable, order (<code>MethodSorters.DEFAULT</code>).
+
+To change the test execution order simply annotate your test class using <code>@FixMethodOrder</code> and specify one of the available <code>MethodSorters</code>:
+<ul>
+ 	<li><code>@FixMethodOrder(MethodSorters.JVM)</code>: Leaves the test methods in the order returned by the JVM. This order may vary from run to run.</li>
+ 	<li><code>@FixMethodOrder(MethodSorters.NAME_ASCENDING)</code>: Sorts the test methods by method name, in lexicographic order.</li>
+</ul>
+</div>
+<div>
+<pre><span style="font-weight: bold; color: #008800;">import</span> <span style="font-weight: bold; color: #0e84b5;">org.junit.FixMethodOrder</span>;
+<span style="font-weight: bold; color: #008800;">import</span> <span style="font-weight: bold; color: #0e84b5;">org.junit.Test</span>;
+<span style="font-weight: bold; color: #008800;">import</span> <span style="font-weight: bold; color: #0e84b5;">org.junit.runners.MethodSorters</span>;
+ 
+<span style="color: #888888;">//Running test cases in order of method names in ascending order</span>
+<span style="font-weight: bold; color: #555555;">@FixMethodOrder</span>(MethodSorters.<span style="color: #0000cc;">NAME_ASCENDING</span>)
+<span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #008800;">class</span> <span style="font-weight: bold; color: #bb0066;">OrderedTestCasesExecution</span> {
+    <span style="font-weight: bold; color: #555555;">@Test</span>
+    <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">secondTest</span>() {
+        System.<span style="color: #0000cc;">out</span>.<span style="color: #0000cc;">println</span>("Executing second test");
+    }
+ 
+    <span style="font-weight: bold; color: #555555;">@Test</span>
+    <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">firstTest</span>() {
+        System.<span style="color: #0000cc;">out</span>.<span style="color: #0000cc;">println</span>("Executing first test");
+    }
+ 
+    <span style="font-weight: bold; color: #555555;">@Test</span>
+    <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">thirdTest</span>() {
+        System.<span style="color: #0000cc;">out</span>.<span style="color: #0000cc;">println</span>("Executing third test");
+    }
+}</pre>
+</div>
+<div>
+<div class="line number26 index25 alt1"><code class="java plain" style="color: black !important;">Output:</code></div>
+<div class="line number27 index26 alt2"></div>
+<div class="line number28 index27 alt1"><code class="java plain" style="color: black !important;">Executing first test</code></div>
+<div class="line number29 index28 alt2"><code class="java plain" style="color: black !important;">Executing second test</code></div>
+<div class="line number30 index29 alt1"><code class="java plain" style="color: black !important;">Executing third test</code></div>
+<div class="line number30 index29 alt1"></div>
+<div class="line number30 index29 alt1"></div>
+<h1>Appendix - JUnit Assert</h1>
+Assert has a set of assert methods we can use to check the result.
+<h2 id="Assert_Class">Assert Class</h2>
+org.junit.Assert class is declared as follows
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Assert <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> java.lang.Object
+</pre>
+This class provides a set of assertion methods useful for writing tests.
+
+Only failed assertions are recorded.
+
+The following lists some of the frequently used methods from Assert class.
+<ul>
+ 	<li>void assertArrayEquals(expectedArray, resultArray);
+test whether two arrays are equal to each other.</li>
+ 	<li>void assertEquals(boolean expected, boolean actual)
+Check that two primitives/Objects are equal</li>
+ 	<li>void assertFalse(boolean condition)
+Check that a condition is false</li>
+ 	<li>void assertNotNull(Object object)
+Check that an object isn't null.</li>
+ 	<li>void assertNotSame(boolean condition)
+tests if two object references not point to the same object</li>
+ 	<li>void assertNull(Object object)
+Check that an object is null</li>
+ 	<li>void assertSame(boolean condition)
+tests if two object references point to the same object</li>
+ 	<li>void assertTrue(boolean condition)
+Check that a condition is true.</li>
+ 	<li>void fail()
+Fails a test with no message.</li>
+</ul>
+The following code shows a few methods from the list above.
+<pre>import <span class="r" style="font-weight: bold; color: #7f0055;">static</span> org.junit.Assert.assertEquals;
+import <span class="r" style="font-weight: bold; color: #7f0055;">static</span> org.junit.Assert.assertFalse;
+import <span class="r" style="font-weight: bold; color: #7f0055;">static</span> org.junit.Assert.assertNotNull;
+
+import org.junit.Test;
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> TestJunit {
+   @Test
+   <span class="r" style="font-weight: bold; color: #7f0055;">public</span> void testAdd() {
+      //test data
+      int num= 5;
+      String str= <span class="q" style="font-weight: bold; color: #2a00ff;">"Abc"</span>;
+
+      //check <span class="r" style="font-weight: bold; color: #7f0055;">for</span> equality
+      assertEquals(<span class="q" style="font-weight: bold; color: #2a00ff;">"Abc"</span>, str);
+      
+      //check <span class="r" style="font-weight: bold; color: #7f0055;">for</span> false condition
+      assertFalse(num &gt; 6);
+
+      //check <span class="r" style="font-weight: bold; color: #7f0055;">for</span> not null value
+      assertNotNull(str);
+   }
+}</pre>
+<div></div>
+<h2 id="Run_the_Test_case">Run the Test case</h2>
+Here is the code to run the test case defined above.
+<pre>import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
+
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+   <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> void main(String[] args) {
+      Result result = JUnitCore.runClasses(TestJunit.class);
+      <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (Failure failure : result.getFailures()) {
+         System.out.println(failure.toString());
+      }
+      System.out.println(result.wasSuccessful());
+   }
+}
+</pre>
+The code above generates the following result.
+<pre>true</pre>
+<h2 id="Example_2">Example 2</h2>
+The following code shows more usage for Assert.
+<pre>import <span class="r" style="font-weight: bold; color: #7f0055;">static</span> org.junit.Assert.assertArrayEquals;
+import <span class="r" style="font-weight: bold; color: #7f0055;">static</span> org.junit.Assert.assertEquals;
+import <span class="r" style="font-weight: bold; color: #7f0055;">static</span> org.junit.Assert.assertFalse;
+import <span class="r" style="font-weight: bold; color: #7f0055;">static</span> org.junit.Assert.assertNotNull;
+import <span class="r" style="font-weight: bold; color: #7f0055;">static</span> org.junit.Assert.assertNotSame;
+import <span class="r" style="font-weight: bold; color: #7f0055;">static</span> org.junit.Assert.assertNull;
+import <span class="r" style="font-weight: bold; color: #7f0055;">static</span> org.junit.Assert.assertSame;
+import <span class="r" style="font-weight: bold; color: #7f0055;">static</span> org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> TestJunit {
+  @Test
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> void testAssertions() {
+    // test data
+    String str1 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> String(<span class="q" style="font-weight: bold; color: #2a00ff;">"abc"</span>);
+    String str2 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> String(<span class="q" style="font-weight: bold; color: #2a00ff;">"abc"</span>);
+    String str3 = null;
+    String str4 = <span class="q" style="font-weight: bold; color: #2a00ff;">"abc"</span>;
+    String str5 = <span class="q" style="font-weight: bold; color: #2a00ff;">"abc"</span>;
+    int val1 = 5;
+    int val2 = 6;
+    String[] expectedArray = { <span class="q" style="font-weight: bold; color: #2a00ff;">"one"</span>, <span class="q" style="font-weight: bold; color: #2a00ff;">"two"</span>, <span class="q" style="font-weight: bold; color: #2a00ff;">"three"</span> };
+    String[] resultArray = { <span class="q" style="font-weight: bold; color: #2a00ff;">"one"</span>, <span class="q" style="font-weight: bold; color: #2a00ff;">"two"</span>, <span class="q" style="font-weight: bold; color: #2a00ff;">"three"</span> };
+
+    // Check that two objects are equal
+    assertEquals(str1, str2);
+
+    // Check that a condition is true
+    assertTrue(val1 &lt; val2);
+
+    // Check that a condition is false
+    assertFalse(val1 &gt; val2);
+
+    // Check that an object isn't null
+    assertNotNull(str1);
+
+    // Check that an object is null
+    assertNull(str3);
+
+    // Check <span class="r" style="font-weight: bold; color: #7f0055;">if</span> two object references point to the same object
+    assertSame(str4, str5);
+
+    // Check <span class="r" style="font-weight: bold; color: #7f0055;">if</span> two object references not point to the same object
+    assertNotSame(str1, str3);
+
+    // Check whether two arrays are equal to each other.
+    assertArrayEquals(expectedArray, resultArray);
+  }
+}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>

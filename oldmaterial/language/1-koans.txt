@@ -1,0 +1,48 @@
+&nbsp;
+<h1>Introduction</h1>
+<span style="color: #000000;">In this section, <strong>Language</strong> <strong>Basics</strong>, after each lesson, we will complete the associated Koan Lab installed in the  below Koans project</span>
+
+<span style="color: #000000;">Each Koan will contain exercises similar to the topic of the Basic lesson.</span>
+
+&nbsp;
+
+<span style="color: #000000;">A Koan is essentially a simple problem where programmer is asked to “fill in the blanks”. </span>
+
+<span style="color: #000000;">They look a lot like unit tests and will be immediately familiar to those programmers that are used to writing them</span>
+
+&nbsp;
+
+<span style="color: #2a1807;">By following along the path set before you, you will touch on all the major aspects of the language. </span>
+
+<span style="color: #2a1807;">The koans' incremental, interactive approach to learning the language will help make the transition feel natural. </span>
+
+<span style="color: #2a1807;">By the time you are finished with them, Java will not be so mysterious at all.</span>
+<h1>Installation</h1>
+If not dont already set your Environmental variables to point to your JDK 8
+<ul>
+	<li>Append Java 8 <strong>bin</strong> to <strong>path</strong> e.g. "C:\Program Files\Java\jdk1.8.XXX\bin"</li>
+	<li>Set <strong>JAVA_HOME</strong> environmental Variable to java 8 e.g "C:\Program Files\Java\\jdk1.8.XXX"</li>
+</ul>
+Clone or download the repo <a href="https://github.com/roryp/java-koans">https://github.com/roryp/java-koans</a> and open a command prompt
+Run “run.bat” in the "koans" directory  - \koans\run.bat
+
+The goal is to edit and replace all the “__” for each exercise with the correct answer
+
+You need to solve the problem to get to the next level.
+<ul>
+	<li>For example: The first level is to fine the file AboutKoans.java:</li>
+	<li>Delete line 11 and change line’s 16 variable to be false</li>
+	<li>Save the file</li>
+	<li>The Koans window will then evaluate it and take you to the next sequence - AboutAssertions</li>
+	<li>Open AboutAssertions and fix line 13 – replace the __ with true.</li>
+	<li>Save the file</li>
+</ul>
+&nbsp;
+
+<span style="color: #2a1807;">After all the tests in a file are passing, the run script will automatically begin testing the next file in the koans sequence.</span>
+
+Remember to follow the lab instructions on which Koan to complete.
+
+&nbsp;
+<h1>Solution Branch</h1>
+<a href="https://github.com/roryp/java-koans/tree/solutions">https://github.com/roryp/java-koans/tree/solutions</a>

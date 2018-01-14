@@ -416,7 +416,7 @@ public class Config {
 
 Now run the `Application` class again and try to fix the error.
 
-```java
+```bash
 Exception in thread "main" org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type [com.vogella.ITodo] is defined: expected single matching bean but found 2: todo,getTodo
     at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:366)
     at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:332)
@@ -867,7 +867,7 @@ public class Config {
 
 When running the application this again would result in an `NoUniqueBeanDefinitionException`.
 
-```
+```bash
 Caused by: org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type [java.lang.String] is defined: expected single matching bean but found 2: getDescription,getSummary
     at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1126)
     at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1014)

@@ -1,0 +1,438 @@
+<h1>Nested Classes</h1>
+Classes that are declared outside of any class are top-level classes. <strong>Nested</strong> classes are classes declared as members of other classes or scopes.
+
+There are four kinds of nested classes:
+<ul>
+	<li><strong>static</strong> member classes,</li>
+	<li><strong>nonstatic</strong> member classes,</li>
+	<li><strong>anonymous</strong> classes</li>
+	<li><strong>local</strong> classes.</li>
+</ul>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Java_Anonymous_Classes">Anonymous Classes</h2>
+An anonymous class is a class without a name and simultaneously declared. You can instantiate an anonymous class where it is legal to specify an expression.
+
+An anonymous class instance can only access local final variables and final parameters.
+
+How to define an anonymous class?
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">abstract</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> People {
+  <span class="r" style="font-weight: bold; color: #7f0055;">abstract</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> speak();
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(<span class="r" style="font-weight: bold; color: #7f0055;">final</span> String[] args) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">new</span> People() {
+      String msg = <span class="q" style="font-weight: bold; color: #2a00ff;">"test"</span>;
+
+      @Override
+      <span class="r" style="font-weight: bold; color: #7f0055;">void</span> speak() {
+        System.out.println(msg);
+      }
+    }.speak();
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>test</pre>
+<h2 id="Example">Example</h2>
+The following code declares and instantiates an anonymous class that implements an interface.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">interface</span> People {
+  <span class="r" style="font-weight: bold; color: #7f0055;">abstract</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> speak();
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(<span class="r" style="font-weight: bold; color: #7f0055;">final</span> String[] args) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">new</span> People() {
+      String msg = (args.length == 1) ? args[0] : <span class="q" style="font-weight: bold; color: #2a00ff;">"nothing to say"</span>;
+
+      @Override
+      <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> speak() {
+        System.out.println(msg);
+      }
+    }.speak();
+  }
+}
+</pre>
+The code above generates the following result when executed with Main.main(new String[]{});
+<pre>nothing to say</pre>
+<h2 id="Java_Local_Classes">Local Classes</h2>
+A local class is a class that is declared anywhere that a local variable is declared. A local class has the same scope as a local variable.
+
+A local class has a name and can be reused. A local class instance can access the surrounding scope's local final variables and final parameters.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> MyClass {
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> myMethod(<span class="r" style="font-weight: bold; color: #7f0055;">final</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> x) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">final</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> y = x;
+    
+    <span class="r" style="font-weight: bold; color: #7f0055;">class</span> LocalClass {
+      <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a = x;
+      <span class="r" style="font-weight: bold; color: #7f0055;">int</span> b = y;
+    }
+    
+    LocalClass lc = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> LocalClass();
+    System.out.println(lc.a);
+    System.out.println(lc.b);
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+    MyClass ec = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> MyClass();
+    ec.myMethod(10);
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>10
+10</pre>
+<h2 id="Example_2">Example 2</h2>
+The following code declares an Iterator interface with an <em>Iter</em> inner class.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Item{
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> String name;
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> String value;
+  
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> Item(String n, String v){
+    name = n;
+    value = v;
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> String toString(){
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> name + value;
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">interface</span> Iterator {
+  <span class="r" style="font-weight: bold; color: #7f0055;">boolean</span> hasMoreElements();
+
+  Object nextElement();
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> ItemManager {
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> Item[] itemArray;
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> index = 0;
+
+  ItemManager(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> size) {
+    itemArray = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Item[size];
+  }
+
+  Iterator iterator() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Iter <span class="r" style="font-weight: bold; color: #7f0055;">implements</span> Iterator {
+      <span class="r" style="font-weight: bold; color: #7f0055;">int</span> index = 0;
+
+      @Override
+      <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">boolean</span> hasMoreElements() {
+        <span class="r" style="font-weight: bold; color: #7f0055;">return</span> index &lt; itemArray.length;
+      }
+
+      @Override
+      <span class="r" style="font-weight: bold; color: #7f0055;">public</span> Object nextElement() {
+        <span class="r" style="font-weight: bold; color: #7f0055;">return</span> itemArray[index++];
+      }
+    }
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Iter();
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> add(Item item) {
+    itemArray[index++] = item;
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+    ItemManager itemManager = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> ItemManager(5);
+    itemManager.add(<span class="r" style="font-weight: bold; color: #7f0055;">new</span> Item(<span class="q" style="font-weight: bold; color: #2a00ff;">"#1"</span>, <span class="q" style="font-weight: bold; color: #2a00ff;">"A"</span>));
+    itemManager.add(<span class="r" style="font-weight: bold; color: #7f0055;">new</span> Item(<span class="q" style="font-weight: bold; color: #2a00ff;">"#2"</span>, <span class="q" style="font-weight: bold; color: #2a00ff;">"B"</span>));
+    itemManager.add(<span class="r" style="font-weight: bold; color: #7f0055;">new</span> Item(<span class="q" style="font-weight: bold; color: #2a00ff;">"#3"</span>, <span class="q" style="font-weight: bold; color: #2a00ff;">"C"</span>));
+    Iterator iter = itemManager.iterator();
+    <span class="r" style="font-weight: bold; color: #7f0055;">while</span> (iter.hasMoreElements()){
+      System.out.println(iter.nextElement());
+    }
+      
+  }
+}
+</pre>
+The output:
+<pre>#1A
+#2B
+#3C
+null
+null</pre>
+<h2 id="Java_Member_Classes">Member Classes</h2>
+A member class is a member of an enclosing class. Each instance of the member class associates with an instance of the enclosing class.
+
+The member class's instance methods can call instance methods in the enclosing class and access the enclosing class instance's nonstatic fields.
+
+The following code has one outer class named <code style="color: #c7254e;">EnclosingClass</code> and a nonstatic member class named <code style="color: #c7254e;">EnclosedClass</code>.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> EnclosingClass {
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> outerVariable;
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> privateOuterMethod() {
+    System.out.println(outerVariable);
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">class</span> EnclosedClass {
+    <span class="r" style="font-weight: bold; color: #7f0055;">void</span> accessEnclosingClass() {
+      outerVariable = 1;
+      privateOuterMethod();
+    }
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+    EnclosingClass ec = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> EnclosingClass();
+    ec.new EnclosedClass().accessEnclosingClass(); <span class="c" style="font-weight: bold; color: #3f7f5f;">// Output: 1
+</span>  }
+}
+</pre>
+The code above generates the following result.
+<pre>1</pre>
+<h2 id="Example_3">Example 3</h2>
+The following code uses inner class ItemList to store the items.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Item {
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> String name;
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> String desc;
+
+  Item(String name, String desc) {
+    this.name = name;
+    this.desc = desc;
+  }
+
+  String getName() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> name;
+  }
+
+  String getDesc() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> desc;
+  }
+
+  @Override
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> String toString() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> <span class="q" style="font-weight: bold; color: #2a00ff;">"Name = "</span> + getName() + <span class="q" style="font-weight: bold; color: #2a00ff;">", Desc = "</span> + getDesc();
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> ItemManager {
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> ItemList itemList;
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> index = 0;
+
+  ItemManager() {
+    itemList = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> ItemList(2);
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">boolean</span> hasMoreElements() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> index &lt; itemList.size();
+  }
+
+  Item nextElement() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> itemList.get(index++);
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> add(Item item) {
+    itemList.add(item);
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> ItemList {
+    <span class="r" style="font-weight: bold; color: #7f0055;">private</span> Item[] itemArray;
+    <span class="r" style="font-weight: bold; color: #7f0055;">private</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> index = 0;
+
+    ItemList(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> initSize) {
+      itemArray = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Item[initSize];
+    }
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">void</span> add(Item item) {
+      <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (index &gt;= itemArray.length) {
+        Item[] temp = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Item[itemArray.length * 2];
+        <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i = 0; i &lt; itemArray.length; i++)
+          temp[i] = itemArray[i];
+        itemArray = temp;
+      }
+      itemArray[index++] = item;
+    }
+
+    Item get(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i) {
+      <span class="r" style="font-weight: bold; color: #7f0055;">return</span> itemArray[i];
+    }
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> size() {
+      <span class="r" style="font-weight: bold; color: #7f0055;">return</span> index;
+    }
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+    ItemManager itemManager = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> ItemManager();
+    itemManager.add(<span class="r" style="font-weight: bold; color: #7f0055;">new</span> Item(<span class="q" style="font-weight: bold; color: #2a00ff;">"1"</span>, <span class="q" style="font-weight: bold; color: #2a00ff;">"A"</span>));
+    itemManager.add(<span class="r" style="font-weight: bold; color: #7f0055;">new</span> Item(<span class="q" style="font-weight: bold; color: #2a00ff;">"2"</span>, <span class="q" style="font-weight: bold; color: #2a00ff;">"B"</span>));
+    itemManager.add(<span class="r" style="font-weight: bold; color: #7f0055;">new</span> Item(<span class="q" style="font-weight: bold; color: #2a00ff;">"3"</span>, <span class="q" style="font-weight: bold; color: #2a00ff;">"C"</span>));
+    <span class="r" style="font-weight: bold; color: #7f0055;">while</span> (itemManager.hasMoreElements())
+      System.out.println(itemManager.nextElement());
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>Name = 1, Desc = A
+Name = 2, Desc = B
+Name = 3, Desc = C</pre>
+<h2 id="Example_4">Example 4</h2>
+The following program illustrates how to define and use an inner class.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Outer {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> outer_x = 100;
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> test() {
+    Inner inner = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Inner();
+    inner.display();
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Inner {
+    <span class="r" style="font-weight: bold; color: #7f0055;">void</span> display() {
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"display: outer_x = "</span> + outer_x);
+    }
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Outer outer = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Outer();
+    outer.test();
+  }
+}
+</pre>
+Output from this application is shown here:
+<pre>display: outer_x = 100</pre>
+<h2 id="Example_5">Example 5</h2>
+The inner class members are accessible only within the inner class and may not be used by the outer class. If you try to compile the following code, you will get error message.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> outer_x = 100;
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">// this is an inner class
+</span>  <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Inner {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> y = 10; <span class="c" style="font-weight: bold; color: #3f7f5f;">// y is local to Inner
+</span>
+    <span class="r" style="font-weight: bold; color: #7f0055;">void</span> display() {
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"display: outer_x = "</span> + outer_x);
+    }
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> showy() {
+    System.out.println(y); 
+  }
+}
+</pre>
+When compiling the code above:
+<pre>|  created class Main, however, it cannot be instanciated or its methods invoked until variable y is declared</pre>
+<h2 id="Java_Static_Member_Classes">Static Member Classes</h2>
+A static member class is a static member of an enclosing class. A static member class cannot access the enclosing class's instance fields and invoke its instance methods.
+
+A static member can access the enclosing class's static fields and invoke its static methods including private fields and methods.
+
+The following code has a static member class declaration.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Demo {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+    Main.EnclosedClass.accessEnclosingClass(); 
+    Main.EnclosedClass ec = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Main.EnclosedClass();
+    ec.accessEnclosingClass2(); 
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> outerVariable;
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> privateStaticOuterMethod() {
+    System.out.println(outerVariable);
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> staticOuterMethod() {
+    EnclosedClass.accessEnclosingClass();
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> EnclosedClass {
+    <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> accessEnclosingClass() {
+      outerVariable = 1;
+      privateStaticOuterMethod();
+    }
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">void</span> accessEnclosingClass2() {
+      staticOuterMethod();
+    }
+  }
+}
+</pre>
+The static member classes can declare multiple implementations of their enclosing class.
+<h2 id="Example_6">Example 6</h2>
+The following code declares a <code style="color: #c7254e;">Rectangle</code> class and it uses static member class to provide <code style="color: #c7254e;">Rectangle</code> implementation for different data types, one is for <code style="color: #c7254e;">double</code> type and another is for <code style="color: #c7254e;">float</code> type.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">abstract</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Rectangle {
+  <span class="r" style="font-weight: bold; color: #7f0055;">abstract</span> <span class="r" style="font-weight: bold; color: #7f0055;">double</span> getX();
+  <span class="r" style="font-weight: bold; color: #7f0055;">abstract</span> <span class="r" style="font-weight: bold; color: #7f0055;">double</span> getY();
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">abstract</span> <span class="r" style="font-weight: bold; color: #7f0055;">double</span> getWidth();
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">abstract</span> <span class="r" style="font-weight: bold; color: #7f0055;">double</span> getHeight();
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Double <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> Rectangle {
+    <span class="r" style="font-weight: bold; color: #7f0055;">private</span> <span class="r" style="font-weight: bold; color: #7f0055;">double</span> x, y, width, height;
+
+    Double(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> x, <span class="r" style="font-weight: bold; color: #7f0055;">double</span> y, <span class="r" style="font-weight: bold; color: #7f0055;">double</span> width, <span class="r" style="font-weight: bold; color: #7f0055;">double</span> height) {
+      this.x = x;
+      this.y = y;
+      this.width = width;
+      this.height = height;
+    }
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> getX() {
+      <span class="r" style="font-weight: bold; color: #7f0055;">return</span> x;
+    }
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> getY() {
+      <span class="r" style="font-weight: bold; color: #7f0055;">return</span> y;
+    }
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> getWidth() {
+      <span class="r" style="font-weight: bold; color: #7f0055;">return</span> width;
+    }
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> getHeight() {
+      <span class="r" style="font-weight: bold; color: #7f0055;">return</span> height;
+    }
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Float <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> Rectangle {
+    <span class="r" style="font-weight: bold; color: #7f0055;">private</span> <span class="r" style="font-weight: bold; color: #7f0055;">float</span> x, y, width, height;
+
+    Float(<span class="r" style="font-weight: bold; color: #7f0055;">float</span> x, <span class="r" style="font-weight: bold; color: #7f0055;">float</span> y, <span class="r" style="font-weight: bold; color: #7f0055;">float</span> width, <span class="r" style="font-weight: bold; color: #7f0055;">float</span> height) {
+      this.x = x;
+      this.y = y;
+      this.width = width;
+      this.height = height;
+    }
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> getX() {
+      <span class="r" style="font-weight: bold; color: #7f0055;">return</span> x;
+    }
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> getY() {
+      <span class="r" style="font-weight: bold; color: #7f0055;">return</span> y;
+    }
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> getWidth() {
+      <span class="r" style="font-weight: bold; color: #7f0055;">return</span> width;
+    }
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> getHeight() {
+      <span class="r" style="font-weight: bold; color: #7f0055;">return</span> height;
+    }
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> Rectangle() {
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">boolean</span> contains(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> x, <span class="r" style="font-weight: bold; color: #7f0055;">double</span> y) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> (x &gt;= getX() &amp;&amp; x &lt; getX() + getWidth()) &amp;&amp; (y &gt;= getY() &amp;&amp; y &lt; getY() + getHeight());
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+    Rectangle r = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Rectangle.Double(10.0, 10.0, 20.0, 30.0);
+    r = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Rectangle.Float(10.0f, 10.0f, 20.0f, 30.0f);
+  }
+}</pre>

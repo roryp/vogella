@@ -1,0 +1,303 @@
+<h2 style="color: #0a0a0a;">Collections Overview</h2>
+<p style="color: #0a0a0a;">A <i>collection</i> is a generic term that refers to a container of objects.</p>
+<p style="color: #0a0a0a;">The <i>Java Collections Framework</i> is a library of classes and interfaces in the <code>java.util</code> package that provides collections with different characteristics.</p>
+<p style="color: #0a0a0a;">The most important interfaces are:</p>
+
+<ul style="color: #0a0a0a;">
+	<li><code>Collection</code>
+This is the base interface of the collection hierarchy and it contains methods like <code>add()</code>, <code>remove()</code>, <code>clear()</code>, and <code>size()</code>.</li>
+	<li><code>Iterable</code>
+Implementing this interface allows an object to be "iterable" with a for-each loop, through an <code>Iterator</code>, and with the new <code>forEach()</code>method.</li>
+	<li><code>List</code>
+Interface for collections which, one, store a group of elements that can be accessed using an index, and two, accept duplicates.</li>
+	<li><code>Set</code>
+Interface for collections which do not allow duplicate elements.</li>
+	<li><code>Queue</code>
+Interface for collections which store a group of elements in a particular order, commonly in a first-in, first-out order.</li>
+	<li><code>Map</code>
+Interface for collections whose elements are stored as key/value pairs.</li>
+</ul>
+<p style="color: #0a0a0a;">Of the last four, <code>Map</code> is the only one that implements neither the <code>Collection</code> nor the <code>Iterable</code> interface, but still, it's considered a collection, because it contains a group elements.</p>
+
+<h2 style="color: #0a0a0a;">List</h2>
+<p style="color: #0a0a0a;">List is the most common collection. You use when you want to allow (or do not care if there are) duplicate elements. You can even insert <code>null</code> elements (not all collections allow it).</p>
+<p style="color: #0a0a0a;">Elements have an insertion order, but you can add elements at any position, since this position is based on a zero-based index, like an array.</p>
+<p style="color: #0a0a0a;">In fact, the most used implementation, <code>ArrayList</code>, is actually implemented as an <code>Object</code> array under the hood.</p>
+<p style="color: #0a0a0a;">The difference with using an array is that a <code>List</code> can grow automatically when elements are added. However, since it does that by copying the elements to a bigger array, adding (and removing) is slower.</p>
+<p style="color: #0a0a0a;">Here are some basic <code>List</code> operations:</p>
+
+<pre><code class="java hljs" style="color: black;"><span class="hljs-comment" style="color: #006a00;">// Creating an ArrayList with an initial capacity of 10</span>
+List&lt;String&gt; list = <span class="hljs-keyword" style="color: #aa0d91;">new</span> ArrayList&lt;&gt;(<span class="hljs-number" style="color: #1c00cf;">10</span>);
+</code>System.out.println(list.isEmpty()); <span class="hljs-comment" style="color: #006a00;">// true</span></pre>
+<pre> list.add(<span class="hljs-string" style="color: #c41a16;">"a"</span>);
+ System.out.println(list.get(<span class="hljs-number" style="color: #1c00cf;">0</span>)); <span class="hljs-comment" style="color: #006a00;">// a</span>
+ list.add(<span class="hljs-number" style="color: #1c00cf;">0</span>, <span class="hljs-string" style="color: #c41a16;">"b"</span>); <span class="hljs-comment" style="color: #006a00;">// Inserting b at index 0</span>
+ list.add(<span class="hljs-string" style="color: #c41a16;">"c"</span>);
+ list.add(<span class="hljs-keyword" style="color: #aa0d91;">null</span>);
+ System.out.println(list); <span class="hljs-comment" style="color: #006a00;">// [b, a, c, null]</span>
+ list.set(<span class="hljs-number" style="color: #1c00cf;">2</span>, <span class="hljs-string" style="color: #c41a16;">"a"</span>); <span class="hljs-comment" style="color: #006a00;">// Replacing element at index 2 with a</span>
+ System.out.println(list.contains(<span class="hljs-string" style="color: #c41a16;">"d"</span>)); <span class="hljs-comment" style="color: #006a00;">// false</span>
+ <span class="hljs-comment" style="color: #006a00;">// Returning the index of the first match, -1 if not found</span>
+ System.out.println(list.indexOf(<span class="hljs-string" style="color: #c41a16;">"a"</span>)); <span class="hljs-comment" style="color: #006a00;">// 1</span>
+ <span class="hljs-comment" style="color: #006a00;">// Returning the index of the last match, -1 if not found</span>
+ System.out.println(list.lastIndexOf(<span class="hljs-string" style="color: #c41a16;">"a"</span>); <span class="hljs-comment" style="color: #006a00;">// 2</span></pre>
+<pre>list.remove(<span class="hljs-number" style="color: #1c00cf;">1</span>); <span class="hljs-comment" style="color: #006a00;">// Removing by index</span>
+ list.remove(<span class="hljs-keyword" style="color: #aa0d91;">null</span>); <span class="hljs-comment" style="color: #006a00;">// Removing null</span>
+ list.remove(<span class="hljs-string" style="color: #c41a16;">"a"</span>) <span class="hljs-comment" style="color: #006a00;">// Removing the first matching element</span></pre>
+<pre>System.out.println(list.size()); <span class="hljs-comment" style="color: #006a00;">// 1</span></pre>
+<p style="color: #0a0a0a;">Another popular implementation is <code>LinkedList</code>, a doubly-linked list that also implements the <code>Deque</code> interface (more about this interface later).</p>
+<p style="color: #0a0a0a;">An easy way to create a <code>List</code> is using the <code>java.util.Arrays.asList</code> method:</p>
+
+<pre style="color: #0a0a0a;"><code class="java hljs" style="color: black;">String[] arr = {<span class="hljs-string" style="color: #c41a16;">"a"</span>, <span class="hljs-string" style="color: #c41a16;">"b"</span>, <span class="hljs-string" style="color: #c41a16;">"c"</span>, <span class="hljs-string" style="color: #c41a16;">"d"</span>};
+ List&lt;String&gt; list = Arrays.asList(arr);</code></pre>
+<p style="color: #0a0a0a;">Or simply:</p>
+
+<pre style="color: #0a0a0a;"><code class="java hljs" style="color: black;">List&lt;String&gt; list =
+ Arrays.asList(<span class="hljs-string" style="color: #c41a16;">"a"</span>, <span class="hljs-string" style="color: #c41a16;">"b"</span>, <span class="hljs-string" style="color: #c41a16;">"c"</span>, <span class="hljs-string" style="color: #c41a16;">"d"</span>);</code></pre>
+<p style="color: #0a0a0a;">It returns an implementation of <code>List</code> backed by the specified array (but it's not an <code>ArrayList</code> and it doesn't implement all methods of <code>List</code>) that has fixed size, which means that you can't add elements to it. Also, modifications to the <code>List</code> are reflected in the original array.</p>
+
+<h2 style="color: #0a0a0a;">Set</h2>
+<p style="color: #0a0a0a;">The main feature of a <code>Set</code> is that it doesn't allow duplicates.</p>
+<p style="color: #0a0a0a;">The two most used implementations are <code>HashSet</code> and <code>TreeSet</code>. The difference between them is that <code>TreeSet</code> sorts the elements, while <code>HashSet</code> doesn't guarantee the order or that the order will remain constant over time.</p>
+<p style="color: #0a0a0a;"><code>HashSet</code> stores the elements in a hash table (using a <code>HashMap</code> instance). Because of that, elements are not kept in order, but adding and looking up elements is fast.</p>
+<p style="color: #0a0a0a;">To retrieve objects and avoid duplicates, the elements have to implement the <code>hashCode()</code> and <code>equals()</code> methods.</p>
+<p style="color: #0a0a0a;">Here's an example of <code>HashSet</code>:</p>
+
+<pre style="color: #0a0a0a;"><code class="java hljs" style="color: black;"><span class="hljs-comment" style="color: #006a00;">// Creating a HashSet with an initial capacity of 10</span>
+ Set&lt;String&gt; set = <span class="hljs-keyword" style="color: #aa0d91;">new</span> HashSet&lt;&gt;(<span class="hljs-number" style="color: #1c00cf;">10</span>);
+ <span class="hljs-comment" style="color: #006a00;">// add() returns true if the element is not already in the set</span>
+ System.out.println(set.add(<span class="hljs-string" style="color: #c41a16;">"b"</span>)); <span class="hljs-comment" style="color: #006a00;">// true</span>
+ System.out.println(set.add(<span class="hljs-string" style="color: #c41a16;">"x"</span>)); <span class="hljs-comment" style="color: #006a00;">// true</span>
+ System.out.println(set.add(<span class="hljs-string" style="color: #c41a16;">"h"</span>)); <span class="hljs-comment" style="color: #006a00;">// true</span>
+ System.out.println(set.add(<span class="hljs-string" style="color: #c41a16;">"b"</span>)); <span class="hljs-comment" style="color: #006a00;">// false</span>
+ System.out.println(set.add(<span class="hljs-keyword" style="color: #aa0d91;">null</span>)); <span class="hljs-comment" style="color: #006a00;">// true</span>
+ System.out.println(set.add(<span class="hljs-keyword" style="color: #aa0d91;">null</span>)); <span class="hljs-comment" style="color: #006a00;">// false</span>
+ System.out.println(set); <span class="hljs-comment" style="color: #006a00;">// [null, b, x, h]</span></code></pre>
+<p style="color: #0a0a0a;">As you can see, <code>HashSet</code> accepts <code>null</code> values.</p>
+<p style="color: #0a0a0a;"><code>TreeSet</code> stores the elements in a red-black tree data structure. That's why it keeps the elements sorted and guarantees log(n) time cost for adding, removing, looking up an element, and getting the size of the set.</p>
+<p style="color: #0a0a0a;">To avoid duplicates, the elements have to implement the <code>equals()</code> method. For sorting, elements have to either implement the <code>Comparable</code>interface (the implementation of <code>compareTo()</code> has to be consistent with the implementation of the <code>equals()</code> method) or pass an implementation of <code>Comparator</code> in the constructor. Otherwise, an exception will be thrown.</p>
+<p style="color: #0a0a0a;">Here's an example similar to the previous one implemented with <code>TreeSet</code>:</p>
+
+<pre style="color: #0a0a0a;"><code class="java hljs" style="color: black;">Set&lt;String&gt; set = <span class="hljs-keyword" style="color: #aa0d91;">new</span> TreeSet&lt;&gt;();
+ System.out.println(set.add(<span class="hljs-string" style="color: #c41a16;">"b"</span>)); <span class="hljs-comment" style="color: #006a00;">// true</span>
+ System.out.println(set.add(<span class="hljs-string" style="color: #c41a16;">"x"</span>)); <span class="hljs-comment" style="color: #006a00;">// true</span>
+ System.out.println(set.add(<span class="hljs-string" style="color: #c41a16;">"h"</span>)); <span class="hljs-comment" style="color: #006a00;">// true</span>
+ System.out.println(set.add(<span class="hljs-string" style="color: #c41a16;">"b"</span>)); <span class="hljs-comment" style="color: #006a00;">// false</span>
+ System.out.println(set); <span class="hljs-comment" style="color: #006a00;">// [b, h, x]</span></code></pre>
+<p style="color: #0a0a0a;">Since <code>String</code> implements <code>Comparable</code>, and its <code>compareTo()</code> method implements lexicographic ordering, a <code>Set</code> is ordered that way.</p>
+<p style="color: #0a0a0a;">Notice that this example doesn't add null values. That's because <code>TreeSet</code> doesn't accept them. If you try to add <code>null</code> to a <code>TreeSet</code>, a <code>NullPointerException</code> will be thrown.</p>
+<p style="color: #0a0a0a;">This is because when an element is added, it's compared (as a <code>Comparable</code> or with a <code>Comparator</code>) against other values to insert it in the correct order, but it can't do that with a <code>null</code> value.</p>
+<p style="color: #0a0a0a;">Here is a full Set Example:</p>
+
+<pre><span style="font-weight: bold; color: #008800;">import</span> <span style="font-weight: bold; color: #0e84b5;">java.util.HashSet</span>;
+<span style="font-weight: bold; color: #008800;">import</span> <span style="font-weight: bold; color: #0e84b5;">java.util.Set</span>;
+
+<span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #008800;">class</span> <span style="font-weight: bold; color: #bb0066;">Main</span> {
+  <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #008800;">static</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">main</span>(String[] args) {
+
+    Set&lt;String&gt; s1 = <span style="font-weight: bold; color: #008800;">new</span> HashSet&lt;&gt;();
+
+    <span style="color: #888888;">// Add a few elements</span>
+    s1.<span style="color: #0000cc;">add</span>("HTML");
+    s1.<span style="color: #0000cc;">add</span>("CSS");
+    s1.<span style="color: #0000cc;">add</span>("XML");
+    s1.<span style="color: #0000cc;">add</span>("XML"); <span style="color: #888888;">// Duplicate</span>
+
+    <span style="color: #888888;">// Create another set by copying s1</span>
+    Set&lt;String&gt; s2 = <span style="font-weight: bold; color: #008800;">new</span> HashSet&lt;&gt;(s1);
+    <span style="color: #888888;">// Add a few more elements </span>
+    s2.<span style="color: #0000cc;">add</span>("Java"); 
+    s2.<span style="color: #0000cc;">add</span>("SQL");
+    s2.<span style="color: #0000cc;">add</span>(<span style="font-weight: bold; color: #008800;">null</span>); <span style="color: #888888;">// one null is fine</span>
+    s2.<span style="color: #0000cc;">add</span>(<span style="font-weight: bold; color: #008800;">null</span>); <span style="color: #888888;">// Duplicate</span>
+
+    System.<span style="color: #0000cc;">out</span>.<span style="color: #0000cc;">println</span>("s1: " + s1);
+    System.<span style="color: #0000cc;">out</span>.<span style="color: #0000cc;">println</span>("s1.size(): " + s1.<span style="color: #0000cc;">size</span>());
+
+    System.<span style="color: #0000cc;">out</span>.<span style="color: #0000cc;">println</span>("s2: " + s2);
+    System.<span style="color: #0000cc;">out</span>.<span style="color: #0000cc;">println</span>("s2.size(): " + s2.<span style="color: #0000cc;">size</span>());
+  }
+}</pre>
+<h2 style="color: #0a0a0a;">Queue</h2>
+<p style="color: #0a0a0a;">In a <code>Queue</code>, elements are typically added and removed in a FIFO (first-in-first-out) way.</p>
+<p style="color: #0a0a0a;">The most used implementation is <code>ArrayDeque</code>, which is backed by an array, that has the functionality of adding and removing elements from both the front (as a stack) and back (as a queue) of the queue, and not in any position like in an <code>ArrayList</code>. This class doesn't allow inserting of <code>null</code> values.</p>
+<p style="color: #0a0a0a;">Besides having the methods of <code>Collection</code>, <code>ArrayDeque</code> has other methods that are unique to queues. We can classify these methods into two groups:</p>
+<p style="color: #0a0a0a;">Methods that throw an exception if something goes wrong:</p>
+
+<ul style="color: #0a0a0a;">
+	<li><code>boolean add(E e)</code>
+Adds an element to the end of the queue and returns true if successful or throws an exception otherwise.</li>
+	<li><code>E remove()</code>
+Removes and returns the first element of the queue or throws an exception if it's empty.</li>
+	<li><code>E element()</code>
+Returns the next element of the queue or throws an exception if it's empty.</li>
+</ul>
+<p style="color: #0a0a0a;">Methods that return <code>null</code> if something goes wrong:</p>
+
+<ul style="color: #0a0a0a;">
+	<li><code>boolean offer(E e)</code>
+Adds an element to the end of the queue and returns <code>true</code> if successful or <code>false</code> otherwise.</li>
+	<li><code>E poll()</code>
+Removes and returns the first element of the queue or <code>null</code> if it's empty.</li>
+	<li><code>E peek()</code>
+Returns the next element of the queue or <code>null</code> if it's empty.</li>
+</ul>
+<p style="color: #0a0a0a;">For each operation, there's a version that throws an exception and another that returns <code>false</code> or <code>null</code>. For example, when the queue is empty, the <code>remove()</code> method throws an exception, while the <code>poll()</code> method returns <code>null</code>.</p>
+
+<pre style="color: #0a0a0a;"><code class="java hljs" style="color: black;">Queue&lt;String&gt; queue = <span class="hljs-keyword" style="color: #aa0d91;">new</span> ArrayDeque&lt;&gt;();
+ System.out.println(queue.offer(<span class="hljs-string" style="color: #c41a16;">"a"</span>)); <span class="hljs-comment" style="color: #006a00;">// true [a]</span>
+ System.out.println(queue.offer(<span class="hljs-string" style="color: #c41a16;">"b"</span>)); <span class="hljs-comment" style="color: #006a00;">// true [a, b]</span>
+ System.out.println(queue.peek()); <span class="hljs-comment" style="color: #006a00;">// a [a, b]</span>
+ System.out.println(queue.poll()); <span class="hljs-comment" style="color: #006a00;">// a [b]</span>
+ System.out.println(queue.peek()); <span class="hljs-comment" style="color: #006a00;">// b [b]</span>
+ System.out.println(queue.poll()); <span class="hljs-comment" style="color: #006a00;">// b []</span>
+ System.out.println(queue.peek()); <span class="hljs-comment" style="color: #006a00;">// null</span></code></pre>
+<p style="color: #0a0a0a;">You can also use this class as a stack, a data structure that order the elements in a LIFO (last-in-first-out), when you use the following methods:</p>
+
+<pre style="color: #0a0a0a;"><code class="java hljs" style="color: black;"><span class="hljs-function"><span class="hljs-keyword" style="color: #aa0d91;"><span style="color: #006a00;">// Adds elements to the front of the queue
+ </span><span class="hljs-keyword">void</span><span style="color: #000000;"> </span><span class="hljs-title" style="color: #1c00cf;">push</span><span class="hljs-params" style="color: #5c2699;">(E e)
+ </span><span class="hljs-comment" style="color: #006a00;">// Removes and returns the next element</span><span class="hljs-comment" style="color: #006a00;">// or throws an exception if the queue is empty
+ </span></span>E <span class="hljs-title" style="color: #1c00cf;">pop</span><span class="hljs-params" style="color: #5c2699;">()</span> </span></code></pre>
+<p style="color: #0a0a0a;">Notice that these methods are not in the <code>Queue</code> interface:</p>
+
+<pre style="color: #0a0a0a;"><code class="java hljs" style="color: black;">ArrayDeque&lt;String&gt; stack = <span class="hljs-keyword" style="color: #aa0d91;">new</span> ArrayDeque&lt;&gt;();
+ stack.push(<span class="hljs-string" style="color: #c41a16;">"a"</span>); <span class="hljs-comment" style="color: #006a00;">// [a]</span>
+ stack.push(<span class="hljs-string" style="color: #c41a16;">"b"</span>); <span class="hljs-comment" style="color: #006a00;">// [b, a]</span>
+ System.out.println(stack.peek()); <span class="hljs-comment" style="color: #006a00;">// b [b, a]</span>
+ System.out.println(stack.pop()); <span class="hljs-comment" style="color: #006a00;">// b [a]</span>
+ System.out.println(stack.peek()); <span class="hljs-comment" style="color: #006a00;">// a [a]</span>
+ System.out.println(stack.pop()); <span class="hljs-comment" style="color: #006a00;">// a []</span>
+ System.out.println(stack.peek()); <span class="hljs-comment" style="color: #006a00;">// null</span></code></pre>
+<h2>Example</h2>
+The following code shows how to use a LinkedList as a FIFO queue.
+<pre><span style="font-weight: bold; color: #008800;">import</span> <span style="font-weight: bold; color: #0e84b5;">java.util.LinkedList</span>;
+<span style="font-weight: bold; color: #008800;">import</span> <span style="font-weight: bold; color: #0e84b5;">java.util.NoSuchElementException</span>;
+<span style="font-weight: bold; color: #008800;">import</span> <span style="font-weight: bold; color: #0e84b5;">java.util.Queue</span>;
+
+<span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #008800;">class</span> <span style="font-weight: bold; color: #bb0066;">Main</span> {
+  <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #008800;">static</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">main</span>(String[] args) {
+    Queue&lt;String&gt; queue = <span style="font-weight: bold; color: #008800;">new</span> LinkedList&lt;&gt;();
+    queue.<span style="color: #0000cc;">add</span>("Java");
+    <span style="color: #888888;">// offer() will work the same as add()</span>
+    queue.<span style="color: #0000cc;">offer</span>("SQL");
+    queue.<span style="color: #0000cc;">offer</span>("CSS");
+    queue.<span style="color: #0000cc;">offer</span>("XML");
+
+    System.<span style="color: #0000cc;">out</span>.<span style="color: #0000cc;">println</span>("Queue: " + queue);
+
+    <span style="color: #888888;">// Let's remove elements until the queue is empty</span>
+    <span style="font-weight: bold; color: #008800;">while</span> (queue.<span style="color: #0000cc;">peek</span>() != <span style="font-weight: bold; color: #008800;">null</span>) {
+      System.<span style="color: #0000cc;">out</span>.<span style="color: #0000cc;">println</span>("Head  Element: " + queue.<span style="color: #0000cc;">peek</span>());
+      queue.<span style="color: #0000cc;">remove</span>();
+      System.<span style="color: #0000cc;">out</span>.<span style="color: #0000cc;">println</span>("Removed one  element from  Queue");
+      System.<span style="color: #0000cc;">out</span>.<span style="color: #0000cc;">println</span>("Queue: " + queue);
+    }
+    System.<span style="color: #0000cc;">out</span>.<span style="color: #0000cc;">println</span>("queue.isEmpty(): " + queue.<span style="color: #0000cc;">isEmpty</span>());
+    System.<span style="color: #0000cc;">out</span>.<span style="color: #0000cc;">println</span>("queue.peek(): " + queue.<span style="color: #0000cc;">peek</span>());
+    System.<span style="color: #0000cc;">out</span>.<span style="color: #0000cc;">println</span>("queue.poll(): " + queue.<span style="color: #0000cc;">poll</span>());
+    <span style="font-weight: bold; color: #008800;">try</span> {
+      String str = queue.<span style="color: #0000cc;">element</span>();
+      System.<span style="color: #0000cc;">out</span>.<span style="color: #0000cc;">println</span>("queue.element(): " + str);
+      str = queue.<span style="color: #0000cc;">remove</span>();
+      System.<span style="color: #0000cc;">out</span>.<span style="color: #0000cc;">println</span>("queue.remove(): " + str);
+    } <span style="font-weight: bold; color: #008800;">catch</span> (NoSuchElementException e) {
+      System.<span style="color: #0000cc;">out</span>.<span style="color: #0000cc;">println</span>("queue.remove(): Queue is  empty.");
+    }
+  }
+}</pre>
+<h2 style="color: #0a0a0a;">Map</h2>
+<p style="color: #0a0a0a;">While a <code>List</code> uses an index for accessing its elements, a <code>Map</code> uses a key that can be of any type (usually a <code>String</code>) to obtain a value.</p>
+<p style="color: #0a0a0a;">Therefore, a map cannot contain duplicate keys, and a key is associated with one value (which can be any object, even another map, or <code>null</code>).</p>
+<p style="color: #0a0a0a;">The two most used implementations are <code>HashMap</code> and <code>TreeMap</code>. The difference between them is that <code>TreeMap</code> sorts the keys, but adds and retrieves keys in log(n) time while <code>HashMap</code> doesn't guarantee the order but adds and retrieves keys faster.</p>
+<p style="color: #0a0a0a;">It is important that the objects used as keys have the methods <code>equals()</code> and <code>hashCode()</code> implemented.</p>
+<p style="color: #0a0a0a;">Since <code>Map</code> doesn't implement <code>Collection</code>, its methods are different. Here's an example that shows the most important ones:</p>
+
+<pre style="color: #0a0a0a;"><code class="java hljs" style="color: black;">Map&lt;String, Integer&gt; map = <span class="hljs-keyword" style="color: #aa0d91;">new</span> HashMap&lt;&gt;();
+ <span class="hljs-comment" style="color: #006a00;">
+ // Adding a key/value pair</span>
+ System.out.println( map.put(<span class="hljs-string" style="color: #c41a16;">"oranges"</span>, <span class="hljs-number" style="color: #1c00cf;">7</span>) ); <span class="hljs-comment" style="color: #006a00;">// null</span>
+ System.out.println( map.put(<span class="hljs-string" style="color: #c41a16;">"apples"</span>, <span class="hljs-number" style="color: #1c00cf;">5</span>) ); <span class="hljs-comment" style="color: #006a00;">// null</span>
+ System.out.println( map.put(<span class="hljs-string" style="color: #c41a16;">"lemons"</span>, <span class="hljs-number" style="color: #1c00cf;">2</span>) ); <span class="hljs-comment" style="color: #006a00;">// null</span>
+ System.out.println( map.put(<span class="hljs-string" style="color: #c41a16;">"bananas"</span>, <span class="hljs-number" style="color: #1c00cf;">7</span>) ); <span class="hljs-comment" style="color: #006a00;">// null</span>
+ <span class="hljs-comment" style="color: #006a00;">
+ // Replacing the value of an existing key. Returns the old one</span>
+ System.out.println( map.put(<span class="hljs-string" style="color: #c41a16;">"apples"</span>, <span class="hljs-number" style="color: #1c00cf;">4</span>) ); <span class="hljs-comment" style="color: #006a00;">// 5</span>
+ System.out.println( map.size() ); <span class="hljs-comment" style="color: #006a00;">// 4</span>
+ <span class="hljs-comment" style="color: #006a00;">
+ // {oranges=7, bananas=7, apples=4, lemons=2}</span>
+ System.out.println(map);
+ <span class="hljs-comment" style="color: #006a00;">
+ // Getting a value</span>
+ System.out.println( map.get(<span class="hljs-string" style="color: #c41a16;">"oranges"</span>) ); <span class="hljs-comment" style="color: #006a00;">// 7</span>
+ <span class="hljs-comment" style="color: #006a00;">
+ // Testing if the map contains a key</span>
+ System.out.println( map.containsKey(<span class="hljs-string" style="color: #c41a16;">"apples"</span>) ); <span class="hljs-comment" style="color: #006a00;">// true</span>
+ <span class="hljs-comment" style="color: #006a00;">// Testing if the map contains a value</span>
+ System.out.println( map.containsValue(<span class="hljs-number" style="color: #1c00cf;">5</span>) ); <span class="hljs-comment" style="color: #006a00;">// false</span>
+ <span class="hljs-comment" style="color: #006a00;">
+ // Removing the key/value pair and returning the value</span>
+ System.out.println( map.remove(<span class="hljs-string" style="color: #c41a16;">"lemons"</span>) ); <span class="hljs-comment" style="color: #006a00;">// 2</span>
+ <span class="hljs-comment" style="color: #006a00;">// Returns null if it can't find the key</span>
+ System.out.println( map.remove(<span class="hljs-string" style="color: #c41a16;">"lemons"</span>) ); <span class="hljs-comment" style="color: #006a00;">// null</span>
+ <span class="hljs-comment" style="color: #006a00;">
+ // Getting the keys as a Set</span>
+ <span class="hljs-comment" style="color: #006a00;">// (changes are reflected on the map and vice-versa)</span>
+ Set&lt;String&gt; keys = map.keySet(); <span class="hljs-comment" style="color: #006a00;">// [oranges, bananas, apples]</span>
+ <span class="hljs-comment" style="color: #006a00;">
+ // Getting the values as a Collection</span>
+ <span class="hljs-comment" style="color: #006a00;">// (changes are reflected on the map and vice-versa)</span>
+ Collection&lt;Integer&gt; values = map.values(); <span class="hljs-comment" style="color: #006a00;">// [7, 7, 4]</span>
+ <span class="hljs-comment" style="color: #006a00;">
+ // Removing all key/value pairs</span>
+ map.clear();</code></pre>
+<pre>System.out.println( map.isEmpty() ); <span class="hljs-comment" style="color: #006a00;">// true</span></pre>
+<p style="color: #0a0a0a;">If we change the implementation to <code>TreeMap</code>, the map will be stored in a red-black tree structure and sorted just like a <code>TreeSet</code>, either by a <code>Comparator</code> or <code>Comparable</code>, with the natural order of its key by default:</p>
+
+<pre style="color: #0a0a0a;"><code class="java hljs" style="color: black;">Map&lt;String, Integer&gt; map = <span class="hljs-keyword" style="color: #aa0d91;">new</span> TreeMap&lt;&gt;();</code></pre>
+<pre>System.out.println( map.put(<span class="hljs-string" style="color: #c41a16;">"oranges"</span>, <span class="hljs-number" style="color: #1c00cf;">7</span>) ); <span class="hljs-comment" style="color: #006a00;">// null</span>
+ System.out.println( map.put(<span class="hljs-string" style="color: #c41a16;">"apples"</span>, <span class="hljs-number" style="color: #1c00cf;">5</span>) ); <span class="hljs-comment" style="color: #006a00;">// null</span>
+ System.out.println( map.put(<span class="hljs-string" style="color: #c41a16;">"lemons"</span>, <span class="hljs-number" style="color: #1c00cf;">2</span>) ); <span class="hljs-comment" style="color: #006a00;">// null</span>
+ System.out.println( map.put(<span class="hljs-string" style="color: #c41a16;">"bananas"</span>, <span class="hljs-number" style="color: #1c00cf;">7</span>) ); <span class="hljs-comment" style="color: #006a00;">// null</span>
+ <span class="hljs-comment" style="color: #006a00;">
+ // {apples=4 , bananas=7, lemons=2, oranges=7}</span>
+ System.out.println(map);
+ <span class="hljs-comment" style="color: #006a00;">
+ // [apples, bananas, lemons oranges]</span>
+ Set&lt;String&gt; keys = map.keySet();
+ Collection&lt;Integer&gt; values = map.values(); <span class="hljs-comment" style="color: #006a00;">// [4, 7, 2, 7]</span></pre>
+<p style="color: #0a0a0a;">Notice that because of the way the sort is done (again, just like <code>TreeSet</code>); a <code>TreeMap</code> cannot have a <code>null</code> value as a key:</p>
+
+<pre style="color: #0a0a0a;"><code class="java hljs" style="color: black;">Map&lt;String, Integer&gt; map = <span class="hljs-keyword" style="color: #aa0d91;">new</span> TreeMap&lt;&gt;();
+ map.put(<span class="hljs-keyword" style="color: #aa0d91;">null</span>, <span class="hljs-number" style="color: #1c00cf;">1</span>); <span class="hljs-comment" style="color: #006a00;">// throws NullPointerException!</span></code></pre>
+<p style="color: #0a0a0a;">However, a <code>HashMap</code> can:</p>
+
+<pre style="color: #0a0a0a;"><code class="java hljs" style="color: black;">Map&lt;String, Integer&gt; map = <span class="hljs-keyword" style="color: #aa0d91;">new</span> HashMap&lt;&gt;();
+ map.put(<span class="hljs-keyword" style="color: #aa0d91;">null</span>, <span class="hljs-number" style="color: #1c00cf;">1</span>); <span class="hljs-comment" style="color: #006a00;">// OK</span></code></pre>
+<h2 style="color: #0a0a0a;">Example</h2>
+The following code demonstrates how to use a Map.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">import</span> java.util.HashMap;
+<span class="r" style="font-weight: bold; color: #7f0055;">import</span> java.util.Map;
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+    Map&lt;String, String&gt; map = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> HashMap&lt;&gt;();
+    map.put(<span class="q" style="font-weight: bold; color: #2a00ff;">"CSS"</span>, <span class="q" style="font-weight: bold; color: #2a00ff;">"style"</span>);
+    map.put(<span class="q" style="font-weight: bold; color: #2a00ff;">"HTML"</span>, <span class="q" style="font-weight: bold; color: #2a00ff;">"mark up"</span>);
+    map.put(<span class="q" style="font-weight: bold; color: #2a00ff;">"Oracle"</span>, <span class="q" style="font-weight: bold; color: #2a00ff;">"database"</span>);
+    map.put(<span class="q" style="font-weight: bold; color: #2a00ff;">"XML"</span>, <span class="q" style="font-weight: bold; color: #2a00ff;">"data"</span>);
+
+    printDetails(map);
+    map.clear();
+    printDetails(map);
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> printDetails(Map&lt;String, String&gt; map) {
+    String usage = map.get(<span class="q" style="font-weight: bold; color: #2a00ff;">"CSS"</span>);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Map: "</span> + map);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Map Size:  "</span> + map.size());
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Map is empty:  "</span> + map.isEmpty());
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Map contains CSS key:   "</span> + map.containsKey(<span class="q" style="font-weight: bold; color: #2a00ff;">"CSS"</span>));
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Usage:  "</span> + usage);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"removed:  "</span> + map.remove(<span class="q" style="font-weight: bold; color: #2a00ff;">"CSS"</span>));
+  }
+}</pre>

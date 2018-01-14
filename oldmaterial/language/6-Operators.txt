@@ -1,0 +1,748 @@
+<h1>Arithmetic Operators</h1>
+&nbsp;
+
+Arithmetic operators are used in mathematical expressions.
+
+The following table lists the arithmetic operators:
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>Operator</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>Addition</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Subtraction (unary minus)</td>
+</tr>
+<tr>
+<td>*</td>
+<td>Multiplication</td>
+</tr>
+<tr>
+<td>/</td>
+<td>Division</td>
+</tr>
+<tr>
+<td>%</td>
+<td>Modulus</td>
+</tr>
+<tr>
+<td>++</td>
+<td>Increment</td>
+</tr>
+<tr>
+<td>+=</td>
+<td>Addition assignment</td>
+</tr>
+<tr>
+<td>-=</td>
+<td>Subtraction assignment</td>
+</tr>
+<tr>
+<td>*=</td>
+<td>Multiplication assignment</td>
+</tr>
+<tr>
+<td>/=</td>
+<td>Division assignment</td>
+</tr>
+<tr>
+<td>%=</td>
+<td>Modulus assignment</td>
+</tr>
+<tr>
+<td>--</td>
+<td>Decrement</td>
+</tr>
+</tbody>
+</table>
+The operands of the arithmetic operators must be of a numeric type. You cannot use arithmetic operators on <code style="color: #c7254e;">boolean</code> types, but you can use them on <code style="color: #c7254e;">char</code> types.
+
+The basic arithmetic operations are addition, subtraction, multiplication, and division. The minus operator also has a unary form which negates its single operand.
+
+The quick demo below shows how to do a simple calculation in Java with basic arithmetic operators.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Integer Arithmetic"</span>);
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a = 1 + 1;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> b = a * 3;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> c = b / 4;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> d = c - a;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> e = -d;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"a = "</span> + a);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"b = "</span> + b);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"c = "</span> + c);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"d = "</span> + d);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"e = "</span> + e);
+    
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> x = 42;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"x mod 10 = "</span> + x % 10);
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> y = 42.25;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"y mod 10 = "</span> + y % 10);
+  }
+}
+</pre>
+When you run this program, you will see the following output:
+<pre>Integer Arithmetic
+a = 2
+b = 6
+c = 1
+d = -1
+e = 1
+x mod 10 = 2
+y mod 10 = 2.25</pre>
+The modulus operator, <code style="color: #c7254e;">%</code>, returns the remainder of a division operation. The modulus operator can be applied to floating-point types as well as integer types.
+<div></div>
+<h2 id="Java_Compound_Assignment_Operators">Compound Assignment Operators</h2>
+Statements like the following
+<pre>a = a + 4;
+</pre>
+can be rewritten as
+<pre>a += 4;
+</pre>
+Both statements perform the same action: they increase the value of <code style="color: #c7254e;">a</code> by 4.
+
+Any statement of the form
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">var</span> = <span class="r" style="font-weight: bold; color: #7f0055;">var</span> op expression;
+</pre>
+can be rewritten as
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">var</span> op= expression;
+</pre>
+Here is a sample program that shows several <code style="color: #c7254e;">op=</code> operator assignments:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a = 1;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> b = 2;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> c = 3;
+
+    a += 1;
+    b *= 2;
+    c += a * b;
+    c %= 3;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"a = "</span> + a);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"b = "</span> + b);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"c = "</span> + c);
+
+  }
+}
+</pre>
+The output of this program is shown here:
+<pre>a = 2
+b = 4
+c = 2</pre>
+<div></div>
+<h2 id="Java_Increment_and_Decrement_Operator">Increment and Decrement Operator</h2>
+<code style="color: #c7254e;">++</code> and <code style="color: #c7254e;">--</code> are  increment and decrement operators. The increment operator, <code style="color: #c7254e;">++</code>, increases its operand by one. The decrement operator, <code style="color: #c7254e;">--</code>, decreases its operand by one.
+
+Different between Increment and Decrement Operator:
+
+For example, this statement:
+<pre>x = x + 1;
+</pre>
+can be rewritten like this by use of the increment operator:
+<pre>x++;
+</pre>
+This statement:
+<pre>x = x - 1;
+</pre>
+is equivalent to
+<pre>x--;
+</pre>
+The increment and decrement operators are unique in that they can appear both in postfix form and prefix form. In the postfix form they follow the operand, for example, <code style="color: #c7254e;">i++</code>. In the prefix form, they precede the operand, for example, <code style="color: #c7254e;">--i</code>.
+
+The difference between these two forms appears when the increment and/or decrement operators are part of a larger expression. In the prefix form, the operand is incremented or decremented before the value is used in the expression. In postfix form, the value is used in the expression, and then the operand is modified.
+
+The following table summarizes the difference between Pre-and Post- Increment and Decrement Operations:
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>Initial Value of x</th>
+<th>Expression</th>
+<th>Final Value of y</th>
+<th>Final Value of x</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>y = x++</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>5</td>
+<td>y = ++x</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr>
+<td>5</td>
+<td>y = x--</td>
+<td>5</td>
+<td>4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>y = --x</td>
+<td>4</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+For example:
+<pre>x = 42; 
+y = ++x;
+</pre>
+<code style="color: #c7254e;">y</code> is set to 43, because the increment occurs before x is assigned to y. Thus, the line
+<pre>y = ++x;
+</pre>
+is the equivalent of these two statements:
+<pre>x = x + 1; 
+y = x;
+</pre>
+However, when written like this,
+<pre>x = 42; 
+y = x++;
+</pre>
+the value of x is obtained before the increment operator is executed, so the value of y is 42.
+
+In both cases x is set to 43. The line
+<pre>y = x++;
+</pre>
+is the equivalent of these two statements:
+<pre>y = x; 
+x = x + 1;
+</pre>
+The following program demonstrates the increment operator.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a = 1;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> b = 2;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> c = ++b;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> d = a++;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"a = "</span> + a);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"b = "</span> + b);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"c = "</span> + c);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"d = "</span> + d);
+
+  }
+}
+</pre>
+The output of this program follows:
+<pre>a = 2
+b = 3
+c = 3
+d = 1</pre>
+&nbsp;
+<h1>Boolean Operator</h1>
+&nbsp;
+
+The following table lists all boolean logical operators.
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>Operator</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;</td>
+<td>Logical AND</td>
+</tr>
+<tr>
+<td>|</td>
+<td>Logical OR</td>
+</tr>
+<tr>
+<td>^</td>
+<td>Logical XOR (exclusive OR)</td>
+</tr>
+<tr>
+<td>||</td>
+<td>Short-circuit OR</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>Short-circuit AND</td>
+</tr>
+<tr>
+<td>!</td>
+<td>Logical unary NOT</td>
+</tr>
+<tr>
+<td>&amp;=</td>
+<td>AND assignment</td>
+</tr>
+<tr>
+<td>|=</td>
+<td>OR assignment</td>
+</tr>
+<tr>
+<td>^=</td>
+<td>XOR assignment</td>
+</tr>
+<tr>
+<td>==</td>
+<td>Equal to</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>Not equal to</td>
+</tr>
+<tr>
+<td>? :</td>
+<td>Ternary if-then-else</td>
+</tr>
+</tbody>
+</table>
+<div></div>
+<h2 id="True_table">True table</h2>
+The following table shows the effect of each logical operation:
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>A | B</th>
+<th>A &amp; B</th>
+<th>A ^ B</th>
+<th>!A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+The following program demonstrates the boolean logical operators.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">boolean</span> a = true;
+    <span class="r" style="font-weight: bold; color: #7f0055;">boolean</span> b = false;
+    <span class="r" style="font-weight: bold; color: #7f0055;">boolean</span> c = a | b;
+    <span class="r" style="font-weight: bold; color: #7f0055;">boolean</span> d = a &amp; b;
+    <span class="r" style="font-weight: bold; color: #7f0055;">boolean</span> e = a ^ b;
+    <span class="r" style="font-weight: bold; color: #7f0055;">boolean</span> f = (!a &amp; b) | (a &amp; !b);
+    <span class="r" style="font-weight: bold; color: #7f0055;">boolean</span> g = !a;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">" a = "</span> + a);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">" b = "</span> + b);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">" a|b = "</span> + c);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">" a&amp;b = "</span> + d);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">" a^b = "</span> + e);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"!a&amp;b|a&amp;!b = "</span> + f);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">" !a = "</span> + g);
+
+  }
+}
+</pre>
+The output:
+<pre> a = true
+ b = false
+ a|b = true
+ a&amp;b = false
+ a^b = true
+!a&amp;b|a&amp;!b = true
+ !a = false</pre>
+<h2 id="Example">Example</h2>
+The following program demonstrates the bitwise logical operators:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a = 1;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> b = 2;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> c = a | b;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> d = a &amp; b;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> e = a ^ b;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> f = (~a &amp; b) | (a &amp; ~b);
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> g = ~a &amp; 0x0f;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">" a = "</span> + a);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">" b = "</span> + b);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">" a|b = "</span> + c);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">" a&amp;b = "</span> + d);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">" a^b = "</span> + e);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"~a&amp;b|a&amp;~b = "</span> + f);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">" ~a = "</span> + g);
+
+  }
+}
+</pre>
+Here is the output from this program:
+<pre> a = 1
+ b = 2
+ a|b = 3
+ a&amp;b = 0
+ a^b = 3
+~a&amp;b|a&amp;~b = 3
+ ~a = 14</pre>
+<h2 id="Java_Logical_Operators_Shortcut">Logical Operators Shortcut</h2>
+The <code style="color: #c7254e;">OR</code> operator results in true when one operand is <code style="color: #c7254e;">true</code>, no matter what the second operand is. The <code style="color: #c7254e;">AND</code> operator results in false when one operand is <code style="color: #c7254e;">false</code>, no matter what the second operand is. If you use the <code style="color: #c7254e;">||</code> and <code style="color: #c7254e;">&amp;&amp;</code>, Java will not evaluate the right-hand operand when the outcome can be determined by the left operand alone.
+
+The following code shows how you can use short-circuit logical operator to ensure that a division operation will be valid before evaluating it:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> denom = 0;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> num = 3;
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (denom != 0 &amp;&amp; num / denom &gt; 10) {
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Here"</span>);
+    } <span class="r" style="font-weight: bold; color: #7f0055;">else</span> {
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"There"</span>);
+    }
+  }
+}
+</pre>
+The output:
+<pre>There</pre>
+If we want to turn of the shortcut behaviour of logical operators we can use &amp; and |.
+<h2 id="Example_2">Example 2</h2>
+The following code uses a single &amp; ensures that the increment operation will be applied to <code style="color: #c7254e;">e</code>whether <code style="color: #c7254e;">c</code> is equal to 1 or not.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> c = 0;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> e = 99;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> d = 0;
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (c == 1 &amp; e++ &lt; 100)
+      d = 100;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"e is "</span> + e);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"d is "</span> + d);
+  }
+}
+</pre>
+The output:
+<pre>e is 100
+d is 0</pre>
+&nbsp;
+<h1>Relational Operators</h1>
+Relational operators determine the relationship between two operands.
+
+The relational operators in Java are:
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>Operator</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>==</td>
+<td>Equal to</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>Not equal to</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>Greater than</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>Less than</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>Greater than or equal to</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>Less than or equal to</td>
+</tr>
+</tbody>
+</table>
+For example, the following code fragment is perfectly valid. It compares two int values and assign the result to <code style="color: #c7254e;">boolean</code> value <code style="color: #c7254e;">c</code>.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a = 4;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> b = 1;
+    <span class="r" style="font-weight: bold; color: #7f0055;">boolean</span> c = a &lt; b;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"c is "</span> + c);
+  }
+}
+</pre>
+The result of <code style="color: #c7254e;">a &lt; b</code> (which is false) is stored in <code style="color: #c7254e;">c</code>.
+<pre>c is false</pre>
+<div></div>
+<h2 id="Example">Example</h2>
+The outcome of a relational operator is a boolean value. In the following code, the <code style="color: #c7254e;">System.out.println</code> outputs the result of a relational operator.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="c" style="font-weight: bold; color: #3f7f5f;">// outcome of a relational operator is a boolean value
+</span>    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"10 &gt; 9 is "</span> + (10 &gt; 9));
+  }
+}
+</pre>
+The output generated by this program is shown here:
+<pre>10 &gt; 9 is true</pre>
+<h1>Ternary operator</h1>
+The <code style="color: #c7254e;">?</code> operator is a ternary (three-way) operator.
+
+ternary operator is basically a short form of simple if statement.
+<h2 id="Syntax">Syntax</h2>
+The <code style="color: #c7254e;">?</code> has this general form:
+<pre>expression1 ? expression2 : expression3
+</pre>
+<code style="color: #c7254e;">expression1</code> can be any expression that evaluates to a <code style="color: #c7254e;">boolean</code> value. If <code style="color: #c7254e;">expression1</code> is <code style="color: #c7254e;">true</code>, then <code style="color: #c7254e;">expression2</code> is evaluated. Otherwise, <code style="color: #c7254e;">expression3</code> is evaluated.
+
+The expression evaluated is the result of the <code style="color: #c7254e;">?</code> operation. Both <code style="color: #c7254e;">expression2</code> and <code style="color: #c7254e;">expression3</code>are required to return the same type, which can't be void.
+
+Here is an example of <code style="color: #c7254e;">?</code> operator:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> denom = 10;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> num = 4;
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> ratio;
+
+    ratio = denom == 0 ? 0 : num / denom;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ratio = "</span> + ratio);
+  }
+}
+</pre>
+The output:
+<pre>ratio = 0.0</pre>
+<div></div>
+<h2 id="Example">Example</h2>
+Here is another program that demonstrates the <code style="color: #c7254e;">?</code> operator. It uses it to obtain the absolute value of a variable.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> i, k;
+    i = 10;
+    k = i &lt; 0 ? -i : i; 
+    System.out.print(<span class="q" style="font-weight: bold; color: #2a00ff;">"Absolute value of "</span>);
+    System.out.println(i + <span class="q" style="font-weight: bold; color: #2a00ff;">" is "</span> + k);
+
+    i = -10;
+    k = i &lt; 0 ? -i : i; 
+    System.out.print(<span class="q" style="font-weight: bold; color: #2a00ff;">"Absolute value of "</span>);
+    System.out.println(i + <span class="q" style="font-weight: bold; color: #2a00ff;">" is "</span> + k);
+
+  }
+}
+</pre>
+The output generated by the program is shown here:
+<pre>Absolute value of 10 is 10
+Absolute value of -10 is 10</pre>
+&nbsp;
+<h1>Bitwise Operators</h1>
+&nbsp;
+
+Bitwise Operators act upon the individual bits of their operands. bitwise operators can be applied to the integer types: <code style="color: #c7254e;">long, int, short, char, byte</code>.
+
+The following table lists all bitwise operators.
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>Operator</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~</td>
+<td>Bitwise unary NOT</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>Bitwise AND</td>
+</tr>
+<tr>
+<td>|</td>
+<td>Bitwise OR</td>
+</tr>
+<tr>
+<td>^</td>
+<td>Bitwise exclusive OR</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>Shift right</td>
+</tr>
+<tr>
+<td>&gt;&gt;&gt;</td>
+<td>Shift right zero fill</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>Shift left</td>
+</tr>
+<tr>
+<td>&amp;=</td>
+<td>Bitwise AND assignment</td>
+</tr>
+<tr>
+<td>|=</td>
+<td>Bitwise OR assignment</td>
+</tr>
+<tr>
+<td>^=</td>
+<td>Bitwise exclusive OR assignment</td>
+</tr>
+<tr>
+<td>&gt;&gt;=</td>
+<td>Shift right assignment</td>
+</tr>
+<tr>
+<td>&gt;&gt;&gt;=</td>
+<td>Shift right zero fill assignment</td>
+</tr>
+<tr>
+<td>&lt;&lt;=</td>
+<td>Shift left assignment</td>
+</tr>
+</tbody>
+</table>
+Bitwise operator assignments combines the assignment with the bitwise operation. The following two statements are equivalent:
+<pre>a = a &gt;&gt; 4; 
+a &gt;&gt;= 4;  
+</pre>
+The following two statements are equivalent:
+<pre>a = a | b; 
+a |= b;
+</pre>
+The following program demonstrates the bitwise operator assignments:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a = 1;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> b = 2;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> c = 3;
+    a |= 2;
+    b &gt;&gt;= 2;
+    c &lt;&lt;= 2;
+    a ^= c;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"a = "</span> + a);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"b = "</span> + b);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"c = "</span> + c);
+
+  }
+}
+</pre>
+The output of this program is shown here:
+<pre>a = 15
+b = 0
+c = 12</pre>
+<h2 id="Java_Left_Shift_Operator">Left Shift Operator</h2>
+The left shift operator, &lt;&lt;, shifts all of the bits in a value to the left a specified number of times.
+
+It has this general form:
+<pre>value &lt;&lt; num
+</pre>
+The following code shifts byte type variable.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">byte</span> a = 64, b;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> i;
+    i = a &lt;&lt; 2;
+    b = (<span class="r" style="font-weight: bold; color: #7f0055;">byte</span>) (a &lt;&lt; 2);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Original value of a: "</span> + a);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"i and b: "</span> + i + <span class="q" style="font-weight: bold; color: #2a00ff;">" "</span> + b);
+  }
+}
+</pre>
+The output generated by this program is shown here:
+<pre>Original value of a: 64
+i and b: 256 0</pre>
+<div></div>
+<h2 id="Example">Example</h2>
+Each left shift has the effect of doubling the original value. The following program illustrates this point:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> num = 0xFFFFFFF;
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i = 0; i &lt; 4; i++) {
+      num = num &lt;&lt; 1;
+      System.out.println(num);
+
+    }
+  }
+}
+</pre>
+The program generates the following output:
+<pre>536870910
+1073741820
+2147483640
+-16</pre>
+<h2 id="Java_Right_Shift_Operator">Right Shift Operator</h2>
+The right shift operator, <code style="color: #c7254e;">&gt;&gt;</code>, shifts all of the bits in a value to the right a specified number of times.
+
+Its general form is shown here:
+<pre>value &gt;&gt; num
+</pre>
+<code style="color: #c7254e;">num</code> specifies the number of positions to right-shift.
+
+The following code fragment shifts the value <code style="color: #c7254e;">32</code> to the right by two positions:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a = 32;
+    a = a &gt;&gt; 2;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"a is "</span> + a);
+
+  }
+}
+</pre>
+The output:
+<pre>a is 8</pre>
+<h2 id="Java_Unsigned_Right_Shift">Unsigned Right Shift</h2>
+The unsigned, shift-right operator, <code style="color: #c7254e;">&gt;&gt;&gt;</code>, always shifts zeros into the high-order bit.
+
+Its general form is shown here:
+<pre>value &gt;&gt;&gt; num
+</pre>
+<code style="color: #c7254e;">num</code> specifies the number of positions to right-shift.
+
+The following code shows how to use unsigned right shift.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a = -1;
+    a = a &gt;&gt;&gt; 24;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"a is "</span> + a);
+  }
+}
+</pre>
+The output:
+<pre>a is 255</pre>

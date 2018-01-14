@@ -1,0 +1,19 @@
+<h2>Part 1 - Basic</h2>
+Create Maven project and JUnit tests that do the following:
+Using JavaDB (Derby) ,create an application that
+<ol>
+	<li>Cleans the database by deleting all rows</li>
+	<li>inserts "Student" records and then retrieves the records and asserts that they are correct</li>
+</ol>
+<h4>Maven dependency</h4>
+<div class="line number2 index1 alt1" style="color: #000000;">&lt;dependency&gt;
+&lt;groupId&gt;org.apache.derby&lt;/groupId&gt;
+&lt;artifactId&gt;derbyclient&lt;/artifactId&gt;
+&lt;version&gt;10.10.2.0&lt;/version&gt;
+&lt;/dependency&gt;</div>
+<h2>Part 2 - Advanced</h2>
+Use a <a href="https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm">DAO Design Pattern</a> to implement database multi-tenancy and file based data storage
+
+&nbsp;
+<h1>Solution</h1>
+<a href="https://github.com/roryp/StudentDB">https://github.com/roryp/StudentDB</a>

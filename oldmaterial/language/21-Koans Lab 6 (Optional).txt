@@ -1,0 +1,28 @@
+Finish the remaining Koans
+
+<strong>Intermediate</strong>
+AboutEquality
+AboutComparison
+AboutDates
+AboutFileIO
+AboutLocale
+AboutRegularExpressions
+AboutSerialization
+
+<strong>Advanced</strong>
+AboutMocks
+
+<strong>Java 7</strong>
+AboutJava7LiteralsEnhancements
+AboutStringsInSwitch
+AboutDiamondOperator
+AboutTryWithResources
+AboutRequireNotNull
+
+<strong>Java 8</strong>
+AboutDefaultMethods
+AboutOptional
+AboutLocalTime
+AboutLambdas
+AboutStreams
+AboutMultipleInheritance

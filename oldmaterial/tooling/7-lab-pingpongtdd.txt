@@ -1,0 +1,430 @@
+<a href="https://github.com/Jozi-JUG/pingpongtdd"><span style="color: rgba(0, 0, 0, 0.870588);">https://github.com/Jozi-JUG/pingpongtdd</span></a>
+<div>
+<div>
+<h1>Ping Pong TDD</h1>
+</div>
+</div>
+<div class="xg_module" style="color: #000000;">
+<div class="xg_module_body wpage">
+<div id="page-content" class="description">
+<div class="xg_user_generated">
+<div id="article_body">
+
+<em>Ping pong</em> is one of the most basic activities used when teaching Test Driven Development (TDD) . The rules are simple:
+<ul>
+	<li>Work in pairs</li>
+	<li>Person A only writes tests (test code only)</li>
+	<li>Person B only tries to get the tests to pass (production code only)</li>
+	<li>Both persons refactor when appropriate</li>
+</ul>
+During the activity, it a good idea to ask participants to switch roles. Person B becomes the test writer, and Person A becomes the test taker (or the person who gets the tests to pass).
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<span style="color: #000000;">This Lab shows how TDD can be easy and fun by combining it with pair programming. As if you were playing table tennis, in ping pong TDD you create a test for your partner to pass, and then he creates one for you.</span>
+
+&nbsp;
+
+This exercise is to create a unit of code that converts Roman numbers into Arabic numerals. Were going to show how the development proceeds when we work in the smallest possible increments
+
+Player 1:
+<pre><code>@Test
+public void testNumber1() {
+    assertEquals(1,RomanConverter.Convert("I"));
+}
+</code></pre>
+Player 2:
+<pre><code>public class RomanConverter {
+        public static int Convert(String s) 
+        {
+            return 1;
+        }
+}
+
+@Test
+public void testNumber2() {
+    assertEquals(2,RomanConverter.Convert("II"));
+}
+</code></pre>
+Player 1:
+<pre><code>public class RomanConverter {
+    public static int Convert(String s) 
+    {
+        return s.length();
+    }
+}
+
+@Test
+public void testNumber5() {
+    assertEquals(5,RomanConverter.Convert("V"));
+}
+</code></pre>
+Player 2:
+<pre><code>public class RomanConverter {
+    public static int Convert(String s) 
+    {
+        if (s.equals("V") {
+            return 5;
+        }
+        else {
+            return s.length();
+        }
+    }
+}
+
+@Test
+public void testTwoDifferentNumbers() {
+    assertEquals(6,RomanConverter.Convert("VI"));
+}
+</code></pre>
+Player 1:
+<pre><code>public class RomanConverter {
+    public static int Convert(String s) 
+    {
+        int sum = 0;
+        for (int i = 0; i &lt; s.length(); i++) {
+            if (s.charAt(i) == 'I') {
+                sum += 1;
+            }
+            else {
+                sum+= 5;
+            }
+        }
+    return sum;
+}
+
+
+@Test
+public void testSmallchar() {
+    assertEquals(6,RomanConverter.Convert("vi");
+}
+</code></pre>
+Continue until the final solution (with RegEx).
+<h1></h1>
+<h1>Roman Numeral Rules</h1>
+&nbsp;
+<table width="619">
+<tbody>
+<tr>
+<td width="177"><strong>Symbol</strong></td>
+<td width="232"><strong>Meaning</strong></td>
+<td width="210"><strong>Decimal</strong></td>
+</tr>
+<tr>
+<td width="177"><a href="http://changelog.ca/topic/I"><strong>I</strong></a></td>
+<td width="232"><a href="http://changelog.ca/topic/One"><strong>One</strong></a></td>
+<td width="210"><a href="http://changelog.ca/topic/1"><strong>1</strong></a></td>
+</tr>
+<tr>
+<td width="177"><a href="http://changelog.ca/topic/V"><strong>V</strong></a></td>
+<td width="232"><a href="http://changelog.ca/topic/Five"><strong>Five</strong></a></td>
+<td width="210"><a href="http://changelog.ca/topic/5"><strong>5</strong></a></td>
+</tr>
+<tr>
+<td width="177"><a href="http://changelog.ca/topic/X"><strong>X</strong></a></td>
+<td width="232"><a href="http://changelog.ca/topic/Ten"><strong>Ten</strong></a></td>
+<td width="210"><a href="http://changelog.ca/topic/10"><strong>10</strong></a></td>
+</tr>
+<tr>
+<td width="177"><a href="http://changelog.ca/topic/L"><strong>L</strong></a></td>
+<td width="232"><a href="http://changelog.ca/topic/Fifty"><strong>Fifty</strong></a></td>
+<td width="210"><a href="http://changelog.ca/topic/50"><strong>50</strong></a></td>
+</tr>
+<tr>
+<td width="177"><a href="http://changelog.ca/topic/C"><strong>C</strong></a></td>
+<td width="232"><a href="http://changelog.ca/topic/One%20Hundred"><strong>One Hundred</strong></a></td>
+<td width="210"><a href="http://changelog.ca/topic/100"><strong>100</strong></a></td>
+</tr>
+<tr>
+<td width="177"><a href="http://changelog.ca/topic/D"><strong>D</strong></a></td>
+<td width="232"><a href="http://changelog.ca/topic/Five%20Hundred"><strong>Five Hundred</strong></a></td>
+<td width="210"><a href="http://changelog.ca/topic/500"><strong>500</strong></a></td>
+</tr>
+<tr>
+<td width="177"><a href="http://changelog.ca/topic/M"><strong>M</strong></a></td>
+<td width="232"><a href="http://changelog.ca/topic/One%20Thousand"><strong>One Thousand</strong></a></td>
+<td width="210"><a href="http://changelog.ca/topic/1000"><strong>1000</strong></a></td>
+</tr>
+</tbody>
+</table>
+&nbsp;
+
+<strong><em>Roman numerals</em></strong><strong> follow this pattern....</strong><strong>   </strong>
+<table width="683">
+<tbody>
+<tr>
+<td width="148"><strong>Units</strong></td>
+<td width="49"><strong>I</strong></td>
+<td width="58"><strong>II</strong></td>
+<td width="76"><strong>III</strong></td>
+<td width="54"><strong>IV</strong></td>
+<td width="42"><strong>V</strong></td>
+<td width="54"><strong>VI</strong></td>
+<td width="64"><strong>VII</strong></td>
+<td width="82"><strong>VIII</strong></td>
+<td width="56"><strong>IX</strong></td>
+</tr>
+<tr>
+<td width="148"><strong>Tens</strong></td>
+<td width="49"><strong>X</strong></td>
+<td width="58"><strong>XX</strong></td>
+<td width="76"><strong>XXX</strong></td>
+<td width="54"><strong>XL</strong></td>
+<td width="42"><strong>L</strong></td>
+<td width="54"><strong>LX</strong></td>
+<td width="64"><strong>LXX</strong></td>
+<td width="82"><strong>LXXX</strong></td>
+<td width="56"><strong>XC</strong></td>
+</tr>
+<tr>
+<td width="148"><strong>Hundreds</strong></td>
+<td width="49"><strong>C</strong></td>
+<td width="58"><strong>CC</strong></td>
+<td width="76"><strong>CCC</strong></td>
+<td width="54"><strong>CD</strong></td>
+<td width="42"><strong>D</strong></td>
+<td width="54"><strong>DC</strong></td>
+<td width="64"><strong>DCC</strong></td>
+<td width="82"><strong>DCCC</strong></td>
+<td width="56"><strong>CM</strong></td>
+</tr>
+<tr>
+<td width="148"><strong>Thousands</strong></td>
+<td width="49"><strong>M</strong></td>
+<td width="58"><strong>MM</strong></td>
+<td width="76"><strong>MMM</strong></td>
+<td width="54"><strong>IV</strong></td>
+<td width="42"><strong>V</strong></td>
+<td width="54"><strong>VI</strong></td>
+<td width="64"><strong>VII</strong></td>
+<td width="82"><strong>VIII</strong></td>
+<td width="56"><strong>IX</strong></td>
+</tr>
+</tbody>
+</table>
+&nbsp;
+
+<strong>The Additive System</strong>
+
+The system for writing Roman numerals is an additive system. This means to calculate the value of a Roman numeral, you simply to have to add up all the digits in the Roman numeral.
+
+Roman Numerals are always written from Largest to Smallest – Left to Right.
+<h4>Examples:</h4>
+VIII = 5 + 1 + 1 + 1 = 8
+
+XXXIII = 10 + 10 + 10 + 1 + 1 + 1 = 33
+
+CLXXVIII = 100 + 50 + 10 + 10 + 5 + 1 + 1 + 1 = 178
+
+MMX = 1,000 + 1,000 + 10 = 2,010
+<strong>SUBTRACTIVE SYSTEM
+</strong>You can write <strong><em>one</em></strong> smaller numeral to the left of a larger one to subtract from it! The table below has all the allowed subtractive combinations
+<table width="595">
+<tbody>
+<tr>
+<td width="207"><strong>Roman Numeral</strong></td>
+<td width="194"><strong>Value</strong></td>
+<td width="194"><strong>Equivalent</strong></td>
+</tr>
+<tr>
+<td width="207"><strong>IV</strong></td>
+<td width="194"><strong>4</strong></td>
+<td width="194"><strong>IIII</strong></td>
+</tr>
+<tr>
+<td width="207"><strong>IX</strong></td>
+<td width="194"><strong>9</strong></td>
+<td width="194"><strong>VIIII</strong></td>
+</tr>
+<tr>
+<td width="207"><strong>XL</strong></td>
+<td width="194"><strong>40</strong></td>
+<td width="194"><strong>XXXX</strong></td>
+</tr>
+<tr>
+<td width="207"><strong>XC</strong></td>
+<td width="194"><strong>90</strong></td>
+<td width="194"><strong>LXXXX</strong></td>
+</tr>
+<tr>
+<td width="207"><strong>CD</strong></td>
+<td width="194"><strong>400</strong></td>
+<td width="194"><strong>CCCC</strong></td>
+</tr>
+<tr>
+<td width="207"><strong>CM</strong></td>
+<td width="194"><strong>900</strong></td>
+<td width="194"><strong>DCCCC</strong></td>
+</tr>
+</tbody>
+</table>
+&nbsp;
+<h1>Solution</h1>
+<pre><span style="font-weight: bold; color: #008800;">import</span> <span style="font-weight: bold; color: #0e84b5;">static</span> org.<span style="color: #0000cc;">junit</span>.<span style="color: #0000cc;">Assert</span>.*;
+
+<span style="font-weight: bold; color: #008800;">import</span> <span style="font-weight: bold; color: #0e84b5;">org.junit.Test</span>;
+<span style="font-weight: bold; color: #008800;">import</span> <span style="font-weight: bold; color: #0e84b5;">org.junit.rules.ExpectedException</span>;
+
+<span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #008800;">class</span> <span style="font-weight: bold; color: #bb0066;">testping</span> {
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">testNumber1</span>() {
+  assertEquals(<span style="font-weight: bold; color: #0000dd;">1</span>, RomanConverter.<span style="color: #0000cc;">Convert</span>("I"));
+ }
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">testNumber2</span>() {
+  assertEquals(<span style="font-weight: bold; color: #0000dd;">2</span>, RomanConverter.<span style="color: #0000cc;">Convert</span>("II"));
+ }
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">testNumber5</span>() {
+  assertEquals(<span style="font-weight: bold; color: #0000dd;">5</span>, RomanConverter.<span style="color: #0000cc;">Convert</span>("V"));
+ }
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">test2DifferentNumber</span>() {
+  assertEquals(<span style="font-weight: bold; color: #0000dd;">6</span>, RomanConverter.<span style="color: #0000cc;">Convert</span>("VI"));
+ }
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">testSmallchar</span>() {
+  assertEquals(<span style="font-weight: bold; color: #0000dd;">6</span>, RomanConverter.<span style="color: #0000cc;">Convert</span>("vi"));
+ }
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">testX</span>() {
+  assertEquals(<span style="font-weight: bold; color: #0000dd;">10</span>, RomanConverter.<span style="color: #0000cc;">Convert</span>("x"));
+ }
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">testL</span>() {
+  assertEquals(<span style="font-weight: bold; color: #0000dd;">50</span>, RomanConverter.<span style="color: #0000cc;">Convert</span>("l"));
+ }
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">testC</span>() {
+  assertEquals(<span style="font-weight: bold; color: #0000dd;">100</span>, RomanConverter.<span style="color: #0000cc;">Convert</span>("C"));
+ }
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">testD</span>() {
+  assertEquals(<span style="font-weight: bold; color: #0000dd;">500</span>, RomanConverter.<span style="color: #0000cc;">Convert</span>("D"));
+ }
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">testM</span>() {
+  assertEquals(<span style="font-weight: bold; color: #0000dd;">1000</span>, RomanConverter.<span style="color: #0000cc;">Convert</span>("M"));
+ }
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>(expected = RuntimeException.<span style="color: #0000cc;">class</span>)
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">testA</span>() {
+  RomanConverter.<span style="color: #0000cc;">Convert</span>("A");
+ }
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>(expected = RuntimeException.<span style="color: #0000cc;">class</span>)
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">testNull</span>() {
+  RomanConverter.<span style="color: #0000cc;">Convert</span>("");
+ }
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">testNumber4</span>() {
+  assertEquals(<span style="font-weight: bold; color: #0000dd;">4</span>, RomanConverter.<span style="color: #0000cc;">Convert</span>("IV"));
+ }
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">testNumber40</span>() {
+  assertEquals(<span style="font-weight: bold; color: #0000dd;">40</span>, RomanConverter.<span style="color: #0000cc;">Convert</span>("XL"));
+ }
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">testNumber9</span>() {
+  assertEquals(<span style="font-weight: bold; color: #0000dd;">9</span>, RomanConverter.<span style="color: #0000cc;">Convert</span>("IX"));
+ }
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">testNumber90</span>() {
+  assertEquals(<span style="font-weight: bold; color: #0000dd;">90</span>, RomanConverter.<span style="color: #0000cc;">Convert</span>("XC"));
+ }
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">testNumber400</span>() {
+  assertEquals(<span style="font-weight: bold; color: #0000dd;">400</span>, RomanConverter.<span style="color: #0000cc;">Convert</span>("CD"));
+ }
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">testNumber999</span>() {
+  assertEquals(<span style="font-weight: bold; color: #0000dd;">999</span>, RomanConverter.<span style="color: #0000cc;">Convert</span>("CMXCIX"));
+ }
+
+ <span style="font-weight: bold; color: #555555;">@Test</span>(expected = RuntimeException.<span style="color: #0000cc;">class</span>)
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #333399;">void</span> <span style="font-weight: bold; color: #0066bb;">testInvalidRepetition</span>() {
+  RomanConverter.<span style="color: #0000cc;">Convert</span>("IIII");
+ }
+}
+
+</pre>
+<div id="preview">
+<div>
+<pre><span style="font-weight: bold; color: #008800;">import</span> <span style="font-weight: bold; color: #0e84b5;">java.util.regex.Pattern</span>;
+
+<span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #008800;">class</span> <span style="font-weight: bold; color: #bb0066;">RomanConverter</span> {
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #008800;">static</span> <span style="font-weight: bold; color: #333399;">int</span> <span style="font-weight: bold; color: #0066bb;">Convert</span>(String s) {
+  <span style="font-weight: bold; color: #333399;">int</span> sum = <span style="font-weight: bold; color: #0000dd;">0</span>;
+  <span style="font-weight: bold; color: #008800;">if</span> (s == <span style="font-weight: bold; color: #008800;">null</span> || s.<span style="color: #0000cc;">length</span>() == <span style="font-weight: bold; color: #0000dd;">0</span>) {
+   <span style="font-weight: bold; color: #008800;">throw</span> <span style="font-weight: bold; color: #008800;">new</span> <span style="font-weight: bold; color: #0066bb;">RuntimeException</span>("Invalid roman number");
+  }
+
+  Pattern pattern = Pattern.<span style="color: #0000cc;">compile</span>("([a-z\\d])\\1\\1\\1", Pattern.<span style="color: #0000cc;">CASE_INSENSITIVE</span>);
+  <span style="font-weight: bold; color: #008800;">if</span> (pattern.<span style="color: #0000cc;">matcher</span>(s).<span style="color: #0000cc;">find</span>()) {
+   <span style="font-weight: bold; color: #008800;">throw</span> <span style="font-weight: bold; color: #008800;">new</span> <span style="font-weight: bold; color: #0066bb;">RuntimeException</span>("Invalid roman number");
+  }
+
+  s = s.<span style="color: #0000cc;">toUpperCase</span>();
+  s = s.<span style="color: #0000cc;">replaceAll</span>("IV", "IIII");
+  s = s.<span style="color: #0000cc;">replaceAll</span>("IX", "VIIII");
+  s = s.<span style="color: #0000cc;">replaceAll</span>("XL", "XXXX");
+  s = s.<span style="color: #0000cc;">replaceAll</span>("XC", "LXXXX");
+  s = s.<span style="color: #0000cc;">replaceAll</span>("CD", "CCCC");
+  s = s.<span style="color: #0000cc;">replaceAll</span>("CM", "DCCCC");
+
+
+  <span style="font-weight: bold; color: #008800;">for</span> (<span style="font-weight: bold; color: #333399;">int</span> i = <span style="font-weight: bold; color: #0000dd;">0</span>; i &lt; s.<span style="color: #0000cc;">length</span>(); i++) {
+   <span style="font-weight: bold; color: #008800;">switch</span> (s.<span style="color: #0000cc;">charAt</span>(i)) {
+    <span style="font-weight: bold; color: #008800;">case</span> <span style="color: #0044dd;">'I'</span>:
+     sum += <span style="font-weight: bold; color: #0000dd;">1</span>;
+     <span style="font-weight: bold; color: #008800;">break</span>;
+    <span style="font-weight: bold; color: #008800;">case</span> <span style="color: #0044dd;">'V'</span>:
+     sum += <span style="font-weight: bold; color: #0000dd;">5</span>;
+     <span style="font-weight: bold; color: #008800;">break</span>;
+    <span style="font-weight: bold; color: #008800;">case</span> <span style="color: #0044dd;">'X'</span>:
+     sum += <span style="font-weight: bold; color: #0000dd;">10</span>;
+     <span style="font-weight: bold; color: #008800;">break</span>;
+    <span style="font-weight: bold; color: #008800;">case</span> <span style="color: #0044dd;">'L'</span>:
+     sum += <span style="font-weight: bold; color: #0000dd;">50</span>;
+     <span style="font-weight: bold; color: #008800;">break</span>;
+    <span style="font-weight: bold; color: #008800;">case</span> <span style="color: #0044dd;">'C'</span>:
+     sum += <span style="font-weight: bold; color: #0000dd;">100</span>;
+     <span style="font-weight: bold; color: #008800;">break</span>;
+    <span style="font-weight: bold; color: #008800;">case</span> <span style="color: #0044dd;">'D'</span>:
+     sum += <span style="font-weight: bold; color: #0000dd;">500</span>;
+     <span style="font-weight: bold; color: #008800;">break</span>;
+    <span style="font-weight: bold; color: #008800;">case</span> <span style="color: #0044dd;">'M'</span>:
+     sum += <span style="font-weight: bold; color: #0000dd;">1000</span>;
+     <span style="font-weight: bold; color: #008800;">break</span>;
+    <span style="font-weight: bold; color: #008800;">default</span>:
+     <span style="font-weight: bold; color: #008800;">throw</span> <span style="font-weight: bold; color: #008800;">new</span> <span style="font-weight: bold; color: #0066bb;">RuntimeException</span>("Invalid roman number");
+   }
+
+  }
+  <span style="font-weight: bold; color: #008800;">return</span> sum;
+ }
+}
+</pre>
+</div>
+</div>
+<div id="footer"></div>
+&nbsp;

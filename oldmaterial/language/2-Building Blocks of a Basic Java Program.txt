@@ -1,0 +1,392 @@
+Welcome the the Language section of the BBD Java bootcamp.
+
+This section is based on the book "Java the complete reference"
+
+The content and samples have been adapted to be used primarily with the Java <strong>9</strong> JShell but can be also downloaded in chapter form from the authors site:
+
+<a href="https://www.mhprofessional.com/9780071606301-usa-java-the-complete-reference-8th-edition-group">https://www.mhprofessional.com/9780071606301-usa-java-the-complete-reference-8th-edition-group</a>
+<h2 id="Java_Source_File">Java Source File</h2>
+All Java source files must end with the .java extension. A source file should contain, at most, one top-level public class definition. If a public class is present, the class name should match the unextended filename.
+
+Three top-level elements known as compilation units may appear in a file. None of these elements is required.
+
+If they are present, then they must appear in the following order:
+<ol>
+	<li>Package declaration</li>
+	<li>Import statements</li>
+	<li>Class, interface, and enum definitions</li>
+</ol>
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">package</span> MyPack;
+<span class="r" style="font-weight: bold; color: #7f0055;">import</span> java.util.Date;
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    System.out.println(<span class="r" style="font-weight: bold; color: #7f0055;">new</span> Date());
+  }
+}</pre>
+Let's start by compiling and running the following short sample program.
+<pre><span class="c" style="font-weight: bold; color: #3f7f5f;">/*
+ This is a simple Java program. Call this file "Main.java". 
+ */</span>
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">// Your program begins with a call to main().
+</span>  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Java."</span>);
+  }
+}
+</pre>
+In Java, a source file is called a compilation unit. It is a text file that contains one or more class definitions. The Java compiler requires that a source file use the .java filename extension.
+
+In Java, all code must reside inside a class. By convention, the name of the public class should match the its file name. And Java is case-sensitive.
+
+The code above generates the following result.
+<pre>Java.</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Compiling_the_Program">Compiling the Program</h2>
+To compile the program, execute the compiler, <code style="color: #c7254e;">javac</code>, specifying the name of the source file on the command line:
+<pre>C:\&gt;javac Main.java 
+</pre>
+The <code style="color: #c7254e;">javac</code> compiler creates a file called <code style="color: #c7254e;">Main.class</code>.
+
+<code style="color: #c7254e;">Main.class</code> contains the byte code version of the program.
+
+To run the program, use the Java interpreter, called <code style="color: #c7254e;">java</code>. Pass the class name <code style="color: #c7254e;">Main</code> as a command-line argument, as shown here:
+<pre>C:\&gt;java Main 
+</pre>
+When the program is run, the following output is displayed:
+<pre>Java.</pre>
+When Java source code is compiled, each individual class is put into its own file named <code style="color: #c7254e;">classname.class</code>.
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="A_Closer_Look_at_the_Main_java">A Closer Look at the Main.java</h2>
+The first part is a comment.
+<pre>/* 
+   This is a simple Java program. Call this file <span class="q" style="font-weight: bold; color: #2a00ff;">"Main.java"</span>. 
+*/ 
+</pre>
+Comment is a remark for a program. The contents of a comment are ignored by the compiler. The next line of code in the program is shown here:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main { 
+</pre>
+The keyword <code style="color: #c7254e;">class</code> declares that a new class is being defined. <code style="color: #c7254e;">Main</code> is the name of the class. The entire class definition is between the opening curly brace (<code style="color: #c7254e;">{</code>) and the closing curly brace (<code style="color: #c7254e;">}</code>). The next line in the program is the single-line comment, shown here:
+<pre>// Your program begins with a call to main(). 
+</pre>
+A single-line comment begins with a <code style="color: #c7254e;">//</code> and ends at the end of the line. The next line of code is shown here:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> void main(String args[]) { 
+</pre>
+Java applications begin execution by calling <code style="color: #c7254e;">main(String args[])</code>. Java is case-sensitive. Thus, <code style="color: #c7254e;">Main</code> is different from <code style="color: #c7254e;">main</code>.
+<h2 id="A_Short_Program_with_a_variable">A Short Program with a variable</h2>
+A variable is a memory location that may be assigned a value. The value of a variable is changeable.
+
+The following code defines a variable and changes its value by assigning a new value to it.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> num; <span class="c" style="font-weight: bold; color: #3f7f5f;">// a variable called num
+</span>    num = 100;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"This is num: "</span> + num);
+    num = num * 2;
+
+    System.out.print(<span class="q" style="font-weight: bold; color: #2a00ff;">"The value of num * 2 is "</span>);
+    System.out.println(num);
+  }
+}
+</pre>
+When you run this program, you will see the following output:
+<pre>This is num: 100
+The value of num * 2 is 200</pre>
+The following snippet declares an integer variable called <code style="color: #c7254e;">num</code>. Java requires that variables must be declared before they can be used.
+<pre>int num; // this declares a variable called num 
+</pre>
+Following is the general form of a variable declaration:
+<pre>type <span class="r" style="font-weight: bold; color: #7f0055;">var</span>-name; 
+</pre>
+In the program, the line assigns to <code style="color: #c7254e;">num</code> the value 100.
+<pre>num = 100; // this assigns num the value 100 
+</pre>
+<h2 id="Define_more_than_one_variable_with_comma">Define more than one variable with comma</h2>
+To declare more than one variable of the specified type, you may use a comma-separated list of variable names.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> num, num2;
+    num = 100; <span class="c" style="font-weight: bold; color: #3f7f5f;">// assigns num the value 100
+</span>    num2 = 200;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"This is num: "</span> + num);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"This is num2: "</span> + num2);
+
+  }
+}
+</pre>
+When the program is run, the following output is displayed:
+<pre>This is num: 100
+This is num2: 200</pre>
+<h2 id="Using_Blocks_of_Code">Using Blocks of Code</h2>
+Java can group two or more statements into blocks of code. Code block is enclosing the statements between opening and closing curly braces({}).
+
+For example, a block can be a target for Java's <code style="color: #c7254e;">if</code> and <code style="color: #c7254e;">for</code> statements. Consider this <code style="color: #c7254e;">if </code>statement:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+    <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+        <span class="r" style="font-weight: bold; color: #7f0055;">int</span> x, y;
+        x = 10;
+        y = 20;
+        <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (x &lt; y) { <span class="c" style="font-weight: bold; color: #3f7f5f;">// begin a block
+</span>            x = y;
+            y = 0;
+            System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"x="</span> + x);
+            System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"y="</span> + y);
+        } <span class="c" style="font-weight: bold; color: #3f7f5f;">// end of block
+</span>    }
+}
+</pre>
+Here is the output of the code above:
+<pre>x=20
+y=0</pre>
+<h2 id="Example">Example</h2>
+A block of code as the target of a <code style="color: #c7254e;">for</code> loop.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> i, y;
+    y = 20;
+    <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (i = 0; i &lt; 10; i++) { <span class="c" style="font-weight: bold; color: #3f7f5f;">// the target of this loop is a block
+</span>      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"This is i: "</span> + i);
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"This is y: "</span> + y);
+      y = y - 1;
+
+    }
+  }
+}
+</pre>
+The output generated by this program is shown here:
+<pre>This is i: 0
+This is y: 20
+This is i: 1
+This is y: 19
+This is i: 2
+...</pre>
+&nbsp;
+<h1>Variables</h1>
+A variable is defined by an identifier, a type, and an optional initializer. The variables also have a scope(visibility / lifetime).
+
+In Java, all variables must be declared before they can be used. The basic form of a variable declaration is shown here:
+<pre>type identifier [ = value][, identifier [= value] ...] ;
+</pre>
+There are three parts in variable definition:
+<ul>
+	<li><code style="color: #c7254e;">type</code> could be <code style="color: #c7254e;">int</code> or <code style="color: #c7254e;">float</code>.</li>
+	<li><code style="color: #c7254e;">identifier</code> is the variable's name.</li>
+	<li>Initialization includes an equal sign and a value.</li>
+</ul>
+To declare more than one variable of the specified type, use a comma-separated list.
+<pre>int a, b, c; // declares three ints, a, b, <span class="r" style="font-weight: bold; color: #7f0055;">and</span> c.
+int d = 3, e, f = 5; // declares three more ints, initializing d <span class="r" style="font-weight: bold; color: #7f0055;">and</span> f.
+</pre>
+The following variables are defined and initialized in one expression.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> void main(String[] argv) {
+    byte z = 2; // initializes z.
+    double pi = 3.14; // declares an approximation of pi.
+    char x = <span class="q" style="font-weight: bold; color: #2a00ff;">'x'</span>; // the variable x has the value <span class="q" style="font-weight: bold; color: #2a00ff;">'x'</span>.
+  }
+}
+</pre>
+Variable cannot be used prior to its declaration.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+
+    count = 100; <span class="c" style="font-weight: bold; color: #3f7f5f;">// Cannot use count before it is declared! 
+</span>    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> count;
+  }
+}
+</pre>
+Compiling the code above generates the following error message (using jShell) :
+<pre>|  attempted to use class Main which cannot be instanciated or its methods invoked until variable count is declared</pre>
+&nbsp;
+<h2 id="Assignment_Operator">Assignment Operator</h2>
+The assignment operator is the single equal sign, =. It has this general form:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">var</span> = expression;
+</pre>
+type of <code style="color: #c7254e;">var</code> must be compatible with the type of expression. The assignment operator allows you to create a chain of assignments.
+<pre> 
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> x, y, z;
+    x = y = z = 100; <span class="c" style="font-weight: bold; color: #3f7f5f;">// set x, y, and z to 100
+</span>    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"x is "</span> + x);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"y is "</span> + y);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"z is "</span> + z);
+  }
+}
+</pre>
+The output:
+<pre>x is 100
+y is 100
+z is 100</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Dynamic_Initialization">Dynamic Initialization</h2>
+Java allows variables to be initialized dynamically. In the following code the <code style="color: #c7254e;">Math.sqrt</code> returns the square root of <code style="color: #c7254e;">2 * 2</code> and assigns the result to <code style="color: #c7254e;">c</code> directly.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+
+    <span class="c" style="font-weight: bold; color: #3f7f5f;">// c is dynamically initialized
+</span>    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> c = Math.sqrt(2 * 2);
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"c is "</span> + c);
+  }
+}
+</pre>
+The output from the code above is
+<pre>c is 2.0</pre>
+&nbsp;
+<h2 id="Full_list_of_keywords_in_Java">Keywords</h2>
+A keyword is a word whose meaning is defined by the programming language. The list of keywords and reserved Words in Java are:
+<pre>abstract class    extends implements null      strictfp     true
+assert   const    false   import     package   super        try
+boolean  continue final   instanceof private   switch       void
+break    default  finally int        protected synchronized volatile
+byte     do       float   interface  public    this         while
+case     double   for     long       return    throw
+catch    else     goto    native     short     throws
+char     enum     if      new        static    transient
+</pre>
+An identifier is a word used by a programmer to name a variable, method, class, or label. Keywords and reserved words may not be used as identifiers. An identifier must begin with a letter, a dollar sign ($), or an underscore (_); subsequent characters may be letters, dollar signs, underscores, or digits.
+
+Some examples are:
+<pre>foobar          <span class="c" style="font-weight: bold; color: #3f7f5f;">// legal
+</span>Myclass         <span class="c" style="font-weight: bold; color: #3f7f5f;">// legal
+</span>$a              <span class="c" style="font-weight: bold; color: #3f7f5f;">// legal
+</span>3_a             <span class="c" style="font-weight: bold; color: #3f7f5f;">// illegal: starts with a digit
+</span>!theValue       <span class="c" style="font-weight: bold; color: #3f7f5f;">// illegal: bad 1st  char
+</span>
+</pre>
+Identifiers are case sensitive. For example, <code style="color: #c7254e;">myValue</code> and <code style="color: #c7254e;">MyValue</code> are distinct identifiers.
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Using_identifiers">Using identifiers</h2>
+Identifiers are used for class names, method names, and variable names. An identifier may be any sequence of uppercase and lowercase letters, numbers, or the underscore and dollar-sign characters. Identifiers must not begin with a number. Identifiers are case-sensitive. The following code illustrates some examples of valid identifiers:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> void main(String[] argv) {
+    int ATEST, count, i1, $Atest, this_is_a_test;
+  }
+
+}
+</pre>
+The following code shows invalid variable names include:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv){
+     <span class="r" style="font-weight: bold; color: #7f0055;">int</span> 2count, h-l, a/b, 
+
+  }
+}
+</pre>
+If you try to compile this code, you will get the following error message:
+<pre>| Error:
+ | not a statement
+ | int 2count, h-l, a/b,
+ | ^-^
+ | Error:
+ | ';' expected
+ | int 2count, h-l, a/b,
+ | ^
+ | Error:
+ | not a statement
+ | int 2count, h-l, a/b,
+ | ^---^
+ | Error:
+ | ';' expected
+ | int 2count, h-l, a/b,
+ | ^
+ | Error:
+ | not a statement
+ | int 2count, h-l, a/b,
+ | ^-^
+ | Error:
+ | ';' expected
+ | int 2count, h-l, a/b,
+ | ^
+ | Error:
+ | not a statement
+ | int 2count, h-l, a/b,
+ | ^-^
+ | Error:
+ | ';' expected
+ | int 2count, h-l, a/b,
+ | ^</pre>
+<h1>Packages</h1>
+Packages are containers for classes. Packages are used to keep the class name space compartmentalized. In Java, package is mapped to a folder on your hard drive.
+
+To define a package, include a package command as the first statement in a Java source file. Any classes declared within that file will belong to the specified package. If you omit the package statement, the class names are put into the default package, which has no name.This is the general form of the package statement:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">package</span> packageName;
+</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Create_a_hierarchy_of_packages">Create a hierarchy of packages</h2>
+To create a hierarchy of packages, separate each package name from the one above it by use of a period. The general form of a multileveled package statement:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">package</span> pkg1[.pkg2[.pkg3]];
+</pre>
+A package hierarchy must be reflected in the file system of your Java development system.
+<h2 id="Java_package_maps_to_directory">package maps to directory</h2>
+package maps to physical directory on your hard drive. As what is defined in the following example, you have to save the following file to a file named Main.java and create a folder named MyPack to actually store Main.java file.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">package</span> MyPack;
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"hi"</span>);
+  }
+}
+</pre>
+Then try executing the class, using the following command line:
+<pre>java Mypack.main</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Java_Packages_Import">Packages Import</h2>
+In a Java source file, import statements occur immediately following the package statement and before class definitions.
+
+This is the general form of the import statement:
+<pre>import pkg1[.pkg2].(classname|*);
+</pre>
+* means including all classes under that package. For example,
+<pre>import java.lang.*;
+</pre>
+Any place you use a class name, you can use its fully qualified name, which includes its full package hierarchy.
+
+For example, this fragment uses an import statement:
+<pre>import java.util.*; 
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> MyDate <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> Date { 
+}
+</pre>
+The same example without the import statement looks like this:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> MyDate <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> java.util.Date { 
+}
+</pre>
+<h2 id="static_import">static import</h2>
+In order to access static members, it is necessary to qualify references. For example, one must say:
+<pre>double r = Math.cos(Math.PI * theta);
+</pre>
+The static import construct allows unqualified access to static members.
+<pre>import <span class="r" style="font-weight: bold; color: #7f0055;">static</span> java.lang.Math.PI;
+</pre>
+or:
+<pre>import <span class="r" style="font-weight: bold; color: #7f0055;">static</span> java.lang.Math.*;
+</pre>
+Once the static members have been imported, they may be used without qualification:
+<pre>double r = cos(PI * theta);
+</pre>
+The static import declaration imports static members from classes, allowing them to be used without class qualification.

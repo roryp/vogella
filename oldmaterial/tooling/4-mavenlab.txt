@@ -1,0 +1,26 @@
+<h1>Lab: Archetypes Exercise:</h1>
+create a new folder called "c:\projects\maven"
+
+In that folder Run "mvn archetype:generate"
+filter on "tomee"
+find "tomee-webapp-archetype"
+parent "org.apache.openejb.maven"
+Version "1.7.4"
+
+When prompted add the following maven co-ordinates
+
+groupid "com.bbd"
+artifactid "tomeewebapp"
+package "com.bbd"
+
+You now have a maven project in the directory "tomeewebapp"
+
+cd tomeewebapp
+
+run "mvn package tomee:run"
+
+navigate to <a href="http://localhost:8080">http://localhost:8080</a>
+
+&nbsp;
+
+&nbsp;

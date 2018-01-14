@@ -1,0 +1,476 @@
+Hello! and Welcome to the Java Bootcamp.
+
+I hope you will enjoy the course and we welcome any feedback and corrections.
+
+&nbsp;
+
+Thoughout this  course We will be using java 8 and 9 and switching between each for some sections
+
+java 8 -<a href="%20http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html"> http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a>
+
+java 9 - <span style="color: #2c3e50;"> <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html">http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html </a></span>
+
+Install JDK 1.8 and then 1.9
+
+Point your environment to java 8
+<ul>
+ 	<li>Remove path entry "<span style="color: #545454;">C:\ProgramData\</span><span style="font-weight: bold; color: #6a6a6a;">Oracle</span><span style="color: #545454;">\</span><span style="font-weight: bold; color: #6a6a6a;">Java</span><span style="color: #545454;">\</span><span style="font-weight: bold; color: #6a6a6a;">javapath"</span></li>
+ 	<li>Add jdk\bin to path e.g. "C:\Program Files\Java\jdk1.8.XXX\bin"</li>
+ 	<li>Create JAVA_HOME environmental Variable e.g "C:\Program Files\Java\\jdk1.8.XXX"</li>
+</ul>
+&nbsp;
+<h1><strong>What is Java?</strong></h1>
+“A simple, object-oriented, distributed, interpreted, robust, secure, architecture neutral, portable, high-performance, multi-threaded, and dynamic language.”
+
+&nbsp;
+
+Over the years, there have been a number of acronyms associated with Java<sup>∗</sup>
+<ul>
+ 	<li>JDK: The Java Development Kit was the original name of the Java tool set provided by Sun</li>
+</ul>
+<p style="padding-left: 30px;">–        Compiler, runtime environment, standard libraries</p>
+
+<ul>
+ 	<li>J2SE: The JDK was renamed to the Java 2 Standard Edition</li>
+</ul>
+<p style="padding-left: 30px;">–        The “2” was supposed to signify the maturity of the Java platform</p>
+
+<ul>
+ 	<li>J2EE: Java 2 Enterprise Edition is a suite of Java-based enterprise technologies</li>
+</ul>
+<p style="padding-left: 30px;">–        Database access, middle tier data modeling and business logic, web front end</p>
+
+<ul>
+ 	<li>Java 5: J2SE 1.5 became know as “Java 5” to once again show the maturity of the platform</li>
+</ul>
+&nbsp;
+<ul>
+ 	<li>JSE and JEE: With the advent of “Java 5”, the J2 got confusing</li>
+</ul>
+<p style="padding-left: 30px;">–        “Java Platform Standard Edition”</p>
+&nbsp;
+<h1><strong>The Java Programming Language</strong></h1>
+Java was developed in 1995 by Ken Arnold and James Gosling at Sun Microsystems
+
+Java programs are built from <em>classes </em>that have <em>methods </em>consisting of <em>statements </em>that perform work.
+
+Every class is in a <em>package</em>. Packages provide a naming context for classes.
+
+Program execution begins with a main method whose sole argument is an array of Strings that are the command line arguments. The infamous Hello World program:
+<pre><span style="font-weight: bold; color: #008800;">package</span> com.bbd;
+
+<span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #008800;">class</span> Hello { <span style="color: #888888;">// Hello is a class</span>
+
+ <span style="color: #888888;">// main is a method</span>
+
+ <span style="font-weight: bold; color: #008800;">public</span> <span style="font-weight: bold; color: #008800;">static</span> <span style="font-weight: bold; color: #008800;">void</span> main(<span style="color: #007020;">String</span>[] args) {
+  System.out.println("Hello World!");
+ }
+
+}</pre>
+<span style="color: #999999;">This program prints the string "Hello World" to standard output.</span>
+
+&nbsp;
+<h1>Compiling a Java Program</h1>
+Java was designed to be platform independent
+
+“Write once, run anywhere”
+
+Java programs (classes) are compiled into binary <em>class files </em>that contain machine instructions called <em>bytecodes</em>.
+
+The bytecodes are executed by a Java Virtual Machine (JVM).
+
+JVMs are platform-dependent and are usually implemented in a language like C.
+
+&nbsp;
+
+A Java <strong>class</strong> is described in a text file that contains its source code
+
+The name of the file corresponds to the name of the class
+
+It is a good idea to place source files in a directory whose name corresponds to the class’s <strong>package</strong>
+
+For instance, our Hello World class’s source file is:
+
+<strong>com/bbd</strong>/Hello.java
+
+These conventions help keep your source code organized
+
+The <strong>javac</strong> tool compiles Java source code into bytecode that is placed in a <em>class file</em>
+
+(Start in the root of our project directory)
+
+&gt; mkdir classes
+
+&gt; cd com/bbd
+
+&gt; javac -d ../../classes Hello.java
+
+The -d option specifies where the class file is written
+
+It will create a class file located in "../../classes/com/bbd/Hello.class"
+
+&nbsp;
+<h1><strong>Executing a Java Program</strong></h1>
+The <strong>java.exe</strong> command invokes the Java Virtual Machine
+
+Execution begins with the main method of the given class. (Note that java takes the name of a <strong>class</strong>, not the name of a class file!)
+
+java.exe requires the fully-qualified (including package) name of the main class
+
+You also need to tell the JVM where to look for class files
+<ul>
+ 	<li>The -classpath (or -cp) option specifies a directory path to search for classes</li>
+ 	<li>Alternatively, you can set the CLASSPATH environment variable</li>
+</ul>
+(Start in the root of our project directory)
+
+&gt; java -cp  .;classes com.bbd.Hello
+
+<span style="color: #999999;">The output is "Hello World!"</span>
+
+&nbsp;
+<h1><strong>The </strong>jar Tool</h1>
+<strong>jar.exe</strong> is a tool that allows you to combine multiple files (usually class files) into a “Java Archive”
+
+It let’s you put related classes (e.g. all of the classes in your library or application) into a single file
+<ul>
+ 	<li>Makes downloading easier</li>
+ 	<li>Jar files can be “signed” for security jar</li>
+</ul>
+(Start in the root of our project directory)
+
+&gt; cd ../../classes
+
+&gt; jar cf classes.jar .
+
+META-INF/
+META-INF/MANIFEST.MF
+com/
+com/bbd/
+com/bbd/Hello.class
+
+&nbsp;
+<h1><strong>More on the </strong>jar Tool</h1>
+The JVM knows how to read classes from a jar file
+
+(Start in the location of classes.jar)
+<pre>&gt; java -cp classes.jar com.bbd.Hello</pre>
+<span style="color: #999999;">The output is "Hello World!"
+</span>
+
+Jar files may have their contents compressed and may contain files such as pictures and sounds that may be needed by an application
+
+A jar file contains a special entry called the <em>manifest </em>that describes the jar file
+<ul>
+ 	<li>Version, creator, digital signature information, etc.</li>
+</ul>
+&nbsp;
+<h1><strong>Documenting Your Code with </strong>javadoc</h1>
+javadoc is a utility that generates HTML documentation for Java classes
+
+The HTML contains links between classes for easy navigation
+
+javadoc uses documentation comments that describe classes, methods, and exceptions
+
+Documentation is placed between /** and */ comments that precede the class, field, or method being described
+
+Special comment tags used with javadoc:
+<table width="666">
+<tbody>
+<tr>
+<td width="175">@author</td>
+<td width="491">Who wrote it</td>
+</tr>
+<tr>
+<td width="175">@param</td>
+<td width="491">Description of a parameter to a method</td>
+</tr>
+<tr>
+<td width="175">@return</td>
+<td width="491">Description of value returned by a method</td>
+</tr>
+<tr>
+<td width="175">@throws</td>
+<td width="491">An exception thrown by the method</td>
+</tr>
+<tr>
+<td width="175">@see</td>
+<td width="491">References another class or method</td>
+</tr>
+</tbody>
+</table>
+<h1></h1>
+<h3 id="Example" style="color: #000000;">Example</h3>
+<p style="color: #000000;">The following example demonstrates a Javadoc comment:</p>
+
+<div class="codeDiv" style="color: #000000;">
+<pre><code>
+<span class="c" style="font-weight: bold; color: #3f7f5f;">/** 
+* Application entry point 
+* 
+* @param args array of command-line arguments passed to this method 
+*/</span> 
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) 
+{ 
+<span class="c" style="font-weight: bold; color: #3f7f5f;">// TODO code application logic here 
+</span>}
+</code></pre>
+</div>
+<p style="color: #000000;">This example begins with a Javadoc comment that describes the main() method.<code>/**</code> and <code>*/</code> contains a description of the method,</p>
+<p style="color: #000000;">which could include HTML tags such as <code>&lt;p&gt;</code>, <code>&lt;code&gt;</code> and <code>/&lt;/code&gt;</code>, and the <code>@param</code> Javadoc tag (an @-prefixed instruction).</p>
+
+<h3 id="Tag_list" style="color: #000000;">Tag list</h3>
+<p style="color: #000000;">The following list identifies several commonly used tags:</p>
+
+<ul style="color: #000000;">
+ 	<li><code>@author</code> identifies the source code's author.</li>
+ 	<li><code>@deprecated</code> identifies a source code entity that should no longer be used.</li>
+ 	<li><code>@param</code> identifies one of a method's parameters.</li>
+ 	<li><code>@see</code> provides a see-also reference.</li>
+ 	<li><code>@since</code> identifies the software release where the entity first originated.</li>
+ 	<li><code>@return</code> identifies the kind of value that the method returns.</li>
+</ul>
+<h3 id="Example_2" style="color: #000000;">Example 2</h3>
+<p style="color: #000000;">The following code has more documentation comments</p>
+
+<div class="codeDiv" style="color: #000000;">
+<pre><code>
+<span class="c" style="font-weight: bold; color: #3f7f5f;">/**
+ * A simple class for introducing a Java application.
+ * 
+ * @author yourName
+ */</span>
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> HelloWorld {
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">/**
+   * Application entry point
+   * 
+   * @param args
+   *          array of command-line arguments passed to this method
+   */</span>
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Hello, world!"</span>);
+  }
+}
+</code></pre>
+</div>
+<p style="color: #000000;">We can extract these documentation comments into a set of HTML files by using the JDK's javadoc tool, as follows:</p>
+
+<pre style="color: #000000;">&gt; javadoc -d docs HelloWorld.java
+</pre>
+<h1 style="color: #2c3e50;">JShell</h1>
+<p style="color: #2c3e50;">You can use JShell in conjunction with Java 8 by starting the C:\Program Files\Java\jdk-9\bin\jshell.exe from a command prompt (cmd)</p>
+
+<h1 id="running" style="font-weight: 500; color: #2c3e50;">Running</h1>
+<p style="color: #2c3e50;">The JShell executable is in the bin directory which should already be in your path . I suggest running it in verbose (<code class="highlighter-rouge" style="color: #c7254e;">-v</code>) mode for the first time:</p>
+
+<div class="language-bash highlighter-rouge">
+<pre class="highlight"><code><span style="color: #555555;">&gt; </span></code><code style="color: inherit;">jdk-9/bin/jshell -v
+|  Welcome to JShell -- Version 9-ea
+|  For an introduction <span class="nb" style="color: #0086b3;">type</span>: /help intro
+
+
+<span class="gp" style="color: #555555;">jshell&gt; </span>
+</code></pre>
+</div>
+<p style="color: #2c3e50;">You can go back to non verbose mode using <code class="highlighter-rouge" style="color: #c7254e;">/set feedback normal</code></p>
+
+<h2 id="default-imports" style="font-weight: 500; color: #2c3e50;">Default imports</h2>
+<p style="color: #2c3e50;">By default you get a set of common imports:</p>
+
+<div class="language-bash highlighter-rouge" style="color: #2c3e50;">
+<pre class="highlight"><code style="color: inherit;"><span class="gp" style="color: #555555;">jshell&gt; </span>/imports
+|    import java.util.<span class="k" style="font-weight: bold;">*</span>
+|    import java.io.<span class="k" style="font-weight: bold;">*</span>
+|    import java.math.<span class="k" style="font-weight: bold;">*</span>
+|    import java.net.<span class="k" style="font-weight: bold;">*</span>
+|    import java.util.concurrent.<span class="k" style="font-weight: bold;">*</span>
+|    import java.util.prefs.<span class="k" style="font-weight: bold;">*</span>
+|    import java.util.regex.<span class="k" style="font-weight: bold;">*</span>
+</code></pre>
+</div>
+<p style="color: #2c3e50;">You can add your own any time.</p>
+
+<h2 id="expressions" style="font-weight: 500; color: #2c3e50;">Expressions</h2>
+<p style="color: #2c3e50;">You can type any valid java expression, and it will tell you the returned <strong>value</strong>, it’s <strong>type</strong> and <strong>assign</strong> it to a <strong>variable</strong>:</p>
+
+<div class="language-bash highlighter-rouge" style="color: #2c3e50;">
+<pre class="highlight"><code style="color: inherit;"><span class="gp" style="color: #555555;">jshell&gt; </span>3+3
+<span class="nv" style="color: #008080;">$1</span> <span class="o" style="font-weight: bold;">==</span>&gt; 6
+|  created scratch variable <span class="nv" style="color: #008080;">$1</span> : int
+
+<span class="gp" style="color: #555555;">jshell&gt; </span><span class="nv" style="color: #008080;">$1</span>
+<span class="nv" style="color: #008080;">$1</span> <span class="o" style="font-weight: bold;">==</span>&gt; 6
+|  value of <span class="nv" style="color: #008080;">$1</span> : int
+
+</code></pre>
+</div>
+<h2 id="variables" style="font-weight: 500; color: #2c3e50;">Variables</h2>
+<p style="color: #2c3e50;">It is possible to declare variables and name them. Once you do that they become visible in the scope.</p>
+
+<div class="language-bash highlighter-rouge" style="color: #2c3e50;">
+<pre class="highlight"><code style="color: inherit;"><span class="gp" style="color: #555555;">jshell&gt; </span>int <span class="nv" style="color: #008080;">x</span><span class="o" style="font-weight: bold;">=</span>5
+x <span class="o" style="font-weight: bold;">==</span>&gt; 5
+|  created variable x : int
+
+<span class="gp" style="color: #555555;">jshell&gt; </span>x
+x <span class="o" style="font-weight: bold;">==</span>&gt; 5
+|  value of x : int
+</code></pre>
+</div>
+<h2 id="methods" style="font-weight: 500; color: #2c3e50;">Methods</h2>
+<p style="color: #2c3e50;">You can also define methods and even replace them:</p>
+
+<div class="language-bash highlighter-rouge" style="color: #2c3e50;">
+<pre class="highlight"><code style="color: inherit;"><span class="gp" style="color: #555555;">jshell&gt; </span>void helloJShell<span class="o" style="font-weight: bold;">()</span> <span class="o" style="font-weight: bold;">{</span> System.out.println<span class="o" style="font-weight: bold;">(</span><span class="s2" style="color: #dd1144;">"hello JShell"</span><span class="o" style="font-weight: bold;">)</span>; <span class="o" style="font-weight: bold;">}</span>
+|  created method helloJShell<span class="o" style="font-weight: bold;">()</span>
+
+<span class="gp" style="color: #555555;">jshell&gt; </span>helloJShell<span class="o" style="font-weight: bold;">()</span>;
+hello JShell
+
+<span class="gp" style="color: #555555;">jshell&gt; </span>void helloJShell<span class="o" style="font-weight: bold;">()</span> <span class="o" style="font-weight: bold;">{</span> System.out.println<span class="o" style="font-weight: bold;">(</span><span class="s2" style="color: #dd1144;">"wow, I replaced a  method"</span><span class="o" style="font-weight: bold;">)</span>; <span class="o" style="font-weight: bold;">}</span>
+|  modified method helloJShell<span class="o" style="font-weight: bold;">()</span>
+|    update overwrote method helloJShell<span class="o" style="font-weight: bold;">()</span>
+
+<span class="gp" style="color: #555555;">jshell&gt; </span>helloJShell<span class="o" style="font-weight: bold;">()</span>
+wow, I replaced a  method
+
+</code></pre>
+</div>
+<h2 id="commands" style="font-weight: 500; color: #2c3e50;">Commands</h2>
+<p style="color: #2c3e50;">Apart from language syntax you can execute jshell commands. Some of the most useful ones (<code class="highlighter-rouge" style="color: #c7254e;">/help</code> to list all of them) are:</p>
+
+<h3 id="listing-variables" style="font-weight: 500; color: #2c3e50;">listing variables</h3>
+<div class="language-bash highlighter-rouge" style="color: #2c3e50;">
+<pre class="highlight"><code style="color: inherit;"><span class="gp" style="color: #555555;">jshell&gt; </span>/vars
+|  int $1 = 6
+|  int x = 5
+</code></pre>
+</div>
+<h3 id="listing-methods" style="font-weight: 500; color: #2c3e50;">listing methods:</h3>
+<div class="language-bash highlighter-rouge" style="color: #2c3e50;">
+<pre class="highlight"><code style="color: inherit;"><span class="gp" style="color: #555555;">jshell&gt; </span>/methods
+|    <span class="nb" style="color: #0086b3;">printf</span> <span class="o" style="font-weight: bold;">(</span>String,Object...<span class="o" style="font-weight: bold;">)</span>void
+|    helloJShell <span class="o" style="font-weight: bold;">()</span>void
+</code></pre>
+</div>
+<p style="color: #2c3e50;">The printf method is defined by default.</p>
+
+<h2 id="listing-sources" style="font-weight: 500; color: #2c3e50;">listing sources</h2>
+<div class="language-bash highlighter-rouge" style="color: #2c3e50;">
+<pre class="highlight"><code style="color: inherit;"><span class="gp" style="color: #555555;">jshell&gt; </span>/list
+  6 : helloJShell<span class="o" style="font-weight: bold;">()</span>;
+  7 : void helloJShell<span class="o" style="font-weight: bold;">()</span> <span class="o" style="font-weight: bold;">{</span> System.out.println<span class="o" style="font-weight: bold;">(</span><span class="s2" style="color: #dd1144;">"wow, I replaced a  method"</span><span class="o" style="font-weight: bold;">)</span>; <span class="o" style="font-weight: bold;">}</span>
+  8 : helloJShell<span class="o" style="font-weight: bold;">()</span>
+</code></pre>
+</div>
+<h3 id="editing-sources-in-external-editor" style="font-weight: 500; color: #2c3e50;">editing sources in external editor</h3>
+<div class="language-bash highlighter-rouge" style="color: #2c3e50;">
+<pre class="highlight"><code style="color: inherit;"><span class="gp" style="color: #555555;">jshell&gt; </span>/edit helloJShell
+</code></pre>
+</div>
+<p style="color: #2c3e50;">Opens external editor, and replaces helloJShell method.</p>
+
+<h1 id="example-use-cases" style="font-weight: 500; color: #2c3e50;"><span style="color: #000000;">Example use cases</span></h1>
+<h2 id="veryfing-return-type"><span style="color: #000000;"><span style="font-weight: 500;">Verifying</span></span><span style="color: #000000; font-weight: 500;"> return type</span></h2>
+<p style="color: #2c3e50;">Remember the time you learned that dividing two integers in Java does not result in floating number? For some time I was convinced that both numerator and denominator have to be floating for a result to be floating too. Let’s test that:</p>
+
+<div class="language-bash highlighter-rouge" style="color: #2c3e50;">
+<pre class="highlight"><code style="color: inherit;"><span class="gp" style="color: #555555;">jshell&gt; </span>1/2
+<span class="nv" style="color: #008080;">$9</span> <span class="o" style="font-weight: bold;">==</span>&gt; 0
+|  created scratch variable <span class="nv" style="color: #008080;">$9</span> : int
+
+<span class="gp" style="color: #555555;">jshell&gt; </span>1.0/2
+<span class="nv" style="color: #008080;">$10</span> <span class="o" style="font-weight: bold;">==</span>&gt; 0.5
+|  created scratch variable <span class="nv" style="color: #008080;">$10</span> : double
+
+<span class="gp" style="color: #555555;">jshell&gt; </span>1/2.0
+<span class="nv" style="color: #008080;">$11</span> <span class="o" style="font-weight: bold;">==</span>&gt; 0.5
+|  created scratch variable <span class="nv" style="color: #008080;">$11</span> : double
+
+<span class="gp" style="color: #555555;">jshell&gt; </span>1.0f/2
+<span class="nv" style="color: #008080;">$12</span> <span class="o" style="font-weight: bold;">==</span>&gt; 0.5
+|  created scratch variable <span class="nv" style="color: #008080;">$12</span> : float
+
+<span class="gp" style="color: #555555;">jshell&gt; </span>1/2.0f
+<span class="nv" style="color: #008080;">$13</span> <span class="o" style="font-weight: bold;">==</span>&gt; 0.5
+|  created scratch variable <span class="nv" style="color: #008080;">$13</span> : float
+</code></pre>
+</div>
+<p style="color: #2c3e50;">Turns out only one of them has to be floating.</p>
+
+<h2 id="testing-java-niuanses" style="font-weight: 500; color: #2c3e50;"><span style="color: #000000;">Testing Java niuanses</span></h2>
+<p style="color: #2c3e50;">Did you know that comparing autoboxed integers references which values are from range -128 to 127 (inclusive) returns true (they are cached)? You can verify that with shell in a matter of seconds:</p>
+
+<div class="language-bash highlighter-rouge" style="color: #2c3e50;">
+<pre class="highlight"><code style="color: inherit;"><span class="gp" style="color: #555555;">jshell&gt; </span>Integer i1 <span class="o" style="font-weight: bold;">=</span> 127
+i1 <span class="o" style="font-weight: bold;">==</span>&gt; 127
+
+<span class="gp" style="color: #555555;">jshell&gt; </span>Integer i2 <span class="o" style="font-weight: bold;">=</span> 127
+i2 <span class="o" style="font-weight: bold;">==</span>&gt; 127
+
+<span class="gp" style="color: #555555;">jshell&gt; </span>i1 <span class="o" style="font-weight: bold;">==</span> i2
+<span class="nv" style="color: #008080;">$16</span> <span class="o" style="font-weight: bold;">==</span>&gt; <span class="nb" style="color: #0086b3;">true
+
+</span><span class="gp" style="color: #555555;">jshell&gt; </span>Integer i2 <span class="o" style="font-weight: bold;">=</span> 128
+i2 <span class="o" style="font-weight: bold;">==</span>&gt; 128
+
+<span class="gp" style="color: #555555;">jshell&gt; </span>Integer i1 <span class="o" style="font-weight: bold;">=</span> 128
+i1 <span class="o" style="font-weight: bold;">==</span>&gt; 128
+
+<span class="gp" style="color: #555555;">jshell&gt; </span>i1 <span class="o" style="font-weight: bold;">==</span> i2
+<span class="nv" style="color: #008080;">$19</span> <span class="o" style="font-weight: bold;">==</span>&gt; <span class="nb" style="color: #0086b3;">false</span>
+</code></pre>
+</div>
+<h2 id="formatting" style="font-weight: 500; color: #2c3e50;"><span style="color: #000000;">Formatting</span></h2>
+<p style="color: #2c3e50;">Sometimes the logs need to be verbose and properly formatted. This is tedious task and usually leads to few recompile cycles which significantly slows us down. Imagine you forgot what was the format sign responsible for integers. You can quickly verify that:</p>
+<p style="color: #2c3e50;">Let’s try <code class="highlighter-rouge" style="color: #c7254e;">%i</code> (integer):</p>
+
+<div class="language-bash highlighter-rouge" style="color: #2c3e50;">
+<pre class="highlight"><code style="color: inherit;"><span class="gp" style="color: #555555;">jshell&gt; </span><span class="nb" style="color: #0086b3;">printf</span><span class="o" style="font-weight: bold;">(</span><span class="s2" style="color: #dd1144;">"I got %i apple"</span>,1<span class="o" style="font-weight: bold;">)</span>
+|  java.util.UnknownFormatConversionException thrown: Conversion <span class="o" style="font-weight: bold;">=</span> <span class="s1" style="color: #dd1144;">'i'</span>
+|        at Formatter<span class="nv" style="color: #008080;">$FormatSpecifier</span>.conversion <span class="o" style="font-weight: bold;">(</span>Formatter.java:2691<span class="o" style="font-weight: bold;">)</span>
+|        at Formatter<span class="nv" style="color: #008080;">$FormatSpecifier</span>.&lt;init&gt; <span class="o" style="font-weight: bold;">(</span>Formatter.java:2717<span class="o" style="font-weight: bold;">)</span>
+|        at Formatter.parse <span class="o" style="font-weight: bold;">(</span>Formatter.java:2565<span class="o" style="font-weight: bold;">)</span>
+|        at Formatter.format <span class="o" style="font-weight: bold;">(</span>Formatter.java:2507<span class="o" style="font-weight: bold;">)</span>
+|        at PrintStream.format <span class="o" style="font-weight: bold;">(</span>PrintStream.java:977<span class="o" style="font-weight: bold;">)</span>
+|        at PrintStream.printf <span class="o" style="font-weight: bold;">(</span>PrintStream.java:873<span class="o" style="font-weight: bold;">)</span>
+|        at <span class="nb" style="color: #0086b3;">printf</span> <span class="o" style="font-weight: bold;">(</span><span class="c" style="font-style: italic; color: #999988;">#s8:1)</span>
+|        at <span class="o" style="font-weight: bold;">(</span><span class="c" style="font-style: italic; color: #999988;">#51:1)</span>
+</code></pre>
+</div>
+<p style="color: #2c3e50;">Oops, maybe <code class="highlighter-rouge" style="color: #c7254e;">%d</code> (decimal) :</p>
+
+<div class="language-shell highlighter-rouge" style="color: #2c3e50;">
+<pre class="highlight"><code style="color: inherit;"><span class="gp" style="color: #555555;">jshell&gt; </span><span class="nb" style="color: #0086b3;">printf</span><span class="o" style="font-weight: bold;">(</span><span class="s2" style="color: #dd1144;">"I got %d apple"</span>,1<span class="o" style="font-weight: bold;">)</span>
+
+<span style="color: #999999;">I got 1 apple</span></code></pre>
+<h2 style="color: #1a1a1a;"></h2>
+<p style="color: #1a1a1a;">If you want to reset the JShell environment without exiting and restarting it, just type</p>
+<p style="color: #1a1a1a;">/reset</p>
+<p style="color: #1a1a1a;">That will clean it up and allow you to start with a clean slate.</p>
+
+<h2 style="color: #1a1a1a;">JShell Expressions</h2>
+<p style="color: #1a1a1a;">JShell is great for evaluating expressions without dealing with all the mandatory decorations required in a “real” Java program. One of the frustrating things about Java before JShell was that you couldn’t use it for stupid, simple tasks like as a quick calculator. If you wanted to know how much principle to add to your mortgage payment to make it come out to nice rounded figure, your quickest options where to do it in your head or pull out a real calculator.</p>
+<p style="color: #1a1a1a;">Now you can geek-out by using JShell simple tasks. JShell is great for evaluating expressions. Try the following.</p>
+
+<div style="color: #1a1a1a;">
+<pre><span style="color: #333333;">(</span><span style="font-weight: bold; color: #0000dd;">140000</span> <span style="color: #333333;">-</span> <span style="font-weight: bold; color: #0000dd;">132439</span><span style="color: #333333;">)/</span><span style="font-weight: bold; color: #6600ee;">100.00</span></pre>
+</div>
+<p style="color: #1a1a1a;">This gives you a response similar to the following.</p>
+
+<div style="color: #1a1a1a;">
+<pre>$1 ==&gt; 75.61
+|  created scratch variable $1 : double</pre>
+</div>
+<p style="color: #1a1a1a;">That may not look as fancy as you want, so you can try the following.</p>
+
+<div style="color: #1a1a1a;">
+<pre>printf<span style="color: #333333;">(</span>"$%.2f\n"<span style="color: #333333;">,</span> <span style="color: #333333;">(</span><span style="font-weight: bold; color: #6600ee;">1400.00</span> <span style="color: #333333;">-</span> <span style="font-weight: bold; color: #6600ee;">1324.39</span><span style="color: #333333;">))</span></pre>
+</div>
+<p style="color: #1a1a1a;">That results in the much prettier $75.61. You can do all kinds of cool printing tricks with the built in printf() method.</p>
+<p style="color: #1a1a1a;">If you look closely, you’ll notice that JShell executed that println() and printf() without a main() method, and without a semicolon at the end of the line. If you can do an example with a minimal Java main(), then you can usually do it directly from the command line in JShell.</p>
+
+<h2 style="color: #1a1a1a;"></h2>
+<div style="color: #1a1a1a;"></div>
+</div>

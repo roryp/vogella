@@ -1,0 +1,1224 @@
+When creating software project we normally use a build tool to automate processes.
+
+Building a software project typically includes the following activities:
+<ul>
+ 	<li>Compile source code</li>
+ 	<li>Run test cases</li>
+ 	<li>Create documentation from the source code</li>
+ 	<li>Package compiled code into JAR files or ZIP files</li>
+ 	<li>Install the library JAR file to classpath</li>
+ 	<li>Deploy the packaged code to a server</li>
+</ul>
+A build tool can minimize the risk of humans errors while building the software manually.
+
+Building software has several life cycles, such as compile, test, package. Different build tools handle the life cycles differently.
+<div></div>
+<h2 id="What_is_Maven">What is Maven</h2>
+Maven is a project management tool which can manage the complete building life cycle.
+
+Maven simplifies and standardizes the project build process. by handling compilation, testing, library dependency, distribution, documentation and team collaboration.
+
+The Maven developers claim that Maven is more than just a build tool. We can think of Maven as a build tool with more features.
+
+Maven provides developers ways to manage following:
+<ul>
+ 	<li>Builds</li>
+ 	<li>Test</li>
+ 	<li>Documentation</li>
+ 	<li>Reporting</li>
+ 	<li>Dependencies</li>
+ 	<li>Releases</li>
+ 	<li>Distribution</li>
+ 	<li>Mailing List</li>
+</ul>
+<h2 id="Maven_History">Maven History</h2>
+Maven was originally built to simplify building processes for Jakarta Turbine project.
+
+Jakarta Turbine project has many sub projects and each project was built by using ANT. The generated JARs were checked into version control system.
+
+Apache group then developed Maven to build multiple projects together.
+
+Maven can publish projects information, deploy projects, share JARs across projects. The JAR files and building blocks are generated and managed by Maven.
+
+Maven uses a standard directory layout and a default build lifecycle.
+
+&nbsp;
+<h2 id="Convention_over_Configuration">Convention over Configuration</h2>
+Maven defines a comprehensive and declarative model for projects to make source code more reusable, maintainable, and easier to comprehend.
+
+Maven uses plugins to interact with this declarative model. Most of the features are actually provided by plugins.
+
+Maven uses <code style="color: #c7254e;">pom.xml</code> file to describe a project. <code style="color: #c7254e;">pom.xml</code> is referred as Project Object Model (POM), which is the fundamental unit of the Maven system.
+
+Maven uses "<em>Convention over Configuration</em>" in managing projects and provides default behavior for projects. Developers need not to specify the source code folder, where to put the jar files, etc.
+
+When creating a project, Maven creates default project structure. Developer can just save files accordingly.
+
+The following table shows the default values for project source code files, test case folders, resource files and other configurations.
+
+<code style="color: #c7254e;">${basedir}</code> denotes the project root folder:
+<table class="table table-bordered">
+<tbody>
+<tr>
+<th>Item</th>
+<th>Default</th>
+</tr>
+<tr>
+<td>pom.xml</td>
+<td>${basedir}/pom.xml</td>
+</tr>
+<tr>
+<td>source code</td>
+<td>${basedir}/src/main/java</td>
+</tr>
+<tr>
+<td>resources</td>
+<td>${basedir}/src/main/resources</td>
+</tr>
+<tr>
+<td>test cases source files</td>
+<td>${basedir}/src/test/java</td>
+</tr>
+<tr>
+<td>test cases resource files</td>
+<td>${basedir}/src/test/resources</td>
+</tr>
+<tr>
+<td>Complied source code</td>
+<td>${basedir}/target</td>
+</tr>
+<tr>
+<td>Generated JAR files</td>
+<td>${basedir}/target/classes</td>
+</tr>
+</tbody>
+</table>
+<h2></h2>
+<h2 id="Maven_vs_Ant">Maven vs. Ant</h2>
+Ant is a popular build tool also from Apache.
+
+Ant uses an imperative approach to declare the build files. By using Ant we have to specify in the build file what actions Ant should take and what folders/files to use.
+
+In Ant we can specify low level actions like copying files, compiling code, zip the jar files etc.
+
+Ant has no default directory layout.
+
+Maven uses a more declarative approach. By using Maven we only specify in the POM file what to build, not how to build it.
+
+In Maven, how to build your project is predefined in the Maven Build Life Cycles, Phases and Goals.
+
+&nbsp;
+<h1>Maven Setup</h1>
+<h2 id="System_Requirements" style="font-weight: 500; color: inherit;">System Requirements</h2>
+The following table lists the system requirements for installing Maven.
+<table class="table table-bordered">
+<tbody>
+<tr>
+<th>Item</th>
+<th>Requirements</th>
+</tr>
+<tr>
+<td>JDK</td>
+<td>Maven 3.3 requires JDK 1.7 or above</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>No minimum requirement</td>
+</tr>
+<tr>
+<td>Disk</td>
+<td>10MB for the Maven installation itself.
+At least 500MB for your local Maven repository.</td>
+</tr>
+<tr>
+<td>Operating System</td>
+<td>No minimum requirement.</td>
+</tr>
+</tbody>
+</table>
+<div></div>
+<h2 id="JDK" style="font-weight: 500; color: inherit;">JDK</h2>
+As Maven is a Java tool, we have to have Java installed first.
+
+We need a Java Development Kit (JDK), the Java Runtime Environment (JRE) is not sufficient.
+
+To verify Java Development Kit version on Windows, open Command Console and type
+<pre>c:\&gt; javac -version
+</pre>
+To verify Java Development Kit version on Linux, open Command Terminal and type
+<pre>$ javac -version
+</pre>
+To verify Java Development Kit version on Mac, open Terminal and type
+<pre>$ javac -version</pre>
+<div></div>
+<p id="Set_up_JDK" style="font-weight: 500; color: inherit;">if you dont have the jdk installed Download JDK from Oracle web site and execute the installation file.</p>
+
+<h2 id="JAVA_HOME_environment_variable" style="font-weight: 500; color: inherit;">JAVA_HOME environment variable</h2>
+If not dont already, we need to set the <code style="color: #c7254e;">JAVA_HOME</code> environment variable to point to the JDK 8 installation directory on your machine.
+
+On Windows open a console window and issue the following command
+<pre>set JAVA_HOME=C:\Program Files\Java\jdk1.8.0
+</pre>
+On Linux issue the following command
+<pre>export JAVA_HOME=/usr/local/jdk
+</pre>
+On Mac use the following command
+<pre>export JAVA_HOME=/your_JDK_folder
+</pre>
+<h2 style="font-weight: 500; color: inherit;"></h2>
+<h2 id="JDK_Path" style="font-weight: 500; color: inherit;">JDK Path</h2>
+If not done already, the next step is to append the JDK 8 command <strong>java</strong> and <strong>javac</strong> file location to System Path.
+
+On Windows append the following string to the end of the system variable <code style="color: #c7254e;">Path</code>.
+<pre>set PATH=C:\Jdk_Folder\bin;%PATH%
+</pre>
+On Linux use the following command
+<pre>export PATH=$PATH:$JAVA_HOME/bin/
+</pre>
+<h2 style="font-weight: 500; color: inherit;"></h2>
+<h2 id="Download_Maven" style="font-weight: 500; color: inherit;">Download Maven</h2>
+Go to <a style="color: #003399;" href="http://maven.apache.org/download.cgi">http://maven.apache.org/download.cgi</a> to download installation file for your target system.
+<h2 style="font-weight: 500; color: inherit;"></h2>
+<h2 id="Extract_the_Maven_archive" style="font-weight: 500; color: inherit;">Extract the Maven archive</h2>
+To extract the installation archive downloaded from previous step to the directory you wish to install Maven.
+<table class="table table-bordered">
+<tbody>
+<tr>
+<th>OS</th>
+<th>Location</th>
+</tr>
+<tr>
+<td>Windows</td>
+<td>C:\apache-maven</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>/usr/local/apache-maven</td>
+</tr>
+<tr>
+<td>Mac</td>
+<td>/usr/local/apache-maven</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-weight: 500; color: inherit;"></h2>
+<h2 id="Set_Maven_environment_variables" style="font-weight: 500; color: inherit;">Set Maven environment variables</h2>
+In order to use Maven we have to set up the following three environment variables.
+<table class="table table-bordered">
+<tbody>
+<tr>
+<th>Variable Name</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>M2_HOME</td>
+<td>Install Location. (C:\apache-maven)</td>
+</tr>
+<tr>
+<td>M2</td>
+<td>For Maven command.</td>
+</tr>
+<tr>
+<td>MAVEN_OPTS</td>
+<td>Maven memory usage setting</td>
+</tr>
+</tbody>
+</table>
+On Windows we set the environment variables as follows.
+<pre>set M2_HOME=C:\apache-maven-install-path
+set M2=%M2_HOME%\bin
+set MAVEN_OPTS=-Xms256m -Xmx512m
+</pre>
+On Linux we set the environment variables as follows.
+<pre>export M2_HOME=/usr/local/apache-maven-install-path
+export M2=$M2_HOME/bin
+export MAVEN_OPTS=-Xms256m -Xmx512m
+</pre>
+On Mac we set the environment variables as follows.
+<pre>export M2_HOME=/usr/local/apache-maven-install-path
+export M2=$M2_HOME/bin
+export MAVEN_OPTS=-Xms256m -Xmx512m
+</pre>
+<h2 id="System_Path" style="font-weight: 500; color: inherit;">System Path</h2>
+In order to use Maven command line tools anywhere on your system, we have to add Maven bin directory location to system path.
+
+On Windows append the string <code style="color: #c7254e;">;%M2%</code> to the end of the system variable <code style="color: #c7254e;">PATH</code>.
+
+<code style="color: #c7254e;">M2</code> is the variable defined in the step of setting Maven environment variables.
+
+On Linux we can use the following command
+<pre>export PATH=$M2:$PATH
+</pre>
+On Mac we can use the following command
+<pre>export PATH=$M2:$PATH
+</pre>
+<h2 style="font-weight: 500; color: inherit;"></h2>
+<h2 id="Verify_Maven_installation" style="font-weight: 500; color: inherit;">Verify Maven installation</h2>
+To verify the Maven is installed we can open a console window and execute the following Maven command.
+<pre>c:\Java_Dev&gt;mvn --version
+Apache Maven 3.3.3 (33f8c3e1027c3ddde99d3cdebad2656a31e8fdf4; 2014-08-11T13:58:10-07:00)
+Maven home: C:\Java_Dev\sdk\apache-maven-3.3.3
+Java version: 1.8.0_05, vendor: Oracle Corporation
+Java home: C:\Java_Dev\sdk\jdk\jre
+Default locale: en_US, platform encoding: Cp1252
+
+c:\Java_Dev&gt;
+</pre>
+<strong>Create</strong> a file called <strong>mavenRun.bat</strong> which we can use the set up the maven environment.
+<pre>set MAVEN_OPTS=-Xms256m -Xmx512m
+set M2_HOME=C:\Java_Dev\sdk\apache-maven-3.3.3
+set M2=C:\Java_Dev\sdk\apache-maven-3.3.3\bin
+set PATH=%PATH%;C:\Java_Dev\sdk\apache-maven-3.3.3\bin;
+</pre>
+<h2 id="Maven_Settings_File" style="font-weight: 500; color: inherit;">Maven Settings File</h2>
+Maven has two spots to store the settings files.
+
+In the settings files we can configure settings for all Maven POM files. For instance, you can configure location of local repository and active build profile.
+
+The settings files are called <code style="color: #c7254e;">settings.xml</code>.
+
+The two settings files are located at:
+<ul>
+ 	<li>The Maven installation directory: <code style="color: #c7254e;">$M2_HOME/conf/settings.xml</code></li>
+ 	<li>The user's home directory: <code style="color: #c7254e;">${user.home}/.m2/settings.xml</code></li>
+</ul>
+Both files are optional. If both files are present, the one in the user home settings file overrides the values in the Maven installation settings file.
+
+&nbsp;
+<h2>Configuring a proxy</h2>
+You can configure a proxy to use for some or all of your HTTP requests with Maven. The username and password are only required if your proxy requires basic authentication.
+
+The <tt style="color: rgba(0, 0, 0, 0.74902);">nonProxyHosts</tt> setting accepts wild cards, and each host not to proxy is separated by the | character. This matches the JDK configuration equivalent.
+<div class="source"><span style="color: #000088;">&lt;settings&gt;</span>
+...
+<pre>  <span style="color: #007700;">&lt;proxies&gt;</span>
+    <span style="color: #007700;">&lt;proxy&gt;</span>
+      <span style="color: #007700;">&lt;id&gt;</span>optional<span style="color: #007700;">&lt;/id&gt;</span>
+      <span style="color: #007700;">&lt;active&gt;</span>true<span style="color: #007700;">&lt;/active&gt;</span>
+      <span style="color: #007700;">&lt;protocol&gt;</span>http<span style="color: #007700;">&lt;/protocol&gt;</span>
+      <span style="color: #007700;">&lt;username&gt;</span>bbdnetXXXX<span style="color: #007700;">&lt;/username&gt;</span>
+      <span style="color: #007700;">&lt;password&gt;</span>XXXX<span style="color: #007700;">&lt;/password&gt;</span>
+      <span style="color: #007700;">&lt;host&gt;</span>proxy.bbdnet.bbd.co.za<span style="color: #007700;">&lt;/host&gt;</span>
+      <span style="color: #007700;">&lt;port&gt;</span>8080<span style="color: #007700;">&lt;/port&gt;</span>
+      <span style="color: #007700;">&lt;nonProxyHosts&gt;</span>local.net|some.host.com<span style="color: #007700;">&lt;/nonProxyHosts&gt;</span>
+    <span style="color: #007700;">&lt;/proxy&gt;</span>
+  <span style="color: #007700;">&lt;/proxies&gt;</span></pre>
+</div>
+<div class="source">...</div>
+<div class="source"><span style="color: #000088;">&lt;/settings&gt;</span></div>
+<h1>Maven POM File</h1>
+POM stands for Project Object Model. It is a core concept in Maven.
+
+A POM file is using XML format to declare the project resources like dependencies.
+
+The dependencies are JAR files which are used as library in the project.
+
+The pom.xml located in the root directory of the project contains references to all of these resources.
+
+Since Maven is Convention over Configuration, most of time we only need to declare the name of the artifacts, we don't need to specify the absolute or relative path for Maven to locate the resource.
+
+Maven uses a default directory/folder layout. All mavenized projects uses the same directory/folder to organize their source files, resource files.
+<div></div>
+<h2 id="How_Maven_uses_the_POM_file">How Maven uses the POM file</h2>
+Maven uses the pom.xml file in the following steps.
+<ul>
+ 	<li>Read the pom.xml file, parse the content.</li>
+ 	<li>Download dependencies to local dependency repository.</li>
+ 	<li>Execute life cycle/build phase/goal.
+For example, <code style="color: #c7254e;">mvn compile</code> will do the compile
+mvn test will execute all unit test cases
+mvn package will do compile, then execute all unit test cases, finally zip the classes file to a jar/war/ear file.</li>
+ 	<li>Execute plugins. Maven plugins are extensions for Maven core. Sometime we need to use plugins to do custom-project specific tasks.</li>
+</ul>
+<div></div>
+<h2 id="What_is_in_pom_xml_file">What is in pom.xml file</h2>
+A Maven POM file (Project Object Model), pom.xml, is an XML file that describe the resources of the project.
+
+Each project has a POM file. The POM file is named <code style="color: #c7254e;">pom.xml</code> and should be located in the root directory of the project.
+
+The pom.xml has declaration about the project and various configurations.
+
+The pom.xml file also has the goals and plugins.
+
+The POM file describes what to build, but not how to build it. How to build it is up to the Maven build phases and goals.
+
+We can add custom actions (goals) into the Maven build phase.
+
+The following tables lists some of the configuration that can be specified in the POM.
+<table class="table table-bordered">
+<tbody>
+<tr>
+<th>Item</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>project dependencies</td>
+<td>Library JAR files</td>
+</tr>
+<tr>
+<td>plugins</td>
+<td>Extension needed</td>
+</tr>
+<tr>
+<td>build profiles</td>
+<td>Custom setting for project</td>
+</tr>
+<tr>
+<td>project version</td>
+<td>A version number for the project. If the pom.xml is for a library, the version number is used as the library version number.</td>
+</tr>
+<tr>
+<td>developers</td>
+<td>Provide the information for developers who builds the software</td>
+</tr>
+<tr>
+<td>mailing list</td>
+<td>Email address</td>
+</tr>
+</tbody>
+</table>
+A project divided into sub projects will typically have one POM file for the parent project, and one POM file for each subproject.
+
+By using this structure we can build the whole project in one step, or if necessary we can build sub projects separately.
+<h2 id="Example">Example</h2>
+Here is a minimal POM file:
+<pre>&lt;project xmlns=<span class="q" style="font-weight: bold; color: #2a00ff;">"http://maven.apache.org/POM/4.0.0"</span>
+         xmlns:xsi=<span class="q" style="font-weight: bold; color: #2a00ff;">"http://www.w3.org/2001/XMLSchema-instance"</span>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;groupID&lt;/groupId&gt;
+    &lt;artifactId&gt;artifactId&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+&lt;/project&gt;
+</pre>
+Before creating a POM, we should decide the project group (<code style="color: #c7254e;">groupId</code>), the project name(<code style="color: #c7254e;">artifactId</code>) and its version(<code style="color: #c7254e;">version</code>).
+
+These attributes help us in uniquely identifying the project in repository.
+
+In the following code we fill the groupId which is the project group name, the artifactId which is the project name, and the project version.
+<pre>&lt;project xmlns=<span class="q" style="font-weight: bold; color: #2a00ff;">"http://maven.apache.org/POM/4.0.0"</span>
+   xmlns:xsi=<span class="q" style="font-weight: bold; color: #2a00ff;">"http://www.w3.org/2001/XMLSchema-instance"</span>
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+   http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+   &lt;groupId&gt;com.companyname.project-group&lt;/groupId&gt;
+   &lt;artifactId&gt;feeCalculation&lt;/artifactId&gt;
+   &lt;version&gt;1.0&lt;/version&gt;
+ 
+&lt;/project&gt;
+</pre>
+<h2 id="Note">Note</h2>
+All POM files require the project XML element and three mandatory fields: <code style="color: #c7254e;">groupId</code>, <code style="color: #c7254e;">artifactId</code>,<code style="color: #c7254e;">version</code>.
+
+Projects notation in repository is <code style="color: #c7254e;">groupId:artifactId:version</code>.
+
+The <code style="color: #c7254e;">modelVersion</code> element sets what version of the POM model. It has to match the Maven version you are using. Version 4.0.0 matches Maven version 2 and 3.
+
+The <code style="color: #c7254e;">groupId</code> element is a unique ID for an organization, or a project.
+
+Normally we use a group ID similar to the root Java package name of the project.
+
+The project will be located in the Maven repository under a directory structure matching the group ID.
+
+Each <code style="color: #c7254e;">.</code> is replaced with a directory separator, and each word thus represents a directory.
+
+The group ID <code style="color: #c7254e;">com.yourCompany</code> would then be located in a directory called <code style="color: #c7254e;">MAVEN_REPO/com/yourCompany</code>.
+
+The MAVEN_REPO is the directory path of the Maven repository.
+
+The <code style="color: #c7254e;">artifactId</code> element contains the name of the project.
+
+The artifact ID is used as name for a sub directory under the group ID directory in the Maven repository and as part of the name of the JAR file produced when building the project.
+
+The build result, a JAR, WAR or EAR file, is called an artifact in Maven.
+
+The <code style="color: #c7254e;">versionId</code> element contains the version number of the project.
+
+The users of your project can refer to a specific version of your project by using the version number in <code style="color: #c7254e;">versionId</code> element.
+
+The version number is used as a name for a subdirectory under the artifact ID directory. and as part of the name of the artifact built.
+
+The above groupId, artifactId and version elements would result in a JAR file being built and put into the local Maven repository at the following path (directory and file name):
+
+MAVEN_REPO/com/companyname/project-group/feeCalculation/1.0.0/feeCalculation-1.0.0.jar
+
+If your project uses the Maven directory structure, and your project has no external dependencies, then the above minimal POM file is all you need to build your project.
+<h2></h2>
+<h2 id="Super_POM">Super POM</h2>
+All Maven POM files inherit from a super POM regardless explicitly defined or not.
+
+This base POM is known as the Super POM, and contains values inherited by default.
+
+It helps developer to specify minimum configuration detail in pom.xml.
+
+If no super POM is specified, the POM file inherits from the base POM.
+
+Here is a diagram illustrating that:
+<pre>Base POM
+ |
+ +---POM
+ |
+ |
+ +---POM
+ |    |
+ |    +---POM
+ |    |
+ |    +---POM
+ |    |
+ |    +---POM
+ |
+ |
+ +---POM
+
+</pre>
+We can set a super POM file explicitly in POM file to change the settings across all inheriting POM's via their common super POM.
+
+You specify the super POM at the top of a POM file like this:
+<pre>&lt;project xmlns=<span class="q" style="font-weight: bold; color: #2a00ff;">"http://maven.apache.org/POM/4.0.0"</span>
+         xmlns:xsi=<span class="q" style="font-weight: bold; color: #2a00ff;">"http://www.w3.org/2001/XMLSchema-instance"</span>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    
+        &lt;parent&gt;
+        &lt;groupId&gt;com.bbd&lt;/groupId&gt;
+        &lt;artifactId&gt;my-parent&lt;/artifactId&gt;
+        &lt;version&gt;2.0&lt;/version&gt;
+        &lt;relativePath&gt;../my-parent&lt;/relativePath&gt;
+        &lt;/parent&gt;
+    
+
+    &lt;artifactId&gt;my-project&lt;/artifactId&gt;
+    ...
+&lt;/project&gt;
+</pre>
+An inheriting POM file can override settings from a super POM by specifying new settings in the inheriting POM file.
+<h2 id="Effective_pom">Effective pom</h2>
+Maven use the effective pom from super pom plus project configuration to execute relevant goal.
+
+We can look at the default configurations of the super POM by running the following command:
+<pre>mvn help:effective-pom
+
+</pre>
+<h1>Maven Directory Structure</h1>
+Having a common directory layout allows users to be familiar with Maven project from one to another.
+
+Maven defines a standard directory structure.
+<pre>- src
+  - main
+    - java
+    - resources
+    - webapp
+  - test
+    - java
+    - resources
+
+- target
+</pre>
+The <code style="color: #c7254e;">src</code> directory is the root directory of source code and test code.
+
+The <code style="color: #c7254e;">main</code> directory is the root directory for source code related to the application itself, not test code.
+
+The <code style="color: #c7254e;">test</code> directory contains the test source code.
+
+The <code style="color: #c7254e;">java</code> directories under main and test contains the Java code for the application itself which is under main and the Java code for the tests which is under test.
+
+The <code style="color: #c7254e;">resources</code> directory contains the resources needed by your project.
+
+The <code style="color: #c7254e;">target</code> directory is created by Maven. It contains all the compiled classes, JAR files etc.
+
+When executing the <code style="color: #c7254e;">mvn clean</code> command, Maven will clean the target directory.
+
+The <code style="color: #c7254e;">webapp</code> directory contains Java web application, if the project is a web application.
+
+The <code style="color: #c7254e;">webapp</code> directory is the root directory of the web application. The webapp directory contains the <code style="color: #c7254e;">WEB-INF</code> directory.
+
+If you follow the directory structure, you do not need to specify the directories of your source code, test code, resource files, etc. in your POM file.
+<div></div>
+<h2 id="Directory_Structure">Directory Structure</h2>
+Here are the most important directories:
+<table class="table table-bordered">
+<tbody>
+<tr>
+<th>Directory</th>
+<th>Stores</th>
+</tr>
+<tr>
+<td>src/main/java</td>
+<td>Application/Library sources</td>
+</tr>
+<tr>
+<td>src/main/resources</td>
+<td>Application/Library resources</td>
+</tr>
+<tr>
+<td>src/main/config</td>
+<td>Configuration files</td>
+</tr>
+<tr>
+<td>src/main/scripts</td>
+<td>Application/Library scripts</td>
+</tr>
+<tr>
+<td>src/main/webapp</td>
+<td>Web application sources</td>
+</tr>
+<tr>
+<td>src/test/java</td>
+<td>Test sources</td>
+</tr>
+<tr>
+<td>src/test/resources</td>
+<td>Test resources</td>
+</tr>
+<tr>
+<td>src/assembly</td>
+<td>Assembly descriptors</td>
+</tr>
+<tr>
+<td>src/site</td>
+<td>Site</td>
+</tr>
+<tr>
+<td>target</td>
+<td>The <code style="color: #c7254e;">target</code> directory is used to store all output of the build.</td>
+</tr>
+<tr>
+<td>LICENSE.txt</td>
+<td>Project's license</td>
+</tr>
+<tr>
+<td>NOTICE.txt</td>
+<td>Notices and attributions</td>
+</tr>
+<tr>
+<td>README.txt</td>
+<td>Project's readme</td>
+</tr>
+</tbody>
+</table>
+At the top of the project root there are pom.xml file and any properties, maven.xml.
+
+In addition, there are text files for the user to read immediately on receiving the source: README.txt, LICENSE.txt, etc.
+
+There are two subdirectories of this structure: <code style="color: #c7254e;">src</code> and <code style="color: #c7254e;">target</code>.
+
+The <code style="color: #c7254e;">src</code> directory contains all of the source material for building the project, its site and so on.
+
+It contains a subdirectory for each type: <code style="color: #c7254e;">main</code> for the main build artifact, <code style="color: #c7254e;">test</code> for the unit test code and <code style="color: #c7254e;">resources</code>, <code style="color: #c7254e;">site</code> and so on.
+
+Within source directories, <code style="color: #c7254e;">main</code> and <code style="color: #c7254e;">test</code>, there is one directory for the language java, under which there are the normal package hierarchy, and one for resources.
+
+The resources under is copied to the target classpath.
+
+&nbsp;
+<h1>Maven Dependencies</h1>
+When writing Java code we always need some libraries, for example, to do unit test we need the JUnit library, to do String manipulation we need Apache Common Util libraries.
+
+For bigger project we may need to create our own library and use it in different parts of the project.
+
+The library Java files are packaged in JAR files and these JAR files are needed on the classpath when you compile your project code.
+
+Different project need different version of the libraries. Keeping the project up-to-date with the correct versions of library JAR files is not an easy task.
+
+Each external JAR may again also depend on other external JAR files etc. Downloading all these external dependency JAR files recursively and making sure that the right versions are downloaded is a huge task.
+
+When the project grows bigger and bigger, we would need more and more external dependencies.
+<div></div>
+<h2 id="Maven_Dependencies_Management">Maven Dependencies Management</h2>
+Maven has built-in dependency management. We can just specify in the POM file what external libraries the project depends on, and which version.
+
+Maven will download them and puts them in your local Maven repository.
+
+If these external libraries need other libraries, then Maven will download their dependency libraries into your local Maven repository as well.
+
+We can specify dependencies inside the dependencies element in the POM file.
+
+Here is an example:
+<pre>&lt;project ...&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;com.bbd.crawler&lt;/groupId&gt;
+    &lt;artifactId&gt;java-web-crawler&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.jsoup&lt;/groupId&gt;
+            &lt;artifactId&gt;jsoup&lt;/artifactId&gt;
+            &lt;version&gt;1.7.3&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;junit&lt;/groupId&gt;
+            &lt;artifactId&gt;junit&lt;/artifactId&gt;
+            &lt;version&gt;4.8.1&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/project&gt;</pre>
+<div></div>
+<h2 id="Note">Note</h2>
+In the code above there are two <strong>dependency</strong> elements. Each dependency element describes an external dependency.
+
+Each dependency is described by its <strong>groupId</strong>, <strong>artifactId</strong> and <strong>version</strong>.
+
+We use groupId, artifactId and version to identify our own project in the top of the pom file. We also use those three fields to identify a library.
+
+The code above needs the org.jsoup group's jsoup artifact in version 1.7.3, and the junit group's junit artifact in version 4.8.1.
+
+When executing this POM file, the two dependencies will be downloaded from a <strong>central</strong> Maven repository and put into your <strong>local</strong> Maven repository if the dependencies are missing from your local Maven repository.
+
+If the dependencies are already found in your local repository, Maven will not download them.
+
+If a given dependency is not available in the central Maven repository. You can download the dependency yourself and put it into your local Maven repository.
+
+Remember to put it into a subdirectory structure matching the groupId, artifactId and version. Replace all dots (.) with / and separate the groupId, artifactId and version with <code style="color: #c7254e;">/</code>.
+
+The two dependencies downloaded by the example above will be put into the following subdirectories:
+<pre>MAVEN_REPOSITORY_ROOT/junit/junit/4.8.1
+MAVEN_REPOSITORY_ROOT/org/jsoup/jsoup/1.7.3
+</pre>
+<h2 id="External_Dependencies">External Dependencies</h2>
+A Maven external dependency is a dependency JAR file which is not in a local or remote Maven repository.
+
+External dependencies may be located on your own local hard disk.
+
+"external" means external to the Maven repository system.
+
+We can configure an external dependency like this:
+<pre>&lt;dependency&gt;
+  &lt;groupId&gt;mydependency&lt;/groupId&gt;
+  &lt;artifactId&gt;mydependency&lt;/artifactId&gt;
+  &lt;scope&gt;system&lt;/scope&gt;
+  &lt;version&gt;1.0&lt;/version&gt;
+  &lt;systemPath&gt;${basedir}\war\WEB-INF\lib\mydependency.jar&lt;/systemPath&gt;
+&lt;/dependency&gt;    
+</pre>
+The <code style="color: #c7254e;">groupId</code> and <code style="color: #c7254e;">artifactId</code> are both set to the name of the dependency.
+
+The <code style="color: #c7254e;">scope</code> element value is set to system. The <code style="color: #c7254e;">systemPath</code> element is pointing to the location of the JAR file.
+
+The <code style="color: #c7254e;">${basedir}</code> points to the directory where the POM is located.
+<h2 id="Snapshot_Dependencies">Snapshot Dependencies</h2>
+Snapshot dependencies are dependency JAR files under development.
+
+Instead of constantly updating the version numbers to get the latest version, you can mark a dependency JAR file as snapshot so that the Maven will always download it.
+
+Snapshot versions are always downloaded into your local repository for every build, even if a matching snapshot version is already downloaded in your local repository.
+
+To mark your project as a snapshot version we can append <code style="color: #c7254e;">-SNAPSHOT</code> to the version number in the beginning of the POM where you set the <code style="color: #c7254e;">groupId</code> and <code style="color: #c7254e;">artifactId</code>.
+
+Here is a version element example:
+<pre>&lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+</pre>
+The <code style="color: #c7254e;">-SNAPSHOT</code> is appended to the version number.
+
+When declaring the <code style="color: #c7254e;">dependency</code> element in the pom.xml we have to use the <code style="color: #c7254e;">-SNAPSHOT</code> as well as follows.
+<pre>&lt;dependency&gt;
+    &lt;groupId&gt;com.bbd&lt;/groupId&gt;
+    &lt;artifactId&gt;java-web-crawler&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;
+</pre>
+The <code style="color: #c7254e;">-SNAPSHOT</code> appended to the version number marks a snapshot dependency library in Maven.
+
+We can configure how often Maven will download snapshot dependencies in the Maven <code style="color: #c7254e;">settings.xml</code> File.
+
+&nbsp;
+<h1>Maven Repositories</h1>
+A Maven repository is a directory to store all the project jars, library jar, plugins or any other artifacts.
+
+There are three types of Maven repository.
+<ul>
+ 	<li>local</li>
+ 	<li>central</li>
+ 	<li>remote</li>
+</ul>
+<a href="https://community.bbd.co.za/wp-content/uploads/2016/12/RepositoryDiagram-.png"><img class="alignnone size-full wp-image-2567" src="https://community.bbd.co.za/wp-content/uploads/2016/12/RepositoryDiagram-.png" alt="repositorydiagram" width="516" height="579" /></a>
+<div></div>
+<h2 id="Local_Repository">Local Repository</h2>
+Maven local repository is a local folder on your machine.
+
+Maven local repository is created when you run any maven command for the first time.
+
+Maven local repository stores all dependency library jars, plugin jars, etc on your development machine.
+
+When Maven downloads the dependency jars it stores the jar files in the local Maven repository.
+
+If a newer version is needed Maven will download the newer version. If the version being declared in the <code style="color: #c7254e;">dependency</code> element in pom.xml file is already in the local Maven repository it just uses it without downloading.
+
+Local Maven repository avoid referencing to dependencies stored on remote machine every time a project is build.
+
+By default Maven creates the local repository under <code style="color: #c7254e;">%USER_HOME%</code> directory.
+
+We can set the folder for Maven local repository in Maven settings.xml file available at <code style="color: #c7254e;">%M2_HOME%\conf</code> directory.
+<pre>&lt;settings xmlns=<span class="q" style="font-weight: bold; color: #2a00ff;">"http://maven.apache.org/SETTINGS/1.0.0"</span>
+   xmlns:xsi=<span class="q" style="font-weight: bold; color: #2a00ff;">"http://www.w3.org/2001/XMLSchema-instance"</span>
+   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 
+   http://maven.apache.org/xsd/settings-1.0.0.xsd"&gt;
+      &lt;localRepository&gt;C:/MyLocalRepository&lt;/localRepository&gt;
+&lt;/settings&gt;
+</pre>
+After setting the new local repository folder when running Maven command, Maven will download dependencies to the custom path.
+<div></div>
+<h2 id="Central_Repository">Central Repository</h2>
+Maven central repository is repository managed by Maven community.
+
+Maven central repository contains a large number of commonly used libraries. And we can publish our own libraries to Maven central repository as well.
+
+When Maven cannot find any dependency jar file in your local repository, it starts searching in Maven central repository using following URL: <code style="color: #c7254e;">http://repo1.maven.org/maven2/</code>.
+
+We don't need to configure the Maven central repository URL. But we do need internet access to download and search the Maven central repository.
+
+To browse the central maven repository type in the following URL in your browser address bar.
+<pre>http://search.maven.org/#browse
+</pre>
+We can search a jar file in central repository.
+
+&nbsp;
+<h2 id="Remote_Repository">Remote Repository</h2>
+Sometime we need to set up a Maven repository inside a company or a project development team to host our own libraries.
+
+The company mantained repository is outside developer's machine and is called Maven remote repository.
+
+The following pom.xml declares dependencies and also declared remote repository URL.
+<pre>&lt;project ...&gt;
+   &lt;dependencies&gt;
+      &lt;dependency&gt;
+         &lt;groupId&gt;com.companyname.common-lib&lt;/groupId&gt;
+         &lt;artifactId&gt;common-lib&lt;/artifactId&gt;
+         &lt;version&gt;1.0.0&lt;/version&gt;
+      &lt;/dependency&gt;
+   &lt;dependencies&gt;
+   &lt;repositories&gt;
+      &lt;repository&gt;
+         &lt;id&gt;companyname.lib1&lt;/id&gt;
+         &lt;url&gt;http://download.companyname.org/maven2/lib1&lt;/url&gt;
+      &lt;/repository&gt;
+      &lt;repository&gt;
+         &lt;id&gt;companyname.lib2&lt;/id&gt;
+         &lt;url&gt;http://download.companyname.org/maven2/lib2&lt;/url&gt;
+      &lt;/repository&gt;
+   &lt;/repositories&gt;
+&lt;/project&gt;
+</pre>
+<h2 id="Maven_Dependency_Search_Sequence">Maven Dependency Search Sequence</h2>
+Maven searches for dependency libraries in the following sequence:
+<ol>
+ 	<li>Search local dependency repository.</li>
+ 	<li>Search the remote dependency repository</li>
+ 	<li>Search central dependency repository</li>
+</ol>
+Maven stops the searching once it finds the jar file.
+
+&nbsp;
+<h1>Maven Build Life Cycles</h1>
+A Build Lifecycle is a sequence of tasks we used to build a software. For example, compile, test, test more, package and publish or deploy are all tasks we need to do to build a software.
+
+A Maven build lifecycle is a sequence of phases we need to go through in order to finishing building the software.
+
+The following table lists some of the build lifecycle.
+<table class="table table-bordered">
+<tbody>
+<tr>
+<th>Lifecycle</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>validate</td>
+<td>validate the project is correct and all necessary information is available</td>
+</tr>
+<tr>
+<td>compile</td>
+<td>compile the source code</td>
+</tr>
+<tr>
+<td>test</td>
+<td>test the compiled source code using a unit testing</td>
+</tr>
+<tr>
+<td>package</td>
+<td>take the compiled code and package it in its distributable format, such as a JAR</td>
+</tr>
+<tr>
+<td>integration-test</td>
+<td>deploy the package into an environment where integration tests can be run</td>
+</tr>
+<tr>
+<td>verify</td>
+<td>verify the package is valid and meets quality criteria</td>
+</tr>
+<tr>
+<td>install</td>
+<td>install the package into the local repository</td>
+</tr>
+<tr>
+<td>deploy</td>
+<td>publish to integration or release environment</td>
+</tr>
+</tbody>
+</table>
+Maven has following three standard lifecycles:
+<ul>
+ 	<li>clean</li>
+ 	<li>default (or build)</li>
+ 	<li>site</li>
+</ul>
+These build phases are executed sequentially to complete the default lifecycle.
+
+Given the build phases above, when the default lifecycle is used, Maven will
+<ol>
+ 	<li>validate the project</li>
+ 	<li>compile the sources</li>
+ 	<li>run those against the tests</li>
+ 	<li>package the binaries (e.g. jar)</li>
+ 	<li>run integration tests against that package</li>
+ 	<li>verify the package</li>
+ 	<li>install the verifed package to the local repository</li>
+ 	<li>deploy the installed package in a specified environment</li>
+</ol>
+To do all those, you only need to call the last build phase to be executed, in this case, deploy:
+
+<code style="color: #c7254e;">mvn deploy</code>
+
+Calling a build phase will execute not only that build phase, but also every build phase prior to the called build phase.
+
+Thus, doing
+
+<code style="color: #c7254e;">mvn integration-test</code>
+
+will do every build phase before it (validate, compile, package, etc.), before executing integration-test.
+
+The same command can be used in a multi-module with one or more subprojects. For example:
+
+<code style="color: #c7254e;">mvn clean install</code>
+
+This command will traverse into all of the subprojects and run clean, then install including all of the prior steps.
+<div></div>
+<h2 id="Clean_Lifecycle_Reference">Clean Lifecycle Reference</h2>
+<table class="table table-bordered">
+<tbody>
+<tr>
+<td><tt>pre-clean</tt></td>
+<td>executes processes needed prior to the actual project cleaning</td>
+</tr>
+<tr>
+<td><tt>clean</tt></td>
+<td>remove all files generated by the previous build</td>
+</tr>
+<tr>
+<td><tt>post-clean</tt></td>
+<td>executes processes needed to finalize the project cleaning</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Default_Lifecycle_Reference">Default Lifecycle Reference</h2>
+<table class="table table-bordered">
+<tbody>
+<tr>
+<td><tt>validate</tt></td>
+<td>validate the project and ensure that all necessary information is available.</td>
+</tr>
+<tr>
+<td><tt>initialize</tt></td>
+<td>initialize build state, set properties or create directories.</td>
+</tr>
+<tr>
+<td><tt>generate-sources</tt></td>
+<td>generate any source code.</td>
+</tr>
+<tr>
+<td><tt>process-sources</tt></td>
+<td>process the source code.</td>
+</tr>
+<tr>
+<td><tt>generate-resources</tt></td>
+<td>generate resources.</td>
+</tr>
+<tr>
+<td><tt>process-resources</tt></td>
+<td>copy and process the resources into the destination directory for packaging.</td>
+</tr>
+<tr>
+<td><tt>compile</tt></td>
+<td>compile the source code.</td>
+</tr>
+<tr>
+<td><tt>process-classes</tt></td>
+<td>post-process the generated files from compilation.</td>
+</tr>
+<tr>
+<td><tt>generate-test-sources</tt></td>
+<td>generate any test source code.</td>
+</tr>
+<tr>
+<td><tt>process-test-sources</tt></td>
+<td>process the test source code.</td>
+</tr>
+<tr>
+<td><tt>generate-test-resources</tt></td>
+<td>create resources for testing.</td>
+</tr>
+<tr>
+<td><tt>process-test-resources</tt></td>
+<td>copy and process the resources into the test destination directory.</td>
+</tr>
+<tr>
+<td><tt>test-compile</tt></td>
+<td>compile the test source code</td>
+</tr>
+<tr>
+<td><tt>process-test-classes</tt></td>
+<td>post-process the generated files from test compilation.</td>
+</tr>
+<tr>
+<td><tt>test</tt></td>
+<td>run tests using a unit testing framework.</td>
+</tr>
+<tr>
+<td><tt>prepare-package</tt></td>
+<td>perform any operations necessary to prepare a package before the packaging.</td>
+</tr>
+<tr>
+<td><tt>package</tt></td>
+<td>package the compiled code into its distributable format, such as a JAR.</td>
+</tr>
+<tr>
+<td><tt>pre-integration-test</tt></td>
+<td>perform actions required before integration tests are executed.</td>
+</tr>
+<tr>
+<td><tt>integration-test</tt></td>
+<td>process and deploy the package into an environment where integration tests can be run.</td>
+</tr>
+<tr>
+<td><tt>post-integration-test</tt></td>
+<td>perform actions required after integration tests have been executed.</td>
+</tr>
+<tr>
+<td><tt>verify</tt></td>
+<td>run any checks to verify the package is valid.</td>
+</tr>
+<tr>
+<td><tt>install</tt></td>
+<td>install the package into the local repository.</td>
+</tr>
+<tr>
+<td><tt>deploy</tt></td>
+<td>publish the project.</td>
+</tr>
+</tbody>
+</table>
+<div></div>
+<h2 id="Site_Lifecycle_Reference">Site Lifecycle Reference</h2>
+<table class="table table-bordered">
+<tbody>
+<tr>
+<td>pre-site</td>
+<td>executes processes prior to the project site generation</td>
+</tr>
+<tr>
+<td>site</td>
+<td>generates the project's site documentation</td>
+</tr>
+<tr>
+<td>post-site</td>
+<td>executes processes to finalize the site generation</td>
+</tr>
+<tr>
+<td>site-deploy</td>
+<td>deploys the generated site to the web server</td>
+</tr>
+</tbody>
+</table>
+If there are other contributing sources to the artifact build, they would be under other subdirectories: for example <code style="color: #c7254e;">src/main/antlr</code> would contain Antlr grammar definition files.
+
+&nbsp;
+<h1>Maven Plugins</h1>
+Maven is actually a plugin container.
+
+Each task is done by a plugin.
+
+We can use Maven Plugins to:
+<ul>
+ 	<li>compile source code files</li>
+ 	<li>create jar file</li>
+ 	<li>create war file</li>
+ 	<li>run unit testing</li>
+ 	<li>create project documentation</li>
+ 	<li>create project reports</li>
+</ul>
+<div></div>
+<h2 id="Syntax">Syntax</h2>
+We can use the following syntax to execute a plugin and its goal.
+
+<code style="color: #c7254e;">mvn [plugin-name]:[goal-name]</code>
+
+The following code uses maven-compiler-plugin's compile-goal to compile a Java project.
+
+<code style="color: #c7254e;">mvn compiler:compile</code>
+<h2 id="Plugin_Types">Plugin Types</h2>
+Maven provided following two types of Plugins:
+<table class="table table-bordered">
+<tbody>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>Build plugins</td>
+<td>execute during the build and they should be configured in the &lt;build/&gt; element from the pom.xml file.</td>
+</tr>
+<tr>
+<td>Reporting plugins</td>
+<td>execute during the site generation and they should be configured in the &lt;reporting/&gt; element from the pom.xml.</td>
+</tr>
+</tbody>
+</table>
+<h2></h2>
+<h2 id="Common_plugins">Common plugins</h2>
+The following table lists a few of common plugins.
+<table class="table table-bordered">
+<tbody>
+<tr>
+<th>Plugin</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>clean</td>
+<td>Clean up after the build.</td>
+</tr>
+<tr>
+<td>compiler</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Compiles Java sources.</td>
+</tr>
+<tr>
+<td>deploy</td>
+<td>Deploy the built artifact to the remote repository.</td>
+</tr>
+<tr>
+<td>failsafe</td>
+<td>Run the JUnit tests in an isolated classloader.</td>
+</tr>
+<tr>
+<td>install</td>
+<td>Copy the built artifact into the local repository.</td>
+</tr>
+<tr>
+<td>resources</td>
+<td>Copy the resources to the output directory for including in the JAR.</td>
+</tr>
+<tr>
+<td>site</td>
+<td>Generate a site for the current project.</td>
+</tr>
+<tr>
+<td>ear</td>
+<td>Generate an EAR from the current project.</td>
+</tr>
+</tbody>
+</table>
+<div></div>
+<h2 id="Example">Example</h2>
+The following pom.xml file shows how to config executions to output text.
+<pre>&lt;project xmlns=<span class="q" style="font-weight: bold; color: #2a00ff;">"http://maven.apache.org/POM/4.0.0"</span>
+    xmlns:xsi=<span class="q" style="font-weight: bold; color: #2a00ff;">"http://www.w3.org/2001/XMLSchema-instance"</span>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+    http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+&lt;groupId&gt;com.bbd.project&lt;/groupId&gt;
+&lt;artifactId&gt;simpleCode&lt;/artifactId&gt;
+&lt;version&gt;1.0&lt;/version&gt;
+&lt;build&gt;
+&lt;plugins&gt;
+   &lt;plugin&gt;
+   &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+   &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
+   &lt;version&gt;1.1&lt;/version&gt;
+   &lt;executions&gt;
+      &lt;execution&gt;
+         &lt;id&gt;id.clean&lt;/id&gt;
+         &lt;phase&gt;clean&lt;/phase&gt;
+         &lt;goals&gt;
+            &lt;goal&gt;run&lt;/goal&gt;
+         &lt;/goals&gt;
+         &lt;configuration&gt;
+            &lt;tasks&gt;
+               &lt;echo&gt;hi from plugin.&lt;/echo&gt;
+            &lt;/tasks&gt;
+         &lt;/configuration&gt;
+      &lt;/execution&gt;     
+   &lt;/executions&gt;
+   &lt;/plugin&gt;
+&lt;/plugins&gt;
+&lt;/build&gt;
+&lt;/project&gt;
+</pre>
+Save the code above to c:\mvn_test, open command console and go to c:\mvn_test execute the following mvn command.
+
+<code style="color: #c7254e;">C:\mvn_test&gt;mvn clean</code>
+<h1></h1>
+<h1>Appendix  - Examples</h1>
+&nbsp;
+<h2><a id="user-content-1-beginner-maven-project" class="anchor" style="color: #4078c0;" href="https://github.com/in28minutes/MavenIn28Minutes#1-beginner-maven-project"></a>1. Beginner Maven Project</h2>
+<a href="https://github.com/roryp/MavenIn28Minutes/tree/master/1.basic-maven-example">https://github.com/roryp/MavenIn28Minutes/tree/master/1.basic-maven-example</a>
+<h4><a id="user-content-first-project--my-aim-is-to-create-a-springjar-think-as-if-you-are-developing-spring-some-other-developers-want-to-use-the-framework-you-are-developing-steps-in-creating-a-jar" class="anchor" style="color: #4078c0;" href="https://github.com/in28minutes/MavenIn28Minutes#first-project--my-aim-is-to-create-a-springjar-think-as-if-you-are-developing-spring-some-other-developers-want-to-use-the-framework-you-are-developing-steps-in-creating-a-jar"></a>First Project : My aim is to create a Spring.jar. Steps in creating a JAR</h4>
+<ul>
+ 	<li>App.Java -&gt; App.class</li>
+ 	<li>AppTest.Java -&gt; AppTest.class</li>
+ 	<li>Run Unit Tests</li>
+ 	<li>Package in a particular format</li>
+ 	<li>Earlier this was done using long tedious ant scripts</li>
+</ul>
+<h4><a id="user-content-convention-over-configuration" class="anchor" style="color: #4078c0;" href="https://github.com/in28minutes/MavenIn28Minutes#convention-over-configuration"></a>Convention over Configuration</h4>
+<ul>
+ 	<li>Pre defined folder structure</li>
+ 	<li>pom.xml</li>
+ 	<li>mvn --version</li>
+ 	<li>mvn compile (compiles source files)</li>
+ 	<li>mvn test-compile (compiles test files) - one thing to observe is this also compiles source files</li>
+ 	<li>mvn clean - deletes target directory</li>
+ 	<li>mvn test - run unit tests</li>
+</ul>
+<h2><a id="user-content-2-intermediate-maven-project" class="anchor" style="color: #4078c0;" href="https://github.com/in28minutes/MavenIn28Minutes#2-intermediate-maven-project"></a>2. Intermediate Maven Project</h2>
+<a href="https://github.com/roryp/MavenIn28Minutes/tree/master/2.intermediate-maven-example">https://github.com/roryp/MavenIn28Minutes/tree/master/2.intermediate-maven-example</a>
+<ul>
+ 	<li>Transtive Dependencies (add Hibernate dependency)</li>
+ 	<li>Exclusions - Add an exclude</li>
+ 	<li>Dependency Hierarchy - See how each dependency is coming in</li>
+ 	<li>Versions [4.1,] [,4.1] [,4.1)</li>
+ 	<li>Scope - Dependencies are needed only for tests. They are not part of the war or jar. we can use scope for that.</li>
+ 	<li>Maven Compiler Plugin - Change source from 1.5 to 1.8.</li>
+ 	<li>Effective Pom - Super Pom (Similar to Java Inheritance) - Check the build part of super pom (Convention over configuration - defaults are defined). We can change it - for example source directory. Recommended not to override defaults. Easy to move from one project to another project. Definitions of various plugins. mvn help:effective-pom</li>
+</ul>
+<h2></h2>
+<h2><a id="user-content-3-multi-module-maven-project" class="anchor" style="color: #4078c0;" href="https://github.com/in28minutes/MavenIn28Minutes#3-multi-module-maven-project"></a>3. Multi Module Maven Project</h2>
+<a href="https://github.com/roryp/MavenIn28Minutes/tree/master/3.multi-module-maven-project">https://github.com/roryp/MavenIn28Minutes/tree/master/3.multi-module-maven-project</a>
+<ul>
+ 	<li>Most projects have multiple layers. Each layer has its own dependencies. Also multiple layers may share same dependency. We will see the best practices in managing dependencies in a multi module maven project.</li>
+ 	<li>Parent pom has type pom</li>
+ 	<li>- Defines Modules</li>
+ 	<li>Dependency Management Section</li>
+ 	<li>Properties</li>
+ 	<li>Pre-defined Variables ${project.version}</li>
+ 	<li>Run from command prompt - mvn clean install</li>
+</ul>
+<h2><a id="user-content-4-maven-web-application" class="anchor" style="color: #4078c0;" href="https://github.com/in28minutes/MavenIn28Minutes#4-maven-web-application"></a>4. Maven Web Application</h2>
+<a href="https://github.com/roryp/MavenIn28Minutes/tree/master/4.web-application-with-maven">https://github.com/roryp/MavenIn28Minutes/tree/master/4.web-application-with-maven</a>
+<h2><a id="user-content-5-tip-and-tricks" class="anchor" style="color: #4078c0;" href="https://github.com/in28minutes/MavenIn28Minutes#5-tip-and-tricks"></a>5. Tip and Tricks</h2>
+<h2><a id="user-content-important-commands" class="anchor" style="color: #4078c0;" href="https://github.com/in28minutes/MavenIn28Minutes#important-commands"></a>Important Commands</h2>
+<pre><code>    help:effective-settings
+    help:effective-pom
+    dependency:tree
+    dependency:sources
+    --debug
+</code></pre>
+<h2><a id="user-content-maven-archetypes" class="anchor" style="color: #4078c0;" href="https://github.com/in28minutes/MavenIn28Minutes#maven-archetypes"></a>Maven Archetypes</h2>
+<pre><code>    archetype:generate</code></pre>

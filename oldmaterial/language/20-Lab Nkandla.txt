@@ -1,0 +1,43 @@
+Were are going to create a representation for the infamous Nkandla homestead.
+
+A HomeStead has a
+<ul>
+	<li>Name</li>
+	<li>District</li>
+	<li>Province</li>
+	<li>Country</li>
+</ul>
+Nkandla is a HomeStead
+Nkandla has a
+<ul>
+	<li>Swimming pool</li>
+	<li>Chicken run</li>
+	<li>Amphitheatre</li>
+</ul>
+A person has a
+<ul>
+	<li>Name</li>
+	<li>Age</li>
+	<li>Gender</li>
+	<li>Type (create a Enum called personType)</li>
+</ul>
+Politician is a specialized type of person
+
+Jacob Zuma is a Politician with the type of personType – “PRESIDENT”
+Jacob Zuma has a
+<ul>
+	<li>Lawyer (personType)</li>
+	<li>Architect (personType)</li>
+</ul>
+A visitor is an interface with a “visit(HomeStead)” method
+
+Create Politician instances called “Helen Zille”, “Julius Malema” and “Jacob Zum”a which implements the visitor interface
+A homestead has an accept method that takes in a visitor and calls “visit(this)”
+Make the 3 people try and visit Nkandla
+It should only accept visitors with the correct personType of PRESIDENT else throw an Exception
+
+&nbsp;
+<h1>Solution</h1>
+<a href="https://github.com/roryp/Nkandla/tree/master/Nkandla_Java">https://github.com/roryp/Nkandla/tree/master/Nkandla_Java</a>
+
+&nbsp;

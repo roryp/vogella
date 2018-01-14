@@ -114,7 +114,7 @@ If the command line returns the information that the program could not be found,
 
 On Ubuntu you can install Java 8 via the following command on the command line. These commands might change over time, if they do not work anymore please Google for the installation.
 
-```
+```bash
 # install Java from the OpenJDK project
 sudo apt-get install openjdk-8-jdk
 
@@ -137,13 +137,13 @@ If you have problems installing Java on your system, search via Google for *How 
 
 Switch again to the command line and run the following command.
 
-```
+```bash
 java -version
 ```
 
 The output should be similar to the following output.
 
-```
+```bash
 openjdk version "1.8.0_45-internal"
 OpenJDK Runtime Environment (build 1.8.0_45-internal-b14)
 OpenJDK 64-Bit Server VM (build 25.45-b02, mixed mode)
@@ -188,7 +188,7 @@ Switch to the *javadir* directory with the command `cd javadir`, for example, in
 
 Compile your Java source file into a class file with the following command.
 
-```
+```bash
 javac HelloWorld.java
 ```
 

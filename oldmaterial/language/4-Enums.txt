@@ -1,0 +1,426 @@
+An Enum is a enumeration is a list of named constants.
+
+An enumeration is created using the <code style="color: #c7254e;">enum</code> keyword.
+
+For example, here is a simple enumeration:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">enum</span> Direction { 
+   East, South, West, North
+}
+</pre>
+The identifiers East, South are called enumeration constants. Enumeration constants is implicitly declared as a public, static final member of Direction.
+<h2 id="Enum_type_variable">Enum type variable</h2>
+Once you have defined an enumeration, you can create a variable of that type.
+
+Even though enumerations define a class type, you do not instantiate an enum using new.
+
+The following code declares ap as a variable of enumeration type Direction:
+<pre>Direction ap; 
+</pre>
+Because ap is of type Direction, the only values that it can be assigned are those defined by the enumeration. For example, this assigns ap the value South:
+<pre>ap = Direction.South;</pre>
+<div></div>
+<h2 id="Compare">Compare</h2>
+Two enumeration constants can be compared for equality by using the == relational operator.
+<pre><span class="c" style="font-weight: bold; color: #3f7f5f;">// An enumeration of direction varieties. 
+</span><span class="r" style="font-weight: bold; color: #7f0055;">enum</span> Direction {
+  East, South, West, North
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Direction dir = Direction.South;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Value of dir: "</span> + dir);
+
+    dir = Direction.South;
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (dir == Direction.South){
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ap contains GoldenDel.\n"</span>);
+    }
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>Value of dir: South
+ap contains GoldenDel.</pre>
+<div></div>
+<h2 id="Enum_Switch">Enum Switch</h2>
+An enumeration value can also be used to control a switch statement.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">enum</span> Direction {
+  East, South, West, North
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Direction dir = Direction.South;
+    <span class="r" style="font-weight: bold; color: #7f0055;">switch</span> (dir) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">case</span> South:
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"south"</span>);
+      <span class="r" style="font-weight: bold; color: #7f0055;">break</span>;
+    <span class="r" style="font-weight: bold; color: #7f0055;">case</span> East:
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"East"</span>);
+      <span class="r" style="font-weight: bold; color: #7f0055;">break</span>;
+    <span class="r" style="font-weight: bold; color: #7f0055;">case</span> West:
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"West"</span>);
+      <span class="r" style="font-weight: bold; color: #7f0055;">break</span>;
+    <span class="r" style="font-weight: bold; color: #7f0055;">case</span> North:
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"North."</span>);
+      <span class="r" style="font-weight: bold; color: #7f0055;">break</span>;
+    }
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>south</pre>
+<h2 id="Java_Enum_values_valueOf_Methods">Enum values() / valueOf() Methods</h2>
+All enumerations automatically contain two predefined methods: <code style="color: #c7254e;">values()</code> and <code style="color: #c7254e;">valueOf()</code>.
+
+Their general forms are:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> enum-type[ ] values() 
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> enum-type valueOf(String str)
+</pre>
+The <code style="color: #c7254e;">values()</code> method returns an array that contains a list of the enumeration constants. The <code style="color: #c7254e;">valueOf()</code> method returns the enumeration constant whose value corresponds to the string passed in str.
+
+The following program demonstrates the <code style="color: #c7254e;">values()</code> and <code style="color: #c7254e;">valueOf()</code> methods:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">enum</span> Direction {
+  East, South, West, North
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Direction all[] = Direction.values();
+    <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (Direction a : all){
+      System.out.println(a);
+    }
+    System.out.println();
+
+    Direction dir = Direction.valueOf(<span class="q" style="font-weight: bold; color: #2a00ff;">"South"</span>);
+    System.out.println(dir);
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>East
+South
+West
+North</pre>
+<pre>South</pre>
+<h2 id="Compare_enum">Compare enum</h2>
+The following code shows how to compare enum data type.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">enum</span> Week {
+  Monday, Tuesday, Wednesday, Thursday, Friday, Saturaday, Sunday
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+
+    Week day1, day2, day3;
+    day1 = Week.Monday;
+    day2 = Week.Tuesday;
+    day3 = Week.Friday;
+
+    <span class="c" style="font-weight: bold; color: #3f7f5f;">// 
+</span>    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (day1.compareTo(day2) &lt; 0)
+      System.out.println(day1 + <span class="q" style="font-weight: bold; color: #2a00ff;">" comes before "</span> + day2);
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (day2.compareTo(day3) &gt; 0)
+      System.out.println(day2 + <span class="q" style="font-weight: bold; color: #2a00ff;">" comes before "</span> + day3);
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (day1.compareTo(day3) == 0)
+      System.out.println(day1 + <span class="q" style="font-weight: bold; color: #2a00ff;">" equals "</span> + day3);
+
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>Monday comes before Tuesday</pre>
+&nbsp;
+<h1>How to use enum as a Class</h1>
+&nbsp;
+
+You can give constructors, add instance variables and methods, and implement interfaces for enum types.
+
+When you define a constructor for an enum, the constructor is called when each enumeration constant is created.
+
+Each enumeration constant has its own copy of any instance variables defined by the enumeration.
+<h2 id="Restrictions"></h2>
+Two restrictions that apply to enumerations.
+<ul>
+	<li>an enumeration can't inherit another class.</li>
+	<li>an enum cannot be a superclass.</li>
+</ul>
+Enum with constructor
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">enum</span> Direction {
+  South(10), East(9), North(12), West(8);
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> myValue;
+
+  Direction(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> p) {
+    myValue = p;
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> getMyValue() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> myValue;
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+
+    System.out.println(Direction.East.getMyValue());
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (Direction a : Direction.values())
+      System.out.println(a + <span class="q" style="font-weight: bold; color: #2a00ff;">" costs "</span> + a.getMyValue());
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>9
+South costs 10
+East costs 9
+North costs 12
+West costs 8</pre>
+<div></div>
+<h2 id="Example">Example</h2>
+You can add fields, constructors, and methods to an enum. You can have the enum implement interfaces.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">enum</span> Coin {
+  PENNY(1), NICKEL(5), DIME(10), QUARTER(25);
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> <span class="r" style="font-weight: bold; color: #7f0055;">final</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> denomValue;
+
+  Coin(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> denomValue) {
+    this.denomValue = denomValue;
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> denomValue() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> denomValue;
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> toDenomination(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> numPennies) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> numPennies / denomValue;
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> numPennies = 1;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> numQuarters = Coin.QUARTER.toDenomination(numPennies);
+    System.out.println(numQuarters);
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (Coin c:Coin.values()) {
+      System.out.println(c.denomValue());
+    }
+
+  }
+}  
+</pre>
+The code above generates the following result.
+<pre>0
+1
+5
+10
+25</pre>
+<div></div>
+All enum inherit <code style="color: #c7254e;">java.lang.Enum</code>. <code style="color: #c7254e;">java.lang.Enum</code>'s methods are available for use by all enumerations.
+<h2></h2>
+<h2 id="Ordinal_value">Ordinal value</h2>
+You can obtain a value that indicates an enumeration constant's position in the list of constants. This is called its ordinal value, and it is retrieved by calling the <code style="color: #c7254e;">ordinal()</code> method:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">final</span> int ordinal()
+</pre>
+It returns the ordinal value of the invoking constant. Ordinal values begin at zero.
+
+Enum Ordinal value
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">enum</span> Direction {
+  East, South, West, North
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (Direction a : Direction.values()){
+      System.out.println(a + <span class="q" style="font-weight: bold; color: #2a00ff;">" "</span> + a.ordinal());      
+    }
+
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>East 0
+South 1
+West 2
+North 3</pre>
+<h2 id="Example_2">Example 2</h2>
+Overriding toString() to return a Token constant's value.
+<pre> 
+<span class="r" style="font-weight: bold; color: #7f0055;">enum</span> Token {
+  IDENTIFIER(<span class="q" style="font-weight: bold; color: #2a00ff;">"ID"</span>), INTEGER(<span class="q" style="font-weight: bold; color: #2a00ff;">"INT"</span>), LPAREN(<span class="q" style="font-weight: bold; color: #2a00ff;">"("</span>), RPAREN(<span class="q" style="font-weight: bold; color: #2a00ff;">")"</span>), COMMA(<span class="q" style="font-weight: bold; color: #2a00ff;">","</span>);
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> <span class="r" style="font-weight: bold; color: #7f0055;">final</span> String tokValue;
+
+  Token(String tokValue) {
+    this.tokValue = tokValue;
+  }
+
+  @Override
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> String toString() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> tokValue;
+  }
+
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main{
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (Token t:Token.values()){
+      System.out.println(t);      
+    }
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>ID
+INT
+(
+)
+,</pre>
+<h2></h2>
+<h2 id="Java_Enum_compareTo">Enum compareTo</h2>
+You can compare the ordinal value of two constants of the same enumeration by using the compareTo() method.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">final</span> int compareTo(enum-type e)
+</pre>
+<code style="color: #c7254e;">enum-type</code> is the type of the enumeration, and e is the constant being compared to the invoking constant.
+
+If the two ordinal values are the same, then zero is returned. If the invoking constant has an ordinal value greater than e's, then a positive value is returned.
+
+Compare the ordinal value of two constants of enum
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">enum</span> Direction {
+  East, South, West, North
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Direction ap = Direction.West;
+    Direction ap2 = Direction.South;
+    Direction ap3 = Direction.West;
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (ap.compareTo(ap2) &lt; 0){
+      System.out.println(ap + <span class="q" style="font-weight: bold; color: #2a00ff;">" comes before "</span> + ap2);
+    }
+      
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (ap.compareTo(ap2) &gt; 0){
+      System.out.println(ap2 + <span class="q" style="font-weight: bold; color: #2a00ff;">" comes before "</span> + ap);
+    }
+      
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (ap.compareTo(ap3) == 0){
+      System.out.println(ap + <span class="q" style="font-weight: bold; color: #2a00ff;">" equals "</span> + ap3);
+    }
+      
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>South comes before West
+West equals West</pre>
+<h2 id="Java_Enum_equals">Enum equals</h2>
+You can compare for equality an enumeration constant with any other object by using equals(). Those two objects will only be equal if they both refer to the same constant, within the same enumeration.
+
+Compare for equality an enumeration constant with any other object.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">enum</span> Direction {
+  East, South, West, North
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Direction ap = Direction.West;
+    Direction ap2 = Direction.South;
+    Direction ap3 = Direction.West;
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (ap.equals(ap2)){
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Error!"</span>);
+    }
+      
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (ap.equals(ap3)){
+      System.out.println(ap + <span class="q" style="font-weight: bold; color: #2a00ff;">" equals "</span> + ap3);
+    }
+      
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (ap == ap3){
+      System.out.println(ap + <span class="q" style="font-weight: bold; color: #2a00ff;">" == "</span> + ap3);
+    }
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>West equals West
+West == West</pre>
+<h2 id="Java_Enum_Behaviour">Enum Behaviour</h2>
+We can define enum value with different behaviours by implementing abstract method differently.
+
+We can assign different value for each constant in an <code style="color: #c7254e;">enum</code>.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">enum</span> Converter {
+  DollarToEuro(<span class="q" style="font-weight: bold; color: #2a00ff;">"Dollar to Euro"</span>) {
+    @Override
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> convert(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> value) {
+      <span class="r" style="font-weight: bold; color: #7f0055;">return</span> value * 0.9;
+    }
+  },
+  DollarToPound(<span class="q" style="font-weight: bold; color: #2a00ff;">"Dollar to Pound"</span>) {
+    @Override
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> convert(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> value) {
+      <span class="r" style="font-weight: bold; color: #7f0055;">return</span> value * .8;
+    }
+  };
+  Converter(String desc) {
+    this.desc = desc;
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> String desc;
+
+  @Override
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> String toString() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> desc;
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">abstract</span> <span class="r" style="font-weight: bold; color: #7f0055;">double</span> convert(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> value);
+
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main{
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+    System.out.println(Converter.DollarToEuro + <span class="q" style="font-weight: bold; color: #2a00ff;">" = "</span> + Converter.DollarToEuro.convert(100.0));
+    System.out.println(Converter.DollarToPound + <span class="q" style="font-weight: bold; color: #2a00ff;">" = "</span> + Converter.DollarToPound.convert(98.6));
+  }
+
+}
+</pre>
+The code above generates the following result.
+<pre>Dollar to Euro = 90.0
+Dollar to Pound = 78.88</pre>
+<h2 id="Implement_interface_for_enum_type">Implement interface for enum type</h2>
+The following code shows how to implement interface for enum type.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+    Size[] sizes = Size.values();
+    <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (Size s : sizes) {
+      System.out.println(s);
+    }
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">enum</span> Size <span class="r" style="font-weight: bold; color: #7f0055;">implements</span> Countable {
+  S, M, L, XL, XXL, XXXL;
+  @Deprecated
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> Size increase() {
+    Size sizes[] = this.values();
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> pos = this.ordinal();
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (pos &lt; sizes.length - 1)
+      pos++;
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> sizes[pos];
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">interface</span> Countable {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> Size increase();
+}
+</pre>
+The code above generates the following result.
+<pre>S
+M
+L
+XL
+XXL
+XXXL</pre>

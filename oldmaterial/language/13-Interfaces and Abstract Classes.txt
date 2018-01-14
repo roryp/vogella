@@ -1,0 +1,318 @@
+<h1>Interface</h1>
+<code style="color: #c7254e;">interface</code> specifies what a class must do, but not how it does it.
+
+An <code style="color: #c7254e;">interface</code> in Java is like a contract.
+
+It defines certain rules through Java methods and the class which implements that interface must follow the rules by implementing the methods.
+
+To implement an <code style="color: #c7254e;">interface</code>, a class must create the complete set of methods defined by the interface.
+<h2 id="Syntax">Syntax</h2>
+An <code style="color: #c7254e;">interface</code> is defined much like a class. This is the general form of an interface:
+<pre>access <span class="r" style="font-weight: bold; color: #7f0055;">interface</span> name { 
+   return-type method-name1(parameter-list); 
+   return-type method-name2(parameter-list); 
+   
+   type <span class="r" style="font-weight: bold; color: #7f0055;">final</span>-varname1 = value; 
+   type <span class="r" style="font-weight: bold; color: #7f0055;">final</span>-varname2 = value; 
+   
+   // ... 
+   return-type method-nameN(parameter-list); 
+   
+   type <span class="r" style="font-weight: bold; color: #7f0055;">final</span>-varnameN = value; 
+}
+</pre>
+Variables can be declared inside of interface declarations. They are implicitly final and static.
+
+Variables must also be initialized with a constant value.
+
+All methods and variables are implicitly public if the interface, itself, is declared as public.
+
+Here is an example of an interface definition.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">interface</span> MyInterface{ 
+   <span class="r" style="font-weight: bold; color: #7f0055;">void</span> callback(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> param); 
+}
+</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Implementing_Interfaces">Implementing Interfaces</h2>
+To implement an interface, include the implements clause in a class definition, and then create the methods defined by the interface.
+
+The general form of a class that includes the implements clause looks like this:
+<pre>access-level <span class="r" style="font-weight: bold; color: #7f0055;">class</span> classname [<span class="r" style="font-weight: bold; color: #7f0055;">extends</span> superclass] [<span class="r" style="font-weight: bold; color: #7f0055;">implements</span> <span class="r" style="font-weight: bold; color: #7f0055;">interface</span> [,interface...]] { 
+   // <span class="r" style="font-weight: bold; color: #7f0055;">class</span>-body 
+}
+</pre>
+Here is a small example class that implements the interface shown earlier.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">interface</span> MyInterface {
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> callback(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> param);
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> Client <span class="r" style="font-weight: bold; color: #7f0055;">implements</span> MyInterface{
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">// Implement Callback's interface
+</span>  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> callback(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> p) {
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"callback called with "</span> + p);
+  }
+}
+</pre>
+<code style="color: #c7254e;">callback()</code> is declared using the <code style="color: #c7254e;">public</code> access specifier. When you implement an interface method, it must be declared as <code style="color: #c7254e;">public</code>.
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Java_Interface_as_data_type">Interface as data type</h2>
+Once we define an <code style="color: #c7254e;">interface</code> we can use it as a type for object instance we create through its implementation class.
+
+The following example calls the callback( ) method via an interface reference variable:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">interface</span> MyInterface {
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> callback(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> param);
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> Client <span class="r" style="font-weight: bold; color: #7f0055;">implements</span> MyInterface{
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">// Implement Callback's interface
+</span>  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> callback(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> p) {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"callback called with "</span> + p);
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    MyInterface c = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Client();
+    c.callback(42);
+
+  }
+}
+</pre>
+The output of this program is shown here:
+<pre>callback called with 42
+</pre>
+<h2 id="Polymorphism_and_interface">Polymorphism and interfaces</h2>
+<code style="color: #c7254e;">interface</code> is designed for polymorphism.
+
+<code style="color: #c7254e;">interface</code> defines a list of methods acting as the contract between the interface and its implementation.
+
+One interface can be implements by more than once and each different implementation of the same interface would follow the same list of methods.
+
+Therefore if we know several classes implement the same interface we can use that interface to reference all of its implementer classes.
+
+The compiler will determine dynamically which implementation to use.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">interface</span> MyInterface {
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> callback(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> param);
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> Client <span class="r" style="font-weight: bold; color: #7f0055;">implements</span> MyInterface{
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">// Implement Callback's interface
+</span>  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> callback(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> p) {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Client"</span>);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"p squared is "</span> + (p * 2));
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> AnotherClient <span class="r" style="font-weight: bold; color: #7f0055;">implements</span> MyInterface{
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">// Implement Callback's interface
+</span>  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> callback(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> p) {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Another version of callback"</span>);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"p squared is "</span> + (p * p));
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main{
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    MyInterface c = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Client();
+    AnotherClient ob = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> AnotherClient();
+    c.callback(42);
+    c = ob; <span class="c" style="font-weight: bold; color: #3f7f5f;">// c now refers to AnotherClient object
+</span>    c.callback(42);
+  }
+}
+</pre>
+The output from this program is shown here:
+<pre>Client
+p squared is 84
+Another version of callback
+p squared is 1764</pre>
+<h2 id="Java_interface_as_build_block">interface as build block</h2>
+If a class implements an interface but does not fully implement its methods, then that class must be declared as abstract. For example:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">interface</span> MyInterface {
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> callback(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> param);
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> show();
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">abstract</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Incomplete <span class="r" style="font-weight: bold; color: #7f0055;">implements</span> MyInterface {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a, b;
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> show() {
+    System.out.println(a + <span class="q" style="font-weight: bold; color: #2a00ff;">" "</span> + b);
+  }
+
+}
+</pre>
+<h2 id="Variables_in_Interfaces">Variables in Interfaces</h2>
+We can use interface to organize constants.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">interface</span> MyConstants {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> NO = 0;
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> YES = 1;
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> Question <span class="r" style="font-weight: bold; color: #7f0055;">implements</span> MyConstants {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> ask() {
+      <span class="r" style="font-weight: bold; color: #7f0055;">return</span> YES;
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main <span class="r" style="font-weight: bold; color: #7f0055;">implements</span> MyConstants {
+  <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> answer(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> result) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">switch</span> (result) {
+      <span class="r" style="font-weight: bold; color: #7f0055;">case</span> NO:
+        System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"No"</span>);
+        <span class="r" style="font-weight: bold; color: #7f0055;">break</span>;
+      <span class="r" style="font-weight: bold; color: #7f0055;">case</span> YES:
+        System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Yes"</span>);
+        <span class="r" style="font-weight: bold; color: #7f0055;">break</span>;
+    }
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Question q = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Question();
+    answer(q.ask());
+  }
+}
+</pre>
+The output:
+<pre>Yes</pre>
+<h2 id="Extend_Interface">Extend Interface</h2>
+One interface can inherit another interface with the keyword <code style="color: #c7254e;">extends</code>.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">interface</span> IntefaceA {
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> meth1();
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> meth2();
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">interface</span> IntefaceB <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> IntefaceA {
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> meth3();
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> MyClass <span class="r" style="font-weight: bold; color: #7f0055;">implements</span> IntefaceB {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> meth1() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Implement meth1()."</span>);
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> meth2() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Implement meth2()."</span>);
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> meth3() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Implement meth3()."</span>);
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String arg[]) {
+    MyClass ob = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> MyClass();
+    ob.meth1();
+    ob.meth2();
+    ob.meth3();
+  }
+}
+</pre>
+The output:
+<pre>Implement meth1().
+Implement meth2().
+Implement meth3().</pre>
+<h1>Abstract Class</h1>
+Abstract class is for abstract idea or concept.
+
+For example, int data type is a concrete data type and double is another concrete data type. They are both numbers.
+
+Here number is an abstract concept. Shape is another example. We can have spare, rectangle or triangle or circle. They are all concrete while shape is an abstract class.
+
+In Java we use abstract class to define the abstract concept. Abstract concept must have some abstract aspects.
+
+For example, the abstract concept is the Shape while the abstract aspect is how to calculate area.
+
+The abstract concept becomes abstract class in Java and the abstract aspect becomes the abstract method.
+<h2 id="Syntax">Syntax</h2>
+You can require that certain methods be overridden by subclasses by specifying the abstract type modifier. To declare an abstract method, use this general form:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">abstract</span> type name(parameter-list);
+</pre>
+No method body is present for abstract method. Any class that contains one or more abstract methods must also be declared abstract.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">abstract</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> MyAbstractClass{
+   <span class="r" style="font-weight: bold; color: #7f0055;">abstract</span> type name(parameter-list); 
+}
+</pre>
+Here is an abstract class, followed by a class which implements its abstract method.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">abstract</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> MyAbstractClass {
+  <span class="r" style="font-weight: bold; color: #7f0055;">abstract</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> callme();
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> callmetoo() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"This is a concrete method."</span>);
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> B <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> MyAbstractClass {
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> callme() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"B's implementation of callme."</span>);
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    B b = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> B();
+    b.callme();
+    b.callmetoo();
+  }
+}
+</pre>
+The output:
+<pre>B's implementation of callme.
+This is a concrete method.</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Example">Example</h2>
+The following code defines <code style="color: #c7254e;">Shape</code> class as abstract. <code style="color: #c7254e;">Shape</code> class has abstract method called area(). <code style="color: #c7254e;">Rectangle</code> class extends abstract class <code style="color: #c7254e;">Shape</code> and implements the area() method for itself.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">abstract</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Shape {
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> height;
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> width;
+
+  Shape(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> a, <span class="r" style="font-weight: bold; color: #7f0055;">double</span> b) {
+    height = a;
+    width = b;
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">abstract</span> <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area();
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> Rectangle <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> Shape{
+  Rectangle(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> a, <span class="r" style="font-weight: bold; color: #7f0055;">double</span> b) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">super</span>(a, b);
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Inside Area for Rectangle."</span>);
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> height * width;
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> Triangle <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> Shape{
+  Triangle(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> a, <span class="r" style="font-weight: bold; color: #7f0055;">double</span> b) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">super</span>(a, b);
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Inside Area for Triangle."</span>);
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> height * width / 2;
+
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Rectangle r = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Rectangle(10, 5);
+    Triangle t = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Triangle(10, 8);
+
+    Shape figref;
+
+    figref = r;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Area is "</span> + figref.area());
+
+    figref = t;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Area is "</span> + figref.area());
+  }
+}
+</pre>
+The output:
+<pre>Inside Area for Rectangle.
+Area is 50.0
+Inside Area for Triangle.
+Area is 40.0</pre>

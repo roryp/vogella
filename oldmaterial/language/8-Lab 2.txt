@@ -1,0 +1,7 @@
+<h1>Complete the following Koans:</h1>
+<ul>
+	<li>AboutArithmeticOperators</li>
+	<li>AboutBitwiseOperators</li>
+	<li>AboutConditionals</li>
+	<li>AboutLoops</li>
+</ul>

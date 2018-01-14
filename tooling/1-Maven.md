@@ -55,7 +55,7 @@ See [Maven installation description](http://maven.apache.org/download.html#Insta
 
 For Linux most distributions include Maven into their main repositories. On Ubuntu you can use the following command on the command line to install it.
 
-```
+```bash
 sudo apt-get install mvn
 # if that does not work, try
 sudo apt-get install maven
@@ -65,7 +65,7 @@ sudo apt-get install maven
 
 To validate that Maven was correctly installed, open a console and use the following command:
 
-```
+```bash
 # command
 mvn -version
 
@@ -99,11 +99,11 @@ For example the `mvn clean install` command triggers the jar packaging. This inc
 
 Maven creates the build result in the *target* folder.
 
-```
+```bash
 mvn install 
 ```
 
-| !   | compile, build and install the build result |
+| !    | compile, build and install the build result |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
@@ -153,14 +153,14 @@ This concept has been adopted from the Gradle build tool, which also provides a 
 
 Create a Maven Wrapper for a project with the latest available Maven version.
 
-```
+```bash
 cd {your-project}
 mvn -N io.takari:maven:wrapper
 ```
 
 Create a Maven Wrapper for a project with a specified Maven version by using the maven property.
 
-```
+```bash
 cd {your-project}
 mvn -N io.takari:maven:wrapper -Dmaven=3.3.0
 ```
@@ -172,11 +172,11 @@ When wrapper goal has been executed the following files will be created in the m
 - .mvn/wrapper/maven-wrapper.jar (Maven Wrapper JAR)
 - .mvn/wrapper/maven-wrapper.properties (Maven Wrapper properties)
 
-| !   | These Maven Wrapper files should be checked in into version control (e.g. GIT or SVN), so that others who checkout the sources are able to build the projects without the need to install Maven manually in the first place. And when using the Maven Wrapper there is no need to worry about the right version of Maven, since the project’s Wrapper already specifies and downloads it automatically. |
+| !    | These Maven Wrapper files should be checked in into version control (e.g. GIT or SVN), so that others who checkout the sources are able to build the projects without the need to install Maven manually in the first place. And when using the Maven Wrapper there is no need to worry about the right version of Maven, since the project’s Wrapper already specifies and downloads it automatically. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
-| !   | The `-N`, `--non-recursive` command line option specifies that only the project in the current directory is built without building it’s submodules. So the Maven Wrapper will only be applied for the main project and not in every submodule. |
+| !    | The `-N`, `--non-recursive` command line option specifies that only the project in the current directory is built without building it’s submodules. So the Maven Wrapper will only be applied for the main project and not in every submodule. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
@@ -186,13 +186,13 @@ To run the Maven Wrapper the mvnw for unix systems or mvnw.bat for windows syste
 
 UNIX:
 
-```
+```bash
 ./mvnw clean package
 ```
 
 WINDOWS:
 
-```
+```bash
 mvnw.cmd clean package
 ```
 
@@ -204,7 +204,7 @@ In this exercise you create a Java project with the Maven command line and build
 
 In this project we use the scaffolding functionality of Maven to create a Java project. To avoid the interactive mode, all required properties are passed directly to the command. Otherwise Maven asks for all the required parameters. Enter the following into one line in the command shell(the backslash masks the line breaks).
 
-```
+```bash
 mvn archetype:generate -DgroupId=com.vogella.build.maven.java \
 -DartifactId=com.vogella.build.maven.java  \
 -DarchetypeArtifactId=maven-archetype-quickstart \
@@ -213,7 +213,7 @@ mvn archetype:generate -DgroupId=com.vogella.build.maven.java \
 
 With this command Maven generates a Java project.
 
-| !   | If this is the first time you execute this goal, this may takes some time. It also produces additional output compared to a second run. This is because Maven first loads all required plug-ins and artifacts for the project generation from the Maven central repository. |
+| !    | If this is the first time you execute this goal, this may takes some time. It also produces additional output compared to a second run. This is because Maven first loads all required plug-ins and artifacts for the project generation from the Maven central repository. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
@@ -221,7 +221,7 @@ With this command Maven generates a Java project.
 
 Validate that Maven generated a project on your file system similar to the following structure.
 
-```
+```bash
 com.vogella.build.maven.java/
 ├── pom.xml
 └── src
@@ -269,7 +269,7 @@ You have generated a whole Maven project structure with Java source code. Maven 
 
 Now you want to compile your Java sources. For this switch on the command line into our projects root directory and trigger the following Maven command.
 
-```
+```bash
 $ mvn compile
 
 [INFO] Scanning for projects...
@@ -301,19 +301,19 @@ Now you want to create an executable JAR file out of our project. The `package` 
 
 To ensure previous build artifacts are removed, you can use the `clean` goal.
 
-```
+```bash
 mvn clean package
 ```
 
 Afterwards you can run the packed program.
 
-```
+```bash
 $ java -cp target/com.vogella.build.maven.java-1.0-SNAPSHOT.jar \
 com.vogella.build.maven.java.App
 Hello World!
 ```
 
-```
+```bash
 $ cd com.vogella.build.maven.java
 $ mvn package
 ...
@@ -343,7 +343,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 
 Instead of running a full build with packaging, it is also possible to just run the test phases of the Maven life cycle.
 
-```
+```bash
 $ mvn test
 
 ....
@@ -709,7 +709,7 @@ The following table lists useful Maven parameters.
 
 Maven provides a plugin, which can be used to visualize a dependency tree to either the console or an output file.
 
-```
+```bash
 # Show dependencies inside the console
 mvn dependency:tree -Dverbose
 # Write dependency to a file

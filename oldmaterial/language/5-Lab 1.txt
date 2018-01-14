@@ -1,0 +1,10 @@
+<h1>Complete the following Koans:</h1>
+<ul>
+	<li>AboutAssertions</li>
+	<li>AboutVarArgs</li>
+	<li>AboutPrimitives</li>
+	<li>AboutArrays</li>
+	<li>AboutStrings</li>
+	<li>AboutEnums</li>
+</ul>
+&nbsp;

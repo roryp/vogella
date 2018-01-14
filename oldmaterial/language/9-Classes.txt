@@ -1,0 +1,1303 @@
+A class defines a new data type.
+
+This new type can be used to create objects of that type.
+
+A class is a <strong>template</strong> for an object, and an object is an <strong>instance</strong> of a class.
+<h2 id="Syntax">Syntax</h2>
+The general form of a class definition is shown here:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> classname { 
+  type instance-variable1;
+  type instance-variable2; 
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">// ... 
+</span>  type instance-variableN; 
+
+
+  type methodname1(parameter-list) { 
+    <span class="c" style="font-weight: bold; color: #3f7f5f;">// body of method 
+</span>  } 
+  type methodname2(parameter-list) { 
+    <span class="c" style="font-weight: bold; color: #3f7f5f;">// body of method 
+</span>  } 
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">// ... 
+</span>  type methodnameN(parameter-list) { 
+   <span class="c" style="font-weight: bold; color: #3f7f5f;">// body of method 
+</span>  } 
+}
+</pre>
+A class is declared by using the "class" keyword.
+
+The methods and variables defined within a class are called class <strong>members</strong>.
+
+Variables defined within a class are called <strong>instance</strong> variables because each instance of the class contains its own copy of these variables.
+
+The data for one object is separate and unique from the data for another.
+<h2 id="Example">Example</h2>
+Here is a class called <code style="color: #c7254e;">Box</code> that defines three member variables: <code style="color: #c7254e;">width</code>, <code style="color: #c7254e;">height</code>, and <code style="color: #c7254e;">depth</code>.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Box { 
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> width; 
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> height; 
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> depth; 
+}
+</pre>
+<h2 id="Java_Object">Object</h2>
+When you create a class, you are creating a new data type. You can use this type to declare objects of that type.
+
+Creating objects of a class is a two-step process.
+<ul>
+	<li>Declare a variable of the class type.</li>
+	<li>Use the new operator to dynamically allocates memory for an object.</li>
+</ul>
+The following line is used to declare an object of type Box:
+<pre>Box mybox = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Box(); 
+</pre>
+This statement combines the two steps. It can be rewritten like this to show each step more clearly:
+<pre>Box mybox; // <span class="r" style="font-weight: bold; color: #7f0055;">declare</span> reference to object 
+mybox = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Box(); // allocate a Box object 
+</pre>
+The first line declares <code style="color: #c7254e;">mybox</code> as a reference to an object of type <code style="color: #c7254e;">Box</code>. After this line executes, <code style="color: #c7254e;">mybox</code> contains the value <code style="color: #c7254e;">null</code>. null indicates that <code style="color: #c7254e;">mybox</code> does not yet point to an actual object.
+
+Any attempt to use <code style="color: #c7254e;">mybox</code> at this point will result in an error.
+
+The next line allocates an actual object and assigns a reference to mybox. After the second line executes, you can use mybox as a Box object.
+
+<code style="color: #c7254e;">mybox</code> holds the memory address of the actual Box object.
+
+A class defines a new type of data. In this case, the new type is called <code style="color: #c7254e;">Box</code>. To create a <code style="color: #c7254e;">Box</code>object, you will use a statement like the following:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Box {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> width;
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> height;
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> depth;
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Box myBox = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Box();
+    myBox.width = 10;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"myBox.width:"</span>+myBox.width);
+  }
+}
+</pre>
+The output:
+<pre>myBox.width:10</pre>
+<code style="color: #c7254e;">myBox</code> is an instance of <code style="color: #c7254e;">Box</code>. <code style="color: #c7254e;">mybox</code> contains its own copy of each instance variable, <code style="color: #c7254e;">width</code>, <code style="color: #c7254e;">height</code>, and <code style="color: #c7254e;">depth</code>, defined by the class. To access these variables, you will use the dot (<code style="color: #c7254e;">.</code>) operator.
+<pre>mybox.width = 10;
+</pre>
+This statement assigns the width from <code style="color: #c7254e;">mybox</code> object to <code style="color: #c7254e;">10</code>. Here is a complete program that uses the <code style="color: #c7254e;">Box</code> class:
+
+Any attempt to use a null mybox will result in a compile-time error.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Box {
+  int width;
+  int height;
+  int depth;
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> void main(String args[]) {
+    Box myBox;
+    myBox.width = 10;
+  }
+}
+</pre>
+If you try to compile the code above, you will get the following error message from the Java compiler.
+<pre>| Error:
+| variable myBox might not have been initialized
+| myBox.width = 10;
+| ^---^</pre>
+<h2 id="Java_instanceof_operator">instanceof operator</h2>
+Java provides the run-time operator instanceof to check class type for an object.
+
+The instanceof operator has this general form:
+<pre>object <span class="r" style="font-weight: bold; color: #7f0055;">instanceof</span> type
+</pre>
+The following program demonstrates <code style="color: #c7254e;">instanceof</code>:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> A {
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> B {
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> C <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> A {
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> D <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> A {
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main{
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    A a = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> A();
+    B b = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> B();
+    C c = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> C();
+    D d = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> D();
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (a <span class="r" style="font-weight: bold; color: #7f0055;">instanceof</span> A)
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"a is instance of A"</span>);
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (b <span class="r" style="font-weight: bold; color: #7f0055;">instanceof</span> B)
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"b is instance of B"</span>);
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (c <span class="r" style="font-weight: bold; color: #7f0055;">instanceof</span> C)
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"c is instance of C"</span>);
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (c <span class="r" style="font-weight: bold; color: #7f0055;">instanceof</span> A)
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"c can be cast to A"</span>);
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (a <span class="r" style="font-weight: bold; color: #7f0055;">instanceof</span> C)
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"a can be cast to C"</span>);
+
+    A ob;
+    ob = d; <span class="c" style="font-weight: bold; color: #3f7f5f;">// A reference to d
+</span>    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ob now refers to d"</span>);
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (ob <span class="r" style="font-weight: bold; color: #7f0055;">instanceof</span> D)
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ob is instance of D"</span>);
+
+    ob = c; <span class="c" style="font-weight: bold; color: #3f7f5f;">// A reference to c
+</span>    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ob now refers to c"</span>);
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (ob <span class="r" style="font-weight: bold; color: #7f0055;">instanceof</span> D)
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ob can be cast to D"</span>);
+    <span class="r" style="font-weight: bold; color: #7f0055;">else</span>
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ob cannot be cast to D"</span>);
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (ob <span class="r" style="font-weight: bold; color: #7f0055;">instanceof</span> A)
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ob can be cast to A"</span>);
+    <span class="c" style="font-weight: bold; color: #3f7f5f;">// all objects can be cast to Object
+</span>    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (a <span class="r" style="font-weight: bold; color: #7f0055;">instanceof</span> Object)
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"a may be cast to Object"</span>);
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (b <span class="r" style="font-weight: bold; color: #7f0055;">instanceof</span> Object)
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"b may be cast to Object"</span>);
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (c <span class="r" style="font-weight: bold; color: #7f0055;">instanceof</span> Object)
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"c may be cast to Object"</span>);
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (d <span class="r" style="font-weight: bold; color: #7f0055;">instanceof</span> Object)
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"d may be cast to Object"</span>);
+  }
+}
+</pre>
+The output from this program is shown here:
+<pre>a is instance of A
+b is instance of B
+c is instance of C
+c can be cast to A
+ob now refers to d
+ob is instance of D
+ob now refers to c
+ob cannot be cast to D
+ob can be cast to A
+a may be cast to Object
+b may be cast to Object
+c may be cast to Object
+d may be cast to Object</pre>
+<h1></h1>
+<h1>Methods</h1>
+Classes usually consist of two things: instance <strong>variables</strong> and <strong>methods</strong>. Instance variables are the <strong>data</strong> part of a class, while the methods defines the <strong>behaviours</strong> of a class.
+<h2 id="Syntax">Syntax</h2>
+This is the general form of a method:
+<pre>type name(parameter-list) { 
+   // body of method 
+} 
+</pre>
+type specifies the type of data returned by the method. If the method does not return a value, its return type must be <strong>void</strong>. The name of the method is specified by name.
+
+The parameter-list is a sequence of type and identifier pairs separated by commas.
+
+Parameters receives the value of the arguments passed to the method.
+
+If the method has no parameters, then the parameter list will be empty.
+
+Add a method to Box,as shown here:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Box {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> width;
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> height;
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> depth;
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> calculateVolume() {
+    System.out.print(<span class="q" style="font-weight: bold; color: #2a00ff;">"Volume is "</span>);
+    System.out.println(width * height * depth);
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Box mybox1 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Box();
+    mybox1.width = 10;
+    mybox1.height = 20;
+    mybox1.depth = 15;
+
+    mybox1.calculateVolume();
+  }
+}
+</pre>
+This program generates the following output:
+<pre>Volume is 3000</pre>
+<h2 id="Java_Method_Return">Method Return</h2>
+A method in a class can return a value with the return statement.
+
+Methods that have a return type other than void return a value to the calling routine using the following form of the return statement:
+<pre>return value; 
+</pre>
+Here, value is the value returned.
+
+We can use <code style="color: #c7254e;">return</code> statement to return a value to the callers.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Rectangle {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> width;
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> height;
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> getArea() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> width * height;
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Rectangle mybox1 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Rectangle();
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> area;
+    mybox1.width = 10;
+    mybox1.height = 20;
+
+    area = mybox1.getArea();
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Area is "</span> + area);
+  }
+}
+</pre>
+The output:
+<pre>Area is 200</pre>
+In this line the return statement returns value from the <code style="color: #c7254e;">getArea() </code>method. And the returned value is assigned to <code style="color: #c7254e;">area</code>.
+<pre>area = mybox1.getArea();
+</pre>
+The actual returned data type must be compatible with the declared return type . The variable receiving the returned value (<code style="color: #c7254e;">area</code>) must be compatible with the return type.
+
+The following code uses the returned value directly in a println( ) statement:
+<pre>System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Area is "</span> + mybox1.getArea());
+</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Example">Example</h2>
+A method can return class types.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> MyClass {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> myMemberValue = 2;
+  MyClass() {
+  }
+  MyClass doubleValue() {
+    MyClass temp = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> MyClass();
+    temp.myMemberValue = temp.myMemberValue*2;
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> temp;
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    MyClass ob1 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> MyClass();
+    ob1.myMemberValue =2;
+    MyClass ob2;
+
+    ob2 = ob1.doubleValue();
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ob1.a: "</span> + ob1.myMemberValue);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ob2.a: "</span> + ob2.myMemberValue);
+
+    ob2 = ob2.doubleValue();
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ob2.a after second increase: "</span> + ob2.myMemberValue);
+  }
+}
+</pre>
+The output generated by this program is shown here:
+<pre>ob1.a: 2
+ob2.a: 4
+ob2.a after second increase: 4</pre>
+<h2 id="Java_Method_Parameters">Method Parameters</h2>
+Parameters allow a method to be generalized by operating on a variety of data and/or be used in a number of slightly different situations.
+
+This is the general form of a method:
+<pre>type methodName(parameterType variable,parameterType2 variable2,...) { 
+   // body of method 
+} 
+</pre>
+A parameterized method can operate on a variety of data.
+
+The new <code style="color: #c7254e;">Rectangle</code> class has a new method which accepts the dimensions of a rectangle and sets the dimensions with the passed-in value.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Rectangle {
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> width;
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> height;
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> width * height;
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> setDim(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> w, <span class="r" style="font-weight: bold; color: #7f0055;">double</span> h) { <span class="c" style="font-weight: bold; color: #3f7f5f;">// Method with parameters
+</span>    width = w;
+    height = h;
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Rectangle mybox1 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Rectangle();
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> vol;
+    mybox1.setDim(10, 20);
+
+    vol = mybox1.area();
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Area is "</span> + vol);
+
+  }
+}
+</pre>
+The output:
+<pre>Area is 200.0</pre>
+<h2 id="Example_2">Example 2</h2>
+The following code passes objects to methods.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Test {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a;
+
+  Test(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i) {
+    a = i;
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">boolean</span> equals(Test o) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (o.a == a )
+      <span class="r" style="font-weight: bold; color: #7f0055;">return</span> true;
+    <span class="r" style="font-weight: bold; color: #7f0055;">else</span>
+      <span class="r" style="font-weight: bold; color: #7f0055;">return</span> false;
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Test ob1 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Test(100);
+    Test ob2 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Test(100);
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ob1 == ob2: "</span> + ob1.equals(ob2));
+
+  }
+}
+</pre>
+This program generates the following output:
+<pre>ob1 == ob2: true</pre>
+<h2 id="Java_Method_Overload">Method Overload</h2>
+Java allows you to define two or more methods within the same class that share the same name, as long as their parameter declarations are different.
+
+When this is the case, the methods are said to be <strong>overloaded</strong>, and the process is referred to as method <strong>overloading</strong>.
+
+Overloaded methods have the same name but different parameters. Overloaded methods must differ in the <strong>type</strong> and/or <strong>number</strong> of their parameters. Overloaded methods may have different <code style="color: #c7254e;">return</code> types. <code style="color: #c7254e;">return</code> type alone is insufficient to distinguish two methods.
+
+The following example illustrates method overloading:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> OverloadDemo {
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> test() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"No parameters"</span>);
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> test(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> a) {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"a: "</span> + a);
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> test(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> a, <span class="r" style="font-weight: bold; color: #7f0055;">int</span> b) {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"a and b: "</span> + a + <span class="q" style="font-weight: bold; color: #2a00ff;">" "</span> + b);
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> test(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> a) {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"double a: "</span> + a);
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> a * a;
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    OverloadDemo ob = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> OverloadDemo();
+    ob.test();
+    ob.test(10);
+    ob.test(10, 20);
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> result = ob.test(123.25);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Result of ob.test(123.25): "</span> + result);
+
+  }
+}
+</pre>
+This program generates the following output:
+<pre>No parameters
+a: 10
+a and b: 10 20
+double a: 123.25
+Result of ob.test(123.25): 15190.5625</pre>
+<h2 id="Example_3">Example 3</h2>
+The following code demonstrates method overloading and data type promotion.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> OverloadDemo {
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> test() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"No parameters"</span>);
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> test(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> a, <span class="r" style="font-weight: bold; color: #7f0055;">int</span> b) {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"a and b: "</span> + a + <span class="q" style="font-weight: bold; color: #2a00ff;">" "</span> + b);
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> test(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> a) {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Inside test(double) a: "</span> + a);
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    OverloadDemo ob = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> OverloadDemo();
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> i = 88;
+    ob.test();
+    ob.test(10, 20);
+
+    ob.test(i); <span class="c" style="font-weight: bold; color: #3f7f5f;">// this will invoke test(double)
+</span>    ob.test(123.2); <span class="c" style="font-weight: bold; color: #3f7f5f;">// this will invoke test(double)
+</span>  }
+}
+</pre>
+This program generates the following output:
+<pre>No parameters
+a and b: 10 20
+Inside test(double) a: 88.0
+Inside test(double) a: 123.2</pre>
+<h2 id="Java_Method_Recursion">Method Recursion</h2>
+Recursion allows a method to call itself.
+
+The following code is an example of recursion. It calculates the factorial numbers.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Factorial {
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">// this is a recursive function
+</span>  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> fact(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> n) {
+     <span class="r" style="font-weight: bold; color: #7f0055;">int</span> result;
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (n == 1)
+      <span class="r" style="font-weight: bold; color: #7f0055;">return</span> 1;
+    result = fact(n - 1) * n;
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> result;
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Factorial f = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Factorial();
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Factorial of 5 is "</span> + f.fact(5));
+
+  }
+}
+</pre>
+The output from this program is shown here:
+<pre>Factorial of 5 is 120</pre>
+<h2 id="Java_main_Method">main() Method</h2>
+The <code style="color: #c7254e;">main()</code> method is the entry point for standalone Java applications.
+
+To create an application, you write a class definition that includes a <code style="color: #c7254e;">main()</code> method.
+
+To execute an application, type java at the command line, followed by the name of the class containing the <code style="color: #c7254e;">main()</code> method.
+<h2 id="Syntax_for_main_method">Syntax for main() method</h2>
+The signature for main() is:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> void main(String[] args)
+</pre>
+The return type must be <code style="color: #c7254e;">void</code>. The main() method must be <code style="color: #c7254e;">public</code>. It is static so that it can be executed without constructing an instance of the application class.
+
+A command-line argument is the information that follows the program's name on the command line.
+
+The command-line arguments are stored as string array passed to main(). For example, the following program displays all of the command-line arguments:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i = 0; i &lt; args.length; i++)
+      System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"args["</span> + i + <span class="q" style="font-weight: bold; color: #2a00ff;">"]: "</span> + args[i]);
+  }
+}
+</pre>
+Try executing this program, as shown here:
+<pre>java Main this is a test</pre>
+or via using <strong>jshell</strong>
+<pre>Main.main(new String[]{"this","is","a","test"});</pre>
+When you do, you will see the following output:
+<pre>args[0]: this
+args[1]: is
+args[2]: a
+args[3]: test</pre>
+<h2 id="Example_4">Example 4</h2>
+The following code shows how to use of <strong>argv</strong> to get an integer value from command line.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> number = 0;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"The number of words in argv is "</span> + argv.length);
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (argv.length == 0) {
+      number = 1234;
+    } <span class="r" style="font-weight: bold; color: #7f0055;">else</span> <span class="r" style="font-weight: bold; color: #7f0055;">if</span> (argv.length == 1) {
+      <span class="r" style="font-weight: bold; color: #7f0055;">try</span> {
+        number = Integer.parseInt(argv[0]);
+      } <span class="r" style="font-weight: bold; color: #7f0055;">catch</span>(NumberFormatException e) {
+        System.err.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Number "</span> + argv[0] + <span class="q" style="font-weight: bold; color: #2a00ff;">" invalid ("</span> + e.getMessage() + <span class="q" style="font-weight: bold; color: #2a00ff;">")."</span>);
+        System.exit(1);
+      }
+    } <span class="r" style="font-weight: bold; color: #7f0055;">else</span> {
+      System.err.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"usage: UseArgv number"</span>);
+      System.exit(1);
+    }
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"OK, number is "</span> + number);
+  }
+}
+</pre>
+The code above generates the following result when executed with jShell using "Main.main(new String[]{})"
+<pre>The number of words in argv is 0
+OK, number is 1234</pre>
+<h1>Constructors</h1>
+A constructor initializes an object during object creation when using new operator.
+
+Java allows objects to initialize themselves when they are created. This automatic initialization is performed through the use of a constructor.
+<h2 id="Syntax">Syntax</h2>
+It has the same name as the class. Constructors have no return type, not even void.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> ClassName{
+
+   ClassName(parameter list){ // constructor
+    ...
+   }
+}
+</pre>
+In the following code the <code style="color: #c7254e;">Rectangle</code> class in the following uses a constructor to set the dimensions:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Rectangle {
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> width;
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> height;
+
+  Rectangle() {
+    width = 10;
+    height = 10;
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> width * height;
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Rectangle mybox1 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Rectangle();
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area;
+    area = mybox1.area();
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Area is "</span> + area);
+
+  }
+}
+</pre>
+When this program is run, it generates the following results:
+<pre>Area is 100.0</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Java_Default_Constructor">Default Constructor</h2>
+A default constructor is a constructor with no parameters.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> ClassName{
+
+   ClassName(){ // <span class="r" style="font-weight: bold; color: #7f0055;">default</span> constructor
+    ...
+   }
+}
+</pre>
+In the following code the constructor <code style="color: #c7254e;">Rectangle()</code> is the default constructor.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Rectangle {
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> width;
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> height;
+
+  Rectangle() {
+    width = 10;
+    height = 10;
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> width * height;
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Rectangle mybox1 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Rectangle();
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area;
+    area = mybox1.area();
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Area is "</span> + area);
+
+  }
+}
+</pre>
+If you don't declare a default constructor the Java compiler will add one for you. When you call the default constructor added by Java compiler the class member variables are initialized by default value. If you do provide a default constructor the Java compiler would not insert one for you.
+
+The code above generates the following result.
+<pre>Area is 100.0</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Example">Example</h2>
+In the following code we removes the default constructor from class Rectangle. When we compile the class Java compiler adds the default constructor for us so we can still construct a Rectangle object by calling the default constructor. But the value of <code style="color: #c7254e;">width</code> and <code style="color: #c7254e;">height</code> would be initialized to <code style="color: #c7254e;">0.0</code>.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Rectangle {
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> width;
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> height;
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> width * height;
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Rectangle mybox1 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Rectangle();
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area;
+    area = mybox1.area();
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Area is "</span> + area);
+
+  }
+}
+</pre>
+The output:
+<pre>Area is 0.0</pre>
+<h2 id="Java_Constructor_Parameters">Constructor Parameters</h2>
+The constructors can also have parameters. Usually the parameters are used to set the initial states of the object.
+
+Syntax for Constructor Parameters
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> ClassName{
+
+   ClassName(parameterType variable,parameterType2 variable2,...){ // constructor
+    ...
+   }
+}
+</pre>
+In the the following demo code <code style="color: #c7254e;">Rectangle</code> class uses the parameters, <code style="color: #c7254e;">w</code> for width and <code style="color: #c7254e;">h</code> for height, from the constructors to initialize its width and height.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Rectangle {
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> width;
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> height;
+
+  Rectangle(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> w, <span class="r" style="font-weight: bold; color: #7f0055;">double</span> h) {
+    width = w;
+    height = h;
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> width * height;
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Rectangle mybox1 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Rectangle(10, 20);
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area;
+    area = mybox1.area();
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Area is "</span> + area);
+  }
+}
+</pre>
+The output from this program is shown here:
+<pre>Area is 200.0</pre>
+<h2 id="Example_2">Example 2</h2>
+Just like methods in a class the constructors can not only accept primitive type parameters it can also have the object parameters. Object parameters contains more information and can help us initialize the class.
+
+The following <code style="color: #c7254e;">Rectangle</code> class has a constructor whose parameter is a <code style="color: #c7254e;">Rectangle</code> class. In this way we can initialize a rectangle by the data from another rectangle.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Rectangle {
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> width;
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> height;
+
+  Rectangle(Rectangle ob) { <span class="c" style="font-weight: bold; color: #3f7f5f;">// pass object to constructor
+</span>    width = ob.width;
+    height = ob.height;
+  }
+
+  Rectangle(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> w, <span class="r" style="font-weight: bold; color: #7f0055;">double</span> h) {
+    width = w;
+    height = h;
+  }
+
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">// constructor used when no dimensions specified
+</span>  Rectangle() {
+    width = -1; <span class="c" style="font-weight: bold; color: #3f7f5f;">// use -1 to indicate
+</span>    height = -1; <span class="c" style="font-weight: bold; color: #3f7f5f;">// an uninitialized
+</span>  }
+
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">// constructor used when cube is created
+</span>  Rectangle(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> len) {
+    width = height = len;
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> width * height;
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Rectangle mybox1 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Rectangle(10, 20);
+    Rectangle myclone = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Rectangle(mybox1);
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area;
+    <span class="c" style="font-weight: bold; color: #3f7f5f;">// get volume of first box
+</span>    area = mybox1.area();
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Area of mybox1 is "</span> + area);
+    <span class="c" style="font-weight: bold; color: #3f7f5f;">// get volume of clone
+</span>    area = myclone.area();
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Area of clone is "</span> + area);
+
+  }
+}
+</pre>
+The output:
+<pre>Area of mybox1 is 200.0
+Area of clone is 200.0</pre>
+<h2 id="Java_Constructors_Overload">Constructors Overload</h2>
+Method overloading is declaring two or more methods with the name but different type or count of parameters.
+
+In addition to overloading normal methods, you can also overload <strong>constructor</strong> methods.
+
+In the following code <code style="color: #c7254e;">Rectangle</code> defines three constructors to initialize the dimensions of a rectangle in various ways.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Rectangle {
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> width;
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> height;
+
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">// constructor used when all dimensions specified
+</span>  Rectangle(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> w, <span class="r" style="font-weight: bold; color: #7f0055;">double</span> h) {
+    width = w;
+    height = h;
+  }
+
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">// constructor used when no dimensions specified
+</span>  Rectangle() {
+    width = -1; <span class="c" style="font-weight: bold; color: #3f7f5f;">// use -1 to indicate
+</span>    height = -1; <span class="c" style="font-weight: bold; color: #3f7f5f;">// an uninitialized
+</span>  }
+
+
+  Rectangle(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> len) {
+    width = height = len;
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> width * height;
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Rectangle mybox1 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Rectangle(10, 20);
+    Rectangle mybox2 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Rectangle();
+    Rectangle mycube = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Rectangle(7);
+
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> area = mybox1.area();
+    System.out.println(area);
+
+    area = mybox2.area();
+    System.out.println(area);
+
+    area = mycube.area();
+    System.out.println(area);
+
+  }
+}
+</pre>
+The output produced by this program is shown here:
+<pre>200.0
+1.0
+49.0</pre>
+<h2 id="this_">this()</h2>
+The <code style="color: #c7254e;">this</code> keyword can be used to call the overloaded constructors. The general form is shown here:
+
+<code style="color: #c7254e;">this(arg-list)</code>
+
+When <code style="color: #c7254e;">this()</code> is executed, the overloaded constructor that matches the arg-list is executed first.
+
+The call to <code style="color: #c7254e;">this()</code> must be the first statement within a constructor.
+
+The following code defines a class named MyClass. It has three constructors. The first constructor accepts two int values. The second accepts one int type value. The third one accepts no value.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> MyClass {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a;
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> b;
+
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">// initialize a and b individually
+</span>  MyClass(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i, <span class="r" style="font-weight: bold; color: #7f0055;">int</span> j) {
+    a = i;
+    b = j;
+  }
+
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">// initialize a and b to the same value
+</span>  MyClass(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">this</span>(i, i); <span class="c" style="font-weight: bold; color: #3f7f5f;">// invokes MyClass(i, i)
+</span>  }
+
+  <span class="c" style="font-weight: bold; color: #3f7f5f;">// give a and b default values of 0
+</span>  MyClass() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">this</span>(0); <span class="c" style="font-weight: bold; color: #3f7f5f;">// invokes MyClass(0)
+</span>  }
+}
+
+</pre>
+<h1>Access Control</h1>
+We can control the access level for class member variables and methods through access specifiers. The access specifiers are public, private, protected and a default access level.
+<ul>
+	<li>A <strong>public</strong> class member can be accessed by any other code.</li>
+	<li>A <strong>private</strong> class member can only be accessed within its class.</li>
+	<li>A <strong>default</strong> access class member has no access specifiers. A class's default features are accessible to any class in the same package.</li>
+	<li>A <strong>protected</strong> feature of a class is available to all classes in the same package(like a default) and to its subclasses. protected features are more accessible than default features.</li>
+</ul>
+To understand the effects of public and private access, consider the following program:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Test {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a;        <span class="c" style="font-weight: bold; color: #3f7f5f;">// default access
+</span>  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> b; <span class="c" style="font-weight: bold; color: #3f7f5f;">// public access
+</span>  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> c; <span class="c" style="font-weight: bold; color: #3f7f5f;">// private access
+</span>  <span class="c" style="font-weight: bold; color: #3f7f5f;">// methods to access c
+</span>  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> setc(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i) {
+    c = i;
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> getc() {
+    <span class="r" style="font-weight: bold; color: #7f0055;">return</span> c;
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Test ob = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Test();
+    ob.a = 1;
+    ob.b = 2;
+    <span class="c" style="font-weight: bold; color: #3f7f5f;">// This is not OK and will cause an error
+</span>    <span class="c" style="font-weight: bold; color: #3f7f5f;">// ob.c = 100; // Error!
+</span>    <span class="c" style="font-weight: bold; color: #3f7f5f;">// You must access c through its methods
+</span>    ob.setc(100); <span class="c" style="font-weight: bold; color: #3f7f5f;">// OK
+</span>    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"a, b, and c: "</span> + ob.a + 
+         <span class="q" style="font-weight: bold; color: #2a00ff;">" "</span> + ob.b + <span class="q" style="font-weight: bold; color: #2a00ff;">" "</span> + ob.getc());
+  }
+}
+</pre>
+The output:
+
+a, b, and c: 1 2 100
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Member_Access_and_Inheritance">Member Access and Inheritance</h2>
+A subclass cannot access the private members of the superclass. For example, consider the following simple class hierarchy. If you try to compile the following program, you will get the error message.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> A {
+  <span class="r" style="font-weight: bold; color: #7f0055;">private</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> j; <span class="c" style="font-weight: bold; color: #3f7f5f;">// private to A
+</span>}
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> B <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> A {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> total;
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> sum() {
+    total = j; <span class="c" style="font-weight: bold; color: #3f7f5f;">// ERROR, j is not accessible here
+</span>  }
+}
+</pre>
+The output:
+<pre>| Error:
+| j has private access in A
+| total = j; // ERROR, j is not accessible here</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Access_matrix_for_Java">Access matrix</h2>
+The following table shows the access matrix . Yes means accessible, no means not accessible.
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>Position</th>
+<th>Private</th>
+<th>No modifier</th>
+<th>Protected</th>
+<th>Public</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Same class</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Same package subclass</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Same package non-subclass</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Different package subclass</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Different package non-subclass</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Access_Modifiers_and_their_targets">Access Modifiers and their targets</h2>
+Not all modifiers can be applied to all features. Top-level classes may not be protected. Methods may not be transient. Static can apply it to free-floating blocks of code.
+
+The following table shows all possible combinations of features and modifiers. yes means we can use that modifier to control the access for the corresponding entities.
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>Modifier</th>
+<th>Class</th>
+<th>Variable</th>
+<th>Method</th>
+<th>Constructor</th>
+<th>Code Block</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td>empty accessor</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>private</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td>final</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>abstract</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>static</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>native</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>transient</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>volatile</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>synchronized</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+&nbsp;
+<h1>Class Variables</h1>
+Java supports variables of three different lifetimes:
+<ul>
+	<li>Member variable</li>
+	<li>Method local variables</li>
+	<li>Static variable</li>
+</ul>
+<h2 id="Class_member_variable">Member variable</h2>
+A member variable of a class is created when an instance is created, and it is destroyed when the object is destroyed. All member variables that are not explicitly assigned a value during declaration are automatically assigned an initial value. The initialization value for member variables depends on the member variable's type.
+
+The following table lists the initialization values for member variables:
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>Element Type</th>
+<th>Initial Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>0</td>
+</tr>
+<tr>
+<td>short</td>
+<td>0</td>
+</tr>
+<tr>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td>long</td>
+<td>0L</td>
+</tr>
+<tr>
+<td>float</td>
+<td>0.0f</td>
+</tr>
+<tr>
+<td>double</td>
+<td>0.0d</td>
+</tr>
+<tr>
+<td>char</td>
+<td>'\u0000'</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>false</td>
+</tr>
+<tr>
+<td>object reference</td>
+<td>null</td>
+</tr>
+</tbody>
+</table>
+In the following example, the variable x is set to 20 when the variable is declared.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main{
+   int x = 20;
+}
+</pre>
+The following example shows the default value if you don't set them.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> MyClass {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> i;
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">boolean</span> b;
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">float</span> f;
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">double</span> d;
+
+  String s;
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> MyClass() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"i="</span> + i);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"b="</span> + b);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"f="</span> + f);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"d="</span> + d);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"s="</span> + s);
+  }
+
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">new</span> MyClass();
+
+  }
+}
+</pre>
+The output:
+<pre>i=0
+b=false
+f=0.0
+d=0.0
+s=null</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Example_for_method_local_variables">Method local variables</h2>
+An automatic variable of a method is created on entry to the method and exists only during execution of the method. Automatic variable is accessible only during the execution of that method. (An exception to this rule is inner classes).
+
+Automatic variable(method local variables) are not initialized by the system. Automatic variable must be explicitly initialized before being used. For example, this method will not compile:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main{
+    <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> wrong() { 
+      <span class="r" style="font-weight: bold; color: #7f0055;">int</span> i;
+      <span class="r" style="font-weight: bold; color: #7f0055;">return</span> i+5;
+    } 
+ 
+}
+</pre>
+The output when compiling the code above:
+<pre>| Error:
+| variable i might not have been initialized
+| return i+5;
+|</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Class_variable_static_variable_">static variable</h2>
+There is only one copy of a class variable, and it exists regardless of the number of instances of the class. Static variables are initialized at class load time; here <code style="color: #c7254e;">y</code> would be set to 30 when the <code style="color: #c7254e;">Main</code> class is loaded.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main{ 
+  <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> y = 30;
+}
+</pre>
+<h2></h2>
+<h2 id="Java_this_Keyword">Hidden instance variables and this</h2>
+<code style="color: #c7254e;">this</code> refers to the current object.
+
+<code style="color: #c7254e;">this</code> can be used inside any method to refer to the current object.
+
+The following code shows how to use <code style="color: #c7254e;">this</code> keyword.
+<pre><span class="c" style="font-weight: bold; color: #3f7f5f;">// A use of this. 
+</span>Rectangle(<span class="r" style="font-weight: bold; color: #7f0055;">double</span> w, <span class="r" style="font-weight: bold; color: #7f0055;">double</span> h) { 
+    this.width = w; <span class="c" style="font-weight: bold; color: #3f7f5f;">// this is used here
+</span>    this.height = h; 
+}</pre>
+Use <code style="color: #c7254e;">this</code> to reference the hidden instance variables.
+
+Member variables and method parameters may have the same name. Under this situation we can use this to reference the member variables.
+<pre>Rectangle(double width, double height) { 
+    this.width = width; 
+    this.height = height; 
+}
+</pre>
+The following example shows how to use this to reference instance variable.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Person{
+    <span class="r" style="font-weight: bold; color: #7f0055;">private</span> String name;
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">public</span> Person(String name) {
+        this.name = name;
+    }
+    <span class="r" style="font-weight: bold; color: #7f0055;">public</span> String getName() {
+        <span class="r" style="font-weight: bold; color: #7f0055;">return</span> name;
+    }
+    <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> setName(String name) {
+        this.name = name;
+    }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main{
+    <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+        Person person = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Person(<span class="q" style="font-weight: bold; color: #2a00ff;">"Java"</span>);
+        System.out.println(person.getName());
+        person.setName(<span class="q" style="font-weight: bold; color: #2a00ff;">"new name"</span>);
+        System.out.println(person.getName());
+    }
+}
+</pre>
+The code above generates the following result.
+<pre>Java
+new name
+
+</pre>
+<h1>static and final</h1>
+A static class member can be used independently of any object of that class. A static member that can be used by itself, without reference to a specific instance. Here shows how to declare <code style="color: #c7254e;">static</code> method and <code style="color: #c7254e;">static</code> variable.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> intValue;
+
+<span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> aStaticMethod(){
+}</pre>
+Methods declared as static have several restrictions:
+<ul>
+	<li>They can only call other static methods.</li>
+	<li>They must only access static data.</li>
+	<li>They cannot refer to this or super in any way.</li>
+</ul>
+All instances of the class share the same static variable. You can declare a static block to initialize your static variables. The static block gets only called once when the class is first loaded.
+
+The following example shows a class that has a static method
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a = 3;
+  <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> b;
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> meth(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> x) {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"x = "</span> + x);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"a = "</span> + a);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"b = "</span> + b);
+
+  }
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Main.meth(42);
+  }
+}
+</pre>
+The output:
+<pre>x = 42
+a = 3
+b = 0</pre>
+<h2 id="Example">Example</h2>
+The following example shows a class that has the static variables.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main { 
+    <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a = 3; 
+    <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> b; 
+}
+</pre>
+We can reference the static variables defined above as follows:
+<pre>Main.a
+</pre>
+The following example shows a class that has a static initialization block.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">static</span> int a = 3;
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">static</span> int b;
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">static</span> {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Static block initialized."</span>);
+    b = a * 4;
+  }
+}
+</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Java_final_keyword">final keyword</h2>
+A final variable cannot be modified. You must initialize a final variable when it is declared. A final variable is essentially a constant.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">final</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> FILE_NEW = 1;
+  <span class="r" style="font-weight: bold; color: #7f0055;">final</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span> FILE_OPEN = 2;
+}</pre>
+Methods declared as final cannot be overridden.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Base {
+  <span class="r" style="font-weight: bold; color: #7f0055;">final</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> meth() {
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"This is a final method."</span>);
+  }
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">class</span> B <span class="r" style="font-weight: bold; color: #7f0055;">extends</span> A {
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> meth() { <span class="c" style="font-weight: bold; color: #3f7f5f;">// ERROR! Can't override.
+</span>
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Illegal!"</span>);
+
+  }
+}
+</pre>
+If you try to compile the code above, older versions of the java compiler will complain but the java 9 will compile

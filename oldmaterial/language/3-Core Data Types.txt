@@ -1,0 +1,1305 @@
+Java defines eight primitive types of data: <code style="color: #c7254e;">byte</code>, <code style="color: #c7254e;">short</code>, <code style="color: #c7254e;">int</code>, <code style="color: #c7254e;">long</code>, <code style="color: #c7254e;">char</code>, <code style="color: #c7254e;">float</code>, <code style="color: #c7254e;">double</code>, and <code style="color: #c7254e;">boolean</code>.
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th width="20%">Primitive Type</th>
+<th>Reserved Word</th>
+<th>Size</th>
+<th>Min Value</th>
+<th>Max Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td>boolean</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Character</td>
+<td>char</td>
+<td>16-bit</td>
+<td>Unicode 0</td>
+<td>Unicode 2<sup>16</sup> - 1</td>
+</tr>
+<tr>
+<td>Byte integer</td>
+<td>byte</td>
+<td>8-bit</td>
+<td>-128</td>
+<td>+127</td>
+</tr>
+<tr>
+<td>Short integer</td>
+<td>short</td>
+<td>16-bit</td>
+<td>-2<sup>15</sup></td>
+<td>+2<sup>15</sup> - 1</td>
+</tr>
+<tr>
+<td>Integer</td>
+<td>int</td>
+<td>32-bit</td>
+<td>-2<sup>31</sup></td>
+<td>+2<sup>31</sup> - 1</td>
+</tr>
+<tr>
+<td>Long integer</td>
+<td>long</td>
+<td>64-bit</td>
+<td>-2<sup>63</sup></td>
+<td>+2<sup>63</sup> - 1</td>
+</tr>
+<tr>
+<td>Floating-point</td>
+<td>float</td>
+<td>32-bit</td>
+<td>1.4e-045</td>
+<td>3.4e+038</td>
+</tr>
+<tr>
+<td>Double precision floating-point</td>
+<td>double</td>
+<td>64-bit</td>
+<td>4.9e-324</td>
+<td>1.8e+308</td>
+</tr>
+</tbody>
+</table>
+<code style="color: #c7254e;">byte</code>, <code style="color: #c7254e;">short</code>, <code style="color: #c7254e;">int</code>, and <code style="color: #c7254e;">long</code> are for whole-valued signed numbers. <code style="color: #c7254e;">float</code> and <code style="color: #c7254e;">double</code> are fractional precision numbers.
+
+<code style="color: #c7254e;">char</code> represents symbols in a character set, like letters and numbers. <code style="color: #c7254e;">boolean</code> represents <code style="color: #c7254e;">true</code>/<code style="color: #c7254e;">false</code> values.
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Java_Integers">Integers</h2>
+Java defines four integer types: <code style="color: #c7254e;">byte</code>, <code style="color: #c7254e;">short</code>, <code style="color: #c7254e;">int</code>, and <code style="color: #c7254e;">long</code>.
+
+Integer types are signed and can have positive and negative values.
+
+The width and ranges of these integer types vary widely:
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>Name</th>
+<th>Width</th>
+<th>Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>long</td>
+<td>64</td>
+<td>-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807</td>
+</tr>
+<tr>
+<td>int</td>
+<td>32</td>
+<td>-2,147,483,648 to 2,147,483,647</td>
+</tr>
+<tr>
+<td>short</td>
+<td>16</td>
+<td>-32,768 to 32,767</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>8</td>
+<td>-128 to 127</td>
+</tr>
+</tbody>
+</table>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Floating_Point_Types">Floating Point Types</h2>
+There are two kinds of floating-point types: <code style="color: #c7254e;">float</code> and <code style="color: #c7254e;">double</code>.
+
+<code style="color: #c7254e;">float</code> type represents single-precision numbers.
+
+<code style="color: #c7254e;">double</code> type stores double-precision numbers.
+
+Floating-Point Types width and ranges are shown here:
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>Name</th>
+<th>Width in Bits</th>
+<th>Approximate Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>double</td>
+<td>64</td>
+<td>4.9e-324 to 1.8e+308</td>
+</tr>
+<tr>
+<td>float</td>
+<td>32</td>
+<td>1.4e-045 to 3.4e+038</td>
+</tr>
+</tbody>
+</table>
+&nbsp;
+<h2 id="Value">Booleans</h2>
+Java has a boolean type for logical values. This is the type returned by all relational operators.
+
+It can have only one of two possible values, <code style="color: #c7254e;">true</code> or <code style="color: #c7254e;">false</code>.
+
+Boolean literals are only two logical values: <code style="color: #c7254e;">true</code> and <code style="color: #c7254e;">false</code>. The values of <code style="color: #c7254e;">true</code> and <code style="color: #c7254e;">false</code> do not convert into any numerical representation.
+
+The true literal in Java does not equal <code style="color: #c7254e;">1</code>, nor does the false literal equal <code style="color: #c7254e;">0</code>. In Java, they can only be assigned to variables declared as <code style="color: #c7254e;">boolean</code>.
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Boolean_class">Boolean class</h2>
+The Boolean class wraps a primitive type boolean in an object. An object of type Boolean contains a single field whose type is boolean.
+
+Boolean class has the methods for converting a boolean to a String and a String to a boolean.
+<h2 id="Example">Example</h2>
+Here is a program that demonstrates the <code style="color: #c7254e;">boolean</code> type:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">boolean</span> boolVariable;
+    boolVariable = false;
+    
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"b is "</span> + boolVariable);
+    
+    boolVariable = true;
+    
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"b is "</span> + boolVariable);
+
+  }
+}
+</pre>
+Output:
+<pre>b is false
+b is true</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Example_2">Example 2</h2>
+The true literal in Java does not equal <code style="color: #c7254e;">1</code>, nor does the false literal equal <code style="color: #c7254e;">0</code>. In Java, they can only be assigned to variables declared as <code style="color: #c7254e;">boolean</code>.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">boolean</span> b = true;
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> i = b;
+
+  }
+}
+</pre>
+If you try to compile the program, the following error message will be generated by compiler.
+<pre>| Error:
+| incompatible types: boolean cannot be converted to int
+| int i = b;
+|</pre>
+<h2></h2>
+<h2 id="Java_byte_type">Byte type</h2>
+The smallest integer type is <code style="color: #c7254e;">byte</code>. <code style="color: #c7254e;">byte</code> type variables are useful when working with a stream of data from a network or file.
+
+Byte variables are declared by use of the byte keyword. The following declares two byte variables called b and c:
+
+<code style="color: #c7254e;">byte b, c;</code>
+
+<code style="color: #c7254e;">byte</code> is a signed 8-bit type that has a range from -128 to 127.
+
+The following code creates two byte type variables and assigns values.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">byte</span> b1 = 100;
+    <span class="r" style="font-weight: bold; color: #7f0055;">byte</span> b2 = 20;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Value of byte variable b1 is :"</span> + b1);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Value of byte variable b1 is :"</span> + b2);
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>Value of byte variable b1 is :100
+Value of byte variable b1 is :20</pre>
+The Byte class wraps a value of primitive type byte in an object. Byte class provides several methods for converting a byte to a String and a String to a byte.
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Java_short_type">Short type</h2>
+The size of <strong>short</strong> type is between <strong>byte</strong> and <strong>integer</strong>.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">short</span> is a signed 16-bit type. short type variable has a range from -32,768 to 32,767.</pre>
+Here are some examples of <strong>short</strong> variable declarations:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">short</span> s; 
+<span class="r" style="font-weight: bold; color: #7f0055;">short</span> t;
+</pre>
+<h2 id="Java_int_type">Int type</h2>
+When <strong>byte</strong> and <strong>short</strong> values are used in an expression they are promoted to <strong>int</strong> when the expression is evaluated.
+
+<code style="color: #c7254e;">int</code> is a signed 32-bit type that has a range from <code style="color: #c7254e;">-2,147,483,648</code> to <code style="color: #c7254e;">2,147,483,647</code>.
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Java_long_type">Long type</h2>
+The <strong>long</strong> type is used when an <strong>int</strong> type is not large enough.
+
+<strong>long</strong> is a signed 64-bit type and . The range of <strong>long</strong> type is -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+
+To specify a <strong>long</strong> literal, you need to tell the compiler that the literal value is of type <code style="color: #c7254e;">long</code> by appending an upper- or lowercase <code style="color: #c7254e;">L</code> to the literal. For example, <code style="color: #c7254e;">0x7ffffffffffffffL</code> or <code style="color: #c7254e;">123123123123L</code>.
+
+The following code creates a <code style="color: #c7254e;">long</code> type literal and assigns the value to a <code style="color: #c7254e;">long</code> type variable.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">long</span> l = 0x7ffffffffffffffL;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"l is "</span> + l);
+  }
+}
+</pre>
+The output generated by this program is shown here:
+<pre>l is 576460752303423487</pre>
+<h2 id="Example">Example</h2>
+Here is a program that use long type to store the result.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main { 
+    <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) { 
+        <span class="r" style="font-weight: bold; color: #7f0055;">long</span> result= (<span class="r" style="font-weight: bold; color: #7f0055;">long</span>)Integer.MAX_VALUE * (<span class="r" style="font-weight: bold; color: #7f0055;">long</span>)10; 
+        System.out.println(result);<span class="c" style="font-weight: bold; color: #3f7f5f;">//21474836470
+</span>    
+    } 
+}
+</pre>
+The result could not have been held in an int variable.
+
+The code above generates the following result.
+<pre>21474836470
+
+</pre>
+<h2 id="octal_integer_base_eight_">Octal integer(base eight)</h2>
+Octal values are denoted in by a leading zero. Valid value 09 will produce an error from the compiler, since 9 is outside of octal's 0 to 7 range.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> i = 010;
+
+    System.out.println(i);
+  }
+}
+</pre>
+The output:
+<pre>8</pre>
+<h2 id="hexadecimal_integer_base_16_">Hexadecimal integer(base 16)</h2>
+Hexadecimal matches with modulo 8 word sizes, such as 8, 16, 32, and 64 bits. You signify a hexadecimal constant with a leading zero-x, (0x or 0X).
+
+The range of a hexadecimal digit is 0 to 15, so A through F (or a through f ) are substituted for 10 through 15.
+
+An <strong>integer</strong> literal can always be assigned to a <strong>long</strong> variable. An <strong>integer</strong> can also be assigned to a <strong>char</strong> as long as it is within range.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main{
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv){
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> f = 0XFFFFF;
+
+    System.out.println(f);<span class="c" style="font-weight: bold; color: #3f7f5f;">//1048575
+</span>    
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>1048575</pre>
+&nbsp;
+<h2 id="float_type">Float type</h2>
+<code style="color: #c7254e;">float</code> type represents single-precision numbers.
+
+<code style="color: #c7254e;">float</code> type variables are useful when you need a fractional component. Here are some example <strong>float</strong> variable declarations:
+
+<code style="color: #c7254e;">float high, low;</code>
+<h2 id="Java_float_Value_size_and_Literals">Float Value, size and Literals</h2>
+<strong>float</strong> is 32-bit width and its range is from <code style="color: #c7254e;">1.4e-045</code> to <code style="color: #c7254e;">3.4e+038</code> approximately.
+
+Floating-point literals default to double precision. To specify a float literal, you must append an <code style="color: #c7254e;">F</code> or <code style="color: #c7254e;">f</code> to the constant.
+
+The following code shows how to declare float literals.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main { 
+    <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) { 
+        <span class="r" style="font-weight: bold; color: #7f0055;">float</span> d =  3.14159F; 
+        System.out.print(d);<span class="c" style="font-weight: bold; color: #3f7f5f;">//3.14159    
+</span>    } 
+}
+</pre>
+The code above generates the following result.
+<pre>3.14159</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Java_double_type">Double type</h2>
+double typed represents double-precision numbers.
+
+double is 64-bit width and its range is from 4.9e-324 to 1.8e+308 approximately.
+
+Here is a program that uses double variables to compute the area of a circle:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> pi, r, a;
+    r = 10.8888; <span class="c" style="font-weight: bold; color: #3f7f5f;">// radius of circle
+</span>    pi = 3.1415926; <span class="c" style="font-weight: bold; color: #3f7f5f;">// pi, approximately
+</span>    a = pi * r * r;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Area of circle is "</span> + a);
+  }
+}
+</pre>
+The output:
+<pre>Area of circle is 372.4859596381597</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Example">Example</h2>
+double type numbers have decimal values with a fractional component. They can be expressed in either standard or scientific notation. Standard notation consists of a whole number component followed by a decimal point followed by a fractional component. For example, <code style="color: #c7254e;">2.0</code>, <code style="color: #c7254e;">3.14159</code>, and <code style="color: #c7254e;">0.6667</code>.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main { 
+    <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) { 
+        <span class="r" style="font-weight: bold; color: #7f0055;">double</span> d =  3.14159; 
+        System.out.print(d);<span class="c" style="font-weight: bold; color: #3f7f5f;">//3.14159    
+</span>    } 
+}
+</pre>
+The code above generates the following result.
+<pre>3.14159</pre>
+<h2 id="Example_2">Example 2</h2>
+You can explicitly specify a double literal by appending a D or d.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main { 
+    <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) { 
+        <span class="r" style="font-weight: bold; color: #7f0055;">double</span> d =  3.14159D; 
+        System.out.print(d);<span class="c" style="font-weight: bold; color: #3f7f5f;">//3.14159    
+</span>    } 
+}
+</pre>
+The code above generates the following result.
+<pre>3.14159</pre>
+<h2 id="Scientific_notation">Scientific notation</h2>
+Scientific notation uses a standard-notation, floating-point number plus a suffix that specifies a power of <code style="color: #c7254e;">10</code> by which the number is to be multiplied. The exponent is indicated by an E or e followed by a decimal number, which can be positive or negative. For example, <code style="color: #c7254e;">6.02E23</code>, <code style="color: #c7254e;">314159E-05</code>, and <code style="color: #c7254e;">4e+100</code>.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> d1 = 6.022E23;
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> d2 = 314159E-05;
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> d3 = 2e+100;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"d1 is "</span> + d1);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"d2 is "</span> + d2);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"d3 is "</span> + d3);
+  }
+
+}
+</pre>
+The output generated by this program is shown here:
+<pre>d1 is 6.022E23
+d2 is 3.14159
+d3 is 2.0E100</pre>
+<h2 id="double_value_constant">Double value constant</h2>
+Floating-point calculations are capable of returning <code style="color: #c7254e;">+infinity</code>, <code style="color: #c7254e;">-infinity</code>, <code style="color: #c7254e;">+0.0</code>, <code style="color: #c7254e;">-0.0</code>, and <code style="color: #c7254e;">NaN</code>
+
+Dividing a positive number by <code style="color: #c7254e;">0.0</code> returns <code style="color: #c7254e;">+infinity</code>. For example, <code style="color: #c7254e;">System.out.println(1.0/0.0);</code> outputs Infinity.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main{
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+    System.out.println(1.0/0.0);
+  }
+
+}
+</pre>
+The code above generates the following result.
+<pre>Infinity</pre>
+<h2 id="double_Infinity">Double Infinity</h2>
+Dividing a negative number by <code style="color: #c7254e;">0.0</code> outputs <code style="color: #c7254e;">-infinity</code>. For example, <code style="color: #c7254e;">System.out.println(-1.0/0.0);</code> outputs <code style="color: #c7254e;">-Infinity</code>.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main{
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+    System.out.println(-1.0/0.0);
+  }
+
+}
+</pre>
+Output:
+<pre>-Infinity</pre>
+<h2 id="double_NaN">Double NaN</h2>
+Dividing <code style="color: #c7254e;">0.0</code> by <code style="color: #c7254e;">0.0</code> returns <code style="color: #c7254e;">NaN</code>. square root of a negative number is <code style="color: #c7254e;">NaN</code>. For example, <code style="color: #c7254e;">System.out.println(0.0/0.0)</code> and <code style="color: #c7254e;">System.out.println(Math.sqrt(-1.0))</code> output NaN.
+
+Dividing a positive number by <code style="color: #c7254e;">+infinity</code> outputs <code style="color: #c7254e;">+0.0</code>. For example, <code style="color: #c7254e;">System.out.println(1.0/(1.0/0.0));</code> outputs <code style="color: #c7254e;">+0.0</code>.
+
+Dividing a negative number by <code style="color: #c7254e;">+infinity</code> outputs <code style="color: #c7254e;">-0.0</code>. For example, <code style="color: #c7254e;">System.out.println(-1.0/(1.0/0.0));</code> outputs <code style="color: #c7254e;">-0.0</code>.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+    Double d1 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Double(+0.0);
+    System.out.println(d1.doubleValue());
+
+    Double d2 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Double(-0.0);
+    System.out.println(d2.doubleValue());
+    System.out.println(d1.equals(d2));
+    System.out.println(+0.0 == -0.0);
+
+    
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>0.0
+-0.0
+false
+true</pre>
+In Java, char stores characters. Java uses Unicode to represent characters. Unicode can represent all of the characters found in all human languages.
+
+The char is a 16-bit type.
+
+The range of a char is <code style="color: #c7254e;">0</code> to <code style="color: #c7254e;">65,536</code>. There are no negative chars.
+<h2 id="Char_Literals">Char Literals</h2>
+Characters in Java are indices into the Unicode character set. character is represented inside a pair of single quotes. For example, <code style="color: #c7254e;">'a'</code>, <code style="color: #c7254e;">'z'</code>, and <code style="color: #c7254e;">'@'</code>.
+
+Here is a program that demonstrates char variables:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">char</span> ch1, ch2;
+
+    ch1 = 88; <span class="c" style="font-weight: bold; color: #3f7f5f;">// code for X
+</span>
+    ch2 = <span class="q" style="font-weight: bold; color: #2a00ff;">'Y'</span>;
+
+    System.out.print(<span class="q" style="font-weight: bold; color: #2a00ff;">"ch1 and ch2: "</span>);
+    System.out.println(ch1 + <span class="q" style="font-weight: bold; color: #2a00ff;">" "</span> + ch2);<span class="c" style="font-weight: bold; color: #3f7f5f;">//ch1 and ch2: X Y
+</span>  }
+}
+</pre>
+The code above generates the following result.
+<pre>ch1 and ch2: X Y</pre>
+<code style="color: #c7254e;">ch1</code> is assigned the value 88, which is the ASCII (and Unicode) value that corresponds to the letter <code style="color: #c7254e;">X</code>.
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Example">Example</h2>
+<code style="color: #c7254e;">char</code> type value can be used as an integer type and you can perform arithmetic operations.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">char</span> ch1;
+    ch1 = <span class="q" style="font-weight: bold; color: #2a00ff;">'X'</span>;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ch1 contains "</span> + ch1);<span class="c" style="font-weight: bold; color: #3f7f5f;">//ch1 contains X 
+</span>
+    ch1 = (<span class="r" style="font-weight: bold; color: #7f0055;">char</span>)(ch1 + 1); <span class="c" style="font-weight: bold; color: #3f7f5f;">// increment ch1
+</span>    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ch1 is now "</span> + ch1);<span class="c" style="font-weight: bold; color: #3f7f5f;">//ch1 is now Y
+</span>  }
+}
+</pre>
+The code above generates the following result.
+<pre>ch1 contains X
+ch1 is now Y</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Example_2">Example 2</h2>
+The following code shows that we can assign non-letter character to char type.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">char</span> ch = <span class="q" style="font-weight: bold; color: #2a00ff;">'a'</span>;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ch is "</span> + ch);<span class="c" style="font-weight: bold; color: #3f7f5f;">//ch is a
+</span>    ch = <span class="q" style="font-weight: bold; color: #2a00ff;">'@'</span>;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ch is "</span> + ch);<span class="c" style="font-weight: bold; color: #3f7f5f;">//ch is @
+</span>    ch = <span class="q" style="font-weight: bold; color: #2a00ff;">'#'</span>;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ch is "</span> + ch);<span class="c" style="font-weight: bold; color: #3f7f5f;">//ch is #
+</span>    ch = <span class="q" style="font-weight: bold; color: #2a00ff;">'$'</span>;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ch is "</span> + ch);<span class="c" style="font-weight: bold; color: #3f7f5f;">//ch is $
+</span>    ch = <span class="q" style="font-weight: bold; color: #2a00ff;">'%'</span>;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ch is "</span> + ch);<span class="c" style="font-weight: bold; color: #3f7f5f;">//ch is %
+</span>  }
+}
+</pre>
+The code above generates the following result.
+<pre>ch is a
+ch is @
+ch is #
+ch is $
+ch is %</pre>
+<h2 id="Example_3">Example 3</h2>
+The following code stores unicode value into a char variable. The unicode literal uses <code style="color: #c7254e;">\uxxxx </code>format.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] args) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> x = 75;
+    <span class="r" style="font-weight: bold; color: #7f0055;">char</span> y = (<span class="r" style="font-weight: bold; color: #7f0055;">char</span>) x;
+    <span class="r" style="font-weight: bold; color: #7f0055;">char</span> half = <span class="q" style="font-weight: bold; color: #2a00ff;">'\u00AB'</span>;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"y is "</span> + y + <span class="q" style="font-weight: bold; color: #2a00ff;">" and half is "</span> + half);
+
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>y is K and half is ½</pre>
+<h2 id="Java_char_value_escape">Char value escape</h2>
+The escape sequences are used to enter impossible-to-enter-directly characters.
+
+Syntax to escape char value:
+
+<code style="color: #c7254e;">'\''</code> is for the single-quote character. <code style="color: #c7254e;">'\n'</code> is for the newline character.
+
+For octal notation, use the backslash followed by the three-digit number. For example, <code style="color: #c7254e;">'\141'</code> is the letter 'a'.
+
+For hexadecimal, you enter a backslash-u (<code style="color: #c7254e;">\u</code>), then exactly four hexadecimal digits. For example, '<code style="color: #c7254e;">\u0061</code>' is the ISO-Latin-1 '<code style="color: #c7254e;">a</code>' because the top byte is zero. '<code style="color: #c7254e;">\ua432</code>' is a Japanese Katakana character.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">char</span> ch = <span class="q" style="font-weight: bold; color: #2a00ff;">'\''</span>;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ch is "</span> + ch);<span class="c" style="font-weight: bold; color: #3f7f5f;">//ch is '
+</span>
+  }
+}
+</pre>
+Character is a simple wrapper around a char.
+
+The code above generates the following result.
+<pre>ch is '</pre>
+<h2 id="Escape_value_list">Escape value list</h2>
+The following table shows the character escape sequences.
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>Escape Sequence</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\ddd</td>
+<td>Octal character (ddd)</td>
+</tr>
+<tr>
+<td>\uxxxx</td>
+<td>Hexadecimal Unicode character (xxxx)</td>
+</tr>
+<tr>
+<td>\'</td>
+<td>Single quote</td>
+</tr>
+<tr>
+<td>\"</td>
+<td>Double quote</td>
+</tr>
+<tr>
+<td>\\</td>
+<td>Backslash</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>Carriage return</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>New line</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>Form feed</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>Tab</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>Backspace</td>
+</tr>
+</tbody>
+</table>
+<h1>Strings</h1>
+The String class represents character strings. A quoted string constant can be assigned to a String variable.
+
+String literals are specified by enclosing a sequence of characters between a pair of double quotes. In Java, strings are actually object types.
+
+The following code declares String type variable with String literal.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main{
+   <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv){
+      String str = <span class="q" style="font-weight: bold; color: #2a00ff;">"this is a test from bbd.co.za"</span>; 
+      System.out.println(str);
+    }
+}
+</pre>
+The output:
+<pre>this is a test from bbd.co.za</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Java_String_Concatenation">String Concatenation</h2>
+You can use <code style="color: #c7254e;">+</code> operator to concatenate strings together.
+
+For example, the following fragment concatenates three strings:
+<pre> 
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+    String age = <span class="q" style="font-weight: bold; color: #2a00ff;">"9"</span>;
+    String s = <span class="q" style="font-weight: bold; color: #2a00ff;">"He is "</span> + age + <span class="q" style="font-weight: bold; color: #2a00ff;">" years old."</span>;
+    System.out.println(s);
+  }
+}
+</pre>
+The output:
+<pre>He is 9 years old.</pre>
+<h2 id="Example">Example</h2>
+The following code uses string concatenation to create a very long string.
+<pre> 
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+
+    String longStr = <span class="q" style="font-weight: bold; color: #2a00ff;">"A bb d.      co.za"</span> + 
+                     <span class="q" style="font-weight: bold; color: #2a00ff;">"B b b d . c o . z a                     "</span> + 
+                     <span class="q" style="font-weight: bold; color: #2a00ff;">"C bbd                 .co.za"</span> + 
+                     <span class="q" style="font-weight: bold; color: #2a00ff;">"D bbd.co.za."</span>;
+
+    System.out.println(longStr);
+  }
+}
+</pre>
+The output:
+<pre>A bb d.      co.zaB b b d . c o . z a                     C bbd                 .co.zaD bbd.co.za.</pre>
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Example_2">Example 2</h2>
+You can concatenate strings with other types of data.
+<pre> 
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> age = 1;
+    String s = <span class="q" style="font-weight: bold; color: #2a00ff;">"He is "</span> + age + <span class="q" style="font-weight: bold; color: #2a00ff;">" years old."</span>;
+    System.out.println(s);
+  }
+}
+</pre>
+The output:
+<pre>He is 1 years old.</pre>
+<h2 id="Example_3">Example 3</h2>
+Be careful when you mix other types of operations with string concatenation. Consider the following:
+<pre> 
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+    String s = <span class="q" style="font-weight: bold; color: #2a00ff;">"four: "</span> + 2 + 2;
+    System.out.println(s);
+  }
+}
+</pre>
+This fragment displays
+<pre>four: 22</pre>
+rather than the
+<pre>four: 4</pre>
+To complete the integer addition first, you must use parentheses, like this:
+<pre>String s = <span class="q" style="font-weight: bold; color: #2a00ff;">"four: "</span> + (2 + 2);
+</pre>
+Now s contains the string "four: 4".
+<h2 id="Java_String_Escape">String Escape</h2>
+The escape sequences are used to enter impossible-to-enter-directly strings.
+
+For example, "<code style="color: #c7254e;">\"</code>" is for the double-quote character. "<code style="color: #c7254e;">\n</code>" for the newline string.
+
+For octal notation, use the backslash followed by the three-digit number. For example, "<code style="color: #c7254e;">\141</code>" is the letter "a".
+
+For hexadecimal, you enter a backslash-u (<code style="color: #c7254e;">\u</code>), then exactly four hexadecimal digits. For example, "<code style="color: #c7254e;">\u0061</code>" is the ISO-Latin-1 "<code style="color: #c7254e;">a</code>" because the top byte is zero. "<code style="color: #c7254e;">\ua432</code>" is a Japanese Katakana character.
+<h2 id="Escape_List">Escape List</h2>
+The following table summarizes the String escape sequence.
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>Escape Sequence</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\ddd</td>
+<td>Octal character (ddd)</td>
+</tr>
+<tr>
+<td>\uxxxx</td>
+<td>Hexadecimal Unicode character (xxxx)</td>
+</tr>
+<tr>
+<td>\'</td>
+<td>Single quote</td>
+</tr>
+<tr>
+<td>\"</td>
+<td>Double quote</td>
+</tr>
+<tr>
+<td>\\</td>
+<td>Backslash</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>Carriage return</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>New line</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>Form feed</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>Tab</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>Backspace</td>
+</tr>
+</tbody>
+</table>
+Examples of string literals with escape are
+<pre><span class="q" style="font-weight: bold; color: #2a00ff;">"Hello World"</span> 
+<span class="q" style="font-weight: bold; color: #2a00ff;">"two\nlines"</span> 
+<span class="q" style="font-weight: bold; color: #2a00ff;">"\"This is in quotes\""</span>
+</pre>
+The following example escapes the new line string and double quotation string.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+    String s = <span class="q" style="font-weight: bold; color: #2a00ff;">"bbd.co.za"</span>;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"s is "</span> + s);
+
+    s = <span class="q" style="font-weight: bold; color: #2a00ff;">"two\nlines"</span>;
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"s is "</span> + s);
+
+    s = <span class="q" style="font-weight: bold; color: #2a00ff;">"\"quotes\""</span>;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"s is "</span> + s);
+
+  }
+}
+</pre>
+The output generated by this program is shown here:
+<pre>s is bbd.co.za
+s is two
+lines
+s is "quotes"</pre>
+<h2 id="Example_4">Example 4</h2>
+String literials must be begin and end on the same line. If your string is across several lines, the compiler will complain about it.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv){
+     String s = "line 1
+                 line 2
+                ";
+
+  }
+}
+</pre>
+If you try to compile this program, the compiler will generate the following error message.
+<pre>| Error:
+| unclosed string literal
+| String s = "line 1
+| ^
+| Error:
+| reached end of file while parsing
+| String s = "line 1
+| ^</pre>
+<pre>jshell&gt; line 2
+| Error:
+| ';' expected
+| line 2
+| ^
+| Error:
+| cannot find symbol
+| symbol: variable line
+| line 2
+| ^--^</pre>
+<pre>jshell&gt; ";
+| Error:
+| unclosed string literal
+| ";
+| ^
+| Error:
+| reached end of file while parsing
+| ";
+| ^</pre>
+<pre>jshell&gt;</pre>
+<pre>jshell&gt; }
+| Error:
+| illegal start of statement
+| }
+| ^</pre>
+<h2 id="equals_vs_">equals() vs ==</h2>
+<code style="color: #c7254e;">equals( )</code> method and the <code style="color: #c7254e;">==</code> operator perform two different operations. <code style="color: #c7254e;">equals( )</code> method compares the characters inside a String object. The <code style="color: #c7254e;">==</code> operator compares two object references to see whether they refer to the same instance.
+
+The following program shows the differences:
+<pre> 
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    String s1 = <span class="q" style="font-weight: bold; color: #2a00ff;">"bbd.co.za"</span>;
+    String s2 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> String(s1);
+
+    System.out.println(s1 + <span class="q" style="font-weight: bold; color: #2a00ff;">" equals "</span> + s2 + <span class="q" style="font-weight: bold; color: #2a00ff;">" -&gt; "</span> + s1.equals(s2));
+    System.out.println(s1 + <span class="q" style="font-weight: bold; color: #2a00ff;">" == "</span> + s2 + <span class="q" style="font-weight: bold; color: #2a00ff;">" -&gt; "</span> + (s1 == s2));
+  }
+}
+</pre>
+Here is the output of the preceding example:
+<pre>bbd.co.za equals bbd.co.za -&gt; true
+bbd.co.za == bbd.co.za -&gt; false</pre>
+&nbsp;
+<h1>Arrays</h1>
+An array is a named set of variables of the same type.
+
+Each variable in the array is called an array element.
+
+An array variable has two parts: array type and array object.
+
+The array type is the type of the array variable. The array object is the memory allocated for an array variable.
+
+When defining an array we can first define the array type and allocate the memory later.
+<h2 id="Syntax">Syntax</h2>
+You could declare the integer array variable myIntArray with the following statement:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">int</span>[] myIntArray;                <span class="c" style="font-weight: bold; color: #3f7f5f;">// Declare an integer array variable 
+</span>
+</pre>
+The variable myIntArray is now a type for an integer array. No memory has been allocated to hold an array itself.
+
+Later we will create the array by allocating memory and specify how many elements it can contain.
+
+The square brackets following the type indicates that the variable is for an array of int values, and not for storing a single value of type int.
+
+The type of the array variable is int[].
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Alternative_Syntax">Alternative Syntax</h2>
+We can use an alternative notation for declaring an array variable:
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">int</span> myIntArray[];                <span class="c" style="font-weight: bold; color: #3f7f5f;">// Declare an integer array variable 
+</span>
+</pre>
+Here the square brackets appear after the variable name, rather than after the type name.
+
+This is exactly equivalent to the previous statement. int[] form is preferred since it indicates more clearly that the type is an array of values of type int.
+
+The following two declarations are equivalent:
+<pre>int a1[] = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> int[3]; 
+int[] a2 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> int[3];
+</pre>
+<h2 id="Array_create">Array create</h2>
+After you have declared an array variable, you can define an array that it references:
+<pre>myIntArray = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> int[10];        // Define an <span class="r" style="font-weight: bold; color: #7f0055;">array</span> of 10 integers 
+</pre>
+This statement creates an array that stores 10 values of type int and stores a reference to the array in the variable <code style="color: #c7254e;">myIntArray</code>.
+
+The reference is simply where the array is in memory.
+
+You could also declare the array variable and define the array of type int to hold 10 integers with a single statement.
+<pre>int[] myIntArray = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> int[10];            //An <span class="r" style="font-weight: bold; color: #7f0055;">array</span> of 10 integers 
+</pre>
+The first part of the definition specifies the type of the array. The element type name, int in this case, is followed by an empty pair of square brackets.
+
+The part of the statement that follows the equal sign defines the array.
+
+The keyword new indicates that you are allocating new memory for the array, and int[10] specifies that the capacity is 10 variables of type int in the array.
+<div>
+
+&nbsp;
+
+</div>
+<h2 id="Java_Array_Initial_Values">Array Initial Values</h2>
+After we allocate memory for an array, Java assigns each element in an array to its initial values
+
+The initial value is zero in the case of an array of numerical values, is false for boolean arrays, is '\u0000' for arrays storing type char, and is null for an array of objects of a class type.
+
+The following table lists the default value for various array types.
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>Element Type</th>
+<th>Initial Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>0</td>
+</tr>
+<tr>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td>float</td>
+<td>0.0f</td>
+</tr>
+<tr>
+<td>char</td>
+<td>'\u0000'</td>
+</tr>
+<tr>
+<td>object reference</td>
+<td>null</td>
+</tr>
+<tr>
+<td>short</td>
+<td>0</td>
+</tr>
+<tr>
+<td>long</td>
+<td>0L</td>
+</tr>
+<tr>
+<td>double</td>
+<td>0.0d</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Java_Array_Length">Array Length</h2>
+You can refer to the length of the array - the number of elements it contains - using length, a data member of the array object.
+
+Array size, <code style="color: #c7254e;">arrayName.length</code>, holds its length.
+
+The following code outputs the length of each array by using its <code style="color: #c7254e;">length</code> property.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a1[] = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span>[10];
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a2[] = {1, 2, 3, 4, 5};
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a3[] = {4, 3, 2, 1};
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"length of a1 is "</span> + a1.length);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"length of a2 is "</span> + a2.length);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"length of a3 is "</span> + a3.length);
+  }
+}
+</pre>
+This program displays the following output:
+<pre>length of a1 is 10
+length of a2 is 5
+length of a3 is 4</pre>
+<h2 id="Java_Initialize_Arrays">Initialize Arrays</h2>
+We can initialize the elements in an array with values when declaring it, and at the same time determine how many elements it has.
+
+To do this, we simply add an equal sign followed by the list of element values enclosed between braces following the specification of the array variable.
+
+For example, you can define and initialize an array with the following statement:
+<pre>int[] primes = {2, 3, 5, 7, 11, 13, 17};    // An <span class="r" style="font-weight: bold; color: #7f0055;">array</span> of 7 elements 
+</pre>
+The array size is determined by the number of initial values.
+
+The values are assigned to the array elements in sequence, so in this example primes[0] has the initial value 2, primes[1] has the initial value 3, primes[2] has the initial value 5, and so on through the rest of the elements in the array.
+
+When an array is initialized during the declaration there is no need to use new.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> days[] = {31, 28, 31,};
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"days[2] is "</span> + days[2]);
+  }
+}
+</pre>
+The output:
+<pre>days[2] is 31</pre>
+<h2 id="Java_Array_Index">Array Index</h2>
+To reference an element in an array, we use the array name combined with an integer value, called index.
+
+The index is placed between square brackets following the array name; for example,
+
+<code style="color: #c7254e;">data[9] - </code>refers to the element in the data array corresponding to the index value 9.
+
+The index for an array element is the offset of the element from the beginning of the array.
+
+The first element has an index of 0, the second has an index of 1, the third an index of 2, and so on.
+
+We refer to the first element of the myIntArray array as myIntArray[0], and we reference the fifth element in the array as myIntArray[4].
+
+data[9] refers to the tenth element in the data array.
+
+The maximum index value for an array is one less than the number of elements in the array.
+
+The index value does not need to be an integer literal, it can also be a variable.
+
+The array index has to have a value equals to or greater than zero.
+
+Array stores elements and we use index to reference a single value in an array. The starting value of the index is 0. If you try to reference elements with negative numbers or numbers greater than the array length, you will get a run-time error.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> days[] = {1, 2, 3,};
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"days[2] is "</span> + days[10]);
+  }
+}
+</pre>
+It generates the following error.
+<pre>| java.lang.ArrayIndexOutOfBoundsException thrown: 10
+| at Main.main (#78:4)
+| at (#79:1)</pre>
+&nbsp;
+<h2 id="for_loop">for loop</h2>
+We can use a for loop to access each element in an array. The following code uses a one-dimensional array to find the average of a set of numbers.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> nums[] = {10.1, 11.2, 12.3, 13.4, 14.5};
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> result = 0;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> i;
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (i = 0; i &lt; 5; i++)
+      result = result + nums[i];
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Average is "</span> + result / 5);
+  }
+}  
+</pre>
+The output:
+<pre>Average is 12.299999999999999</pre>
+<h2 id="Java_Array_for_each_loop">Array for each loop</h2>
+We can use a collection-based for loop as an alternative to the numerical for loop when processing the values of all the elements in an array.
+
+The syntax of for each loop for an array is as follows.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">for</span>(arrayType variableName: <span class="r" style="font-weight: bold; color: #7f0055;">array</span>){
+  process each variableName
+}
+</pre>
+array for each loop
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> days[] = {1, 2, 3,};
+    <span class="r" style="font-weight: bold; color: #7f0055;">for</span>(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i:days){
+      System.out.println(i);
+    }
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>1
+2
+3</pre>
+<h2 id="Java_Multidimensional_Arrays">Multidimensional Arrays</h2>
+Multidimensional arrays are arrays of arrays.
+
+For example, the following declares a two-dimensional array variable called <code style="color: #c7254e;">twoD</code>.
+<pre>int twoD[][] = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> int[4][5];
+</pre>
+This allocates a 4-by-5 array and assigns it to twoD. This array will look like the one shown in the following:
+<pre>   [leftIndex][rightIndex]       
+
+   [0][0] [0][1] [0][2] [0][3] [0][4] 
+   [1][0] [1][1] [1][2] [1][3] [1][4] 
+   [2][0] [2][1] [2][2] [2][3] [2][4] 
+   [3][0] [3][1] [3][2] [3][3] [3][4]
+</pre>
+The wrong way to think about multi-dimension arrays is as follows.
+<pre>+----+----+----+
+|   1|   2|   3|
++----+----+----+
+|   4|   5|   6|
++----+----+----+
+|   7|   8|   9|
++----+----+----+
+</pre>
+The right way to think about multi-dimension arrays
+<pre>+--+        +----+----+----+
+|  |--------|   1|   2|   3|
++--+        +----+----+----+     +----+----+----+
+|  |-----------------------------|   4|   5|   6|
++--+   +----+----+----+          +----+----+----+
+|  |---|   7|   8|   9|
++--+   +----+----+----+
+</pre>
+The following code use nested for loop to assign values to a two-dimensional array.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> twoD[][] = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span>[4][5];
+    <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i = 0; i &lt; 4; i++) {
+      <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> j = 0; j &lt; 5; j++) {
+        twoD[i][j] = i*j;
+      }
+    }
+    <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i = 0; i &lt; 4; i++) {
+      <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> j = 0; j &lt; 5; j++) {
+        System.out.print(twoD[i][j] + <span class="q" style="font-weight: bold; color: #2a00ff;">" "</span>);
+      }
+      System.out.println();
+    }
+  }
+}  
+</pre>
+This program generates the following output:
+<pre>0 0 0 0 0
+0 1 2 3 4
+0 2 4 6 8
+0 3 6 9 12</pre>
+<h2 id="Example">Example</h2>
+The following program creates a 3 by 4 by 5, three-dimensional array.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> threeD[][][] = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span>[3][4][5];
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i = 0; i &lt; 3; i++)
+      <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> j = 0; j &lt; 4; j++)
+        <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> k = 0; k &lt; 5; k++)
+          threeD[i][j][k] = i * j * k;
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i = 0; i &lt; 3; i++) {
+      <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> j = 0; j &lt; 4; j++) {
+        <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> k = 0; k &lt; 5; k++)
+          System.out.print(threeD[i][j][k] + <span class="q" style="font-weight: bold; color: #2a00ff;">" "</span>);
+        System.out.println();
+      }
+      System.out.println();
+    }
+  }
+}
+</pre>
+This program generates the following output:
+<pre>0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0</pre>
+<pre>0 0 0 0 0
+0 1 2 3 4
+0 2 4 6 8
+0 3 6 9 12</pre>
+<pre>0 0 0 0 0
+0 2 4 6 8
+0 4 8 12 16
+0 6 12 18 24</pre>
+<h2 id="Example_2">Example 2</h2>
+The following code shows how to iterate over Multidimensional Arrays with for-each.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> sum = 0;
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> nums[][] = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span>[3][5];
+
+    <span class="c" style="font-weight: bold; color: #3f7f5f;">// give nums some values
+</span>    <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i = 0; i &lt; 3; i++)
+      <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> j = 0; j &lt; 5; j++)
+        nums[i][j] = (i + 1) * (j + 1);
+
+    <span class="c" style="font-weight: bold; color: #3f7f5f;">// use for-each for to display and sum the values
+</span>    <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> x[] : nums) {
+      <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> y : x) {
+        System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Value is: "</span> + y);
+        sum += y;
+      }
+    }
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"Summation: "</span> + sum);
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>Value is: 1
+Value is: 2
+Value is: 3
+Value is: 4
+Value is: 5
+Value is: 2
+Value is: 4
+Value is: 6
+Value is: 8
+Value is: 10
+Value is: 3
+Value is: 6
+Value is: 9
+Value is: 12
+Value is: 15
+Summation: 90</pre>
+<h2 id="Jagged_array">Jagged array</h2>
+When you allocate memory for a multidimensional array, you can allocate the remaining dimensions separately.
+
+An irregular multi-dimension array
+<pre>+--+        +----+----+
+|  |--------|   1|   2|
++--+        +----+----+          +----+----+----+
+|  |-----------------------------|   4|   5|   6|
++--+   +----+----+----+----+     +----+----+----+
+|  |---|   7|   8|   9|  10|
++--+   +----+----+----+----+
+</pre>
+For example, the following code allocates the second dimension manually.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String[] argv) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> twoD[][] = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span>[4][];
+    twoD[0] = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span>[5];
+    twoD[1] = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span>[5];
+    twoD[2] = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span>[5];
+    twoD[3] = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span>[5];
+  }
+}
+</pre>
+When allocating dimensions manually, you do not need to allocate the same number of elements for each dimension.
+<h2 id="Example_3">Example 3</h2>
+The following program creates a two-dimensional array in which the sizes of the second dimension are unequal.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> twoD[][] = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span>[4][];
+    twoD[0] = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span>[1];
+    twoD[1] = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span>[2];
+    twoD[2] = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span>[3];
+    twoD[3] = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> <span class="r" style="font-weight: bold; color: #7f0055;">int</span>[4];
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i = 0; i &lt; 4; i++){
+      <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> j = 0; j &lt; i + 1; j++) {
+        twoD[i][j] = i + j;
+      }
+    }
+    <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i = 0; i &lt; 4; i++) {
+      <span class="r" style="font-weight: bold; color: #7f0055;">for</span> (<span class="r" style="font-weight: bold; color: #7f0055;">int</span> j = 0; j &lt; i + 1; j++)
+        System.out.print(twoD[i][j] + <span class="q" style="font-weight: bold; color: #2a00ff;">" "</span>);
+      System.out.println();
+    }
+  }
+} 
+</pre>
+This program generates the following output:
+<pre>0
+1 2
+2 3 4
+3 4 5 6</pre>
+The array created by this program looks like this:
+<pre>[0][0]</pre>
+<pre>   [1][0][1][1]</pre>
+<pre>   [2][0][2][1][2][2]</pre>
+<pre>   [3][0][3][1][3][2][3][3]</pre>
+<h2 id="Example_4">Example 4</h2>
+We can initialize multidimensional arrays during declaration by enclosing each dimension's initializer within its own set of curly braces.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main{ 
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) { 
+    <span class="r" style="font-weight: bold; color: #7f0055;">double</span> m[][] = { 
+            { 0, 1, 2, 3 }, 
+            { 0, 1, 2, 3 }, 
+            { 0, 1, 2, 3 }, 
+            { 0, 1, 2, 3 } 
+        }; 
+    <span class="r" style="font-weight: bold; color: #7f0055;">for</span>(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i=0; i&lt;4; i++) { 
+      <span class="r" style="font-weight: bold; color: #7f0055;">for</span>(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> j=0; j&lt;4; j++){ 
+        System.out.print(m[i][j] + <span class="q" style="font-weight: bold; color: #2a00ff;">" "</span>); 
+      }
+      System.out.println(); 
+    } 
+  } 
+}
+</pre>
+When you run this program, you will get the following output:
+<pre>0.0 1.0 2.0 3.0
+0.0 1.0 2.0 3.0
+0.0 1.0 2.0 3.0
+0.0 1.0 2.0 3.0</pre>

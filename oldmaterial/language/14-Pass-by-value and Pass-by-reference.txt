@@ -1,0 +1,98 @@
+<h2 id="Java_Object_Reference_Variable">Object Reference Variables</h2>
+Object reference variables act differently when an assignment takes place. For example,
+<pre>Box b1 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Box(); 
+Box b2 = b1; 
+</pre>
+After this fragment executes, <code style="color: #c7254e;">b1</code> and <code style="color: #c7254e;">b2</code> will both refer to the same object.
+
+The assignment of b1 to b2 did not allocate any memory or copy any part of the original object. It simply makes b2 refer to the same object as does b1. Thus, any changes made to the object through b2 will affect the object to which b1 is referring.
+
+A subsequent assignment to b1 will simply unhook b1 from the original object without affecting the object or affecting b2.
+
+For example:
+<pre>Box b1 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Box(); 
+Box b2 = b1; 
+// ... 
+b1 = null; 
+</pre>
+Here, b1 has been set to null, but b2 still points to the original object.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Box {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> width;
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> height;
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> depth;
+}
+
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Box myBox1 = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Box();
+    Box myBox2 = myBox1;
+
+    myBox1.width = 10;
+
+    myBox2.width = 20;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"myBox1.width:"</span> + myBox1.width);
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"myBox2.width:"</span> + myBox2.width);
+  }
+}
+</pre>
+The code above generates the following result.
+<pre>myBox1.width:20
+myBox2.width:20</pre>
+<h2 id="Java_Method_Argument_Passing">Method Argument Passing</h2>
+When a parameter is passed into a method, it can be passed by value or by reference. Pass-by-value copies the value of an argument into the parameter. Changes made to the parameter have no effect on the argument. Pass-by-reference passes a reference to the parameter. Changes made to the parameter will affect the argument.
+
+When a simple primitive type is passed to a method, it is done by use of call-by-value. Objects are passed by use of call-by-reference.
+
+The following program uses the "pass by value".
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Test {
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> change(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i, <span class="r" style="font-weight: bold; color: #7f0055;">int</span> j) {
+    i *= 2;
+    j /= 2;
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Test ob = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Test();
+
+    <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a = 5, b = 20;
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"a and b before call: "</span> + a + <span class="q" style="font-weight: bold; color: #2a00ff;">" "</span> + b);
+
+    ob.change(a, b);
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"a and b after call: "</span> + a + <span class="q" style="font-weight: bold; color: #2a00ff;">" "</span> + b);
+  }
+}
+</pre>
+The output from this program is shown here:
+<pre>a and b before call: 5 20
+a and b after call: 5 20</pre>
+<h2 id="Example">Example</h2>
+In the following program, objects are passed by reference.
+<pre><span class="r" style="font-weight: bold; color: #7f0055;">class</span> Test {
+  <span class="r" style="font-weight: bold; color: #7f0055;">int</span> a, b;
+  Test(<span class="r" style="font-weight: bold; color: #7f0055;">int</span> i, <span class="r" style="font-weight: bold; color: #7f0055;">int</span> j) {
+    a = i;
+    b = j;
+  }
+  <span class="r" style="font-weight: bold; color: #7f0055;">void</span> meth(Test o) {
+    o.a *= 2;
+    o.b /= 2;
+  }
+}
+<span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">class</span> Main {
+  <span class="r" style="font-weight: bold; color: #7f0055;">public</span> <span class="r" style="font-weight: bold; color: #7f0055;">static</span> <span class="r" style="font-weight: bold; color: #7f0055;">void</span> main(String args[]) {
+    Test ob = <span class="r" style="font-weight: bold; color: #7f0055;">new</span> Test(15, 20);
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ob.a and ob.b before call: "</span> + ob.a + <span class="q" style="font-weight: bold; color: #2a00ff;">" "</span> + ob.b);
+
+    ob.meth(ob);
+
+    System.out.println(<span class="q" style="font-weight: bold; color: #2a00ff;">"ob.a and ob.b after call: "</span> + ob.a + <span class="q" style="font-weight: bold; color: #2a00ff;">" "</span> + ob.b);
+  }
+}
+</pre>
+This program generates the following output:
+<pre>ob.a and ob.b before call: 15 20
+ob.a and ob.b after call: 30 10</pre>

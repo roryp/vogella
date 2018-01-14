@@ -613,7 +613,7 @@ JUnit Plug-in tests are used to write unit tests for your plug-ins. These tests 
 
 To use JUnit in your Gradle build, add a testCompile dependency to your build file.
 
-```java
+```groovy
 apply plugin: 'java'
 
 dependencies {
@@ -880,7 +880,7 @@ And add the dependencies:
 
 You can find a complete example of a working maven configuration here: <https://github.com/junit-team/junit5-samples/blob/r5.0.0-M4/junit5-maven-consumer/pom.xml>
 
-| !   | The above works for Java projects but not yet for Android projects. |
+| !    | The above works for Java projects but not yet for Android projects. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
@@ -1054,7 +1054,7 @@ public class DynamicTestCreationTest {
 
 Junit5 also supports parameterized tests. To use them you have to add the `junit-jupiter-params` package as a test dependencies. If you are using gradle:
 
-```xml
+```groovy
 dependencies {
   // ..
   testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.0.0'
