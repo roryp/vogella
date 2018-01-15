@@ -31,7 +31,7 @@ Jacob Zuma has a
 
 A visitor is an interface with a “visit(HomeStead)” method
 
-Create Politician instances called “Helen Zille”, “Julius Malema” and “Jacob Zum”a which implements the visitor interface
+Create Politician instances called “Helen Zille”, “Julius Malema” and “Jacob Zuma" which implements the visitor interface
 A homestead has an accept method that takes in a visitor and calls “visit(this)”
 Make the 3 people try and visit Nkandla
 It should only accept visitors with the correct personType of PRESIDENT else throw an Exception
