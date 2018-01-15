@@ -748,3 +748,8 @@ For example, running `mvn versions:display-dependency-updates` for a project mig
 
 ![﻿The display-dependency-updates goal of the versions maven plugin](http://www.vogella.com/tutorials/ApacheMaven/img/xdisplay-dependency-updates.png.pagespeed.ic.9BNKjHHRLN.webp)
 
+
+
+License
+
+Copyright © 2012-2017 vogella GmbH. Free use of the software examples is granted under the terms of the EPL License. This tutorial is published under the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Germany](http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en) license.

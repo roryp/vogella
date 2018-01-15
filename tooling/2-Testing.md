@@ -1142,3 +1142,7 @@ static class ToOctalStringArgumentConverter extends SimpleArgumentConverter {
 | `@Disabled` or `@Disabled("Why disabled")` | `@Ignore` or `@Ignore("Why disabled")` | Marks that the test should be disabled. This is useful when the underlying code has been changed and the test case has not yet been adapted. Or if the execution time of this test is too long to be included. It is best practice to provide the optional description, why the test is disabled. |
 | Not available, is replaced by `org.junit.jupiter.api.Assertions.expectThrows()` | `@Test (expected = Exception.class)`   | Fails if the method does not throw the named exception. |
 | Not available, is replaced by `AssertTimeout.assertTimeout()`and `AssertTimeout.assertTimeoutPreemptively()` | `@Test(timeout=100)`                   | Fails if the method takes longer than 100 milliseconds. |
+
+License
+
+Copyright © 2012-2017 vogella GmbH. Free use of the software examples is granted under the terms of the EPL License. This tutorial is published under the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Germany](http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en) license.

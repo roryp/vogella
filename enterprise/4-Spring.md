@@ -1903,3 +1903,7 @@ When the *app.js* script has been changed, Webpack needs to be run again so that
 Run the Spring application and see the table of Todos.
 
 ![react table](http://www.vogella.com/tutorials/Spring/img/xreact-table.png.pagespeed.ic.ExE_8Y7bx8.webp)
+
+**License**
+
+Copyright © 2012-2017 vogella GmbH. Free use of the software examples is granted under the terms of the EPL License. This tutorial is published under the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Germany](http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en) license.
