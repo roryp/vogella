@@ -1,30 +1,9 @@
-Table of Contents
+```
+Source: http://www.vogella.com/tutorials/JavaIntroduction/article.html  
 
-- [1. Introduction to Java](#1. Introduction to Java)
-- [2. Installation of Java](#2. Installation of Java)
-- [3. Exercise: Write, compile and run a Java program](#3. Exercise: Write, compile and run a Java program)
-- [4. Base Java language structure](#4. Base Java language structure)
-- [5. Java interfaces](#5. Java interfaces)
-- [6. Annotations in Java](#6. Annotations in Java)
-- [7. Variables and methods](#7. Variables and methods)
-- [8. Modifiers](#8. Modifiers)
-- [9. Import statements](#9. Import statements)
-- [10. More Java language constructs](#10. More Java language constructs)
-- [11. Cheat Sheets](#11. Cheat Sheets)
-- [12. Integrated Development Environment](#12. Integrated Development Environment)
-- [13. Exercises - Creating Java objects and methods](#13. Exercises - Creating Java objects and methods)
-- [14. Solution - Creating Java objects and methods](#14. Solution - Creating Java objects and methods)
-- [15. Type Conversion](#15. Type Conversion)
-- [16. Java statements](#16. Java statements)
-- [17. Loops in Java](#17. Loops in Java)
-- [18. Arrays](#18. Arrays)
-- [19. Strings](#19. Strings)
-- [20. Lambdas](#20. Lambdas)
-- [21. Streams](#21. Streams)
-- [22. Optional](#22. Optional)
-- [23. System properties](#23. System properties)
+Source code: https://github.com/vogellacompany/codeexamples-java
+```
 
-  ​
 ## 1. Introduction to Java
 
 ### 1.1. A small history of Java
@@ -37,17 +16,17 @@ Java is defined by a specification and consists of a programming language, a com
 
 The Java language was designed with the following properties:
 
-- Platform independent: Java programs use the Java virtual machine as abstraction and do not access the operating system directly. This makes Java programs highly portable. A Java program (which is standard-compliant and follows certain rules) can run unmodified on all supported platforms, e.g., Windows or Linux.
-- Object-orientated programming language: Except the primitive data types, all elements in Java are objects.
-- Strongly-typed programming language: Java is strongly-typed, e.g., the types of the used variables must be pre-defined and conversion to other objects is relatively strict, e.g., must be done in most cases by the programmer.
-- Interpreted and compiled language: Java source code is transferred into the bytecode format which does not depend on the target platform. These bytecode instructions will be interpreted by the Java Virtual machine (JVM). The JVM contains a so called Hotspot-Compiler which translates performance critical bytecode instructions into native code instructions.
-- Automatic memory management: Java manages the memory allocation and de-allocation for creating new objects. The program does not have direct access to the memory. The so-called garbage collector automatically deletes objects to which no active pointer exists.
+- **Platform independent**: Java programs use the Java virtual machine as abstraction and do not access the operating system directly. This makes Java programs highly portable. A Java program (which is standard-compliant and follows certain rules) can run unmodified on all supported platforms, e.g., Windows or Linux.
+- **Object-orientated programming language**: Except the primitive data types, all elements in Java are objects.
+- **Strongly-typed programming language**: Java is strongly-typed, e.g., the types of the used variables must be pre-defined and conversion to other objects is relatively strict, e.g., must be done in most cases by the programmer.
+- **Interpreted and compiled language**: Java source code is transferred into the bytecode format which does not depend on the target platform. These bytecode instructions will be interpreted by the Java Virtual machine (JVM). The JVM contains a so called Hotspot-Compiler which translates performance critical bytecode instructions into native code instructions.
+- **Automatic memory management**: Java manages the memory allocation and de-allocation for creating new objects. The program does not have direct access to the memory. The so-called garbage collector automatically deletes objects to which no active pointer exists.
 
 The Java syntax is similar to C++. Java is case-sensitive, e.g., variables called `myValue` and `myvalue` are treated as different variables.
 
 ### 1.2. Hello world Java program
 
-```java
+```
 // a small Java program
 public class HelloWorld {
     public static void main(String[] args) {
@@ -62,7 +41,7 @@ The Java virtual machine (JVM) is a software implementation of a computer that e
 
 The Java virtual machine is written specifically for a specific operating system, e.g., for Linux a special implementation is required as well as for Windows.
 
-![jvmintroduction10](http://www.vogella.com/tutorials/JavaIntroduction/img/xjvmintroduction10.png.pagespeed.ic.xrsLZUBYmg.webp)
+[![img](https://community.bbd.co.za/wp-content/uploads/2018/01/jvm-1-1.png)](https://community.bbd.co.za/wp-content/uploads/2018/01/jvm-1-1.png)
 
 Java programs are compiled by the Java compiler into *bytecode*. The Java virtual machine interprets this *bytecode* and executes the Java program.
 
@@ -78,13 +57,13 @@ The JDK additionally contains the development tools necessary to create Java pro
 
 Java source files are written as plain text documents. The programmer typically writes Java source code in an *Integrated Development Environment* (IDE) for programming. An IDE supports the programmer in the task of writing code, e.g., it provides auto-formating of the source code, highlighting of the important keywords, etc.
 
-At some point the programmer (or the IDE) calls the Java compiler ( `javac` ). The Java compiler creates the *bytecode*instructions. These instructions are stored in `.class` files and can be executed by the Java Virtual Machine.
+At some point the programmer (or the IDE) calls the Java compiler ( `javac` ). The Java compiler creates the *bytecode *instructions. These instructions are stored in `.class` files and can be executed by the Java Virtual Machine.
 
 ### 1.6. Garbage collector
 
 The JVM automatically re-collects the memory which is not referred to by other objects. The Java *garbage collector* checks all object references and finds the objects which can be automatically released.
 
-While the garbage collector relieves the programmer from the need to explicitly manage memory, the programmer still need to ensure that he does not keep unneeded object references, otherwise the garbage collector cannot release the associated memory. Keeping unneeded object references are typically called *memory leaks*.
+While the garbage collector relieves the programmer from the need to explicitly manage memory, the programmer still needs to ensure that he does not keep unneeded object references, otherwise the garbage collector cannot release the associated memory. Keeping unneeded object references are typically called *memory leaks*.
 
 ### 1.7. Classpath
 
@@ -106,15 +85,11 @@ If the JRE is installed and within your path, this commands prints information a
 
 If the command line returns the information that the program could not be found, you have to install Java.
 
-| !    | How can you tell you are using a 32 bit or 64 bit version of Java? You can run a 32 bit or a 64 bit version of Java on a 64 bit system. If you use `java -version` and the output contains the "64-Bit" string you are using the 64 bit version of Java otherwise your are using the 32 bit version. The following is the output of a 64-bit version.`openjdk version "1.8.0_45-internal"OpenJDK Runtime Environment (build 1.8.0_45-internal-b14)OpenJDK 64-Bit Server VM (build 25.45-b02, mixed mode)` |
-| ---- | ---------------------------------------- |
-|      |                                          |
-
 ### 2.2. Install Java on Ubuntu
 
 On Ubuntu you can install Java 8 via the following command on the command line. These commands might change over time, if they do not work anymore please Google for the installation.
 
-```bash
+```
 # install Java from the OpenJDK project
 sudo apt-get install openjdk-8-jdk
 
@@ -137,13 +112,13 @@ If you have problems installing Java on your system, search via Google for *How 
 
 Switch again to the command line and run the following command.
 
-```bash
+```
 java -version
 ```
 
 The output should be similar to the following output.
 
-```bash
+```
 openjdk version "1.8.0_45-internal"
 OpenJDK Runtime Environment (build 1.8.0_45-internal-b14)
 OpenJDK 64-Bit Server VM (build 25.45-b02, mixed mode)
@@ -155,11 +130,11 @@ OpenJDK 64-Bit Server VM (build 25.45-b02, mixed mode)
 
 The following Java program is developed under Linux using a text editor and the command line. The process on other operating system should be similar, but is not covered in this description.
 
-Select or create a new directory which will be used for your Java development. In this description the path`\home\vogella\javastarter` is used. On Microsoft Windows you might want to use `c:\temp\javastarter`. This path is called *javadir* in the following description.
+Select or create a new directory which will be used for your Java development. In this description the path `\home\vogella\javastarter` is used. On Microsoft Windows you might want to use `c:\projects\javastarter`. This path is called *javadir* in the following description.
 
-Open a text editor which supports plain text, e.g., *gedit* under Linux or *Notepad* under Windows and write the following source code.
+Open a text editor which supports plain text, e.g., *gedit* under Linux or *Notepad++* under Windows and write the following source code.
 
-```java
+```
 // a small Java program
 public class HelloWorld {
     public static void main(String[] args) {
@@ -168,11 +143,7 @@ public class HelloWorld {
 }
 ```
 
-| !    | Do not use a rich editor like Microsoft Word or LibreOffice for writing Java code. If in doubt, google for "Plain text editor for [your_OS]". |
-| ---- | ---------------------------------------- |
-|      |                                          |
-
-![Writing Java programs in a text editor](http://www.vogella.com/tutorials/JavaIntroduction/img/xfirstjava10.png.pagespeed.ic.mQAsozXtGH.webp)
+[![img](https://community.bbd.co.za/wp-content/uploads/2018/01/helloworld-.png)](https://community.bbd.co.za/wp-content/uploads/2018/01/helloworld-.png)
 
 Save the source code in your *javadir* directory with the `HelloWorld.java` filename. The name of a Java source file must always equal the class name (within the source code) and end with the `.java` extension. In this example the filename must be `HelloWorld.java`, because the class is called `HelloWorld`.
 
@@ -180,19 +151,15 @@ Save the source code in your *javadir* directory with the `HelloWorld.java` file
 
 Open a shell for command line access.
 
-| !    | If you don’t know how to do this, google for "How to open a shell under [your_OS]". |
-| ---- | ---------------------------------------- |
-|      |                                          |
-
 Switch to the *javadir* directory with the command `cd javadir`, for example, in the above example via the `cd \home\vogella\javastarter` command. Use the `ls` command (`dir` under Microsoft Windows) to verify that the source file is in the directory.
 
 Compile your Java source file into a class file with the following command.
 
-```bash
+```
 javac HelloWorld.java
 ```
 
-Afterwards list again the content of the directory with the `ls` or `dir` command. The directory contains now a file`HelloWorld.class`. If you see this file, you have successfully compiled your first Java source code into bytecode.
+Afterwards list again the content of the directory with the `ls` or `dir` command. The directory contains now a file `HelloWorld.class`. If you see this file, you have successfully compiled your first Java source code into bytecode.
 
 | !    | By default, the compiler puts each class file in the same directory as its source file. You can specify a separate destination directory with the `-d` compiler flag. |
 | ---- | ---------------------------------------- |
@@ -206,7 +173,7 @@ java HelloWorld
 
 The system should write "Hello World" on the command line.
 
-![Compiling and running Java programs on the command line](http://www.vogella.com/tutorials/JavaIntroduction/img/xfirstjava20.png.pagespeed.ic.VI05-lcNLJ.webp)
+[![img](https://community.bbd.co.za/wp-content/uploads/2018/01/runhelloworld-.png)](https://community.bbd.co.za/wp-content/uploads/2018/01/runhelloworld-.png)
 
 ### 3.3. Using the classpath
 
@@ -234,7 +201,7 @@ A class is a template that describes the data and behavior associated with an in
 
 A class is defined by the *class* keyword and must start with a capital letter. The body of a class is surrounded by {}.
 
-```java
+```
 package test;
 
 class MyClass {
@@ -242,7 +209,7 @@ class MyClass {
 }
 ```
 
-The data associated with a class is stored in *variables* ; the behavior associated to a class or object is implemented with*methods*.
+The data associated with a class is stored in *variables* ; the behavior associated to a class or object is implemented with *methods*.
 
 A class is contained in a text file with the same name as the class plus the `.java` extension. It is also possible to define inner classes, these are classes defined within another class, in this case you do not need a separate file for this class.
 
@@ -258,7 +225,7 @@ Java groups classes into functional *packages*.
 
 Packages are typically used to group classes into logical units. For example, all graphical views of an application might be placed in the same package called `com.vogella.webapplication.views`.
 
-It is common practice to use the reverse domain name of the company as top level package. For example, the company might own the domain, vogella.com and in this example the Java packages of this company starts with `com.vogella`.
+It is common practice to use the **reverse** **domain** **name** of the company as top level package. For example, the company might own the domain, vogella.com and in this example the Java packages of this company starts with `com.vogella`.
 
 Other main reason for the usage of packages is to avoid name collisions of classes. A name collision occurs if two programmers give the same *fully qualified name* to a class. The *fully qualified name* of a class in Java consists of the package name followed by a dot (.) and the class name.
 
@@ -270,11 +237,11 @@ A class can be derived from another class. In this case this class is called a *
 
 The class from which the subclass is derived is called a *superclass*.
 
-Inheritance allows a class to inherit the behavior and data definitions of another class.
+*Inheritance* allows a class to inherit the behavior and data definitions of another class.
 
 The following codes demonstrates how a class can extend another class. In Java a class can only extend a maximum of one class.
 
-```java
+```
 package com.vogella.javaintro.base;
 
 class MyBaseClass {
@@ -285,7 +252,7 @@ class MyBaseClass {
 }
 ```
 
-```java
+```
 package com.vogella.javaintro.base;
 
 class MyExtensionClass extends MyBaseClass {
@@ -306,7 +273,7 @@ In Java an exception is an event to indicate an error during the runtime of an a
 
 In general exceptions are thrown up in the call hierarchy until they get catched.
 
-![exception throw callstack](http://www.vogella.com/tutorials/JavaIntroduction/img/xexception_throw_callstack.png.pagespeed.ic.wb-62ZKS1u.webp)
+[![img](https://community.bbd.co.za/wp-content/uploads/2018/01/exception-.png)](https://community.bbd.co.za/wp-content/uploads/2018/01/exception-.png)
 
 ### 4.7. Checked Exceptions
 
@@ -314,7 +281,7 @@ Checked Exceptions are explicitly thrown by methods, which might cause the excep
 
 So when calling methods, which throw checked Exceptions the Exceptions have either to be caught or to be re-thrown.
 
-```java
+```
 public void fileNotFoundExceptionIsCaughtInside() {
     try {
         createFileReader();
@@ -343,7 +310,7 @@ Runtime Exceptions are Exceptions, which are not explicitly mentioned in the met
 
 The most famous runtime exception is the NullPointerException, which occurs during runtime, when a method is invoked on an object, which actually is `null`.
 
-```java
+```
 public void causeANullPointerException() {
     String thisStringIsNull = getMessage(false);
 
@@ -377,7 +344,7 @@ Interfaces can have constants which are always implicitly public, static and fin
 
 The following code shows an example implementation of an interface.
 
-```java
+```
 package testing;
 
 public interface MyInterface {
@@ -400,7 +367,7 @@ public interface MyInterface {
 
 A class can implement an interface. In this case it must provide concrete implementations of the abstract interface methods. If you implement a method defined by an interface, you can use `@Override` annotation. This indicates to the Java compiler that you actually want to implement a method defined by this interface. This way the compiler can give you an error in you mis-typed the name of the method or in the number of arguments. The following class implements the `MyInterface` interface, its must therefore implement the abstract method and can use the default methods.
 
-```java
+```
 package com.vogella.javaintro.base;
 
 public class MyClassImpl implements MyInterface {
@@ -423,7 +390,7 @@ public class MyClassImpl implements MyInterface {
 
 ### 5.4. Evolving interfaces with default methods
 
-Before Java 8 evolving interfaces, e.g., adding new methods to an interface, was not possible without breaking existing clients. Java 8 introduced default methods, now you can extend an interface without breaking clients by simply suppling a default implementation with it. Adding such a default method is a source and binary compatible change.
+Before Java 8 evolving interfaces, e.g., adding new methods to an interface, was not possible without breaking existing clients. Java 8 introduced **default** methods, now you can extend an interface without breaking clients by simply supplying a default implementation with it. Adding such a default method is a source and binary compatible change.
 
 A class can always override a default method to supply a better behavior.
 
@@ -431,13 +398,13 @@ A class can always override a default method to supply a better behavior.
 
 If a class implements two interfaces and if these interfaces provide the same default method, Java resolves the correct method for the class by the following rules:
 
-- Superclass wins always against the superinterface - If a class can inherit a method from a superclass and a superinterface, the class inherits the superclass method. This is true for concrete and abstract superclass methods. This rule implies that default methods are not used if this method is also declared in the superclass chain.
-- Subtypes win over Supertypes - If a class can inherit a method from two interfaces, and one is a subtype of the other, the class inherts the method from the subtype
-- In all other cases the class needs to implement the default method
+- **Superclass wins always against the superinterface** - If a class can inherit a method from a superclass and a superinterface, the class inherits the superclass method. This is true for concrete and abstract superclass methods. This rule implies that default methods are not used if this method is also declared in the superclass chain.
+- **Subtypes win over Supertypes** - If a class can inherit a method from two interfaces, and one is a subtype of the other, the class inherts the method from the subtype
+- In all other cases the class needs to **implement** the default method
 
 The following listing demonstrates listing number 3.
 
-```java
+```
 public interface A {
     default void m() {}
 }
@@ -454,7 +421,7 @@ public class C implements A, B {
 
 In your implementation you can also call the super method you prefer.
 
-```java
+```
 public class C implements A, B {
     @Override
     public void m() {A.super.m();}
@@ -463,7 +430,7 @@ public class C implements A, B {
 
 ### 5.6. Functional interfaces
 
-All interfaces that have only one method are called *functional interfaces*. Functional interfaces have the advantage that they can be used together with *lambda expressions*. See [Lambdas](#20. Lambdas) to learn more about lambdas, e.g., the type of lambdas is a functional interface.
+All interfaces that have only one method are called *functional interfaces*. Functional interfaces have the advantage that they can be used together with *lambda expressions*. See the section *Lambdas *to learn more about lambdas, e.g., the type of lambdas is a functional interface.
 
 The Java compiler automatically identifies functional interfaces. The only requirement is that they have only one abstract method. However, is possible to capture the design intent with a `@FunctionalInterface` annotation.
 
@@ -494,7 +461,7 @@ Annotations can be preserved at runtime (`RetentionPolicy.RUNTIME`) or are only 
 
 ### 6.2. Override methods and the @Override annotation
 
-If a class extends another class, it inherits the methods from its superclass. If it wants to change these methods, it can*override* these methods, i.e., redeclare the methods. This is necessary for an abstract method unless the class itself is defined as abstract.
+If a class extends another class, it inherits the methods from its superclass. If it wants to change these methods, it can *override* these methods, i.e., redeclare the methods. This is necessary for an abstract method unless the class itself is defined as abstract.
 
 The `@Override` annotation can be added to such a method. It is used by the Java compiler to check if the annotated method really overrides a method of an interface or the extended class.
 
@@ -504,7 +471,7 @@ To indicate to the reader of the source code and the Java compiler that you have
 
 The following code demonstrates how you can override a method from a superclass.
 
-```java
+```
 package com.vogella.javaintro.base;
 
 class MyBaseClass {
@@ -515,7 +482,7 @@ class MyBaseClass {
 }
 ```
 
-```java
+```
 package com.vogella.javaintro.base;
 
 class MyExtensionClass2 extends MyBaseClass {
@@ -537,7 +504,7 @@ The `@Deprecated` annotation can be used on a field, method, constructor or clas
 
 Java supports that annotations can be placed on any type. The following gives several examples assuming the annotations exists.
 
-```java
+```
 @NonNull String name;
 List<@NonNull String> names;
 class UnmodifiableList<T> implements @Readonly List<@Readonly T> {...}
@@ -572,7 +539,7 @@ Local (stack) variable declarations cannot have access modifiers. Local variable
 
 A method is a block of code with parameters and a return value. It can be called on the object.
 
-```java
+```
 package com.vogella.javaintro.base;
 
 public class MyMethodExample {
@@ -582,15 +549,15 @@ public class MyMethodExample {
 }
 ```
 
-Methods can be declared with var-args. In this case the method declares a parameter which accepts everything from zero to many arguments (syntax: type … name;) A method can only have one var-args parameter and this must be the last parameter in the method.
+Methods can be declared with *var-args*. In this case the method declares a parameter which accepts everything from zero to many arguments (syntax: type … name;) A method can only have one var-args parameter and this must be the last parameter in the method.
 
-Overwrite of a superclass method: A method must be of the exact same return parameter and the same arguments. Also the return parameter must be the same. Overload methods: An overloaded method is a method with the same name, but different arguments. The return type can not be used to overload a method.
+**Overwrite** of a superclass method: A method must be of the exact same return parameter and the same arguments. Also the return parameter must be the same. **Overload** methods: An overloaded method is a method with the same name, but different arguments. The return type can not be used to overload a method.
 
 ### 7.5. Main method
 
 A public static method with the following signature can be used to start a Java application. Such a method is typically called `main` method.
 
-```java
+```
 public static void main(String[] args) {
 
 }
@@ -606,7 +573,7 @@ A class can have several constructors with different parameters.
 
 In the following example the constructor of the class expects a parameter.
 
-```java
+```
 package com.vogella.javaintro.base;
 
 public class MyConstructorExample2 {
@@ -619,11 +586,11 @@ public class MyConstructorExample2 {
 }
 ```
 
-Each class must define at least one constructor. If no explicit constructor is defined in the Java source file, the compiler implicitly adds a constructor. If the class is sub-classed, then the constructor of the super class is always called implicitly in this case.
+Each class must define at least one constructor. If no explicit constructor is defined in the Java source file, the compiler **implicitly** **adds** a constructor. If the class is sub-classed, then the constructor of the super class is always called implicitly in this case.
 
 In the following example the definition of the constructor without parameters (also known as the *empty constructor*) is unnecessary. If not specified, the compiler would create one.
 
-```java
+```
 package com.vogella.javaintro.base;
 
 public class MyConstructorExample {
@@ -642,7 +609,7 @@ Every object is created based on a constructor. This constructor method is the f
 
 ### 8.1. Access modifiers
 
-There are three access modifiers keywords available in Java:  *public* , *protected* and *private*
+There are three access modifiers keywords available in Java: *public* , *protected* and *private*
 
 There are four access levels: *public*, *protected*, *default* and *private*.
 
@@ -663,19 +630,16 @@ The following table describes the visibility:
 
 ### 8.2. Other modifiers
 
-final methods: cannot be overwritten in a subclass abstract method: no method body
-
-synchronized method: thread safe, can be final and have any access control
-
-native methods: platform dependent code, apply only to methods
-
-strictfp: class or method
+- **final** methods: cannot be overwritten in a subclass abstract method: no method body
+- **synchronized** method: thread safe, can be final and have any access control
+- **native** methods: platform dependent code, apply only to methods
+- **strictfp**: class or method
 
 ## 9. Import statements
 
 ### 9.1. Usage of import statements
 
-You have to access a Java class always via its full-qualified name, i.e., the package name plus a . followed by the class name.
+You have to access a Java class always via its full-qualified name, i.e., the package name plus a "." followed by the class name.
 
 You can add `import` statements into your class file. These allow you to use the related classes in your code without the package qualifier.
 
@@ -691,7 +655,7 @@ The feature provides a typesafe mechanism to include constants into code. It als
 
 Class methods and class variables are associated with the class and not an instance of the class, i.e., objects. To refer to these elements, you can use the classname and a dot (".") followed by the class method or class variable name.
 
-Class methods and class variables are declared with the `static` keyword. Class methods are also called *static methods*and class variables are also called *static variables* or *static fields*.
+Class methods and class variables are declared with the `static` keyword. Class methods are also called *static methods *and class variables are also called *static variables* or *static fields*.
 
 An example for the usage of a static field is `println` of the following statement: `System.out.println("Hello World")`. Hereby `out` is a static field, an object of type `PrintStream` and you call the `println()` method on this object.
 
@@ -699,7 +663,7 @@ If you define a static variable, the Java runtime environment associates one cla
 
 The following code demonstrates the usage of `static` fields.
 
-```java
+```
 package com.vogella.javaintro.base;
 
 public class MyStaticExample {
@@ -712,7 +676,7 @@ public class MyStaticExample {
 }
 ```
 
-```java
+```
 package com.vogella.javaintro.base;
 
 public class Tester {
@@ -739,7 +703,7 @@ If a class contains an abstract method, it also needs to get defined with the `a
 
 The following example shows an abstract class.
 
-```java
+```
 package com.vogella.javaintro.base;
 
 public abstract class MyAbstractClass {
@@ -748,8 +712,6 @@ public abstract class MyAbstractClass {
 ```
 
 ## 11. Cheat Sheets
-
-During your Java development time, you will be asked to do certain things, like creating a local variable. The following can be used as a reference for such tasks, so that you how what you have to do.
 
 ### 11.1. Working with classes
 
@@ -761,7 +723,7 @@ While programming Java you have to create several classes, methods, instance var
 | Create a new attribute (instance variable) called *var1* of type `String` in the `MyNewClass` class | `package test;public class MyNewClass {    private String var1;}` |
 | Create a Constructor for your `MyNewClass` class which has a`String` parameter and assigns the value of it to the `var1`instance variable. | `package test;public class MyNewClass {    private String var1;    public MyNewClass(String para1) {        var1 = para1;        // or this.var1= para1;    }}` |
 | Create a new method called *doSomeThing* in your class which does not return a value and has no parameters. | `package test;public class MyNewClass {    private String var1;    public MyNewClass(String para1) {        var1 = para1;        // or this.var1= para1;    }    public void doSomeThing() {    }}` |
-| Create a new method called *doSomeThing2* in your class which does not return a value and has two parameters, an `int` and a `Person` | `package test;public class MyNewClass {    private String var1;    public MyNewClass(String para1) {        var1 = para1;        // or this.var1= para1;    }    public void doSomeThing() {    }    public void doSomeThing2(int a, Person person) {    }}` |
+| Create a new method called *doSomeThing2* in your class which does not return a value and has two parameters, an `int` and a `Person` | `package test;public class MyNewClass {    private String var1;    public MyNewClass(String para1) {        var1 = para1;        // or this.var1= para1;    }    public void doSomeThing() {    }    public void doSomeThing2(int a, Person person) {    }` |
 | Create a new method called *doSomeThing3* in your class which returns an `int` value and has three parameters, two `Strings` and a `Person`. | `package test;public class MyNewClass {    private String var1;    public MyNewClass(String para1) {        var1 = para1;        // or this.var1= para1;    }    public void doSomeThing() {    }    public void doSomeThing2(int a, Person person) {    }    public int doSomeThing3(String a, String b, Person person) {        return 5; // any value will do for this example    }}` |
 | Create a class called *MyOtherClass* with two instance variables. One will store a `String`, the other will store a `Dog`. Create getter and setter for these variables. | `package test;public class MyOtherClass {    String myvalue;    Dog dog;    public String getMyvalue() {        return myvalue;    }    public void setMyvalue(String myvalue) {        this.myvalue = myvalue;    }    public Dog getDog() {        return dog;    }    public void setDog(Dog dog) {        this.dog = dog;    }}` |
 
@@ -805,7 +767,7 @@ Use the constructor of the `Person` object to set the values to some default val
 
 Add a `toString` method as described by the following coding and solve the TODO. This method is used to convert the object to a String representation.
 
-```java
+```
 @Override
 public String toString() {
     // TODO replace "" with the following:
@@ -844,7 +806,7 @@ Add a new instance variable of this type in the `Person` object. Also, create a 
 
 ### 14.1. Create a Person class and instantiate it
 
-```java
+```
 package exercises.exercise04;
 
 class Person {
@@ -860,7 +822,7 @@ class Person {
 }
 ```
 
-```java
+```
 package exercises.exercise04;
 
 public class Main {
@@ -875,7 +837,7 @@ public class Main {
 
 ### 14.2. Use constructor
 
-```java
+```
 package com.vogella.javastarter.exercises1;
 
 
@@ -898,7 +860,7 @@ class Person {
 }
 ```
 
-```java
+```
 package com.vogella.javastarter.exercises1;
 
 public class Main {
@@ -915,7 +877,7 @@ public class Main {
 
 ### 14.3. Define getter and setter methods
 
-```java
+```
 package com.vogella.javastarter.exercises1;
 
 class Person {
@@ -962,7 +924,7 @@ class Person {
 }
 ```
 
-```java
+```
 package com.vogella.javastarter.exercises1;
 
 public class Main {
@@ -979,7 +941,7 @@ public class Main {
 
 ### 14.4. Solution - Create an Address object
 
-```java
+```
 package com.vogella.javastarter.exercises1;
 
 public class Address {
@@ -1038,7 +1000,7 @@ public class Address {
 }
 ```
 
-```java
+```
 package com.vogella.javastarter.exercises1;
 
 
@@ -1095,7 +1057,7 @@ class Person {
 }
 ```
 
-```java
+```
 package com.vogella.javastarter.exercises1;
 
 public class Main {
@@ -1142,7 +1104,7 @@ If you use variables of different types Java requires for certain types an expli
 
 Use the following to convert from other types to Strings
 
-```java
+```
 // Convert from int to String
 String s1 = String.valueOf ( 10 ); // "10"
 // Convert from double to String
@@ -1155,7 +1117,7 @@ String s4 = String.valueOf ( new Date() ); // "Tue Jun 03 14:40:38 CEST 2003"
 
 ### 15.2. Conversion from String to Number
 
-```java
+```
 // Conversion from String to int
 int i = Integer.parseInt(String);
 // Conversion from float to int
@@ -1168,7 +1130,7 @@ The conversion from string to number is independent from the local settings, e.g
 
 To convert from a German number, you have to use the `NumberFormat` class. The challenge is that when the value is, for example, 98.00 then the `NumberFormat` class would create a `Long` which cannot be casted to Double. Hence the following complex conversion class.
 
-```java
+```
 private Double convertStringToDouble(String s) {
 
         Locale l = new Locale("de", "DE");
@@ -1198,7 +1160,7 @@ int i = (int) double;
 
 Use the following to convert a Date to a SQL date
 
-```java
+```
 package test;
 
 import java.text.DateFormat;
@@ -1239,7 +1201,7 @@ The following example code shows a class with two methods. The first method demo
 
 The switch statement can be used to handle several alternatives if they are based on the same constant value.
 
-```java
+```
 switch (expression) {
     case constant1:
         command;
@@ -1310,7 +1272,7 @@ Use `==` to compare two primitives or to see if two references refer to the same
 
 A for loop is a repetition control structure that allows you to write a block of code which is executed a specific number of times. The syntax is the following.
 
-```java
+```
 for(initialization; expression; update_statement)
 {
    //block of code to run
@@ -1319,7 +1281,7 @@ for(initialization; expression; update_statement)
 
 The following shows an example for a for loop.
 
-```java
+```
 public class ForTest {
 
     public static void main(String args[]) {
@@ -1337,7 +1299,7 @@ TIP:For arrays and collections there is also an enhanced for loop available. Thi
 
 A while loop is a repetition control structure that allows you to write a block of code which is executed until a specific condition evaluates to false. The syntax is the following.
 
-```java
+```
 while(expression)
 {
     // block of code to run
@@ -1346,7 +1308,7 @@ while(expression)
 
 The following shows an example for a while loop.
 
-```java
+```
 public class WhileTest {
 
     public static void main(String args[]) {
@@ -1364,7 +1326,7 @@ public class WhileTest {
 
 The do-while loop is similar to the while loop, with the exception that the condition is checked after the execution. The syntax is the following.
 
-```java
+```
 do
 {
     // block of code to run
@@ -1373,7 +1335,7 @@ do
 
 The following shows an example for a do-while loop.
 
-```java
+```
 public class DoTest {
 
     public static void main(String args[]) {
@@ -1393,7 +1355,7 @@ public class DoTest {
 
 An array is a container object that holds a fixed number of values of a single type. An item in an array is called an element. Every element can be accessed via an index. The first element in an array is addressed via the 0 index, the second via 1, etc.
 
-```java
+```
 package com.vogella.javaintro.array;
 
 public class TestMain {
@@ -1425,7 +1387,7 @@ public class TestMain {
 
 Arrays and collections can be processed with a simpler for loop.
 
-```java
+```
 for(declaration : expression)
 {
     // body of code to be executed
@@ -1434,7 +1396,7 @@ for(declaration : expression)
 
 The following code demonstrates its usage.
 
-```java
+```
 package com.vogella.javaintro.array;
 
 public class TestMain {
@@ -1479,6 +1441,9 @@ To concatenate Strings use a `StringBuilder`.
 StringBuilder sb =new StringBuilder("Hello ");
 sb.append("Eclipse");
 String s = sb.toString();
+
+
+
 ```
 
 Avoid using `StringBuffer` and prefer `StringBuilder`. `StringBuffer` is synchronized and this is almost never useful, it is just slower.
@@ -1499,7 +1464,7 @@ A `String` comparison with `==` is incorrect, as `==` checks for object referenc
 
 This would work as expected.
 
-```java
+```
 String a = "Hello";
 String b = "Hello";
 if (a==b) {
@@ -1511,7 +1476,7 @@ if (a==b) {
 
 This comparison would fail.
 
-```java
+```
 String a = "Hello";
 String b = new String("Hello");
 if (a==b) {
@@ -1556,9 +1521,9 @@ The type of a lambda expression in Java is a functional interface.
 
 ### 20.2. Purpose of lambda expressions
 
-Using lambdas allows to use a condensed syntax compared to other Java programming constructs. For example the`Collection` interfaces has `forEach` method which accepts a lambda expression.
+Using lambdas allows to use a condensed syntax compared to other Java programming constructs. For example the `Collection` interfaces has `forEach` method which accepts a lambda expression.
 
-```java
+```
 List<String> list = Arrays.asList("vogella.com","google.com","heise.de" )
 list.forEach(s-> System.out.println(s));
 ```
@@ -1567,7 +1532,7 @@ list.forEach(s-> System.out.println(s));
 
 You can use method references in a lambda expression. Method reference define the method to be called via`CalledFrom::method`. CalledFrom can be * instance::instanceMethod * SomeClass::staticMethod * SomeClass::instanceMethod
 
-```java
+```
 List<String> list = new ArrayList<>();
 list.add("vogella.com");
 list.add("google.com");
@@ -1589,7 +1554,7 @@ A stream from the `java.util.stream` package is a sequence of elements from a so
 
 Allow to create a stream of sequence of primitive int-valued elements supporting sequential and parallel aggregate operations.
 
-```java
+```
 package com.vogella.java.streams;
 
 import java.util.ArrayList;
@@ -1615,7 +1580,7 @@ public class IntStreamExample {
 
 Allow to create a stream of sequence of primitive int-valued elements supporting sequential and parallel aggregate operations.
 
-```java
+```
 package com.vogella.java.streams;
 
 public class Task {
@@ -1642,7 +1607,7 @@ public class Task {
 }
 ```
 
-```java
+```
 package com.vogella.java.streams;
 
 import java.util.ArrayList;
@@ -1683,7 +1648,7 @@ public class StreamTester {
 
 The following example demonstrates how to use streams to filter a list, perform a mapping operation and to create one final result string from it with the `reduce` method.
 
-```java
+```
 import java.util.Arrays;
 import java.util.List;
 
@@ -1704,11 +1669,11 @@ public class JavaStreamExample {
 
 ### 21.5. Streams and lambda examples
 
-The following is a larger example for the usage of streams. 
+The following is a larger example for the usage of streams.
 
 Lets assume the following data model.
 
-```java
+```
 package com.vogella.java.streams;
 
 public enum PetType {
@@ -1719,7 +1684,7 @@ public enum PetType {
 }
 ```
 
-```java
+```
 package com.vogella.java.streams;
 
 public class Pet {
@@ -1749,7 +1714,7 @@ public class Pet {
 }
 ```
 
-```java
+```
 package com.vogella.java.streams;
 
 import java.util.ArrayList;
@@ -1795,15 +1760,12 @@ public class Person {
         return lastName;
     }
 
-
-
-
 }
 ```
 
 With this data model you can use streams and lambdas to filter and search the data as demonstrated in the following example.
 
-```java
+```
 package com.vogella.java.streams;
 
 import java.util.Arrays;
@@ -1892,7 +1854,7 @@ If you want to call a method on an Optional object and check some property you c
 
 You can create an `Optional` in different ways:
 
-```java
+```
 // use this if the object is not null
 opt = Optional.of(o);
 // creates an empty Optional, if o is null
@@ -1903,7 +1865,7 @@ opt = Optional.empty();
 
 The `ifPresent` method can be used to execute some code on an object if it is present. Assume you have a `Todo` object and want to call the `getId()` method on it. You can do this via the following code.
 
-```java
+```
 Todo todo = new Todo(-1);
 Optional<Todo> optTodo = Optional.of(todo);
 // get the id of the todo or a default value
@@ -1912,7 +1874,7 @@ optTodo.ifPresent(t-> System.out.println(t.getId()));
 
 Via the `map` method you can transform the object if it is present and via the `filter` method you can filter for certain values.
 
-```java
+```
 Todo todo = new Todo(-1);
 Optional<Todo> optTodo = Optional.of(todo);
 
@@ -1925,7 +1887,7 @@ optTodo.filter(o -> o.getId() > 0).map(o -> o.getSummary().trim()).ifPresent(Sys
 
 To get the real value of an Optional the get() method can be used. But in case the Optional is empty this will throw a NoSuchElementException. To avoid this NoSuchElementException the `orElse` or the `orElseGet` can be used to provide a default in case of absence.
 
-```java
+```
 // using a String
 String s = "Hello";
 Optional<String> maybeS = Optional.of(s);
@@ -1948,7 +1910,7 @@ Java allows you to schedule tasks. A scheduled tasks can perform once or several
 
 `java.util.Timer` and `java.util.TimerTask` can be used to schedule tasks. The object which implements `TimeTask`will then be performed by the `Timer` based on the given interval.
 
-```java
+```
 package schedule;
 
 import java.util.TimerTask;
@@ -1988,6 +1950,6 @@ public class ScheduleTest {
 }
 ```
 
-License
+**License**
 
 Copyright © 2012-2017 vogella GmbH. Free use of the software examples is granted under the terms of the EPL License. This tutorial is published under the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Germany](http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en) license.
